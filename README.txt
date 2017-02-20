@@ -1,1 +1,2 @@
-Soy un readme :3
+#	GUNBIRD
+TODO: Hacer un readme decente...
