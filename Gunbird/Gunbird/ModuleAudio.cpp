@@ -7,8 +7,7 @@
 
 ModuleAudio::ModuleAudio()
 {
-	for (int i = 0; i < MAX_FX; i++)
-		fx[i] = nullptr;
+
 }
 
 ModuleAudio::~ModuleAudio()
@@ -50,16 +49,12 @@ bool ModuleAudio::Init()
 // Called before quitting
 bool ModuleAudio::CleanUp()
 {
-	LOG("Freeing sound FX, closing Mixer and Audio subsystem");
+	LOG("Freeing music, closing Mixer and Audio subsystem");
 
 	if (music != NULL)
 	{
 		Mix_FreeMusic(music);
 	}
-
-	for (uint i = 0; i < MAX_FX; ++i)
-		if (fx[i] != nullptr)
-			Mix_FreeChunk(fx[i]);
 
 	Mix_CloseAudio();
 	Mix_Quit();
@@ -71,21 +66,6 @@ bool ModuleAudio::CleanUp()
 bool ModuleAudio::PlayMusic(const char* path, float fade_time)
 {
 	bool ret = true;
-
-	if (music != NULL)
-	{
-		if (fade_time > 0.0f)
-		{
-			Mix_FadeOutMusic((int)(fade_time * 1000.0f));
-		}
-		else
-		{
-			Mix_HaltMusic();
-		}
-
-		// this call blocks until fade out is done
-		Mix_FreeMusic(music);
-	}
 
 	music = Mix_LoadMUS(path);
 
@@ -115,54 +95,5 @@ bool ModuleAudio::PlayMusic(const char* path, float fade_time)
 	}
 
 	LOG("Successfully playing %s", path);
-	return ret;
-}
-
-// Load WAV
-uint ModuleAudio::LoadFx(const char* path)
-{
-	uint ret = 0;
-	Mix_Chunk* chunk = Mix_LoadWAV(path);
-
-	if (chunk == nullptr)
-	{
-		LOG("Cannot load wav %s. Mix_GetError(): %s", path, Mix_GetError());
-	}
-	else
-	{
-		fx[last_fx] = chunk;
-		ret = last_fx++;
-	}
-
-	return ret;
-}
-
-// UnLoad WAV
-bool ModuleAudio::UnLoadFx(uint id)
-{
-	bool ret = false;
-
-	if (fx[id] != nullptr)
-	{
-		Mix_FreeChunk(fx[id]);
-		fx[id] = nullptr;
-		ret = true;
-		last_fx--;
-	}
-
-	return ret;
-}
-
-// Play WAV
-bool ModuleAudio::PlayFx(uint id, int repeat)
-{
-	bool ret = false;
-
-	if (fx[id] != nullptr)
-	{
-		Mix_PlayChannel(-1, fx[id], repeat);
-		ret = true;
-	}
-
 	return ret;
 }

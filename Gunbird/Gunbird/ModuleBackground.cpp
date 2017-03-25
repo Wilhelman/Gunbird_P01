@@ -23,7 +23,7 @@ bool ModuleBackground::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	graphics = App->textures->Load("Assets/maps/map_sea_background.png");
-	App->audio->PlayMusic("Assets/audio/gunbird_sea_level_music.wav", 2.0f);
+	App->audio->PlayMusic("Assets/audio/gunbird_sea_level_music.wav");
 	return ret;
 }
 

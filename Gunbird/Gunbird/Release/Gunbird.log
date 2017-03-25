@@ -1,7 +1,11 @@
-﻿  Generando código
-  0 of 66 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+﻿  Application.cpp
+  ModuleAudio.cpp
+  ModuleBackground.cpp
+  ModuleRender.cpp
+  Generando código
+  12 of 66 functions (18.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Release\Gunbird.exe
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Release\Gunbird.pdb (Full PDB)
