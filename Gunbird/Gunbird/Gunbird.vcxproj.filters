@@ -33,13 +33,16 @@
     <ClCompile Include="ModuleTextures.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleBackground.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleInput.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleAudio.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneSea.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePlayer.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,9 +68,6 @@
     <ClInclude Include="ModuleTextures.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleBackground.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleInput.h">
       <Filter>Modules</Filter>
     </ClInclude>
@@ -76,6 +76,15 @@
     </ClInclude>
     <ClInclude Include="ModuleAudio.h">
       <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneSea.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModulePlayer.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Point.h">
+      <Filter>Containers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

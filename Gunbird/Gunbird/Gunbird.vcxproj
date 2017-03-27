@@ -118,7 +118,8 @@
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
-    <ClCompile Include="ModuleBackground.cpp" />
+    <ClCompile Include="ModulePlayer.cpp" />
+    <ClCompile Include="ModuleSceneSea.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
@@ -131,11 +132,13 @@
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleAudio.h" />
-    <ClInclude Include="ModuleBackground.h" />
+    <ClInclude Include="ModulePlayer.h" />
+    <ClInclude Include="ModuleSceneSea.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleWindow.h" />
+    <ClInclude Include="p2Point.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
