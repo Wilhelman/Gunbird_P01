@@ -77,3 +77,10 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 
 	return texture;
 }
+
+bool ModuleTextures::Unload() {
+	for (uint i = 0; i < MAX_TEXTURES; ++i)
+		if (textures[i] != nullptr)
+			SDL_DestroyTexture(textures[i]);
+	return true;
+}

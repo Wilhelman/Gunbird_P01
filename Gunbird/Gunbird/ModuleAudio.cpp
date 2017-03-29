@@ -97,3 +97,11 @@ bool ModuleAudio::PlayMusic(const char* path, float fade_time)
 	LOG("Successfully playing %s", path);
 	return ret;
 }
+
+bool ModuleAudio::StopMusic() {
+	//TODO look if we can control this
+	Mix_FreeMusic(music);
+	music = nullptr;
+	Mix_HaltMusic();
+	return true;
+}

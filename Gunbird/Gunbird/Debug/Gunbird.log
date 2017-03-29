@@ -1,2 +1,8 @@
-﻿  Gunbird.vcxproj -> C:\Users\guillermogs2\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
-  Gunbird.vcxproj -> C:\Users\guillermogs2\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
+﻿  ModuleWelcomeScreen.cpp
+  ModuleScoreRanking.cpp
+  ModuleSceneSea.cpp
+  ModuleSceneMine.cpp
+  ModuleCharacterSelection.cpp
+  Generando código...
+  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
+  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
