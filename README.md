@@ -24,6 +24,14 @@ _IMPORTANT: do not modify, change or add any folder or file as you might not be 
 
 ## Changelist of all previous versions
 
+_0.1 version:_
+
+_0.2 version:_
+
+_0.3 version:_
+
+_0.4 version:_
+
 ## Team members
 
 _Altimira Bernat, Martí's responsability and Github account_
