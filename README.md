@@ -36,6 +36,8 @@ General/developer controls:
 
 _0.1 version:_
 
+Project started with all the basic modules added, implemented the first background level with his own music.
+
 _0.2 version:_
 
 * Implemented fade to black.
@@ -44,9 +46,10 @@ _0.2 version:_
 * Now we have the loop that goes through the main game modules.
 * Implemented the Welcome Screen Title*
 * Implemented Character Selection*
-* Implemented Scene Mine*
+* Implemented Scene Mine
 * Implemented Score Ranking*
-* Provisional static screens.
+
+*Provisional static screens.
 
 _0.3 version:_
 
