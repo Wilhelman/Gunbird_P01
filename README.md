@@ -22,11 +22,31 @@ _IMPORTANT: do not modify, change or add any folder or file as you might not be 
 
 ## Controls
 
+Player controls:
+- UP: W key
+- LEFT: A key
+- RIGHT: D key
+- DOWN: S key
+
+General/developer controls:
+- SKIP SCREEN: INTRO key
+- EXIT GAME: ESC key
+
 ## Changelist of all previous versions
 
 _0.1 version:_
 
 _0.2 version:_
+
+* Implemented fade to black.
+* Implemented transitions between screens.
+* Added the songs of each screen.
+* Now we have the loop that goes through the main game modules.
+* Implemented the Welcome Screen Title*
+* Implemented Character Selection*
+* Implemented Scene Mine*
+* Implemented Score Ranking*
+* Provisional static screens.
 
 _0.3 version:_
 
