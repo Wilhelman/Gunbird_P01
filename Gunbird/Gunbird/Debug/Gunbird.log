@@ -1,8 +1,9 @@
-﻿  ModuleWelcomeScreen.cpp
-  ModuleScoreRanking.cpp
-  ModuleSceneSea.cpp
+﻿  ModulePlayer.cpp
+  Generando código...
+  Compilando...
   ModuleSceneMine.cpp
-  ModuleCharacterSelection.cpp
+  ModuleSceneCastle.cpp
+  Application.cpp
   Generando código...
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)

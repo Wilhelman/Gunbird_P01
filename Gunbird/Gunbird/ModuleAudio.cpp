@@ -105,3 +105,52 @@ bool ModuleAudio::StopMusic() {
 	Mix_HaltMusic();
 	return true;
 }
+
+// Load WAV
+uint ModuleAudio::LoadFx(const char* path)
+{
+	uint ret = 0;
+	Mix_Chunk* chunk = Mix_LoadWAV(path);
+
+	if (chunk == nullptr)
+	{
+		LOG("Cannot load wav %s. Mix_GetError(): %s", path, Mix_GetError());
+	}
+	else
+	{
+		fx[last_fx] = chunk;
+		ret = last_fx++;
+	}
+
+	return ret;
+}
+
+// UnLoad WAV
+bool ModuleAudio::UnLoadFx(uint id)
+{
+	bool ret = false;
+
+	if (fx[id] != nullptr)
+	{
+		Mix_FreeChunk(fx[id]);
+		fx[id] = nullptr;
+		ret = true;
+		last_fx--;
+	}
+
+	return ret;
+}
+
+// Play WAV
+bool ModuleAudio::PlayFx(uint id, int repeat)
+{
+	bool ret = false;
+
+	if (fx[id] != nullptr)
+	{
+		Mix_PlayChannel(-1, fx[id], repeat);
+		ret = true;
+	}
+
+	return ret;
+}

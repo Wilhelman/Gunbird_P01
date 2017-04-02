@@ -78,9 +78,21 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 	return texture;
 }
 
-bool ModuleTextures::Unload() {
+// Load new texture from file path
+bool ModuleTextures::Unload(SDL_Texture* texture)
+{
+	bool ret = false;
+
 	for (uint i = 0; i < MAX_TEXTURES; ++i)
-		if (textures[i] != nullptr)
+	{
+		if (texture == textures[i])
+		{
 			SDL_DestroyTexture(textures[i]);
-	return true;
+			textures[i] = nullptr;
+			ret = true;
+			break;
+		}
+	}
+
+	return ret;
 }

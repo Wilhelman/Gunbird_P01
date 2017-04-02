@@ -5,11 +5,12 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
+#include "ModuleParticles.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleWelcomeScreen.h"
 #include "ModuleCharacterSelection.h"
 #include "ModuleScoreRanking.h"
-#include "ModuleSceneSea.h"
+#include "ModuleSceneCastle.h"
 #include "ModuleSceneMine.h"
 #include "ModulePlayer.h"
 
@@ -23,10 +24,11 @@ Application::Application()
 	modules[5] = welcomeScreen = new ModuleWelcomeScreen();
 	modules[6] = characterSelection = new ModuleCharacterSelection();
 	modules[7] = scoreRanking = new ModuleScoreRanking();
-	modules[8] = sceneSea = new ModuleSceneSea();
+	modules[8] = sceneCastle = new ModuleSceneCastle();
 	modules[9] = sceneMine = new ModuleSceneMine();
 	modules[10] = player = new ModulePlayer();
-	modules[11] = fade = new ModuleFadeToBlack();
+	modules[11] = particles = new ModuleParticles();
+	modules[12] = fade = new ModuleFadeToBlack();
 }
 
 Application::~Application()
@@ -44,7 +46,7 @@ bool Application::Init()
 	// Disable the modules that you do not start with
 	characterSelection->Disable();
 	scoreRanking->Disable();
-	sceneSea->Disable();
+	sceneCastle->Disable();
 	sceneMine->Disable();
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)

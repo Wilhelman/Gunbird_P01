@@ -38,7 +38,7 @@ bool ModuleSceneMine::Start()
 		LOG("Cannot load the texture in SceneMine");
 		ret = false;
 	}
-	if (!App->audio->PlayMusic("Assets/audio/gunbird_mine_level_music.wav"))
+	if (!App->audio->PlayMusic("Assets/audio/gunbird_mine_level_music.ogg"))
 		ret = false;
 	return ret;
 }
@@ -73,7 +73,7 @@ bool ModuleSceneMine::CleanUp()
 	LOG("Unloading Scene Mine");
 
 	App->player->Disable();
-	graphics = nullptr;
+	App->textures->Unload(graphics);
 	App->audio->StopMusic();
 
 	return true;

@@ -8,7 +8,7 @@
 #include "ModuleInput.h"
 
 //TODO include only the random maps?
-#include "ModuleSceneSea.h"
+#include "ModuleSceneCastle.h"
 
 ModuleCharacterSelection::ModuleCharacterSelection()
 {
@@ -33,7 +33,7 @@ bool ModuleCharacterSelection::Start()
 		ret = false;
 	}
 
-	if (!App->audio->PlayMusic("Assets/audio/gunbird_characterSelection_music.wav"))
+	if (!App->audio->PlayMusic("Assets/audio/gunbird_characterSelection_music.ogg"))
 		ret = false;
 
 	return ret;
@@ -46,7 +46,7 @@ update_status ModuleCharacterSelection::Update()
 	update_status status = UPDATE_CONTINUE;
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver()) {
-		App->fade->FadeToBlack(this, App->sceneSea);
+		App->fade->FadeToBlack(this, App->sceneCastle);
 	}
 
 	// Draw everything --------------------------------------
@@ -64,8 +64,7 @@ bool ModuleCharacterSelection::CleanUp()
 	//TODO check if we can control this
 	LOG("Unloading character selection");
 
-	graphics = nullptr;
-	App->textures->Unload();
+	App->textures->Unload(graphics);
 	App->audio->StopMusic();
 
 	return true;

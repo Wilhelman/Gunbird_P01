@@ -120,9 +120,10 @@
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCharacterSelection.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />
+    <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModulePlayer.cpp" />
     <ClCompile Include="ModuleSceneMine.cpp" />
-    <ClCompile Include="ModuleSceneSea.cpp" />
+    <ClCompile Include="ModuleSceneCastle.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleScoreRanking.cpp" />
@@ -139,9 +140,10 @@
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleCharacterSelection.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
+    <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModulePlayer.h" />
     <ClInclude Include="ModuleSceneMine.h" />
-    <ClInclude Include="ModuleSceneSea.h" />
+    <ClInclude Include="ModuleSceneCastle.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleScoreRanking.h" />

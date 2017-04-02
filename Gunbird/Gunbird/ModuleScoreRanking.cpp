@@ -31,7 +31,7 @@ bool ModuleScoreRanking::Start()
 		LOG("Cannot load the texture in ScoreRanking");
 		ret = false;
 	}
-	if (!App->audio->PlayMusic("Assets/audio/gunbird_scoreRanking_music.wav"))
+	if (!App->audio->PlayMusic("Assets/audio/gunbird_scoreRanking_music.ogg"))
 		ret = false;
 	return ret;
 }
@@ -61,7 +61,7 @@ bool ModuleScoreRanking::CleanUp()
 	//TODO check if we can control this
 	LOG("Unloading Score Ranking");
 
-	graphics = nullptr;
+	App->textures->Unload(graphics);
 	App->audio->StopMusic();
 
 	return true;

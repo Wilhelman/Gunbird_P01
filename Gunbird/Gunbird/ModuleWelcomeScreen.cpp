@@ -29,7 +29,7 @@ bool ModuleWelcomeScreen::Start()
 		ret = false;
 		LOG("Error loading the welcomeScreen spritesheet");
 	}
-	if (!App->audio->PlayMusic("Assets/audio/gunbird_welcomeScreen_music.wav"))
+	if (!App->audio->PlayMusic("Assets/audio/gunbird_welcome_CastleScreen_music.ogg"))
 		ret = false;
 
 	return ret;
@@ -57,8 +57,7 @@ bool ModuleWelcomeScreen::CleanUp()
 	//TODO check if we can control this
 	LOG("Unloading welcome screen");
 
-	graphics = nullptr;
-	App->textures->Unload();
+	App->textures->Unload(graphics);
 	App->audio->StopMusic();
 
 	return true;
