@@ -27,21 +27,23 @@ _IMPORTANT: do not modify, change or add any folder or file as you might not be 
 _Altimira Bernat, Martí's responsability and Github account_
 
 * QA
-* Github account
+* Github account: https://github.com/martimab
 
 _García Subirana, Guillermo's responsability and Github account_
 
-Code
-Github account
+* Code
+* Github account: https://github.com/Wilhelman
 
 _Masó Garcia, Víctor's responsability and Github account_
 
-Management
-Github account
+* Management
+* Github account: https://github.com/nintervik
 
 _Termens Vázquez, Ariadna's responsability and Github account_
 
-Art/Design
-Github account
+* Art/Design
+* Github account: https://github.com/AriTeva
+
+
 
 FrozenSloth Studios
