@@ -15,19 +15,33 @@ There are two loop with seven levels each. The four shards of the mirror are obt
 ## Installation instructions
 
 Download the zip file and unzip it. Open the folder, execute the .exe and enjoy!*
-IMPORTANT: do not modify, change or add any folder or file as you might not be able to execute the game. 
+
+_IMPORTANT: do not modify, change or add any folder or file as you might not be able to execute the game._
 
 ## Controls
 
 ## Changelist of all previous versions
 
 ## Team members
-  
 
+_Altimira Bernat, Martí's responsability and Github account_
 
+QA
+Github account
 
+_García Subirana, Guillermo's responsability and Github account_
 
+Code
+Github account
 
+_Masó Garcia, Víctor's responsability and Github account_
 
+Management
+Github account
+
+_Termens Vázquez, Ariadna's responsability and Github account_
+
+Art/Design
+Github account
 
 FrozenSloth Studios
