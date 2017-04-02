@@ -26,8 +26,8 @@ _IMPORTANT: do not modify, change or add any folder or file as you might not be 
 
 _Altimira Bernat, Martí's responsability and Github account_
 
-QA
-Github account
+* QA
+* Github account
 
 _García Subirana, Guillermo's responsability and Github account_
 
