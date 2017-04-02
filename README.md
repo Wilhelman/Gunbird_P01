@@ -36,7 +36,16 @@ General/developer controls:
 
 _0.1 version:_
 
-Project started with all the basic modules added, implemented the first background level with his own music.
+Project started with all the basic modules added. 
+
+Main features: 
+
+* Automatic background (sea level) scrolling.
+* Player (Valnus) full movement working
+* Player basic animation implemented
+* Camera limits added
+* Sea level music added
+* Press ESC to quit available 
 
 _0.2 version:_
 
