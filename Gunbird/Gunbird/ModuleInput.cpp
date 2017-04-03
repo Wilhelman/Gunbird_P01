@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
+#include "ModuleCollision.h"
 
 ModuleInput::ModuleInput() : Module()
 {
@@ -17,6 +18,7 @@ ModuleInput::~ModuleInput()
 // Called before render is available
 bool ModuleInput::Init()
 {
+
 	LOG("Init SDL input event system");
 	bool ret = true;
 	SDL_Init(0);

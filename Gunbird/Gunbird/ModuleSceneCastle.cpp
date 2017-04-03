@@ -7,6 +7,7 @@
 #include "ModuleSceneMine.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleCollision.h"
 
 //TODO: remove this if not necesary
 #include "ModuleInput.h"
@@ -59,11 +60,12 @@ bool ModuleSceneCastle::Start()
 	bridge_top_y = -710;
 	bridge_top.Reset();
 
-	LOG("Loading SceneSea assets");
+	LOG("Loading SceneCastle assets");
 	bool ret = true;
 	background_y = -2036;
 
 	App->player->Enable();
+	App->collision->Enable();
 
 	graphics = App->textures->Load("Assets/maps/castle/map_castle_background.png");
 	if (graphics == nullptr) {
@@ -140,6 +142,7 @@ bool ModuleSceneCastle::CleanUp()
 	//TODO check if we can control this
 	LOG("Unloading SceneCastle");
 
+	App->collision->Disable();
 	App->player->Disable();
 	App->textures->Unload(graphics);
 	App->textures->Unload(graphicsSoldier);

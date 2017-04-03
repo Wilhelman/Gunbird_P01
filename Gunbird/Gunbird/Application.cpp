@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModuleParticles.h"
+#include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleWelcomeScreen.h"
 #include "ModuleCharacterSelection.h"
@@ -16,19 +17,21 @@
 
 Application::Application()
 {
-	modules[0] = window = new ModuleWindow();
-	modules[1] = render = new ModuleRender();
-	modules[2] = input = new ModuleInput();
-	modules[3] = textures = new ModuleTextures();
-	modules[4] = audio = new ModuleAudio();
-	modules[5] = welcomeScreen = new ModuleWelcomeScreen();
-	modules[6] = characterSelection = new ModuleCharacterSelection();
-	modules[7] = scoreRanking = new ModuleScoreRanking();
-	modules[8] = sceneCastle = new ModuleSceneCastle();
-	modules[9] = sceneMine = new ModuleSceneMine();
-	modules[10] = player = new ModulePlayer();
-	modules[11] = particles = new ModuleParticles();
-	modules[12] = fade = new ModuleFadeToBlack();
+	int i = 0;
+	modules[i++] = window = new ModuleWindow();
+	modules[i++] = render = new ModuleRender();
+	modules[i++] = input = new ModuleInput();
+	modules[i++] = textures = new ModuleTextures();
+	modules[i++] = audio = new ModuleAudio();
+	modules[i++] = welcomeScreen = new ModuleWelcomeScreen();
+	modules[i++] = characterSelection = new ModuleCharacterSelection();
+	modules[i++] = scoreRanking = new ModuleScoreRanking();
+	modules[i++] = sceneCastle = new ModuleSceneCastle();
+	modules[i++] = sceneMine = new ModuleSceneMine();
+	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = player = new ModulePlayer();
+	modules[i++] = collision = new ModuleCollision();
+	modules[i++] = fade = new ModuleFadeToBlack();
 }
 
 Application::~Application()
@@ -42,19 +45,23 @@ bool Application::Init()
 	bool ret = true;
 
 	// Player will be enabled on the first update of a new scene
-	player->Disable();
 	// Disable the modules that you do not start with
-	//welcomeScreen->Disable();
+	welcomeScreen->Disable();
 	characterSelection->Disable();
 	scoreRanking->Disable();
 	sceneCastle->Disable();
 	sceneMine->Disable();
+	player->Disable();
+	collision->Disable();
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
+
+	//TODO: remove this in release mode
+	sceneCastle->Enable();
 
 	return ret;
 }

@@ -6,6 +6,7 @@
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
+#include "ModuleCollision.h"
 
 //TODO: include the maps
 #include "ModuleSceneCastle.h"
@@ -17,6 +18,8 @@ ModulePlayer::ModulePlayer()
 	idle.PushBack({ 0, 0, 31, 30 });
 	idle.PushBack({ 38, 0, 31, 29 });
 	idle.speed = 0.05f;
+
+	//TODO: the animations are wrong
 
 	//right animation
 	right_animation.PushBack({ 0, 38, 26, 30 });
@@ -43,6 +46,9 @@ bool ModulePlayer::Start()
 
 	position.x = SCREEN_WIDTH / 2;
 	position.y = SCREEN_HEIGHT / 2;
+
+	LOG("Creating player collider");
+	playerCollider = App->collision->AddCollider({ position.x,position.y,31,33 }, COLLIDER_PLAYER, this);
 	
 	LOG("Loading player textures");
 	bool ret = true;
@@ -128,12 +134,16 @@ update_status ModulePlayer::Update()
 				status = UPDATE_ERROR;
 			}
 		}
+
 	}
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
-	if (!App->render->Blit(graphics, position.x, position.y - r.h, &r)) {
+	//update player collider
+	playerCollider->SetPos(position.x, position.y - r.h);
+
+	if (!App->render->Blit(graphics, position.x, position.y -r.h, &r)) {
 		LOG("Cannot blit the texture in ModulePlayer %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}
@@ -150,4 +160,8 @@ bool ModulePlayer::CleanUp()
 	App->audio->UnLoadFx(laserShot1_2);
 
 	return true;
+}
+
+void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
+	LOG("hitted");
 }

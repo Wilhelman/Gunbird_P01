@@ -1,9 +1,3 @@
-﻿  ModuleTextures.cpp
-  ModuleSceneMine.cpp
-  ModuleSceneCastle.cpp
-c:\users\guillermogs2\documents\github\gunbird_p01\gunbird\gunbird\modulescenecastle.cpp(27): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\guillermogs2\documents\github\gunbird_p01\gunbird\gunbird\modulescenecastle.cpp(39): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\guillermogs2\documents\github\gunbird_p01\gunbird\gunbird\modulescenecastle.cpp(120): warning C4305: '-=': truncation from 'double' to 'float'
-  Generating Code...
-  Gunbird.vcxproj -> C:\Users\guillermogs2\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
-  Gunbird.vcxproj -> C:\Users\guillermogs2\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
+﻿  ModuleInput.cpp
+  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
+  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
