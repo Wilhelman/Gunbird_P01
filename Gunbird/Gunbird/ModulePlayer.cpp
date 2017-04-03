@@ -40,18 +40,19 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	laserType = 0;
+
 	position.x = SCREEN_WIDTH / 2;
 	position.y = SCREEN_HEIGHT / 2;
-
-	//TODO get the index of the audio and do features
-	LOG("Loading player effects");
-	laserShot1_2 = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
-
+	
 	LOG("Loading player textures");
 	bool ret = true;
 	graphics = App->textures->Load("Assets/characters/valnus_spritesheet.png");
 	if (graphics == nullptr)
 		ret = false;
+
+	LOG("Loading player effects");
+	laserShot1_2 = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
+
 	return ret;
 }
 

@@ -1,19 +1,13 @@
 ﻿  Application.cpp
-  Main.cpp
-  ModuleAudio.cpp
-  ModuleCharacterSelection.cpp
-  ModuleFadeToBlack.cpp
   ModulePlayer.cpp
+  ModuleSceneCastle.cpp
+ModuleSceneCastle.cpp(27): warning C4305: '=': truncation from 'double' to 'float'
+ModuleSceneCastle.cpp(39): warning C4305: '=': truncation from 'double' to 'float'
+ModuleSceneCastle.cpp(120): warning C4305: '-=': truncation from 'double' to 'float'
   ModuleSceneMine.cpp
-  ModuleSceneSea.cpp
-  ModuleInput.cpp
-  ModuleRender.cpp
-  ModuleScoreRanking.cpp
   ModuleTextures.cpp
-  ModuleWelcomeScreen.cpp
-  ModuleWindow.cpp
-  Generando código
-  All 118 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Generación de código finalizada
-  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Release\Gunbird.exe
-  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Release\Gunbird.pdb (Full PDB)
+  Generating code
+  All 136 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Gunbird.vcxproj -> C:\Users\guillermogs2\Documents\GitHub\Gunbird_P01\Gunbird\Release\Gunbird.exe
+  Gunbird.vcxproj -> C:\Users\guillermogs2\Documents\GitHub\Gunbird_P01\Gunbird\Release\Gunbird.pdb (Full PDB)

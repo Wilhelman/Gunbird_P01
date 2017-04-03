@@ -44,6 +44,7 @@ bool Application::Init()
 	// Player will be enabled on the first update of a new scene
 	player->Disable();
 	// Disable the modules that you do not start with
+	//welcomeScreen->Disable();
 	characterSelection->Disable();
 	scoreRanking->Disable();
 	sceneCastle->Disable();

@@ -27,6 +27,7 @@ Player controls:
 - LEFT: A key
 - RIGHT: D key
 - DOWN: S key
+- BASIC SHOT: SPACE key
 
 General/developer controls:
 - SKIP SCREEN: INTRO key
@@ -61,6 +62,11 @@ _0.2 version:_
 *Provisional static screens.
 
 _0.3 version:_
+
+* Implemented basic shot with sound fx.
+* Added animations to Castle Scene. (Two soldier and one bridge)
+* Now we can load sound fx.
+* Now music is in .ogg and the fx sounds in .wav.
 
 _0.4 version:_
 

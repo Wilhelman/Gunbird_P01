@@ -3,11 +3,20 @@
 
 #include "Module.h"
 #include "Globals.h"
+#include "Animation.h"
 
 struct SDL_Texture;
 
 class ModuleSceneCastle : public Module
 {
+private:
+	Animation soldier_left;
+	uint soldier_left_y;
+	float soldier_left_x;
+
+	Animation bridge_top;
+	uint bridge_top_y;
+
 public:
 	ModuleSceneCastle();
 	~ModuleSceneCastle();
@@ -19,6 +28,8 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
+	SDL_Texture* graphicsSoldier = nullptr;
+	SDL_Texture* graphicsBridgeTop = nullptr;
 	SDL_Rect background;
 	int background_x;
 	int background_y;
