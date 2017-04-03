@@ -13,7 +13,6 @@ class ModulePlayer : public Module
 {
 private:
 	unsigned short laserType;
-	uint laserShot1_2;
 
 public:
 	ModulePlayer();

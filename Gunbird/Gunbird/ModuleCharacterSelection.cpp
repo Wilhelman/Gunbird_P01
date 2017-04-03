@@ -8,6 +8,7 @@
 #include "ModuleInput.h"
 
 //TODO include only the random maps?
+#include "ModuleSceneMine.h"
 #include "ModuleSceneCastle.h"
 
 ModuleCharacterSelection::ModuleCharacterSelection()
@@ -64,8 +65,8 @@ bool ModuleCharacterSelection::CleanUp()
 	//TODO check if we can control this
 	LOG("Unloading character selection");
 
+	App->audio->Disable();
 	App->textures->Unload(graphics);
-	App->audio->StopMusic();
 
 	return true;
 }

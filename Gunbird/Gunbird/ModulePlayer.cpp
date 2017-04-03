@@ -5,7 +5,6 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
-#include "ModuleAudio.h"
 #include "ModuleCollision.h"
 
 //TODO: include the maps
@@ -55,9 +54,6 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("Assets/characters/valnus_spritesheet.png");
 	if (graphics == nullptr)
 		ret = false;
-
-	LOG("Loading player effects");
-	laserShot1_2 = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
 
 	return ret;
 }
@@ -112,7 +108,9 @@ update_status ModulePlayer::Update()
 
 		if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
-			switch (laserType)
+			App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40);
+			
+			/*switch (laserType)
 			{
 			case 0:
 				App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40);
@@ -128,11 +126,8 @@ update_status ModulePlayer::Update()
 			}
 			laserType++;
 			if (laserType > 2)
-				laserType = 0;
-			if (!App->audio->PlayFx(laserShot1_2)) {
-				LOG("Error playing fx sound in Player Module");
-				status = UPDATE_ERROR;
-			}
+				laserType = 0;*/
+			
 		}
 
 	}
@@ -156,8 +151,8 @@ bool ModulePlayer::CleanUp()
 {
 	LOG("Unloading player");
 
+	App->collision->EraseCollider(playerCollider);
 	App->textures->Unload(graphics);
-	App->audio->UnLoadFx(laserShot1_2);
 
 	return true;
 }

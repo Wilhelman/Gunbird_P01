@@ -61,8 +61,8 @@ bool ModuleScoreRanking::CleanUp()
 	//TODO check if we can control this
 	LOG("Unloading Score Ranking");
 
+	App->audio->Disable();
 	App->textures->Unload(graphics);
-	App->audio->StopMusic();
 
 	return true;
 }

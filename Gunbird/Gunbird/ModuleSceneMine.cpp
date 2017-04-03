@@ -72,9 +72,11 @@ bool ModuleSceneMine::CleanUp()
 	//TODO check if we can control this
 	LOG("Unloading Scene Mine");
 
-	App->player->Disable();
+	App->audio->Disable();
 	App->textures->Unload(graphics);
-	App->audio->StopMusic();
+	App->player->Disable();
+	
+	
 
 	return true;
 }

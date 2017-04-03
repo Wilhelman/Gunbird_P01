@@ -40,14 +40,13 @@ update_status ModuleWelcomeScreen::Update()
 {
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver()) {
-		App->fade->FadeToBlack(this, App->characterSelection);
+		App->fade->FadeToBlack(this, App->characterSelection, 0.5f);
 	}
 
 	update_status status = UPDATE_CONTINUE;
 
 	if (!App->render->Blit(graphics, 0, 0, &(welcomeScreenAnimation.GetCurrentFrame()))) //welcomeScreen animation
 		status = UPDATE_ERROR;
-
 
 	return status;
 }
@@ -57,8 +56,8 @@ bool ModuleWelcomeScreen::CleanUp()
 	//TODO check if we can control this
 	LOG("Unloading welcome screen");
 
-	App->textures->Unload(graphics);
 	App->audio->StopMusic();
+	App->textures->Unload(graphics);
 
 	return true;
 }

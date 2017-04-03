@@ -69,9 +69,9 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 		}
 		else
 		{
-
-			//TODO: look if array is full and start again?
 			textures[last_texture++] = texture;
+			if (last_texture > MAX_TEXTURES)
+				last_texture = 0;
 		}
 
 		SDL_FreeSurface(surface);

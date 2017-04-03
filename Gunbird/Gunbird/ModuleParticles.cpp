@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
+#include "ModuleAudio.h"
 #include "ModuleParticles.h"
 
 #include "SDL/include/SDL_timer.h"
@@ -11,6 +12,25 @@ ModuleParticles::ModuleParticles()
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
+
+	//laser particle
+	laser0.anim.PushBack({ 0, 114, 13, 19 });
+	laser1.anim.PushBack({ 20, 114, 15, 19 });
+	laser2.anim.PushBack({ 40, 114, 11, 19 });
+
+	laser0.anim.loop = false;
+	laser0.anim.speed = 0.1f;
+	laser0.speed.y = -5;
+	laser0.life = 3000;
+
+	laser1.anim.loop = true;
+	laser1.anim.speed = 0.1f;
+	laser1.speed.y = -5;
+	laser1.life = 2000;
+	laser2.anim.loop = true;
+	laser2.anim.speed = 0.1f;
+	laser2.speed.y = -5;
+	laser2.life = 2000;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -22,22 +42,10 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	graphics = App->textures->Load("Assets/characters/valnus_spritesheet.png");
 
-	//laser particle
-	laser0.anim.PushBack({ 0, 114, 13, 19 });
-	laser1.anim.PushBack({ 20, 114, 15, 19 });
-	laser2.anim.PushBack({ 40, 114, 11, 19 });
-	laser0.anim.loop = true;
-	laser0.anim.speed = 0.1f;
-	laser0.speed.y = -5;
-	laser0.life = 2000;
-	laser1.anim.loop = true;
-	laser1.anim.speed = 0.1f;
-	laser1.speed.y = -5;
-	laser1.life = 2000;
-	laser2.anim.loop = true;
-	laser2.anim.speed = 0.1f;
-	laser2.speed.y = -5;
-	laser2.life = 2000;
+	
+	LOG("Loading fx sound to laser particle");
+	laser0.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
+	
 
 	return true;
 }
@@ -46,6 +54,8 @@ bool ModuleParticles::Start()
 bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
+	App->audio->UnLoadFx(laser0.fx);
+
 	App->textures->Unload(graphics);
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -65,7 +75,7 @@ update_status ModuleParticles::Update()
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
-		Particle* p = active[i];
+		Particle* p = active[i ];
 
 		if (p == nullptr)
 			continue;
@@ -81,7 +91,10 @@ update_status ModuleParticles::Update()
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
-				// Play particle fx here
+				if (!App->audio->PlayFx(p->fx)) {
+					LOG("Error playing fx sound in Player Module");
+					return UPDATE_ERROR;
+				}
 			}
 		}
 	}
@@ -126,8 +139,10 @@ bool Particle::Update()
 		if (anim.Finished())
 			ret = false;
 
-	position.x += speed.x;
-	position.y += speed.y;
+	if (!SDL_GetTicks() - born > 0) {
+		position.x += speed.x;
+		position.y += speed.y;
+	}
 
 	return ret;
 }

@@ -65,6 +65,7 @@ bool ModuleSceneCastle::Start()
 	background_y = -2036;
 
 	App->player->Enable();
+
 	App->collision->Enable();
 
 	graphics = App->textures->Load("Assets/maps/castle/map_castle_background.png");
@@ -142,12 +143,12 @@ bool ModuleSceneCastle::CleanUp()
 	//TODO check if we can control this
 	LOG("Unloading SceneCastle");
 
-	App->collision->Disable();
-	App->player->Disable();
-	App->textures->Unload(graphics);
+	App->audio->Disable();
 	App->textures->Unload(graphicsSoldier);
 	App->textures->Unload(graphicsBridgeTop);
-	App->audio->StopMusic();
+	App->textures->Unload(graphics);
+	App->collision->Disable();
+	App->player->Disable();
 
 	return true;
 }
