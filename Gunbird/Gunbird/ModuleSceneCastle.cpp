@@ -23,22 +23,23 @@ ModuleSceneCastle::ModuleSceneCastle()
 	background.w = SCREEN_WIDTH;
 	background.h = 2108;
 
-	soldier_left.PushBack({ 0, 28, 11, 25 });
-	soldier_left.PushBack({ 16, 28, 12, 24 });
-	soldier_left.PushBack({ 33, 28, 11, 25 });
-	soldier_left.PushBack({ 49, 29, 11, 24 });
+	soldier_left.PushBack({ 533, 373, 13, 26 });
+	soldier_left.PushBack({ 550, 373, 13, 26 });
+	soldier_left.PushBack({ 566, 373, 13, 26 });
+	soldier_left.PushBack({ 582, 373, 13, 26 });
 	soldier_left.speed = 0.1;
 	soldier_left_y = -145;
 	soldier_left_x = 50;
 
-	bridge_top.PushBack({ 0, 0, 121, 35 });
-	bridge_top.PushBack({ 125, 0, 116, 46 });
-	bridge_top.PushBack({ 0, 64, 115, 72 });
-	bridge_top.PushBack({ 125, 64, 112, 83 });
-	bridge_top.PushBack({ 0, 189, 110, 106 });
-	bridge_top.PushBack({ 0, 309, 110, 90 });
-	bridge_top.PushBack({ 125, 309, 110, 103 });
-	bridge_top.PushBack({ 250, 309, 110, 106 });
+	bridge_top.PushBack({ 37, 40, 122, 36 });
+	bridge_top.PushBack({ 162, 40, 122, 46 });
+	bridge_top.PushBack({ 288, 40, 120, 54 });
+	bridge_top.PushBack({ 38, 104, 116, 73 });
+	bridge_top.PushBack({ 163, 104, 113, 84 });
+	bridge_top.PushBack({ 38, 229, 111, 107 });
+	bridge_top.PushBack({ 38, 348, 111, 91 });
+	bridge_top.PushBack({ 163, 349, 111, 104 });
+	bridge_top.PushBack({ 288, 349, 110, 107 });
 	bridge_top.speed = 0.08;
 	bridge_top.loop = false;
 	bridge_top_y = -710;
@@ -76,13 +77,13 @@ bool ModuleSceneCastle::Start()
 		ret = false;
 	}
 
-	graphicsSoldier = App->textures->Load("Assets/maps/castle/map_castle_soldier.png");
+	graphicsSoldier = App->textures->Load("Assets/maps/castle/castle_map_stuff.png");
 	if (graphicsSoldier == nullptr) {
 		LOG("Cannot load the animations spritesheet in SceneCastle");
 		ret = false;
 	}
 
-	graphicsBridgeTop = App->textures->Load("Assets/maps/castle/map_castle_bridge.png");
+	graphicsBridgeTop = App->textures->Load("Assets/maps/castle/castle_map_stuff.png");
 	if (graphicsSoldier == nullptr) {
 		LOG("Cannot load the animations spritesheet in SceneCastle");
 		ret = false;
