@@ -43,10 +43,12 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
+	deadPlayer = false;
+
 	laserType = 0;
 
 	position.x = SCREEN_WIDTH / 2;
-	position.y = SCREEN_HEIGHT / 2;
+	position.y = SCREEN_HEIGHT / 2 + 100;
 
 	LOG("Creating player collider");
 	playerCollider = App->collision->AddCollider({ position.x,position.y,31,33 }, COLLIDER_PLAYER, this);
@@ -69,66 +71,67 @@ update_status ModulePlayer::Update()
 
 	int speed = 3;
 
-	if ((App->sceneCastle->background_y == -SCREEN_HEIGHT && App->sceneCastle->IsEnabled()) || App->sceneMine->background_y == -SCREEN_HEIGHT && App->sceneMine->IsEnabled()) {
-		speed = 5;
-		position.y -= speed;
-	}
-	else {
+	if (!deadPlayer) {
+		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT && App->sceneCastle->IsEnabled()) || App->sceneMine->background_y == -SCREEN_HEIGHT && App->sceneMine->IsEnabled()) {
+			speed = 5;
+			position.y -= speed;
+		}
+		else {
 
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-		{
-			if (position.x < SCREEN_WIDTH - 34) // TODO: correct limits so they are all equal
-				position.x += speed;
-			if (current_animation != &right_animation)
+			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 			{
-				current_animation = &right_animation;
-				right_animation.Reset();
+				if (position.x < SCREEN_WIDTH - 34) // TODO: correct limits so they are all equal
+					position.x += speed;
+				if (current_animation != &right_animation)
+				{
+					current_animation = &right_animation;
+					right_animation.Reset();
+				}
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) {
+				if (position.x > 3)
+					position.x -= speed;
+				if (current_animation != &left_animation)
+				{
+					left_animation.Reset();
+					current_animation = &left_animation;
+				}
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+			{
+				if (position.y > 34)
+					position.y -= speed;
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+			{
+				if (position.y <  SCREEN_HEIGHT - 3)
+					position.y += speed;
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			{
+				switch (laserType)
+				{
+				case 0:
+					App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
+					break;
+				case 1:
+					App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+					break;
+				case 2:
+					App->particles->AddParticle(App->particles->laser2, position.x + 10, position.y - 40, COLLIDER_PLAYER_SHOT);
+					break;
+				default:
+					break;
+				}
+				laserType++;
+				if (laserType > 2)
+					laserType = 0;
 			}
 		}
-
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) {
-			if (position.x > 3)
-				position.x -= speed;
-			if (current_animation != &left_animation)
-			{
-				left_animation.Reset();
-				current_animation = &left_animation;
-			}
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-		{
-			if (position.y > 34)
-				position.y -= speed;
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-		{
-			if (position.y <  SCREEN_HEIGHT - 3)
-				position.y += speed;
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-		{
-			switch (laserType)
-			{
-			case 0:
-				App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
-				break;
-			case 1:
-				App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
-				break;
-			case 2:
-				App->particles->AddParticle(App->particles->laser2, position.x + 10, position.y - 40, COLLIDER_PLAYER_SHOT);
-				break;
-			default:
-				break;
-			}
-			laserType++;
-			if (laserType > 2)
-				laserType = 0;
-		}
-
 	}
 
 	// Draw everything --------------------------------------
@@ -157,5 +160,6 @@ bool ModulePlayer::CleanUp()
 }
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
-	LOG("hitted");
+	if (c2->type == COLLIDER_ENEMY)
+		deadPlayer = true;
 }

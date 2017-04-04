@@ -32,6 +32,7 @@ public:
 	Animation left_animation;
 	iPoint position;
 	Collider* playerCollider;
+	bool deadPlayer;
 
 };
 

@@ -24,6 +24,7 @@ public:
 
 public:
 
+	uint livesTorpedo;
 	SDL_Texture* graphics = nullptr;
 	Animation idle;
 	iPoint position;

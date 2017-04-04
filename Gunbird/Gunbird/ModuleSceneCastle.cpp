@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleCollision.h"
 #include "ModuleTorpedo.h"
+#include "ModuleScoreRanking.h"
 
 //TODO: remove this if not necesary
 #include "ModuleInput.h"
@@ -136,6 +137,16 @@ update_status ModuleSceneCastle::Update()
 	if ((App->player->position.y < 0 && App->fade->FadeIsOver()) ||/*TODO: remove this condition*/ (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver()))
 		App->fade->FadeToBlack(this, App->sceneMine);
 
+	if (App->player->deadPlayer) {
+		LOG("Player is dead");
+		//anim dead player
+		App->fade->FadeToBlack(this, App->scoreRanking);
+	}
+
+	if (App->torpedo->livesTorpedo <= 0) {
+		App->torpedo->Disable();
+	}
+
 	return status;
 }
 
@@ -149,6 +160,7 @@ bool ModuleSceneCastle::CleanUp()
 	App->textures->Unload(graphicsBridgeTop);
 	App->textures->Unload(graphics);
 	App->collision->Disable();
+	if(App->torpedo->IsEnabled())
 	App->torpedo->Disable();
 	App->player->Disable();
 

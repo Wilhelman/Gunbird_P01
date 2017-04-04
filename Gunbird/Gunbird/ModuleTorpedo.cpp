@@ -28,6 +28,7 @@ ModuleTorpedo::~ModuleTorpedo()
 // Load assets
 bool ModuleTorpedo::Start()
 {
+	livesTorpedo = 3;
 	position.x = SCREEN_WIDTH / 2;
 	position.y = SCREEN_HEIGHT / 2;
 
@@ -78,5 +79,8 @@ bool ModuleTorpedo::CleanUp()
 }
 
 void ModuleTorpedo::OnCollision(Collider* c1, Collider* c2) {
-	LOG("TORPEDO HITTED");
+	if (c2->type == COLLIDER_PLAYER_SHOT) {
+		livesTorpedo--;
+	}
+	
 }
