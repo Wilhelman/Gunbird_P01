@@ -40,7 +40,7 @@ update_status ModuleWelcomeScreen::Update()
 {
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver()) {
-		App->fade->FadeToBlack(this, App->characterSelection, 0.5f);
+		App->fade->FadeToBlack(this, App->characterSelection);
 	}
 
 	update_status status = UPDATE_CONTINUE;

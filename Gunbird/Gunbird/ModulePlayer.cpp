@@ -33,6 +33,8 @@ ModulePlayer::ModulePlayer()
 	left_animation.PushBack({ 74, 74, 25, 33 });
 	left_animation.PushBack({ 112, 74, 25, 33 });
 	left_animation.speed = 1.0f;
+
+	
 }
 
 ModulePlayer::~ModulePlayer()
@@ -75,7 +77,7 @@ update_status ModulePlayer::Update()
 
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
-			if (position.x < SCREEN_WIDTH - 34)
+			if (position.x < SCREEN_WIDTH - 34) // TODO: correct limits so they are all equal
 				position.x += speed;
 			if (current_animation != &right_animation)
 			{
@@ -108,26 +110,23 @@ update_status ModulePlayer::Update()
 
 		if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
-			App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40);
-			
-			/*switch (laserType)
+			switch (laserType)
 			{
 			case 0:
-				App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40);
+				App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
 				break;
 			case 1:
-				App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40);
+				App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
 				break;
 			case 2:
-				App->particles->AddParticle(App->particles->laser2, position.x + 10, position.y - 40);
+				App->particles->AddParticle(App->particles->laser2, position.x + 10, position.y - 40, COLLIDER_PLAYER_SHOT);
 				break;
 			default:
 				break;
 			}
 			laserType++;
 			if (laserType > 2)
-				laserType = 0;*/
-			
+				laserType = 0;
 		}
 
 	}

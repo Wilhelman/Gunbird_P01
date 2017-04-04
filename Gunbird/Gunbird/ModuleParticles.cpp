@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
 #include "ModuleParticles.h"
+#include "ModuleCollision.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -42,9 +43,10 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	graphics = App->textures->Load("Assets/characters/valnus_spritesheet.png");
 
-	
 	LOG("Loading fx sound to laser particle");
 	laser0.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
+	laser1.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
+	laser2.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
 	
 
 	return true;
@@ -91,25 +93,28 @@ update_status ModuleParticles::Update()
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
-				if (!App->audio->PlayFx(p->fx)) {
-					LOG("Error playing fx sound in Player Module");
-					return UPDATE_ERROR;
-				}
+				App->audio->PlayFx(p->fx);
 			}
 		}
 	}
-
 	return UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Uint32 delay)
+void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
 {
 	Particle* p = new Particle(particle);
 	p->born = SDL_GetTicks() + delay;
 	p->position.x = x;
 	p->position.y = y;
 
+	if (collider_type != COLLIDER_NONE) {
+		LOG("Creating particle colliders...");
+		p->collider = App->collision->AddCollider({p->position.x, p->position.y, p->anim.GetCurrentFrame().w, p->anim.GetCurrentFrame().h}, collider_type, this);
+	}
+	 
 	active[last_particle++] = p;
+	if (last_particle == MAX_ACTIVE_PARTICLES)
+		last_particle = 0;
 }
 
 // -------------------------------------------------------------
@@ -144,5 +149,13 @@ bool Particle::Update()
 		position.y += speed.y;
 	}
 
+	if (collider != nullptr)
+		collider->SetPos(position.x, position.y);
+
 	return ret;
+}
+
+Particle::~Particle() {
+	if (collider != nullptr)
+		App->collision->EraseCollider(collider);
 }

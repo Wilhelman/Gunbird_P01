@@ -7,6 +7,7 @@
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleScoreRanking.h"
+#include "ModuleCollision.h"
 
 //TODO: remove this if not necesary
 #include "ModuleInput.h"
@@ -30,8 +31,9 @@ bool ModuleSceneMine::Start()
 	bool ret = true;
 
 	background_y = -3535;
-
+	
 	App->player->Enable();
+	App->collision->Enable();
 
 	graphics = App->textures->Load("Assets/maps/map_mine_background.png");
 	if (graphics == nullptr) {

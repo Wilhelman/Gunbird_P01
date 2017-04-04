@@ -129,6 +129,7 @@
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleScoreRanking.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
+    <ClCompile Include="ModuleTorpedo.cpp" />
     <ClCompile Include="ModuleWelcomeScreen.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
   </ItemGroup>
@@ -150,6 +151,7 @@
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleScoreRanking.h" />
     <ClInclude Include="ModuleTextures.h" />
+    <ClInclude Include="ModuleTorpedo.h" />
     <ClInclude Include="ModuleWelcomeScreen.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="p2Point.h" />

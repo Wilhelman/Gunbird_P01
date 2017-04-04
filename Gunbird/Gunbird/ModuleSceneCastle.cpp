@@ -120,7 +120,7 @@ update_status ModuleSceneCastle::Update()
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}
-		soldier_left_x -= 0.4;
+		soldier_left_x -= 0.4f;
 	}
 
 	//bridge animation
