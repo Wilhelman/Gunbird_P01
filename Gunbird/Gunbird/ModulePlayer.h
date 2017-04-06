@@ -29,6 +29,8 @@ public:
 	SDL_Texture* graphics = nullptr;
 	Animation idle;
 	Animation right_animation;
+	Animation right_idle_animation;
+	Animation left_idle_animation;
 	Animation left_animation;
 	Animation* current_animation;
 	iPoint position;

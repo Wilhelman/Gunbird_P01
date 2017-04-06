@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-﻿  ModuleSceneCastle.cpp
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulescenecastle.cpp(30): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulescenecastle.cpp(43): warning C4305: '=': truncation from 'double' to 'float'
+﻿  ModulePlayer.cpp
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\animation.h(48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
   Gunbird.vcxproj -> C:\Users\Víctor Masó\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
   Gunbird.vcxproj -> C:\Users\Víctor Masó\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
-=======
-﻿  ModulePlayer.cpp
-c:\users\victormg6\documents\github\gunbird_p01\gunbird\gunbird\animation.h(48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  Gunbird.vcxproj -> C:\Users\victormg6\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
-  Gunbird.vcxproj -> C:\Users\victormg6\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
->>>>>>> origin/master

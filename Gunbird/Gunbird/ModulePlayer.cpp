@@ -8,10 +8,6 @@
 #include "ModuleCollision.h"
 #include "Animation.h"
 
-//TODO: REMOVE THIS
-#include <iostream>
-using namespace std;
-
 //TODO: include the maps
 #include "ModuleSceneCastle.h"
 #include "ModuleSceneMine.h"
@@ -24,6 +20,14 @@ ModulePlayer::ModulePlayer()
 	idle.speed = 0.05f;
 
 	//TODO: the animations are wrong
+
+	//idle right animation
+	left_idle_animation.PushBack({ 114, 38, 21, 29 });
+	left_idle_animation.PushBack({ 145, 76, 21, 29 });
+	left_idle_animation.loop = true;
+	left_idle_animation.speed = 0.1f;
+
+	//idle left animation
 
 	//right animation
 	right_animation.PushBack({ 0, 38, 26, 30 });
@@ -56,7 +60,7 @@ bool ModulePlayer::Start()
 	position.y = SCREEN_HEIGHT / 2 + 100;
 
 	LOG("Creating player collider");
-	playerCollider = App->collision->AddCollider({ position.x,position.y,31,33 }, COLLIDER_PLAYER, this);
+	playerCollider = App->collision->AddCollider({ position.x,position.y,31,30 }, COLLIDER_PLAYER, this);
 	
 	LOG("Loading player textures");
 	bool ret = true;
@@ -95,7 +99,7 @@ update_status ModulePlayer::Update()
 			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) {
 				if (position.x > 3)
 					position.x -= speed;
-				if (current_animation != &left_animation)
+				if (current_animation != &left_animation || current_animation != &left_idle_animation)
 				{
 					left_animation.Reset();
 					current_animation = &left_animation;
@@ -140,11 +144,20 @@ update_status ModulePlayer::Update()
 
 
 			//TODO: improve this
-			if (right_animation.returnFrame() == 3)
-				left_animation.loop = true;
+			/*if (right_animation.returnFrame() == 4)
+			{
+				current_animation = &right_idle_animation;
+				right_idle_animation.loop = true;
+			}*/
 
-			if (right_animation.returnFrame() == 3)
-				left_animation.loop = true;
+			if (left_animation.Finished() || current_animation == &left_idle_animation)
+			{
+				//left_idle_animation.Reset();
+				if (current_animation != &left_idle_animation) {
+					current_animation = &left_idle_animation;
+					LOG("changing to idleleft");
+				}
+			}
 		}
 	}
 
