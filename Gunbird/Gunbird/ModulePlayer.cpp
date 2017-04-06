@@ -6,6 +6,11 @@
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
+#include "Animation.h"
+
+//TODO: REMOVE THIS
+#include <iostream>
+using namespace std;
 
 //TODO: include the maps
 #include "ModuleSceneCastle.h"
@@ -25,16 +30,16 @@ ModulePlayer::ModulePlayer()
 	right_animation.PushBack({ 38, 38, 26, 29 });
 	right_animation.PushBack({ 76, 38, 21, 30 });
 	right_animation.PushBack({ 114, 38, 21, 29 });
-	right_animation.speed = 1.0f;
+	right_animation.speed = 0.2f;
+	right_animation.loop = false;
 
 	//left animation
 	left_animation.PushBack({ 0, 74, 28, 33 });
 	left_animation.PushBack({ 36, 74, 28, 33 });
 	left_animation.PushBack({ 74, 74, 25, 33 });
 	left_animation.PushBack({ 112, 74, 25, 33 });
-	left_animation.speed = 1.0f;
-
-	
+	left_animation.speed = 0.2f;
+	left_animation.loop = false;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -66,8 +71,6 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 	update_status status = UPDATE_CONTINUE;
-
-	Animation* current_animation = &idle;
 
 	int speed = 3;
 
@@ -131,6 +134,17 @@ update_status ModulePlayer::Update()
 				if (laserType > 2)
 					laserType = 0;
 			}
+
+			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+				current_animation = &idle;
+
+
+			//TODO: improve this
+			if (right_animation.returnFrame() == 3)
+				left_animation.loop = true;
+
+			if (right_animation.returnFrame() == 3)
+				left_animation.loop = true;
 		}
 	}
 

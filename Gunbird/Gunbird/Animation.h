@@ -10,6 +10,7 @@ public:
 	bool loop = true;
 	float speed = 1.0f;
 	SDL_Rect frames[MAX_FRAMES];
+	
 
 private:
 	float current_frame;
@@ -44,6 +45,7 @@ public:
 	{
 		current_frame = 0;
 	}
+	int returnFrame() { return current_frame; }
 };
 
 #endif
