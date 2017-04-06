@@ -30,6 +30,7 @@ public:
 	Animation idle;
 	Animation right_animation;
 	Animation left_animation;
+	Animation* current_animation;
 	iPoint position;
 	Collider* playerCollider;
 	bool deadPlayer;

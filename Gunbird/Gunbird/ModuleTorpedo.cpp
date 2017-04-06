@@ -33,7 +33,7 @@ bool ModuleTorpedo::Start()
 	position.y = SCREEN_HEIGHT / 2;
 
 	LOG("Creating torpedo collider...");
-	torpedoCollider = App->collision->AddCollider({ position.x,position.y, 28 , idle.GetCurrentFrame().h }, COLLIDER_ENEMY, this);
+	torpedoCollider = App->collision->AddCollider({ position.x, position.y, 28 , idle.GetCurrentFrame().h }, COLLIDER_ENEMY, this);
 
 	LOG("Loading torpedo textures...");
 	bool ret = true;
