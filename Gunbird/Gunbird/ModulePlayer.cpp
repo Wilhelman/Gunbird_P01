@@ -99,7 +99,7 @@ update_status ModulePlayer::Update()
 			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) {
 				if (position.x > 3)
 					position.x -= speed;
-				if (current_animation != &left_animation || current_animation != &left_idle_animation)
+				if (current_animation != &left_animation)
 				{
 					left_animation.Reset();
 					current_animation = &left_animation;
@@ -142,22 +142,6 @@ update_status ModulePlayer::Update()
 			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 				current_animation = &idle;
 
-
-			//TODO: improve this
-			/*if (right_animation.returnFrame() == 4)
-			{
-				current_animation = &right_idle_animation;
-				right_idle_animation.loop = true;
-			}*/
-
-			if (left_animation.Finished() || current_animation == &left_idle_animation)
-			{
-				//left_idle_animation.Reset();
-				if (current_animation != &left_idle_animation) {
-					current_animation = &left_idle_animation;
-					LOG("changing to idleleft");
-				}
-			}
 		}
 	}
 

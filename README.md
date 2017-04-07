@@ -28,6 +28,7 @@ Player controls:
 - RIGHT: D key
 - DOWN: S key
 - BASIC SHOT: SPACE key
+- SHOW COLLISION BOXES: F2 key
 
 General/developer controls:
 - SKIP SCREEN: INTRO key
@@ -70,6 +71,16 @@ _0.3 version:_
 
 _0.4 version:_
 
+* Player collider implemented
+* F2 - Debug Mode to show all colliders
+* Solved problem with the texture array (Out of limits)
+* Fixed problem with the particle array limits
+* Bug fixed with the fx sound of the shot
+* Player shot collider
+* Almost finished animation rotatation torpedo enemy and implemented collide box
+* Collision detetcted between torpedo enemy and player basic shot, now particles are destroyed when collided and screen change to ranking score window when player collide with torpedo enemey
+* Soldier animations and bridge fixed with right spritesheet
+
 ## Team members
 
 _Altimira Bernat, Martí's responsability and Github account_
@@ -93,5 +104,4 @@ _Termens Vázquez, Ariadna's responsability and Github account_
 * Github account: https://github.com/AriTeva
 
 
-
-FrozenSloth Studios
+-- FrozenSloth Studios -- 
