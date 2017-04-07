@@ -37,6 +37,7 @@ public:
 	iPoint position;
 	Collider* playerCollider;
 	bool deadPlayer;
+	int counter = 0;
 
 };
 

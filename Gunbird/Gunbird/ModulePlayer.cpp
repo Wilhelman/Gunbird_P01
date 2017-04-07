@@ -31,6 +31,7 @@ ModulePlayer::ModulePlayer()
 
 	//dead animation
 	dead_animation.PushBack({ 76, 0, 32, 38 });
+	dead_animation.speed = 0.1f; // TODO: is it necessary if animation is only one frame long?
 
 	//right animation
 	right_animation.PushBack({ 0, 38, 26, 30 });
@@ -150,7 +151,18 @@ update_status ModulePlayer::Update()
 	else
 	{
 		current_animation = &dead_animation;
-		position.y += speed;
+
+		counter++;
+
+		if (counter > 12) 
+		{
+			position.y += speed;
+
+			if (position.y > SCREEN_HEIGHT)
+			{
+				//TODO: should player be disabeled once is out of window?
+			}
+		}
 	}
 
 	// Draw everything --------------------------------------
