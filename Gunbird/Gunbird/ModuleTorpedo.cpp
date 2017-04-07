@@ -7,7 +7,7 @@
 #include "ModuleCollision.h"
 
 
-ModuleTorpedo::ModuleTorpedo()
+ModuleTorpedo::ModuleTorpedo()//test
 {
 	// idle animation
 	idle.PushBack({ 0, 37, 18, 32 });
