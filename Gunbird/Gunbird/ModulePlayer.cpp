@@ -29,6 +29,9 @@ ModulePlayer::ModulePlayer()
 
 	//idle left animation
 
+	//dead animation
+	dead_animation.PushBack({ 76, 0, 32, 38 });
+
 	//right animation
 	right_animation.PushBack({ 0, 38, 26, 30 });
 	right_animation.PushBack({ 38, 38, 26, 29 });
@@ -143,6 +146,11 @@ update_status ModulePlayer::Update()
 				current_animation = &idle;
 
 		}
+	}
+	else
+	{
+		current_animation = &dead_animation;
+		position.y += speed;
 	}
 
 	// Draw everything --------------------------------------
