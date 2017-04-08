@@ -13,6 +13,7 @@ class ModulePlayer : public Module
 {
 private:
 	unsigned short laserType;
+	int original_camera_y;
 
 public:
 	ModulePlayer();
