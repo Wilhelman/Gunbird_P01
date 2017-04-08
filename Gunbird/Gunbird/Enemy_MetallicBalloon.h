@@ -7,7 +7,6 @@
 class Enemy_MetallicBalloon : public Enemy
 {
 private:
-	int original_y = 0;
 	Animation fly;
 	Path path;
 	iPoint original_pos;
