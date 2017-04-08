@@ -24,5 +24,6 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y) : Enemy(x, y)
 void Enemy_Torpedo::Move()
 {
 
+	position.y += 2;
 
 }
