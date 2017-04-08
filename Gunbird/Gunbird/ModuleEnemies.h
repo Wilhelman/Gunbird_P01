@@ -8,7 +8,8 @@
 enum ENEMY_TYPES
 {
 	NO_TYPE,
-	TORPEDO
+	TORPEDO,
+	METALLICBALLOON
 };
 
 class Enemy;

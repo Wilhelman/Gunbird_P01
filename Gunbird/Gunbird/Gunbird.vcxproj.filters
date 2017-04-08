@@ -75,6 +75,9 @@
     <ClCompile Include="Enemy_Torpedo.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_MetallicBalloon.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals.h">
@@ -144,6 +147,9 @@
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Torpedo.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_MetallicBalloon.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

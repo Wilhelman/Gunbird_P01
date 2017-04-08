@@ -74,6 +74,8 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 130, -120);
 	App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -120);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 70, -120);
+
 	graphics = App->textures->Load("Assets/maps/castle/map_castle_background.png");
 	if (graphics == nullptr) {
 		LOG("Cannot load the texture in SceneCastle");

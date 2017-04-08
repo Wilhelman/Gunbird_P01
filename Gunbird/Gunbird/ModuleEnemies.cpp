@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "Enemy_Torpedo.h"
+#include "Enemy_MetallicBalloon.h"
 
 #define SPAWN_MARGIN 50
 
@@ -128,6 +129,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		{
 		case ENEMY_TYPES::TORPEDO:
 			enemies[i] = new Enemy_Torpedo(info.x, info.y);
+			break;
+		case ENEMY_TYPES::METALLICBALLOON:
+			enemies[i] = new Enemy_MetallicBalloon(info.x, info.y);
 			break;
 		}
 	}

@@ -32,4 +32,4 @@ void Enemy::OnCollision(Collider* collider)
 	//TODO: explosion of enemy right here if are general
 
 	//App->particles->AddParticle(App->particles->explosion, position.x, position.y); 
-}
+ }
