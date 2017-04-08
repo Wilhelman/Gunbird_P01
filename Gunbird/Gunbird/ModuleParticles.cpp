@@ -158,7 +158,7 @@ bool Particle::Update()
 
 Particle::~Particle() {
 	if (collider != nullptr)
-		App->collision->EraseCollider(collider);
+		collider->to_delete = true;
 }
 
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2)

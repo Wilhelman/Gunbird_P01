@@ -183,7 +183,6 @@ bool ModulePlayer::CleanUp()
 {
 	LOG("Unloading player");
 
-	App->collision->EraseCollider(playerCollider);
 	App->textures->Unload(graphics);
 
 	return true;
