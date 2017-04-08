@@ -56,7 +56,7 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	deadPlayer = false;
-
+	original_camera_y = App->render->camera.y;
 	laserType = 0;
 
 	position.x = SCREEN_WIDTH / 2;
@@ -80,9 +80,11 @@ update_status ModulePlayer::Update()
 	update_status status = UPDATE_CONTINUE;
 
 	int speed = 3;
+	
 
 	if (!deadPlayer) {
-		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT && App->sceneCastle->IsEnabled())) {
+		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT && App->sceneCastle->IsEnabled())) 
+		{
 			speed = 5;
 			position.y -= speed;
 		}
@@ -142,10 +144,25 @@ update_status ModulePlayer::Update()
 					laserType = 0;
 			}
 
+			if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->sceneCastle->IsEnabled())
+			{
+				speed = 5;
+				position.y -= speed;
+				App->render->camera.y -= speed;
+				
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_REPEAT && App->sceneCastle->IsEnabled())
+			{
+				deadPlayer = true;
+			}
+
+			
 			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 				current_animation = &idle;
 
 		}
+		App->render->camera.y = original_camera_y;
 	}
 	else
 	{
