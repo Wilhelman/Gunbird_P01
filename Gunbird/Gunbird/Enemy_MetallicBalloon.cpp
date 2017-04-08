@@ -11,8 +11,11 @@ Enemy_MetallicBalloon::Enemy_MetallicBalloon(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	path.PushBack({ 0.0f, 1.0f }, 100, &fly);
-	path.PushBack({ 0.0f, 0.0f }, 50, &fly);
+	path.PushBack({ 0.0f, 1.5f }, 64, &fly);
+	path.PushBack({ 0.0f, 0.0f }, 155, &fly);
+	path.PushBack({ 0.0f, 1.5f }, 70, &fly);
+	path.PushBack({ 0.0f, 0.0f }, 294, &fly);
+	path.PushBack({ 0.0f, 1.5f }, 142, &fly);
 
 	path.loop = true;
 

@@ -42,6 +42,7 @@ ModuleSceneCastle::ModuleSceneCastle()
 	bridge_top.speed = 0.08f;
 	bridge_top.loop = false;
 	bridge_top_y = -710;
+
 }
 
 ModuleSceneCastle::~ModuleSceneCastle()
@@ -59,7 +60,7 @@ bool ModuleSceneCastle::Start()
 	soldier_left_x = 50;
 	soldier_left.Reset();
 
-	bridge_top_y = -710;
+	bridge_top_y = -718;
 	bridge_top.Reset();
 
 	LOG("Loading SceneCastle assets");
@@ -74,7 +75,7 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 130, -120);
 	App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -120);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 50, -100);
+	App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70);
 
 	graphics = App->textures->Load("Assets/maps/castle/map_castle_background.png");
 	if (graphics == nullptr) {
@@ -132,7 +133,7 @@ update_status ModuleSceneCastle::Update()
 	}
 
 	//bridge animation
-	if (bridge_top_y >= -300) {
+	if (bridge_top_y >= -350) {
 		if (!App->render->Blit(graphicsBridgeTop, 65, bridge_top_y + SCREEN_HEIGHT, &(bridge_top.GetCurrentFrame()), 0.75f)) {
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
