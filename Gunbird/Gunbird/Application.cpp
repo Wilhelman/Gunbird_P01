@@ -12,7 +12,6 @@
 #include "ModuleCharacterSelection.h"
 #include "ModuleScoreRanking.h"
 #include "ModuleSceneCastle.h"
-#include "ModuleSceneMine.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 
@@ -28,7 +27,6 @@ Application::Application()
 	modules[i++] = characterSelection = new ModuleCharacterSelection();
 	modules[i++] = scoreRanking = new ModuleScoreRanking();
 	modules[i++] = sceneCastle = new ModuleSceneCastle();
-	modules[i++] = sceneMine = new ModuleSceneMine();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
@@ -52,7 +50,6 @@ bool Application::Init()
 	characterSelection->Disable();
 	scoreRanking->Disable();
 	sceneCastle->Disable();
-	sceneMine->Disable();
 	player->Disable();
 	collision->Disable();
 	enemies->Disable();

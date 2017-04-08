@@ -125,7 +125,6 @@
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModulePlayer.cpp" />
-    <ClCompile Include="ModuleSceneMine.cpp" />
     <ClCompile Include="ModuleSceneCastle.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
@@ -149,7 +148,6 @@
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModulePlayer.h" />
-    <ClInclude Include="ModuleSceneMine.h" />
     <ClInclude Include="ModuleSceneCastle.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleRender.h" />

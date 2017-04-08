@@ -10,7 +10,6 @@
 
 //TODO: include the maps
 #include "ModuleSceneCastle.h"
-#include "ModuleSceneMine.h"
 
 ModulePlayer::ModulePlayer()
 {
@@ -83,7 +82,7 @@ update_status ModulePlayer::Update()
 	int speed = 3;
 
 	if (!deadPlayer) {
-		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT && App->sceneCastle->IsEnabled()) || App->sceneMine->background_y == -SCREEN_HEIGHT && App->sceneMine->IsEnabled()) {
+		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT && App->sceneCastle->IsEnabled())) {
 			speed = 5;
 			position.y -= speed;
 		}

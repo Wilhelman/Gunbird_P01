@@ -54,9 +54,6 @@
     <ClCompile Include="ModuleCharacterSelection.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleSceneMine.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleScoreRanking.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -123,9 +120,6 @@
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleCharacterSelection.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleSceneMine.h">
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleScoreRanking.h">

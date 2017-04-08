@@ -29,5 +29,7 @@ void Enemy::Draw(SDL_Texture* sprites)
 
 void Enemy::OnCollision(Collider* collider)
 {
-	//App->particles->AddParticle(App->particles->explosion, position.x, position.y); TODO: explosion of enemy right here if are general
+	//TODO: explosion of enemy right here if are general
+
+	//App->particles->AddParticle(App->particles->explosion, position.x, position.y); 
 }

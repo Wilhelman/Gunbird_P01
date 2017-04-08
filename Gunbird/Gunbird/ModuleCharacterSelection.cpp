@@ -8,7 +8,6 @@
 #include "ModuleInput.h"
 
 //TODO include only the random maps?
-#include "ModuleSceneMine.h"
 #include "ModuleSceneCastle.h"
 
 ModuleCharacterSelection::ModuleCharacterSelection()

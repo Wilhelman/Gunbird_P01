@@ -4,7 +4,6 @@
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
 #include "ModuleSceneCastle.h"
-#include "ModuleSceneMine.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleCollision.h"
@@ -140,7 +139,7 @@ update_status ModuleSceneCastle::Update()
 
 	//TODO change the position of the player to private to be more pro
 	if ((App->player->position.y < 0 && App->fade->FadeIsOver()) ||/*TODO: remove this condition*/ (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver()))
-		App->fade->FadeToBlack(this, App->sceneMine);
+		App->fade->FadeToBlack(this, this);
 
 	if (App->player->deadPlayer) {
 		LOG("Player is dead");

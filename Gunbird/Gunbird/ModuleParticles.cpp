@@ -28,6 +28,7 @@ ModuleParticles::ModuleParticles()
 	laser1.anim.speed = 0.1f;
 	laser1.speed.y = -5;
 	laser1.life = 2000;
+
 	laser2.anim.loop = true;
 	laser2.anim.speed = 0.1f;
 	laser2.speed.y = -5;
@@ -109,7 +110,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 
 	if (collider_type != COLLIDER_NONE) {
 		LOG("Creating particle colliders...");
-		p->collider = App->collision->AddCollider({p->position.x, p->position.y, p->anim.GetCurrentFrame().w, p->anim.GetCurrentFrame().h}, collider_type, this);
+		p->collider = App->collision->AddCollider({p->position.x, p->position.y, 15, 19}, collider_type, this);
 	}
 	 
 	active[last_particle++] = p;

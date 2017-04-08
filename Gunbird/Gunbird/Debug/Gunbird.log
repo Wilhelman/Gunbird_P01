@@ -1,16 +1,3 @@
-﻿  Application.cpp
-  Generando código...
-  Compilando...
-  ModuleWelcomeScreen.cpp
-  ModuleScoreRanking.cpp
-  ModuleSceneMine.cpp
-  ModuleSceneCastle.cpp
-  ModulePlayer.cpp
-  ModuleParticles.cpp
-  ModuleEnemies.cpp
-  ModuleCharacterSelection.cpp
-  Enemy_Torpedo.cpp
-  Enemy.cpp
-  Generando código...
+﻿  ModuleParticles.cpp
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
