@@ -14,7 +14,7 @@
 #include "ModuleSceneCastle.h"
 #include "ModuleSceneMine.h"
 #include "ModulePlayer.h"
-#include "ModuleTorpedo.h"
+#include "ModuleEnemies.h"
 
 Application::Application()
 {
@@ -30,8 +30,8 @@ Application::Application()
 	modules[i++] = sceneCastle = new ModuleSceneCastle();
 	modules[i++] = sceneMine = new ModuleSceneMine();
 	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
-	modules[i++] = torpedo = new ModuleTorpedo();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 }
@@ -55,7 +55,7 @@ bool Application::Init()
 	sceneMine->Disable();
 	player->Disable();
 	collision->Disable();
-	torpedo->Disable();
+	enemies->Disable();
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

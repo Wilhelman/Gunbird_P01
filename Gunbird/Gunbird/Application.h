@@ -19,7 +19,7 @@ class ModuleScoreRanking;
 class ModuleSceneCastle;
 class ModuleSceneMine;
 class ModulePlayer;
-class ModuleTorpedo;
+class ModuleEnemies;
 class Module;
 
 class Application
@@ -41,7 +41,7 @@ public:
 	ModuleSceneCastle* sceneCastle;
 	ModuleSceneMine* sceneMine;
 	ModulePlayer* player;
-	ModuleTorpedo* torpedo;
+	ModuleEnemies* enemies;
 
 public:
 

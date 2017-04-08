@@ -69,7 +69,13 @@
     <ClCompile Include="ModuleCollision.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleTorpedo.cpp">
+    <ClCompile Include="ModuleEnemies.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Torpedo.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
@@ -134,7 +140,16 @@
     <ClInclude Include="ModuleCollision.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleTorpedo.h">
+    <ClInclude Include="Path.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleEnemies.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Torpedo.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

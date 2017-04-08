@@ -8,7 +8,7 @@
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleCollision.h"
-#include "ModuleTorpedo.h"
+#include "ModuleEnemies.h"
 #include "ModuleScoreRanking.h"
 
 //TODO: remove this if not necesary
@@ -27,7 +27,7 @@ ModuleSceneCastle::ModuleSceneCastle()
 	soldier_left.PushBack({ 550, 373, 13, 26 });
 	soldier_left.PushBack({ 566, 373, 13, 26 });
 	soldier_left.PushBack({ 582, 373, 13, 26 });
-	soldier_left.speed = 0.1;
+	soldier_left.speed = 0.1f;
 	soldier_left_y = -145;
 	soldier_left_x = 50;
 
@@ -40,7 +40,7 @@ ModuleSceneCastle::ModuleSceneCastle()
 	bridge_top.PushBack({ 38, 348, 111, 91 });
 	bridge_top.PushBack({ 163, 349, 111, 104 });
 	bridge_top.PushBack({ 288, 349, 110, 107 });
-	bridge_top.speed = 0.08;
+	bridge_top.speed = 0.08f;
 	bridge_top.loop = false;
 	bridge_top_y = -710;
 }
@@ -68,8 +68,12 @@ bool ModuleSceneCastle::Start()
 	background_y = -2036;
 
 	App->player->Enable();
-	App->torpedo->Enable();
 	App->collision->Enable();
+	App->enemies->Enable();
+
+	App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 100, -100);
+	App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 130, -120);
+	App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -120);
 
 	graphics = App->textures->Load("Assets/maps/castle/map_castle_background.png");
 	if (graphics == nullptr) {
@@ -144,10 +148,6 @@ update_status ModuleSceneCastle::Update()
 		App->fade->FadeToBlack(this, App->scoreRanking);
 	}
 
-	if (App->torpedo->livesTorpedo <= 0) {
-		App->torpedo->Disable();
-	}
-
 	return status;
 }
 
@@ -161,8 +161,7 @@ bool ModuleSceneCastle::CleanUp()
 	App->textures->Unload(graphicsBridgeTop);
 	App->textures->Unload(graphics);
 	App->collision->Disable();
-	if(App->torpedo->IsEnabled())
-	App->torpedo->Disable();
+	App->enemies->Disable();
 	App->player->Disable();
 
 	return true;
