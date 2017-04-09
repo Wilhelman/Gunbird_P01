@@ -144,14 +144,6 @@ update_status ModulePlayer::Update()
 					laserType = 0;
 			}
 
-			if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT && App->sceneCastle->IsEnabled())
-			{
-				speed = 5;
-				position.y -= speed;
-				App->render->camera.y -= speed;
-				
-			}
-
 			if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_REPEAT && App->sceneCastle->IsEnabled())
 			{
 				deadPlayer = true;
@@ -174,11 +166,6 @@ update_status ModulePlayer::Update()
 		if (counter > 12) 
 		{
 			position.y += speed;
-
-			if (position.y > SCREEN_HEIGHT)
-			{
-				//TODO: should player be disabled once is out of window?
-			}
 		}
 	}
 

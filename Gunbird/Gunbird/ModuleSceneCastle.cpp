@@ -122,7 +122,7 @@ update_status ModuleSceneCastle::Update()
 	}
 
 	//soldier animations
-	if (soldier_left_y >= 30 && soldier_left_x>=-12) {
+	if (soldier_left_y >= 30 && soldier_left_x>=-12 && graphicsSoldier != nullptr) {
 		if (!App->render->Blit(graphicsSoldier, (int)soldier_left_x, soldier_left_y + SCREEN_HEIGHT,&(soldier_left.GetCurrentFrame()), 0.75f)) {
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
@@ -135,11 +135,27 @@ update_status ModuleSceneCastle::Update()
 	}
 
 	//bridge animation
-	if (bridge_top_y >= -350) {
+	if (bridge_top_y >= -350 && graphicsBridgeTop != nullptr) {
 		if (!App->render->Blit(graphicsBridgeTop, 65, bridge_top_y + SCREEN_HEIGHT, &(bridge_top.GetCurrentFrame()), 0.75f)) {
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
+	{
+		if (!App->textures->Unload(graphicsSoldier)) {
+			LOG("Error unloading graphics in SceneCastle");
+			status = UPDATE_ERROR;
+		}
+		graphicsSoldier = nullptr;
+		if (!App->textures->Unload(graphicsBridgeTop)) {
+			LOG("Error unloading graphics in SceneCastle");
+			status = UPDATE_ERROR;
+		}
+		graphicsBridgeTop = nullptr;
+		App->enemies->Disable();
+		background_y = -SCREEN_HEIGHT;
 	}
 
 	//TODO change the position of the player to private to be more pro
@@ -162,18 +178,26 @@ bool ModuleSceneCastle::CleanUp()
 	bool ret = true;
 
 	App->audio->Disable();
-	if (!App->textures->Unload(graphicsSoldier)) {
-		LOG("Error unloading graphics in SceneCastle");
-		ret = false;
+
+	if (graphicsSoldier != nullptr) {
+		if (!App->textures->Unload(graphicsSoldier)) {
+			LOG("Error unloading graphics in SceneCastle");
+			ret = false;
+		}
 	}
-	if (!App->textures->Unload(graphicsBridgeTop)) {
-		LOG("Error unloading graphics in SceneCastle");
-		ret = false;
+
+	if (graphicsBridgeTop != nullptr) {
+		if (!App->textures->Unload(graphicsBridgeTop)) {
+			LOG("Error unloading graphics in SceneCastle");
+			ret = false;
+		}
 	}
+	
 	if (!App->textures->Unload(graphics)) {
 		LOG("Error unloading graphics in SceneCastle");
 		ret = false;
 	}
+
 	App->collision->Disable();
 	App->enemies->Disable();
 	App->ui->Disable();
