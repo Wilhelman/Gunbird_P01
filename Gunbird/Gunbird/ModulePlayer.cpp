@@ -31,7 +31,11 @@ ModulePlayer::ModulePlayer()
 	//dead animation
 	dead_animation.PushBack({ 76, 0, 32, 38 });
 	dead_animation.speed = 0.1f; // TODO: is it necessary if animation is only one frame long?
-
+	//dead animation EXPLOSION
+	dead_animation_explosion.PushBack({ 95,187,47,49});
+	dead_animation_explosion.PushBack({ 72,151,35, 37});
+	dead_animation_explosion.PushBack({ 88,114,31,31});
+	dead_animation_explosion.speed = 0.2f;
 	//right animation
 	right_animation.PushBack({ 0, 38, 26, 30 });
 	right_animation.PushBack({ 38, 38, 26, 29 });
@@ -161,6 +165,7 @@ update_status ModulePlayer::Update()
 		playerCollider->to_delete = true; 
 
 		current_animation = &dead_animation;
+		current_animation = &dead_animation_explosion;
 		counter++;
 
 		if (counter > 12) 

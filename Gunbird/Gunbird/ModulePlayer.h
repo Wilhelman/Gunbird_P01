@@ -34,6 +34,7 @@ public:
 	Animation left_idle_animation;
 	Animation left_animation;
 	Animation dead_animation; 
+	Animation dead_animation_explosion;
 	Animation* current_animation;
 	iPoint position;
 	Collider* playerCollider;

@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "Enemy_Torpedo.h"
 #include "Enemy_MetallicBalloon.h"
+#include "Enemy_TerrestialTurret.h"
 
 #define SPAWN_MARGIN 50
 
@@ -24,7 +25,8 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->textures->Load("Assets/maps/castle/enemies_castle.png");
+	/*sprites = App->textures->Load("Assets/maps/castle/enemies_castle.png");*/
+	sprites = App->textures->Load("Assets/maps/castle/Enemies_Castle_definitive.png");
 
 	return true;
 }
@@ -132,6 +134,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::METALLICBALLOON:
 			enemies[i] = new Enemy_MetallicBalloon(info.x, info.y);
+			break;
+		case ENEMY_TYPES::TERRESTIALTURRET:
+			enemies[i] = new Enemy_TerrestialTurret(info.x, info.y);
 			break;
 		}
 	}
