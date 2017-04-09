@@ -1,3 +1,29 @@
-﻿  ModulePlayer.cpp
-  Gunbird.vcxproj -> C:\Users\Víctor Masó\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
-  Gunbird.vcxproj -> C:\Users\Víctor Masó\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
+﻿  ModuleSceneCastle.cpp
+  Application.cpp
+  Generando código...
+  Compilando...
+  ModuleWindow.cpp
+  ModuleWelcomeScreen.cpp
+  ModuleUI.cpp
+  ModuleTextures.cpp
+  ModuleScoreRanking.cpp
+  ModuleRender.cpp
+  ModulePlayer.cpp
+  ModuleParticles.cpp
+  ModuleInput.cpp
+  ModuleFadeToBlack.cpp
+  ModuleEnemies.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+  ModuleCollision.cpp
+  ModuleCharacterSelection.cpp
+  ModuleAudio.cpp
+  Main.cpp
+  Enemy_Torpedo.cpp
+  Enemy_MetallicBalloon.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+  Enemy.cpp
+  Generando código...
+  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
+  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)

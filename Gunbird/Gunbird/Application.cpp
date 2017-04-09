@@ -14,6 +14,7 @@
 #include "ModuleSceneCastle.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
+#include "ModuleUI.h"
 
 Application::Application()
 {
@@ -30,6 +31,7 @@ Application::Application()
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
+	modules[i++] = ui = new ModuleUI();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 }
@@ -50,6 +52,7 @@ bool Application::Init()
 	characterSelection->Disable();
 	scoreRanking->Disable();
 	sceneCastle->Disable();
+	ui->Disable();
 	player->Disable();
 	collision->Disable();
 	enemies->Disable();

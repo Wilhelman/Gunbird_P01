@@ -45,10 +45,10 @@ update_status ModuleUI::Update()
 	update_status status = UPDATE_CONTINUE;
 
 	// Draw everything --------------------------------------
-	if (!App->render->Blit(graphics, 0, 0, &background, 1.0f)) {
+	/*if (!App->render->Blit(graphics, 0, 0, &background, 1.0f)) {
 		LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
-	}
+	}*/
 
 	return status;
 }

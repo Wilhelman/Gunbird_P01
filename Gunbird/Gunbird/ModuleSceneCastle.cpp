@@ -9,6 +9,7 @@
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "ModuleScoreRanking.h"
+#include "ModuleUI.h"
 
 //TODO: remove this if not necesary
 #include "ModuleInput.h"
@@ -68,6 +69,7 @@ bool ModuleSceneCastle::Start()
 	background_y = -2036;
 
 	App->player->Enable();
+	App->ui->Enable();
 	App->collision->Enable();
 	App->enemies->Enable();
 
@@ -174,6 +176,7 @@ bool ModuleSceneCastle::CleanUp()
 	}
 	App->collision->Disable();
 	App->enemies->Disable();
+	App->ui->Disable();
 	App->player->Disable();
 
 	return true;
