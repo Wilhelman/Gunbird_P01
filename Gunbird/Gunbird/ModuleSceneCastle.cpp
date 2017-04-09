@@ -155,13 +155,23 @@ update_status ModuleSceneCastle::Update()
 
 bool ModuleSceneCastle::CleanUp()
 {
-	//TODO check if we can control this
 	LOG("Unloading SceneCastle");
 
+	bool ret = true;
+
 	App->audio->Disable();
-	App->textures->Unload(graphicsSoldier);
-	App->textures->Unload(graphicsBridgeTop);
-	App->textures->Unload(graphics);
+	if (!App->textures->Unload(graphicsSoldier)) {
+		LOG("Error unloading graphics in SceneCastle");
+		ret = false;
+	}
+	if (!App->textures->Unload(graphicsBridgeTop)) {
+		LOG("Error unloading graphics in SceneCastle");
+		ret = false;
+	}
+	if (!App->textures->Unload(graphics)) {
+		LOG("Error unloading graphics in SceneCastle");
+		ret = false;
+	}
 	App->collision->Disable();
 	App->enemies->Disable();
 	App->player->Disable();
