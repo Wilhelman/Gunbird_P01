@@ -166,8 +166,9 @@ update_status ModulePlayer::Update()
 	}
 	else
 	{
-		current_animation = &dead_animation;
+		playerCollider->to_delete = true; 
 
+		current_animation = &dead_animation;
 		counter++;
 
 		if (counter > 12) 
@@ -176,7 +177,7 @@ update_status ModulePlayer::Update()
 
 			if (position.y > SCREEN_HEIGHT)
 			{
-				//TODO: should player be disabeled once is out of window?
+				//TODO: should player be disabled once is out of window?
 			}
 		}
 	}
