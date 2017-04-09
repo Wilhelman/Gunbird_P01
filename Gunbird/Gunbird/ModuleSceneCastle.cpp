@@ -155,6 +155,7 @@ update_status ModuleSceneCastle::Update()
 		}
 		graphicsBridgeTop = nullptr;
 		App->enemies->Disable();
+		App->player->playerCollider->to_delete = true;
 		background_y = -SCREEN_HEIGHT;
 	}
 
