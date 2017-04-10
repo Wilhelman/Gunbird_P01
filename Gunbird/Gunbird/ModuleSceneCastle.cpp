@@ -79,7 +79,7 @@ bool ModuleSceneCastle::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 50, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -15, -170);
 
 	graphics = App->textures->Load("Assets/maps/castle/map_castle_background.png");
 	if (graphics == nullptr) {
