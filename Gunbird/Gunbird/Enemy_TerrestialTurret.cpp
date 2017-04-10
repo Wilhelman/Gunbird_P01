@@ -17,8 +17,6 @@ Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ 0, 0, 30, 42 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	
-	original_y = y;
-
 }
 
 void Enemy_TerrestialTurret::Move() {

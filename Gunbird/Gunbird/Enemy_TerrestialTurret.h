@@ -7,7 +7,6 @@ class Enemy_TerrestialTurret : public Enemy
 {
 private:
 	Animation turret;
-	int original_y = 0;
 
 public:
 	Enemy_TerrestialTurret(int x, int y);
