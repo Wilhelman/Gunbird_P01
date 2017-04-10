@@ -161,6 +161,8 @@ update_status ModuleSceneCastle::Update()
 		background_y = -SCREEN_HEIGHT;
 	}
 
+	
+
 	//TODO change the position of the player to private to be more pro
 	if ((App->player->position.y < 0 && App->fade->FadeIsOver()) ||/*TODO: remove this condition*/ (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver()))
 		App->fade->FadeToBlack(this, this);

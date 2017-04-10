@@ -8,6 +8,7 @@ class Enemy_MetallicBalloon : public Enemy
 {
 private:
 	Animation fly;
+	Animation deathExplosion;
 	Path path;
 	iPoint original_pos;
 
