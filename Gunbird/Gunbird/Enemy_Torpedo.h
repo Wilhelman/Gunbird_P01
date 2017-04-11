@@ -2,12 +2,15 @@
 #define __Enemy_Torpedo_H__
 
 #include "Enemy.h"
+#include "Path.h"
 
 class Enemy_Torpedo : public Enemy
 {
 private:
-	int original_y = 0;
 	Animation fly;
+	Path diagonalPathL_R;
+	Path horizontalPathR_L;
+	iPoint original_pos;
 
 public:
 

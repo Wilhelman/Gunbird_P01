@@ -73,10 +73,6 @@ bool ModuleSceneCastle::Start()
 	App->collision->Enable();
 	App->enemies->Enable();
 
-	App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 100, -100);
-	App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 130, -120);
-	App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -120);
-
 	App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70);
 
 	graphics = App->textures->Load("Assets/maps/castle/map_castle_background.png");
@@ -176,6 +172,20 @@ update_status ModuleSceneCastle::Update()
 
 	if (background_y==-1850)
 		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 0);
+
+	if (background_y == -2000) {
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -30, -32);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -60, -64);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -90, -96);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -120, -128);
+	}
+
+	if (background_y == -1600) {
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH, 30);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 40, 30);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 80, 30);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 120, 30);
+	}
 
 	return status;
 }

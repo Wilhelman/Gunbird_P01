@@ -9,7 +9,7 @@
 #include "Enemy_MetallicBalloon.h"
 #include "Enemy_TerrestialTurret.h"
 
-#define SPAWN_MARGIN 50
+#define SPAWN_MARGIN 250
 
 ModuleEnemies::ModuleEnemies()
 {
@@ -157,7 +157,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					break;
 				}
 			}
-			else {
+			else if(c2->type != COLLIDER_ENEMY || c2->type != COLLIDER_ENEMY_SHOT){
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;
