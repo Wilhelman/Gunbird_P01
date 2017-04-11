@@ -44,7 +44,7 @@ public:
 		{
 			count += steps[i].frames;
 			if (current_animation != nullptr)
-				*current_animation = steps[i].animation;
+				 steps[i].animation = *current_animation;
 			if (count >= current_frame)
 			{
 				accumulated_speed += steps[i].speed;

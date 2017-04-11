@@ -13,9 +13,12 @@ protected:
 	Animation* animation = nullptr;
 	Collider* collider = nullptr;
 	uint lives;
+	uint currentTime;
+	uint lastTime;
 
 public:
 	iPoint position;
+	int type;
 
 public:
 	Enemy(int x, int y);

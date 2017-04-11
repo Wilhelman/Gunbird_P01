@@ -8,7 +8,6 @@
 #include "Enemy_Torpedo.h"
 #include "Enemy_MetallicBalloon.h"
 #include "Enemy_TerrestialTurret.h"
-#include <typeinfo.h>
 
 #define SPAWN_MARGIN 250
 
@@ -132,12 +131,15 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		{
 		case ENEMY_TYPES::TORPEDO:
 			enemies[i] = new Enemy_Torpedo(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::TORPEDO;
 			break;
 		case ENEMY_TYPES::METALLICBALLOON:
 			enemies[i] = new Enemy_MetallicBalloon(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::METALLICBALLOON;
 			break;
 		case ENEMY_TYPES::TERRESTIALTURRET:
 			enemies[i] = new Enemy_TerrestialTurret(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::TERRESTIALTURRET;
 			break;
 		}
 	}
@@ -150,7 +152,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			enemies[i]->OnCollision(c2);
-			if (typeid(enemies[i]) == typeid(Enemy_MetallicBalloon)) {
+			if (enemies[i]->type == ENEMY_TYPES::METALLICBALLOON) {
 				if (enemies[i]->getLives() == 0) {
  					App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x + c1->rect.w / 2) , (c1->rect.y + c1->rect.h / 2));//App->particles->balloonDeathExplosion.collider->rect.w
 					delete enemies[i];
