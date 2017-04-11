@@ -171,6 +171,9 @@ update_status ModuleSceneCastle::Update()
 		App->fade->FadeToBlack(this, App->scoreRanking);
 	}
 
+
+	//ENEMY SPAWN PHASE
+
 	if (background_y==-1850)
 		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 0);
 

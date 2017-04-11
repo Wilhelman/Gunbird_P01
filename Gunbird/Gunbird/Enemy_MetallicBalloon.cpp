@@ -4,6 +4,8 @@
 
 Enemy_MetallicBalloon::Enemy_MetallicBalloon(int x, int y) : Enemy(x, y)
 {
+	lives = 3;
+
 	fly.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
 	fly.PushBack({ 89, 522, 42, 53 });
 	fly.PushBack({ 141, 522, 42, 53 });
@@ -33,4 +35,12 @@ Enemy_MetallicBalloon::Enemy_MetallicBalloon(int x, int y) : Enemy(x, y)
 void Enemy_MetallicBalloon::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
+}
+
+void Enemy_MetallicBalloon::OnCollision(Collider* collider) {
+	lives--;
+}
+
+uint Enemy_MetallicBalloon::getLives() {
+	return lives;
 }

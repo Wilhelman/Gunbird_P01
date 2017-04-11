@@ -149,11 +149,20 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			enemies[i]->OnCollision(c2);
-			if(c1->type==METALLICBALLOON)
-				App->particles->AddParticle(App->particles->balloonDeathExplosion, c1->rect.x, c1->rect.y);
-			delete enemies[i];
-			enemies[i] = nullptr;
-			break;
+			if (c1->type == METALLICBALLOON) {
+				if (enemies[i]->getLives() == 0) {
+					App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x + c1->rect.w / 2) , (c1->rect.y + c1->rect.h / 2));//App->particles->balloonDeathExplosion.collider->rect.w
+					delete enemies[i];
+					enemies[i] = nullptr;
+					break;
+				}
+			}
+			else {
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
+			}
+			
 		}
 	}
 }

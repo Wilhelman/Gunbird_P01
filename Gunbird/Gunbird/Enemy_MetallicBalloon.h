@@ -11,6 +11,7 @@ private:
 	Animation deathExplosion;
 	Path path;
 	iPoint original_pos;
+	
 
 public:
 
@@ -18,6 +19,8 @@ public:
 
 	void Move();
 
+	void OnCollision(Collider* collider);
+	uint getLives();
 };
 
 #endif
