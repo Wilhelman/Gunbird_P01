@@ -17,6 +17,7 @@ public:
 	Enemy_MetallicBalloon(int x, int y);
 
 	void Move();
+
 };
 
 #endif

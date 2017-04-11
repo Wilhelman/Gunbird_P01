@@ -7,7 +7,7 @@
 class Enemy_TerrestialTurret : public Enemy
 {
 private:
-	Animation turret;
+	Animation turretAnimation;
 	iPoint original_pos;
 	Path path;
 

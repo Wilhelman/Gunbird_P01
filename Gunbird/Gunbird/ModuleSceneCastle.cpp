@@ -79,8 +79,6 @@ bool ModuleSceneCastle::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -15, -170);
-
 	graphics = App->textures->Load("Assets/maps/castle/map_castle_background.png");
 	if (graphics == nullptr) {
 		LOG("Cannot load the texture in SceneCastle");
@@ -172,6 +170,9 @@ update_status ModuleSceneCastle::Update()
 		//anim dead player
 		App->fade->FadeToBlack(this, App->scoreRanking);
 	}
+
+	if (background_y==-1850)
+		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 0);
 
 	return status;
 }

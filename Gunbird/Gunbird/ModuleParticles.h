@@ -47,6 +47,7 @@ public:
 private:
 
 	SDL_Texture* graphics = nullptr;
+	SDL_Texture* enemies = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
 	uint last_particle = 0;
 
@@ -55,6 +56,8 @@ public:
 	Particle laser0;
 	Particle laser1;
 	Particle laser2;
+
+	Particle balloonDeathExplosion;
 	
 };
 

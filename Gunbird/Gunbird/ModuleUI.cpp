@@ -29,7 +29,7 @@ bool ModuleUI::Start()
 	LOG("Loading ModuleUI assets");
 	bool ret = true;
 
-	graphics = App->textures->Load("Assets/maps/castle/enemies_castle.png");
+	graphics = App->textures->Load("Assets/Items/Items.png");
 
 	if (graphics == nullptr) {
 		LOG("Cannot load the texture in ModuleUI");

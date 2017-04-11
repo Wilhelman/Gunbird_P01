@@ -24,15 +24,21 @@ ModuleParticles::ModuleParticles()
 	laser0.speed.y = -5;
 	laser0.life = 3000;
 
-	laser1.anim.loop = true;
+	laser1.anim.loop = false;
 	laser1.anim.speed = 0.1f;
 	laser1.speed.y = -5;
 	laser1.life = 2000;
 
-	laser2.anim.loop = true;
+	laser2.anim.loop = false;
 	laser2.anim.speed = 0.1f;
 	laser2.speed.y = -5;
 	laser2.life = 2000;
+
+	//balloon death explosion
+	balloonDeathExplosion.anim.PushBack({ 20, 114, 15, 19 });
+	balloonDeathExplosion.life = 2000;
+	balloonDeathExplosion.speed.y = 1;
+	balloonDeathExplosion.anim.loop = true;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -43,6 +49,8 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("Assets/characters/valnus_spritesheet.png");
+
+	enemies = App->textures->Load("Assets/maps/castle/Enemies_Castle_definitive.png");
 
 	LOG("Loading fx sound to laser particle");
 	laser0.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
@@ -59,7 +67,10 @@ bool ModuleParticles::CleanUp()
 	LOG("Unloading particles");
 	App->audio->UnLoadFx(laser0.fx);
 
+	App->textures->Unload(enemies);
+	enemies = nullptr;
 	App->textures->Unload(graphics);
+	graphics = nullptr;
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{

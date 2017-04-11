@@ -149,6 +149,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			enemies[i]->OnCollision(c2);
+			if(c1->type==METALLICBALLOON)
+				App->particles->AddParticle(App->particles->balloonDeathExplosion, c1->rect.x, c1->rect.y);
 			delete enemies[i];
 			enemies[i] = nullptr;
 			break;

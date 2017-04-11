@@ -27,9 +27,6 @@ void Enemy::Draw(SDL_Texture* sprites)
 		App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
 }
 
-void Enemy::OnCollision(Collider* collider)
-{
-	//TODO: explosion of enemy right here if are general
+void Enemy::OnCollision(Collider* collider) {
 
-	//App->particles->AddParticle(App->particles->explosion, position.x, position.y); 
- }
+}

@@ -48,7 +48,7 @@ bool Application::Init()
 
 	// Player will be enabled on the first update of a new scene
 	// Disable the modules that you do not start with
-	//welcomeScreen->Disable();
+	welcomeScreen->Disable();
 	characterSelection->Disable();
 	scoreRanking->Disable();
 	sceneCastle->Disable();
@@ -64,7 +64,7 @@ bool Application::Init()
 		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
 
 	//TODO: remove this in release mode
-	//sceneCastle->Enable();
+	sceneCastle->Enable();
 	//player->Enable();
 
 	return ret;
