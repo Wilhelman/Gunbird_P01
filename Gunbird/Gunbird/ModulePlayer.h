@@ -15,6 +15,9 @@ private:
 	unsigned short laserType;
 	int original_camera_y;
 
+	uint currentTime;
+	uint lastTime;
+
 public:
 	ModulePlayer();
 	~ModulePlayer();
@@ -38,8 +41,12 @@ public:
 	Animation* current_animation;
 	iPoint position;
 	Collider* playerCollider;
+
+	bool inmortal;
+	int playerLives;
 	bool deadPlayer;
 	int counter = 0;
+	bool playerLost;
 
 };
 

@@ -10,6 +10,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleScoreRanking.h"
 #include "ModuleUI.h"
+#include "SDL\include\SDL_timer.h"
 
 //TODO: remove this if not necesary
 #include "ModuleInput.h"
@@ -161,12 +162,10 @@ update_status ModuleSceneCastle::Update()
 	if ((App->player->position.y < 0 && App->fade->FadeIsOver()) ||/*TODO: remove this condition*/ (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver()))
 		App->fade->FadeToBlack(this, this);
 
-	if (App->player->deadPlayer) {
-		LOG("Player is dead");
-		//anim dead player
+	if (App->player->playerLost) {
+		LOG("Player LOST");
 		App->fade->FadeToBlack(this, App->scoreRanking);
 	}
-
 
 	//ENEMY SPAWN PHASE
 
@@ -189,6 +188,7 @@ update_status ModuleSceneCastle::Update()
 
 	return status;
 }
+
 
 bool ModuleSceneCastle::CleanUp()
 {

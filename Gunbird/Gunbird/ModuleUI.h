@@ -22,7 +22,9 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 
-	SDL_Rect background;
+	bool livesCount[3];
+
+	SDL_Rect liveIcon;
 
 };
 
