@@ -8,6 +8,7 @@
 #include "Enemy_Torpedo.h"
 #include "Enemy_MetallicBalloon.h"
 #include "Enemy_TerrestialTurret.h"
+#include <typeinfo.h>
 
 #define SPAWN_MARGIN 250
 
@@ -149,20 +150,19 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			enemies[i]->OnCollision(c2);
-			if (c1->type == METALLICBALLOON) {
+			if (typeid(enemies[i]) == typeid(Enemy_MetallicBalloon)) {
 				if (enemies[i]->getLives() == 0) {
-					App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x + c1->rect.w / 2) , (c1->rect.y + c1->rect.h / 2));//App->particles->balloonDeathExplosion.collider->rect.w
+ 					App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x + c1->rect.w / 2) , (c1->rect.y + c1->rect.h / 2));//App->particles->balloonDeathExplosion.collider->rect.w
 					delete enemies[i];
 					enemies[i] = nullptr;
 					break;
 				}
 			}
-			else if(c2->type != COLLIDER_ENEMY || c2->type != COLLIDER_ENEMY_SHOT){
+			else {
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;
 			}
-			
 		}
 	}
 }

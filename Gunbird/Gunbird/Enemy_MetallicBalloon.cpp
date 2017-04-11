@@ -13,13 +13,14 @@ Enemy_MetallicBalloon::Enemy_MetallicBalloon(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 244, 522, 42, 53 });
 	fly.speed = 0.5f;
 
-	deathExplosion.PushBack({ 30, 665, 92, 86 });
-	
+	hitWhiteRed.PushBack({ 296, 522, 42, 53});
+	hitWhiteRed.PushBack({ 347, 522, 42, 53 });
+	hitWhiteRed.speed = 0.5f;
+
 	animation = &fly;
 
 	collider = App->collision->AddCollider({ 0, 0, 42, 53 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	path.PushBack({ 0.0f, 0.0f }, 35, &fly); 
 	path.PushBack({ 0.0f, 1.5f }, 50, &fly); // 64
 	path.PushBack({ 0.0f, 0.0f }, 100, &fly); // 155
 	path.PushBack({ 0.0f, 1.5f }, 150, &fly); // 70
@@ -38,6 +39,7 @@ void Enemy_MetallicBalloon::Move()
 }
 
 void Enemy_MetallicBalloon::OnCollision(Collider* collider) {
+	animation = &hitWhiteRed; //Why it doesn't work?
 	lives--;
 }
 

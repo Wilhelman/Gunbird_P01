@@ -15,9 +15,9 @@ ModuleParticles::ModuleParticles()
 		active[i] = nullptr;
 
 	//laser particle
-	laser0.anim.PushBack({ 0, 114, 13, 19 });
-	laser1.anim.PushBack({ 20, 114, 15, 19 });
-	laser2.anim.PushBack({ 40, 114, 11, 19 });
+	laser0.anim.PushBack({ 614, 801, 13, 19 });
+	laser1.anim.PushBack({ 634, 801, 15, 19 });
+	laser2.anim.PushBack({ 654, 801, 11, 19 });
 
 	laser0.anim.loop = false;
 	laser0.anim.speed = 0.1f;
@@ -35,7 +35,7 @@ ModuleParticles::ModuleParticles()
 	laser2.life = 2000;
 
 	//balloon death explosion
-	balloonDeathExplosion.anim.PushBack({ 20, 114, 15, 19 });
+	balloonDeathExplosion.anim.PushBack({ 54, 504, 92, 87 });
 	balloonDeathExplosion.life = 2000;
 	balloonDeathExplosion.speed.y = 1;
 	balloonDeathExplosion.anim.loop = false;
@@ -48,7 +48,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("Assets/characters/valnus_spritesheet.png");
+	graphics = App->textures->Load("Assets/particles/particles.png"); 
 
 	LOG("Loading fx sound to laser particle");
 	laser0.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");

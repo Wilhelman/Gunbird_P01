@@ -4,7 +4,6 @@
 
 Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 {
-
 	turretAnimation.PushBack({ 28,29,29,42 });
 	turretAnimation.PushBack({ 68,29,29,42 });
 	turretAnimation.PushBack({ 108,29,29,42 });
