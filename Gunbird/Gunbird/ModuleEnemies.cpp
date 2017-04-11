@@ -154,7 +154,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			enemies[i]->OnCollision(c2);
 			if (enemies[i]->type == ENEMY_TYPES::METALLICBALLOON) {
 				if (enemies[i]->getLives() == 0) {
- 					App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x + c1->rect.w / 2) , (c1->rect.y + c1->rect.h / 2));//App->particles->balloonDeathExplosion.collider->rect.w
+ 					App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - 31.5) , (c1->rect.y - 27));//App->particles->balloonDeathExplosion.collider->rect.w
 					delete enemies[i];
 					enemies[i] = nullptr;
 					break;

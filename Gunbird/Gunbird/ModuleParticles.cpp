@@ -35,8 +35,22 @@ ModuleParticles::ModuleParticles()
 	laser2.life = 2000;
 
 	//balloon death explosion
-	balloonDeathExplosion.anim.PushBack({ 54, 504, 92, 87 });
-	balloonDeathExplosion.life = 2000;
+	balloonDeathExplosion.anim.PushBack({ 54, 504, 92, 86 });
+	balloonDeathExplosion.anim.PushBack({ 153, 499, 101, 93 });
+	balloonDeathExplosion.anim.PushBack({ 261, 496, 105, 102 });
+	balloonDeathExplosion.anim.PushBack({ 378, 497, 99, 101 });
+	balloonDeathExplosion.anim.PushBack({ 49, 606, 101, 104 });
+	balloonDeathExplosion.anim.PushBack({ 157, 607, 99, 104 });
+	balloonDeathExplosion.anim.PushBack({ 266, 606, 99, 106 });
+	balloonDeathExplosion.anim.PushBack({ 380, 613, 100, 105 });
+	balloonDeathExplosion.anim.PushBack({ 60, 750, 82, 83 });
+	balloonDeathExplosion.anim.PushBack({ 160, 730, 83, 107 });
+	balloonDeathExplosion.anim.PushBack({ 276, 749, 66, 79 });
+	balloonDeathExplosion.anim.PushBack({ 388, 769, 70, 50 });
+
+
+	balloonDeathExplosion.life = 1000;
+	balloonDeathExplosion.anim.speed = 0.2f;
 	balloonDeathExplosion.speed.y = 1;
 	balloonDeathExplosion.anim.loop = false;
 }
