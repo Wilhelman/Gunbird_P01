@@ -7,6 +7,7 @@
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "Animation.h"
+#include "SDL\include\SDL_timer.h"
 
 //TODO: include the maps
 #include "ModuleSceneCastle.h"
@@ -59,6 +60,9 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
+	
+	playerLives = 2;
+	playerLost = false;
 	deadPlayer = false;
 	original_camera_y = App->render->camera.y;
 	laserType = 0;
@@ -162,8 +166,6 @@ update_status ModulePlayer::Update()
 	}
 	else
 	{
-		playerCollider->to_delete = true; 
-
 		current_animation = &dead_animation;
 		current_animation = &dead_animation_explosion;
 		counter++;
@@ -185,6 +187,30 @@ update_status ModulePlayer::Update()
 		status = UPDATE_ERROR;
 	}
 
+	if (this->deadPlayer) {
+		LOG("Player is dead");
+		//anim dead player
+		//WHEN DEATH ANIMATION IS FINISHED{
+		if (playerLives < 0) {
+			playerLost = true;
+		}
+		else {
+			this->deadPlayer = false;
+			this->position.x = SCREEN_WIDTH / 2;
+			App->player->position.y = SCREEN_HEIGHT / 2 + 50;
+			playerLives--;
+			//TODO: set bombs too
+			App->player->inmortal = true;
+
+			lastTime = SDL_GetTicks();
+		}
+	}
+
+	currentTime = SDL_GetTicks();
+
+	if (currentTime > (lastTime + 2000))
+		App->player->inmortal = false;
+
 	return status;
 }
 
@@ -199,6 +225,8 @@ bool ModulePlayer::CleanUp()
 }
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
-	if (c2->type == COLLIDER_ENEMY)
-		deadPlayer = true;
+	if (!inmortal) {
+		if (c2->type == COLLIDER_ENEMY)
+			deadPlayer = true;
+	}
 }

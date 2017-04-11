@@ -8,11 +8,15 @@
 
 ModuleUI::ModuleUI()
 {
-	// Background
+	for (int i = 0; i < 3; i++)
+	{
+		livesCount[i] = true;
+	}
 
-	background.w = SCREEN_WIDTH;
-	background.h = 2108;
-
+	liveIcon.x = 255;
+	liveIcon.y = 152;
+	liveIcon.w = 15;
+	liveIcon.h = 12;
 }
 
 ModuleUI::~ModuleUI()
@@ -21,11 +25,6 @@ ModuleUI::~ModuleUI()
 // Load assets
 bool ModuleUI::Start()
 {
-	background.x = 0;
-	background.y = 37;
-	background.w = 18;
-	background.h = 32;
-
 	LOG("Loading ModuleUI assets");
 	bool ret = true;
 
@@ -45,11 +44,28 @@ update_status ModuleUI::Update()
 
 	update_status status = UPDATE_CONTINUE;
 
-	// Draw everything --------------------------------------
-	if (!App->render->Blit(graphics, 0, 0, &background, 1.0f)) {
-		LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-		status = UPDATE_ERROR;
+
+	if (App->player->playerLives >= 0) {
+		if (!App->render->Blit(graphics, 5, 16, &liveIcon, 1.0f)) {
+			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
 	}
+
+	if (App->player->playerLives >= 1) {
+		if (!App->render->Blit(graphics, 22, 16, &liveIcon, 1.0f)) {
+			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+	}
+
+	if (App->player->playerLives >= 2) {
+		if (!App->render->Blit(graphics, 38, 16, &liveIcon, 1.0f)) {
+			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+	}
+	
 
 	return status;
 }
