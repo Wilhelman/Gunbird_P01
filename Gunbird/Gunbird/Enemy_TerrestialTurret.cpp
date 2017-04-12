@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Enemy_TerrestialTurret.h"
 #include "ModuleCollision.h"
+#include "ModuleSceneCastle.h"
 
 Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 {
@@ -21,11 +22,36 @@ Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 
-	path.PushBack({ 0.7f,1.0f }, 45, &turretAnimation);
-	path.PushBack({ 0.0f,1.0f }, 3000, &turretAnimation);
-	path.loop = false;
+	turret1_path.PushBack({ 0.7f,1.0f }, 45, &turretAnimation);
+	turret1_path.PushBack({ 0.0f,1.0f }, 3000, &turretAnimation);
+	turret1_path.loop = false;
+
+	turret2_path.PushBack({ 0.7f, 1.0f }, 80, &turretAnimation);
+	turret2_path.PushBack({ 0.0f,1.0f }, 3000, &turretAnimation);
+	turret2_path.loop = false;
+
+	turret3_path.PushBack({ 0.7f, 1.0f }, 60, &turretAnimation);
+	turret3_path.PushBack({ 0.0f, 0.2f }, 15, &turretAnimation);
+	turret3_path.PushBack({ 0.0f,1.0f }, 3000, &turretAnimation);
+	turret3_path.loop = false;
 }
 
 void Enemy_TerrestialTurret::Move() {
-	position = original_pos + path.GetCurrentPosition(&animation);
+
+	int castleBackground = App->sceneCastle->background_y;
+
+	//position = original_pos + turret3_path.GetCurrentPosition(&animation);
+	
+	if((castleBackground > -1552) && (castleBackground < -1526))
+	position = original_pos + turret1_path.GetCurrentPosition(&animation);
+
+	if ((castleBackground > -1526) && (castleBackground < -1489))
+		position = original_pos + turret2_path.GetCurrentPosition(&animation);
+
+	if (castleBackground > -1489)
+		position = original_pos + turret3_path.GetCurrentPosition(&animation);
+
+}
+void Enemy_TerrestialTurret::OnCollision(Collider* collider) {
+
 }
