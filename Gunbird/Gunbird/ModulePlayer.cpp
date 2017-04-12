@@ -154,7 +154,7 @@ update_status ModulePlayer::Update()
 				if (counter == 0)
 				{
 					App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
-					control = 0;
+					control = false;
 				}
 				else if (counter == 10)
 				{
@@ -163,10 +163,15 @@ update_status ModulePlayer::Update()
 				else if (counter == 20)
 				{
 					App->particles->AddParticle(App->particles->laser2, position.x + 10, position.y - 40, COLLIDER_PLAYER_SHOT);
-					counter = 0;
-					control = 1;
 				}
-				if(control != 1)
+				else if (counter == 30)
+				{
+					App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
+					counter = 0;
+					control = true;
+				}
+
+				if(!control)
 					counter++;
 			}
 				
@@ -174,7 +179,6 @@ update_status ModulePlayer::Update()
 			{
 				deadPlayer = true;
 			}
-
 			
 			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 				current_animation = &idle;
@@ -185,7 +189,6 @@ update_status ModulePlayer::Update()
 	else
 	{
 		current_animation = &dead_animation;
-		current_animation = &dead_animation_explosion;
 		counter++;
 
 		if (counter > 12) 
