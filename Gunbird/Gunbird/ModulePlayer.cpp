@@ -216,10 +216,23 @@ update_status ModulePlayer::Update()
 			}
 			else {
 				
-				this->position.x = SCREEN_WIDTH / 2;
-				this->position.y = SCREEN_HEIGHT / 2 + 50;
+				this->position.x = (SCREEN_WIDTH / 2) - 13;
+				//this->position.y = SCREEN_HEIGHT / 2 + 50;
 				playerLives--;
 				//colocar valnus en y = SCREEN_HEIGHT
+				this->position.y = SCREEN_HEIGHT;
+			
+				if (currentTime < lastTime + 1500)
+				{
+					//valnus sube position.y -= 1;
+					position.y -= 1;
+					//parpadea mientras lo hace
+				}
+				else {
+					this->deadPlayer = false;
+					App->player->inmortal = true;
+					lastTime = SDL_GetTicks();
+				}
 				/*
 				y que vvaya subiendo sin que el player tenga control sobre el
 				para ello hacer contador de segundo y medio aprox durante el cual:
@@ -230,11 +243,9 @@ update_status ModulePlayer::Update()
 						App->player->inmortal = true;
 						lastTime = SDL_GetTicks();
 				*/
-
-				this->deadPlayer = false;
-				App->player->inmortal = true;
-
-				lastTime = SDL_GetTicks();
+				//this->deadPlayer = false;
+				//App->player->inmortal = true;
+				//lastTime = SDL_GetTicks();
 			}
 		}
 	}
