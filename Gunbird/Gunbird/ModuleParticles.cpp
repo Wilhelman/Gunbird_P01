@@ -53,6 +53,32 @@ ModuleParticles::ModuleParticles()
 	balloonDeathExplosion.anim.speed = 0.2f;
 	balloonDeathExplosion.speed.y = 1;
 	balloonDeathExplosion.anim.loop = false;
+
+	//Terrestial Turret Explosion
+	terrestialTurretExplosion.anim.PushBack({ 45,120,47,38 });
+	terrestialTurretExplosion.anim.PushBack({ 114,119,47,45 });
+	terrestialTurretExplosion.anim.PushBack({ 183,114,49,54 });
+	terrestialTurretExplosion.anim.PushBack({ 253,110,55,62 });
+	terrestialTurretExplosion.anim.PushBack({ 337,108,51,58 });
+	terrestialTurretExplosion.anim.PushBack({ 416,105,54,61 });
+	terrestialTurretExplosion.anim.PushBack({ 494,108,54,64 });
+	terrestialTurretExplosion.anim.PushBack({ 11,321,54,64 });//Canviar Coordenades 
+	terrestialTurretExplosion.anim.PushBack({ 83,321,54,65 });//Canviar Coordenades
+	terrestialTurretExplosion.anim.PushBack({ 158,322,54,64 });//Canviar Coordenades
+	terrestialTurretExplosion.anim.PushBack({ 235,322,57,64 });//Canviar Coordenades
+	terrestialTurretExplosion.anim.PushBack({ 305,323,58,66 });//Canviar Coordenades
+	terrestialTurretExplosion.anim.PushBack({ 385,325,58,66 });//Canviar Coordenades
+	terrestialTurretExplosion.anim.PushBack({ 467,330,56,64 });//Canviar Coordenades
+	terrestialTurretExplosion.anim.PushBack({ 14,422,54,61 });//Canviar Coordenades
+	terrestialTurretExplosion.anim.PushBack({ 89,425,52,60 });//Canviar Coordenades
+	
+	terrestialTurretExplosion.life = 1000;
+	terrestialTurretExplosion.anim.speed = 0.2f;
+	terrestialTurretExplosion.speed.y = 1;
+	terrestialTurretExplosion.anim.loop = false;
+
+
+
 }
 
 ModuleParticles::~ModuleParticles()
