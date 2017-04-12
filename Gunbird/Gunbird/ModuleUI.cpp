@@ -17,6 +17,11 @@ ModuleUI::ModuleUI()
 	liveIcon.y = 152;
 	liveIcon.w = 15;
 	liveIcon.h = 12;
+
+	bombIcon.x = 207;
+	bombIcon.y = 151;
+	bombIcon.w = 12;
+	bombIcon.h = 15;
 }
 
 ModuleUI::~ModuleUI()
@@ -28,7 +33,7 @@ bool ModuleUI::Start()
 	LOG("Loading ModuleUI assets");
 	bool ret = true;
 
-	graphics = App->textures->Load("Assets/Items/Items.png");
+	graphics = App->textures->Load("Assets/Userinterface/userinterface.png");
 
 	if (graphics == nullptr) {
 		LOG("Cannot load the texture in ModuleUI");
@@ -43,7 +48,6 @@ update_status ModuleUI::Update()
 {
 
 	update_status status = UPDATE_CONTINUE;
-
 
 	if (App->player->playerLives >= 0) {
 		if (!App->render->Blit(graphics, 5, 16, &liveIcon, 1.0f)) {
@@ -64,6 +68,16 @@ update_status ModuleUI::Update()
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}
+	}
+
+	if (!App->render->Blit(graphics, 5 , SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+		LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	if (!App->render->Blit(graphics, 20, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+		LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
 	}
 	
 

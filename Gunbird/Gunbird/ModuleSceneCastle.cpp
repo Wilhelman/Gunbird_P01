@@ -5,6 +5,7 @@
 #include "ModuleAudio.h"
 #include "ModuleSceneCastle.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
@@ -190,6 +191,10 @@ update_status ModuleSceneCastle::Update()
 	if (background_y == -2000)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70);
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_K] && !App->player2->IsEnabled()) {
+		App->player2->Enable();
 	}
 
 	return status;

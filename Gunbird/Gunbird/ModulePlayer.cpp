@@ -186,16 +186,6 @@ update_status ModulePlayer::Update()
 		}
 		App->render->camera.y = original_camera_y;
 	}
-	else
-	{
-		current_animation = &dead_animation;
-		counter++;
-
-		if (counter > 12) 
-		{
-			position.y += speed;
-		}
-	}
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
@@ -210,27 +200,51 @@ update_status ModulePlayer::Update()
 
 	if (this->deadPlayer) {
 		LOG("Player is dead");
-		//anim dead player
-		//WHEN DEATH ANIMATION IS FINISHED{
-		if (playerLives < 0) {
-			playerLost = true;
+
+		current_animation = &dead_animation;
+
+		if(lastTime == 0)
+			lastTime = SDL_GetTicks();
+
+		if (currentTime < lastTime + 3000)
+		{
+			position.y += speed;
 		}
 		else {
-			this->deadPlayer = false;
-			this->position.x = SCREEN_WIDTH / 2;
-			App->player->position.y = SCREEN_HEIGHT / 2 + 50;
-			playerLives--;
-			//TODO: set bombs too
-			App->player->inmortal = true;
+			if (playerLives < 0) {
+				playerLost = true;
+			}
+			else {
+				
+				this->position.x = SCREEN_WIDTH / 2;
+				this->position.y = SCREEN_HEIGHT / 2 + 50;
+				playerLives--;
+				//colocar valnus en y = SCREEN_HEIGHT
+				/*
+				y que vvaya subiendo sin que el player tenga control sobre el
+				para ello hacer contador de segundo y medio aprox durante el cual:
+					valnus sube position.y -= 1;
+					parpadea mientras lo hace
+					una vez acaba *else*:
+						this->deadPlayer = false;
+						App->player->inmortal = true;
+						lastTime = SDL_GetTicks();
+				*/
 
-			lastTime = SDL_GetTicks();
+				this->deadPlayer = false;
+				App->player->inmortal = true;
+
+				lastTime = SDL_GetTicks();
+			}
 		}
 	}
 
-	currentTime = SDL_GetTicks();
-
-	if (currentTime > (lastTime + 2000))
+	if (currentTime > (lastTime + INMORTAL_TIME) && inmortal) {
 		App->player->inmortal = false;
+		lastTime = 0;
+	}
+
+	currentTime = SDL_GetTicks();
 
 	return status;
 }

@@ -6,6 +6,8 @@
 #include "Globals.h"
 #include "p2Point.h"
 
+#define INMORTAL_TIME 2000
+
 struct SDL_Texture;
 struct Collider;
 

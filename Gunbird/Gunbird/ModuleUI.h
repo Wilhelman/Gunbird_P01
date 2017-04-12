@@ -25,6 +25,7 @@ public:
 	bool livesCount[3];
 
 	SDL_Rect liveIcon;
+	SDL_Rect bombIcon;
 
 };
 
