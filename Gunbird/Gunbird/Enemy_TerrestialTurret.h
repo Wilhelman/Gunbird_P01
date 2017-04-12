@@ -7,6 +7,7 @@
 class Enemy_TerrestialTurret : public Enemy
 {
 private:
+	
 	Animation turretAnimation;
 	Animation death;
 	iPoint original_pos;
@@ -15,6 +16,7 @@ private:
 	Path turret3_path;
 
 public:
+
 	Enemy_TerrestialTurret(int x, int y);
 	void Move();
 	void OnCollision(Collider* collider);

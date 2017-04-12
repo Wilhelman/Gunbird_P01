@@ -228,5 +228,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 	if (!inmortal) {
 		if (c2->type == COLLIDER_ENEMY)
 			deadPlayer = true;
+		if (deadPlayer == true) {
+			App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
+		}
 	}
 }

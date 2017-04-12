@@ -42,14 +42,14 @@ void Enemy_TerrestialTurret::Move() {
 
 	//position = original_pos + turret3_path.GetCurrentPosition(&animation);
 	
-	if((castleBackground > -1855) && (castleBackground < -1600))
-	position = original_pos + turret1_path.GetCurrentPosition(&animation);
+	if ((castleBackground > -1855) && (castleBackground < -1813))
+		position = original_pos + turret1_path.GetCurrentPosition(&animation);
 
-	/*if ((castleBackground > -1526) && (castleBackground < -1489))
+	if ((castleBackground > -1813) && (castleBackground < -1771))
 		position = original_pos + turret2_path.GetCurrentPosition(&animation);
 
-	if (castleBackground > -1489)
-		position = original_pos + turret3_path.GetCurrentPosition(&animation);*/
+	if (castleBackground > -1771)
+		position = original_pos + turret3_path.GetCurrentPosition(&animation);
 
 }
 void Enemy_TerrestialTurret::OnCollision(Collider* collider) {

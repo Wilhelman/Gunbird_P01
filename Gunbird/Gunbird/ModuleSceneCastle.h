@@ -34,6 +34,7 @@ public:
 	SDL_Rect background;
 	int background_x;
 	int background_y;
+	
 
 };
 
