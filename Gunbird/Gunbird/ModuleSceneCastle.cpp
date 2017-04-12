@@ -112,17 +112,17 @@ update_status ModuleSceneCastle::Update()
 
 	// Draw everything --------------------------------------
 	if (!App->render->Blit(graphics, background_x, background_y + SCREEN_HEIGHT, &background, 0.75f)) {
-		LOG("Cannot blit the texture in SceneCastle %s\n",SDL_GetError());
+		LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}
 
 	//soldier animations
-	if (soldier_left_y >= 30 && soldier_left_x>=-12 && graphicsSoldier != nullptr) {
-		if (!App->render->Blit(graphicsSoldier, (int)soldier_left_x, soldier_left_y + SCREEN_HEIGHT,&(soldier_left.GetCurrentFrame()), 0.75f)) {
+	if (soldier_left_y >= 30 && soldier_left_x >= -12 && graphicsSoldier != nullptr) {
+		if (!App->render->Blit(graphicsSoldier, (int)soldier_left_x, soldier_left_y + SCREEN_HEIGHT, &(soldier_left.GetCurrentFrame()), 0.75f)) {
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}
-		if (!App->render->Blit(graphicsSoldier, (int)soldier_left_x-6, soldier_left_y + SCREEN_HEIGHT + 20, &(soldier_left.GetCurrentFrame()), 0.75f)) {
+		if (!App->render->Blit(graphicsSoldier, (int)soldier_left_x - 6, soldier_left_y + SCREEN_HEIGHT + 20, &(soldier_left.GetCurrentFrame()), 0.75f)) {
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}
@@ -154,7 +154,7 @@ update_status ModuleSceneCastle::Update()
 		background_y = -SCREEN_HEIGHT;
 	}
 
-	
+
 
 	//TODO change the position of the player to private to be more pro
 	if ((App->player->position.y < 0 && App->fade->FadeIsOver()) ||/*TODO: remove this condition*/ (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver()))
@@ -167,9 +167,12 @@ update_status ModuleSceneCastle::Update()
 
 	//ENEMY SPAWN PHASE
 
-	if (background_y==-1850)
-		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 0);
-
+	if (background_y == -1850) {
+		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -70);
+		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -30);
+		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 10);
+		
+	}
 	if (background_y == -2000) {
 		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -30, -32);
 		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -60, -64);

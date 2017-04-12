@@ -21,7 +21,7 @@ Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 
-	path.PushBack({ 0.7f,1.0f }, 100, &turretAnimation);
+	path.PushBack({ 0.7f,1.0f }, 45, &turretAnimation);
 	path.PushBack({ 0.0f,1.0f }, 3000, &turretAnimation);
 	path.loop = false;
 }
