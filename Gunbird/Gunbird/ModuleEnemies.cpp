@@ -161,7 +161,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					break;  
 				}
 			}
-			if (enemies[i]->type == ENEMY_TYPES::TERRESTIALTURRET) {
+			/*if (enemies[i]->type == ENEMY_TYPES::TERRESTIALTURRET) {
 				if (enemies[i]->getLives() == 0) {
 					App->particles->AddParticle(App->particles->terrestialTurretExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
 					enemies[i] = nullptr;												// c1->rect.x - 31.5, c1->rect.y -27   
@@ -169,7 +169,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
 					break;
 				}
-			}
+			}*/
 
 			else {
 				delete enemies[i];

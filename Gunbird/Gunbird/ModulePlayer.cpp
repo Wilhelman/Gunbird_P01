@@ -60,7 +60,6 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
-	
 	playerLives = 2;
 	playerLost = false;
 	deadPlayer = false;
@@ -131,9 +130,10 @@ update_status ModulePlayer::Update()
 					position.y += speed;
 			}
 
-			if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || (0 < counter))
 			{
-				switch (laserType)
+				//Old switch. Keep it it here for now
+				/*switch (laserType)
 				{
 				case 0:
 					App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
@@ -149,9 +149,27 @@ update_status ModulePlayer::Update()
 				}
 				laserType++;
 				if (laserType > 2)
-					laserType = 0;
-			}
+					laserType = 0;*/
 
+				if (counter == 0)
+				{
+					App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
+					control = 0;
+				}
+				else if (counter == 10)
+				{
+					App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+				}
+				else if (counter == 20)
+				{
+					App->particles->AddParticle(App->particles->laser2, position.x + 10, position.y - 40, COLLIDER_PLAYER_SHOT);
+					counter = 0;
+					control = 1;
+				}
+				if(control != 1)
+					counter++;
+			}
+				
 			if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_REPEAT && App->sceneCastle->IsEnabled())
 			{
 				deadPlayer = true;

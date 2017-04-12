@@ -46,6 +46,7 @@ public:
 	int playerLives;
 	bool deadPlayer;
 	int counter = 0;
+	int control = 0;
 	bool playerLost;
 
 };
