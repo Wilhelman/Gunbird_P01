@@ -156,15 +156,15 @@ update_status ModulePlayer::Update()
 					App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
 					control = false;
 				}
-				else if (counter == 10)
+				else if (counter == 7)
 				{
 					App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
 				}
-				else if (counter == 20)
+				else if (counter == 14)
 				{
 					App->particles->AddParticle(App->particles->laser2, position.x + 10, position.y - 40, COLLIDER_PLAYER_SHOT);
 				}
-				else if (counter == 30)
+				else if (counter == 21)
 				{
 					App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
 					counter = 0;
