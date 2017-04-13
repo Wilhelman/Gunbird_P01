@@ -11,12 +11,15 @@ struct SDL_Texture;
 class ModuleSceneCastle : public Module
 {
 private:
+	
 	Animation soldier_left;
 	uint soldier_left_y;
 	float soldier_left_x;
 
 	Animation bridge_top;
 	uint bridge_top_y;
+	
+	Animation houseFlag;
 
 public:
 	ModuleSceneCastle();
@@ -27,7 +30,7 @@ public:
 	bool CleanUp();
 
 public:
-
+	SDL_Texture* graphicsHouseFlag = nullptr;
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* graphicsSoldier = nullptr;
 	SDL_Texture* graphicsBridgeTop = nullptr;

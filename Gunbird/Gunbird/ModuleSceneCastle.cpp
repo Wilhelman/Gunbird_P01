@@ -46,6 +46,17 @@ ModuleSceneCastle::ModuleSceneCastle()
 	bridge_top.loop = false;
 	bridge_top_y = -710;
 
+	//houseFlag.PushBack({ 472,1236,94,102 });
+	houseFlag.PushBack({ 573,1238,96,101 });  // !!!
+	//houseFlag.PushBack({ 673,1238,96,101 }); //  !!!
+	//houseFlag.PushBack({ 779,1238,96,101 }); //  !!!
+	houseFlag.PushBack({ 892,1237,94,102 });
+	houseFlag.PushBack({ 473,1383,95,102 });
+	houseFlag.PushBack({ 580,1382,95,103 });
+	houseFlag.PushBack({ 686,1382,95,103 });
+	houseFlag.speed = 0.2f;
+	houseFlag.loop = true;
+
 }
 
 ModuleSceneCastle::~ModuleSceneCastle()
@@ -89,6 +100,11 @@ bool ModuleSceneCastle::Start()
 
 	graphicsBridgeTop = App->textures->Load("Assets/maps/castle/castle_map_stuff.png");
 	if (graphicsSoldier == nullptr) {
+		LOG("Cannot load the animations spritesheet in SceneCastle");
+		ret = false;
+	}
+	graphicsHouseFlag = App->textures->Load("Assets/maps/castle/castle_map_stuff.png");
+	if (graphicsHouseFlag == nullptr) {
 		LOG("Cannot load the animations spritesheet in SceneCastle");
 		ret = false;
 	}
@@ -137,6 +153,14 @@ update_status ModuleSceneCastle::Update()
 			status = UPDATE_ERROR;
 		}
 	}
+
+	if (graphicsHouseFlag != nullptr) {
+		if (!App->render->Blit(graphicsHouseFlag, 65, bridge_top_y + SCREEN_HEIGHT, &(houseFlag.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+	}
+
 
 	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
 	{
@@ -218,6 +242,12 @@ bool ModuleSceneCastle::CleanUp()
 
 	if (graphicsBridgeTop != nullptr) {
 		if (!App->textures->Unload(graphicsBridgeTop)) {
+			LOG("Error unloading graphics in SceneCastle");
+			ret = false;
+		}
+	}
+	if (graphicsHouseFlag != nullptr) {
+		if (!App->textures->Unload(graphicsHouseFlag)) {
 			LOG("Error unloading graphics in SceneCastle");
 			ret = false;
 		}
