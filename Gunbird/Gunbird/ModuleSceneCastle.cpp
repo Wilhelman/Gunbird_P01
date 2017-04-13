@@ -46,15 +46,20 @@ ModuleSceneCastle::ModuleSceneCastle()
 	bridge_top.loop = false;
 	bridge_top_y = -710;
 
-	//houseFlag.PushBack({ 472,1236,94,102 });
+	/*houseFlag.PushBack({ 472,1236,94,102 });
 	houseFlag.PushBack({ 573,1238,96,101 });  // !!!
-	//houseFlag.PushBack({ 673,1238,96,101 }); //  !!!
-	//houseFlag.PushBack({ 779,1238,96,101 }); //  !!!
+	houseFlag.PushBack({ 673,1238,96,101 }); //  !!!
+	houseFlag.PushBack({ 779,1238,96,101 }); //  !!!
 	houseFlag.PushBack({ 892,1237,94,102 });
 	houseFlag.PushBack({ 473,1383,95,102 });
 	houseFlag.PushBack({ 580,1382,95,103 });
-	houseFlag.PushBack({ 686,1382,95,103 });
-	houseFlag.speed = 0.2f;
+	houseFlag.PushBack({ 686,1382,95,103 });*/
+
+	houseFlag.PushBack({ 520, 943, 95, 101 });
+	houseFlag.PushBack({ 520, 1045, 95, 101 });
+	houseFlag.PushBack({ 520, 1147, 95, 101 });
+
+	houseFlag.speed = 0.08f;
 	houseFlag.loop = true;
 
 }
@@ -155,7 +160,7 @@ update_status ModuleSceneCastle::Update()
 	}
 
 	if (graphicsHouseFlag != nullptr) {
-		if (!App->render->Blit(graphicsHouseFlag, 65, bridge_top_y + SCREEN_HEIGHT, &(houseFlag.GetCurrentFrame()), 0.75f)) {
+		if (!App->render->Blit(graphicsHouseFlag, 158, -1462 + SCREEN_HEIGHT, &(houseFlag.GetCurrentFrame()), 0.75f)) {
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}
