@@ -58,7 +58,11 @@ ModuleSceneCastle::ModuleSceneCastle()
 	houseFlag.PushBack({ 520, 943, 95, 101 });
 	houseFlag.PushBack({ 520, 1045, 95, 101 });
 	houseFlag.PushBack({ 520, 1147, 95, 101 });
-	//Sprites missing here
+	houseFlag.PushBack({ 520, 1250, 95, 101 });
+	houseFlag.PushBack({ 520, 1353, 95, 101 });
+	houseFlag.PushBack({ 520, 1456, 95, 101 });
+	houseFlag.PushBack({ 520, 1560, 95, 101 });
+	houseFlag.PushBack({ 520, 1664, 95, 101 });
 
 	houseFlag.speed = 0.08f;
 	houseFlag.loop = true;
