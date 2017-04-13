@@ -20,7 +20,11 @@ private:
 	uint currentTime;
 	uint lastTime;
 	uint spawnTime;
+
+	bool hitted;
+	uint hittedTime;
 	uint shotPower;
+
 
 public:
 	ModulePlayer();
@@ -31,6 +35,8 @@ public:
 	bool CleanUp();
 
 	void OnCollision(Collider* c1, Collider* c2);
+
+	void removePowerUp();
 
 public:
 

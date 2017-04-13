@@ -35,6 +35,9 @@ Power_Up::Power_Up(int x, int y) : Enemy(x, y)
 	position.y = y;
 
 	collider = App->collision->AddCollider({ 0, 0, 22, 13 }, COLLIDER_TYPE::COLLIDER_POWER_UP, (Module*)App->enemies);
+
+	up = true;
+	right = true;
 }
 
 void Power_Up::Move()

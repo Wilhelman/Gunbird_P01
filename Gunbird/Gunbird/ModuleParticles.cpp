@@ -15,9 +15,9 @@ ModuleParticles::ModuleParticles()
 		active[i] = nullptr;
 
 	//laser particle
-	laser0.anim.PushBack({ 614, 801, 13, 19 });
+	laser0.anim.PushBack({ 613, 801, 15, 19 });
 	laser1.anim.PushBack({ 634, 801, 15, 19 });
-	laser2.anim.PushBack({ 654, 801, 11, 19 });
+	laser2.anim.PushBack({ 652, 801, 15, 19 });
 
 	laser0_1.anim.PushBack({ 673, 801, 25, 28 });
 	laser1_1.anim.PushBack({ 706, 801, 25, 28 });

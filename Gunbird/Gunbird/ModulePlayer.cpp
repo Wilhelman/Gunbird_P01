@@ -9,6 +9,8 @@
 #include "Animation.h"
 #include "SDL\include\SDL_timer.h"
 
+#include "ModuleEnemies.h"
+
 //TODO: include the maps
 #include "ModuleSceneCastle.h"
 
@@ -67,6 +69,7 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
+	hitted = false;
 	shotPower = 0;
 	spawnTime = 0;
 	godModeControl = false;
@@ -99,7 +102,7 @@ update_status ModulePlayer::Update()
 	int speed = 3;
 	
 
-	if (!deadPlayer) {
+	if (!deadPlayer && !hitted) {
 		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT && App->sceneCastle->IsEnabled())) 
 		{
 			speed = 5;
@@ -163,7 +166,7 @@ update_status ModulePlayer::Update()
 				if (shotPower == 0) {
 					if (counter == 0)
 					{
-						App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
+						App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
 						shotControl = false;
 					}
 					else if (counter == 7)
@@ -172,11 +175,11 @@ update_status ModulePlayer::Update()
 					}
 					else if (counter == 14)
 					{
-						App->particles->AddParticle(App->particles->laser2, position.x + 10, position.y - 40, COLLIDER_PLAYER_SHOT);
+						App->particles->AddParticle(App->particles->laser2, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
 					}
 					else if (counter == 21)
 					{
-						App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
+						App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
 						counter = 0;
 						shotControl = true;
 					}
@@ -281,9 +284,19 @@ update_status ModulePlayer::Update()
 		}
 	}
 
+	if (hitted) {
+		position.y += 1;
+	}
+
+	//inmortal control time
 	if (currentTime > (lastTime + INMORTAL_TIME) && inmortal && (godModeControl == false)) {
 		App->player->inmortal = false;
 		lastTime = 0;
+	}
+
+	//hitted control time
+	if (currentTime > (hittedTime + 1000) && hitted) {
+		hitted = false;
 	}
 
 	currentTime = SDL_GetTicks();
@@ -303,14 +316,26 @@ bool ModulePlayer::CleanUp()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 	if (!inmortal) {
-		if (c2->type == COLLIDER_ENEMY)
-			deadPlayer = true;
+		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING && !hitted) {
+			this->removePowerUp();
+		}
 
 		if (c2->type == COLLIDER_POWER_UP)
 			shotPower = 1;
 
 		if (deadPlayer == true) {
 			App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
+		}
+	}
+}
+
+void ModulePlayer::removePowerUp() {
+	if (!hitted) {
+		hittedTime = SDL_GetTicks();
+		hitted = true;
+		if (shotPower > 0) {
+			shotPower = 0;
+			App->enemies->AddEnemy(ENEMY_TYPES::POWER_UP, position.x, position.y - 50, ENEMY_MOVEMENT::NO_MOVEMENT);
 		}
 	}
 }
