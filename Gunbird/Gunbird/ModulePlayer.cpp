@@ -174,7 +174,13 @@ update_status ModulePlayer::Update()
 				if(!control)
 					counter++;
 			}
-				
+
+			if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_REPEAT && App->sceneCastle->IsEnabled())
+			{
+				godModeControl = !godModeControl;
+				App->player->inmortal = !inmortal;
+			}
+
 			if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_REPEAT && App->sceneCastle->IsEnabled())
 			{
 				deadPlayer = true;
@@ -250,7 +256,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (currentTime > (lastTime + INMORTAL_TIME) && inmortal) {
+	if (currentTime > (lastTime + INMORTAL_TIME) && inmortal && (godModeControl == false)) {
 		App->player->inmortal = false;
 		lastTime = 0;
 	}
