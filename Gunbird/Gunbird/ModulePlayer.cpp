@@ -67,6 +67,7 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
+	shotPower = 0;
 	spawnTime = 0;
 	godModeControl = false;
 	playerLives = 2;
@@ -159,30 +160,56 @@ update_status ModulePlayer::Update()
 				laserType++;
 				if (laserType > 2)
 					laserType = 0;*/
+				if (shotPower == 0) {
+					if (counter == 0)
+					{
+						App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
+						shotControl = false;
+					}
+					else if (counter == 7)
+					{
+						App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+					}
+					else if (counter == 14)
+					{
+						App->particles->AddParticle(App->particles->laser2, position.x + 10, position.y - 40, COLLIDER_PLAYER_SHOT);
+					}
+					else if (counter == 21)
+					{
+						App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
+						counter = 0;
+						shotControl = true;
+					}
 
-				if (counter == 0)
-				{
-					App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
-					control = false;
+					if (!shotControl)
+						counter++;
 				}
-				else if (counter == 7)
-				{
-					App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
-				}
-				else if (counter == 14)
-				{
-					App->particles->AddParticle(App->particles->laser2, position.x + 10, position.y - 40, COLLIDER_PLAYER_SHOT);
-				}
-				else if (counter == 21)
-				{
-					App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
-					counter = 0;
-					control = true;
-				}
+				else if (shotPower == 1) {
+					if (counter == 0)
+					{
+						App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
+						shotControl = false;
+					}
+					else if (counter == 7)
+					{
+						App->particles->AddParticle(App->particles->laser1_1, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
+					}
+					else if (counter == 14)
+					{
+						App->particles->AddParticle(App->particles->laser2_1, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
+					}
+					else if (counter == 21)
+					{
+						App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
+						counter = 0;
+						shotControl = true;
+					}
 
-				if(!control)
-					counter++;
-			}
+					if (!shotControl)
+						counter++;
+				}
+				
+			} //end shot space
 
 			if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
 			{
@@ -278,6 +305,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 	if (!inmortal) {
 		if (c2->type == COLLIDER_ENEMY)
 			deadPlayer = true;
+
+		if (c2->type == COLLIDER_POWER_UP)
+			shotPower = 1;
+
 		if (deadPlayer == true) {
 			App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
 		}

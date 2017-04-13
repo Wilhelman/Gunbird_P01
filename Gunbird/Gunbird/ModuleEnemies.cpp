@@ -9,6 +9,8 @@
 #include "Enemy_MetallicBalloon.h"
 #include "Enemy_TerrestialTurret.h"
 
+#include "Power_Up.h"
+
 #define SPAWN_MARGIN 250
 
 ModuleEnemies::ModuleEnemies()
@@ -161,6 +163,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_TerrestialTurret(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::TERRESTIALTURRET;
 			break;
+		case ENEMY_TYPES::POWER_UP:
+			enemies[i] = new Power_Up(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::POWER_UP;
+			break;
 		}
 	}
 }
@@ -191,7 +197,16 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 			}*/
 
-			else {
+			else if(enemies[i]->type == ENEMY_TYPES::TORPEDO){
+				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+					//randomize when to drop powerup somehow
+					this->AddEnemy(ENEMY_TYPES::POWER_UP, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
+					delete enemies[i];
+					enemies[i] = nullptr;
+					break;
+				}
+			}
+			else if (enemies[i]->type == ENEMY_TYPES::POWER_UP && c2->type == COLLIDER_TYPE::COLLIDER_PLAYER) {
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;

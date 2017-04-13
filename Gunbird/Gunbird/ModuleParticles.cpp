@@ -19,20 +19,36 @@ ModuleParticles::ModuleParticles()
 	laser1.anim.PushBack({ 634, 801, 15, 19 });
 	laser2.anim.PushBack({ 654, 801, 11, 19 });
 
+	laser0_1.anim.PushBack({ 673, 801, 25, 28 });
+	laser1_1.anim.PushBack({ 706, 801, 25, 28 });
+	laser2_1.anim.PushBack({ 737, 801, 25, 28 });
+
 	laser0.anim.loop = false;
 	laser0.anim.speed = 0.1f;
 	laser0.speed.y = -5;
 	laser0.life = 3000;
+	laser0_1.anim.loop = false;
+	laser0_1.anim.speed = 0.1f;
+	laser0_1.speed.y = -5;
+	laser0_1.life = 3000;
 
 	laser1.anim.loop = false;
 	laser1.anim.speed = 0.1f;
 	laser1.speed.y = -5;
 	laser1.life = 2000;
+	laser1_1.anim.loop = false;
+	laser1_1.anim.speed = 0.1f;
+	laser1_1.speed.y = -5;
+	laser1_1.life = 2000;
 
 	laser2.anim.loop = false;
 	laser2.anim.speed = 0.1f;
 	laser2.speed.y = -5;
 	laser2.life = 2000;
+	laser2_1.anim.loop = false;
+	laser2_1.anim.speed = 0.1f;
+	laser2_1.speed.y = -5;
+	laser2_1.life = 2000;
 
 	//balloon death explosion
 	balloonDeathExplosion.anim.PushBack({ 54, 504, 92, 86 });
@@ -62,15 +78,15 @@ ModuleParticles::ModuleParticles()
 	terrestialTurretExplosion.anim.PushBack({ 337,108,51,58 });
 	terrestialTurretExplosion.anim.PushBack({ 416,105,54,61 });
 	terrestialTurretExplosion.anim.PushBack({ 494,108,54,64 });
-	terrestialTurretExplosion.anim.PushBack({ 11,321,54,64 });//Canviar Coordenades 
-	terrestialTurretExplosion.anim.PushBack({ 83,321,54,65 });//Canviar Coordenades
-	terrestialTurretExplosion.anim.PushBack({ 158,322,54,64 });//Canviar Coordenades
-	terrestialTurretExplosion.anim.PushBack({ 235,322,57,64 });//Canviar Coordenades
-	terrestialTurretExplosion.anim.PushBack({ 305,323,58,66 });//Canviar Coordenades
-	terrestialTurretExplosion.anim.PushBack({ 385,325,58,66 });//Canviar Coordenades
-	terrestialTurretExplosion.anim.PushBack({ 467,330,56,64 });//Canviar Coordenades
-	terrestialTurretExplosion.anim.PushBack({ 14,422,54,61 });//Canviar Coordenades
-	terrestialTurretExplosion.anim.PushBack({ 89,425,52,60 });//Canviar Coordenades
+	terrestialTurretExplosion.anim.PushBack({ 11,321,54,64 });//change coords
+	terrestialTurretExplosion.anim.PushBack({ 83,321,54,65 });//
+	terrestialTurretExplosion.anim.PushBack({ 158,322,54,64 });//
+	terrestialTurretExplosion.anim.PushBack({ 235,322,57,64 });//
+	terrestialTurretExplosion.anim.PushBack({ 305,323,58,66 });//
+	terrestialTurretExplosion.anim.PushBack({ 385,325,58,66 });//
+	terrestialTurretExplosion.anim.PushBack({ 467,330,56,64 });//
+	terrestialTurretExplosion.anim.PushBack({ 14,422,54,61 });//
+	terrestialTurretExplosion.anim.PushBack({ 89,425,52,60 });//change coords
 	
 	terrestialTurretExplosion.life = 1000;
 	terrestialTurretExplosion.anim.speed = 0.2f;
@@ -94,6 +110,10 @@ bool ModuleParticles::Start()
 	laser0.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
 	laser1.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
 	laser2.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
+
+	laser0_1.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
+	laser1_1.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
+	laser2_1.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
 	
 
 	return true;

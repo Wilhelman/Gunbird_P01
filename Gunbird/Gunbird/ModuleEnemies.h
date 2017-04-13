@@ -11,14 +11,20 @@ enum ENEMY_TYPES
 	NO_TYPE,
 	TORPEDO,
 	METALLICBALLOON,
-	TERRESTIALTURRET
+	TERRESTIALTURRET,
+
+
+	POWER_UP
 };
 
 enum ENEMY_MOVEMENT
 {
 	NO_MOVEMENT,
 	TORPEDO_DIAGONALL_R,
-	TORPEDO_HORIZONTALR_L
+	TORPEDO_HORIZONTALR_L,
+
+
+	POWER_UP_MOVEMENT
 };
 
 class Enemy;
@@ -55,6 +61,9 @@ private:
 	//paths (torpedo)
 	Path diagonalPathL_R;
 	Path horizontalPathR_L;
+
+	//path power_up
+	Path powerUpPath;
 
 	EnemyInfo queue[MAX_ENEMIES];
 	Enemy* enemies[MAX_ENEMIES];

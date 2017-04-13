@@ -56,6 +56,10 @@ public:
 	Particle laser1;
 	Particle laser2;
 
+	Particle laser0_1;
+	Particle laser1_1;
+	Particle laser2_1;
+
 	Particle balloonDeathExplosion;
 	Particle terrestialTurretExplosion;
 	

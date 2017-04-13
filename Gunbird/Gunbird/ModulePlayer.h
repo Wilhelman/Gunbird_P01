@@ -20,6 +20,7 @@ private:
 	uint currentTime;
 	uint lastTime;
 	uint spawnTime;
+	uint shotPower;
 
 public:
 	ModulePlayer();
@@ -50,7 +51,7 @@ public:
 	int playerLives;
 	bool deadPlayer;
 	int counter = 0;
-	bool control = false;
+	bool shotControl = false;
 	bool playerLost;
 	bool godModeControl;
 

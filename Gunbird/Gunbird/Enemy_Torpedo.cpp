@@ -1,7 +1,6 @@
 #include "Application.h"
 #include "Enemy_Torpedo.h"
 #include "ModuleCollision.h"
-#include "ModuleSceneCastle.h"
 #include "Path.h"
 
 Enemy_Torpedo::Enemy_Torpedo(int x, int y) : Enemy(x, y)

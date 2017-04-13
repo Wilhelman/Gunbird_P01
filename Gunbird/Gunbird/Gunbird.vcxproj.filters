@@ -16,6 +16,9 @@
     <Filter Include="Modules\Enemies">
       <UniqueIdentifier>{9fd9ca1d-ba9a-4401-959d-addc228bea50}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Enemies\Items">
+      <UniqueIdentifier>{1c0847e7-21e0-4c0d-8770-9dfd7301e0bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -86,6 +89,9 @@
     </ClCompile>
     <ClCompile Include="ModulePlayer2.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Power_Up.cpp">
+      <Filter>Modules\Enemies\Items</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="ModulePlayer2.h">
       <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Power_Up.h">
+      <Filter>Modules\Enemies\Items</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
