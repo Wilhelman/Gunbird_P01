@@ -46,27 +46,6 @@ ModuleSceneCastle::ModuleSceneCastle()
 	bridge_top.loop = false;
 	bridge_top_y = -710;
 
-	/*houseFlag.PushBack({ 472,1236,94,102 });
-	houseFlag.PushBack({ 573,1238,96,101 });  // !!!
-	houseFlag.PushBack({ 673,1238,96,101 }); //  !!!
-	houseFlag.PushBack({ 779,1238,96,101 }); //  !!!
-	houseFlag.PushBack({ 892,1237,94,102 });
-	houseFlag.PushBack({ 473,1383,95,102 });
-	houseFlag.PushBack({ 580,1382,95,103 });
-	houseFlag.PushBack({ 686,1382,95,103 });*/
-
-	houseFlag.PushBack({ 520, 943, 95, 101 });
-	houseFlag.PushBack({ 520, 1045, 95, 101 });
-	houseFlag.PushBack({ 520, 1147, 95, 101 });
-	houseFlag.PushBack({ 520, 1250, 95, 101 });
-	houseFlag.PushBack({ 520, 1353, 95, 101 });
-	houseFlag.PushBack({ 520, 1456, 95, 101 });
-	houseFlag.PushBack({ 520, 1560, 95, 101 });
-	houseFlag.PushBack({ 520, 1664, 95, 101 });
-
-	houseFlag.speed = 0.08f;
-	houseFlag.loop = true;
-
 }
 
 ModuleSceneCastle::~ModuleSceneCastle()
@@ -88,7 +67,6 @@ bool ModuleSceneCastle::Start()
 	bridge_top.Reset();
 
 	houseFlag_y = -633;
-	houseFlag.Reset();
 
 
 
@@ -118,11 +96,6 @@ bool ModuleSceneCastle::Start()
 		LOG("Cannot load the animations spritesheet in SceneCastle");
 		ret = false;
 	}
-	graphicsHouseFlag = App->textures->Load("Assets/maps/castle/castle_map_stuff.png");
-	if (graphicsHouseFlag == nullptr) {
-		LOG("Cannot load the animations spritesheet in SceneCastle");
-		ret = false;
-	}
 
 	if (!App->audio->PlayMusic("Assets/audio/gunbird_welcome_CastleScreen_music.ogg"))
 		ret = false;
@@ -140,7 +113,6 @@ update_status ModuleSceneCastle::Update()
 		background_y += speed;
 		soldier_left_y += speed;
 		bridge_top_y += speed;
-		houseFlag_y += speed;
 	}
 
 	// Draw everything --------------------------------------
@@ -170,12 +142,6 @@ update_status ModuleSceneCastle::Update()
 		}
 	}
 
-	if (graphicsHouseFlag != nullptr) {
-		if (!App->render->Blit(graphicsHouseFlag, 149,  houseFlag_y + SCREEN_HEIGHT, &(houseFlag.GetCurrentFrame()), 0.75f)) {
-			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-			status = UPDATE_ERROR;
-		}
-	}
 
 
 	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
@@ -233,6 +199,10 @@ update_status ModuleSceneCastle::Update()
 		App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70);
 	}*/
 
+	if (background_y == -2000) {
+		App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG, 149, -275, ENEMY_MOVEMENT::NO_MOVEMENT);
+	}
+
 	if (App->input->keyboard[SDL_SCANCODE_K] && !App->player2->IsEnabled()) {
 		App->player2->Enable();
 	}
@@ -262,12 +232,7 @@ bool ModuleSceneCastle::CleanUp()
 			ret = false;
 		}
 	}
-	if (graphicsHouseFlag != nullptr) {
-		if (!App->textures->Unload(graphicsHouseFlag)) {
-			LOG("Error unloading graphics in SceneCastle");
-			ret = false;
-		}
-	}
+
 	
 	if (!App->textures->Unload(graphics)) {
 		LOG("Error unloading graphics in SceneCastle");

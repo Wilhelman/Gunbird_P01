@@ -19,6 +19,9 @@
     <Filter Include="Modules\Enemies\Items">
       <UniqueIdentifier>{1c0847e7-21e0-4c0d-8770-9dfd7301e0bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Enemies\Buildings &amp; Stuff">
+      <UniqueIdentifier>{729cf171-ed5a-4025-b69f-76b0f7d770c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -92,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="Power_Up.cpp">
       <Filter>Modules\Enemies\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneCastle_houseFlag.cpp">
+      <Filter>Modules\Enemies\Buildings &amp; Stuff</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="Power_Up.h">
       <Filter>Modules\Enemies\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneCastle_houseFlag.h">
+      <Filter>Modules\Enemies\Buildings &amp; Stuff</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
