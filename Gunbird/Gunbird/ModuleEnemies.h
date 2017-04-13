@@ -2,6 +2,7 @@
 #define __ModuleEnemies_H__
 
 #include "Module.h"
+#include "Path.h"
 
 #define MAX_ENEMIES 100
 
@@ -13,11 +14,19 @@ enum ENEMY_TYPES
 	TERRESTIALTURRET
 };
 
+enum ENEMY_MOVEMENT
+{
+	NO_MOVEMENT,
+	TORPEDO_DIAGONALL_R,
+	TORPEDO_HORIZONTALR_L
+};
+
 class Enemy;
 
 struct EnemyInfo
 {
 	ENEMY_TYPES type = ENEMY_TYPES::NO_TYPE;
+	ENEMY_MOVEMENT typeMovement = ENEMY_MOVEMENT::NO_MOVEMENT;
 	int x, y;
 };
 
@@ -35,13 +44,17 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	bool AddEnemy(ENEMY_TYPES type, int x, int y);
+	bool AddEnemy(ENEMY_TYPES type, int x, int y, ENEMY_MOVEMENT typeMovement);
 
 private:
 
 	void SpawnEnemy(const EnemyInfo& info);
 
 private:
+
+	//paths (torpedo)
+	Path diagonalPathL_R;
+	Path horizontalPathR_L;
 
 	EnemyInfo queue[MAX_ENEMIES];
 	Enemy* enemies[MAX_ENEMIES];

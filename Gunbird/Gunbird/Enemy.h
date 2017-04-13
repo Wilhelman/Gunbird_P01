@@ -3,7 +3,9 @@
 
 #include "p2Point.h"
 #include "Animation.h"
+#include "Path.h"
 
+struct Path;
 struct SDL_Texture;
 struct Collider;
 
@@ -19,6 +21,7 @@ protected:
 public:
 	iPoint position;
 	int type;
+	Path movement;
 
 public:
 	Enemy(int x, int y);

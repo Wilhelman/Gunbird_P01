@@ -168,30 +168,30 @@ update_status ModuleSceneCastle::Update()
 
 	//ENEMY SPAWN PHASE
 
-	if (background_y == -1850) {
+	/*if (background_y == -1850) {
 		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -70);
 		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -30);
 		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 10);
 		
-	}
+	}*/
 	if (background_y == -2000) {
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -30, -32);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -60, -64);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -90, -96);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -120, -128);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -30, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -60, -64, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -90, -96, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -120, -128, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 	}
 
 	if (background_y == -1600) {
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH, 30);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 40, 30);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 80, 30);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 120, 30);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 40, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 80, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 120, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
 	}
 
-	if (background_y == -2000)
+	/*if (background_y == -2000)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70);
-	}
+	}*/
 
 	if (App->input->keyboard[SDL_SCANCODE_K] && !App->player2->IsEnabled()) {
 		App->player2->Enable();

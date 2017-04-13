@@ -25,11 +25,11 @@ Enemy_MetallicBalloon::Enemy_MetallicBalloon(int x, int y) : Enemy(x, y)
 
 	animation = &fly;
 
-	path.PushBack({ 0.0f, 1.5f }, 50, animation); // 64
-	path.PushBack({ 0.0f, 0.0f }, 100, animation); // 155
-	path.PushBack({ 0.0f, 1.5f }, 150, animation); // 70
-	path.PushBack({ 0.0f, 0.0f }, 100, animation); // 294
-	path.PushBack({ 0.0f, 1.5f }, 142, animation);
+	path.PushBack({ 0.0f, 1.5f }, 50); // 64
+	path.PushBack({ 0.0f, 0.0f }, 100); // 155
+	path.PushBack({ 0.0f, 1.5f }, 150); // 70
+	path.PushBack({ 0.0f, 0.0f }, 100); // 294
+	path.PushBack({ 0.0f, 1.5f }, 142);
 
 	path.loop = true;
 

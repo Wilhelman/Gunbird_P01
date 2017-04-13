@@ -15,6 +15,15 @@ ModuleEnemies::ModuleEnemies()
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
+
+	//torpedo movements
+	diagonalPathL_R.PushBack({ 2.3f, 2.5f }, 100);
+	diagonalPathL_R.loop = true;
+
+	horizontalPathR_L.PushBack({ -3.0f, 0.0f }, 72);
+	horizontalPathR_L.PushBack({ 0.0f, 0.0f }, 100);
+	horizontalPathR_L.PushBack({ 0.0f, 3.0f }, 300);
+	horizontalPathR_L.loop = false;
 }
 
 // Destructor
@@ -100,7 +109,7 @@ bool ModuleEnemies::CleanUp()
 	return true;
 }
 
-bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y)
+bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, ENEMY_MOVEMENT typeMovement)
 {
 	bool ret = false;
 
@@ -111,6 +120,7 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y)
 			queue[i].type = type;
 			queue[i].x = x;
 			queue[i].y = y;
+			queue[i].typeMovement = typeMovement;
 			ret = true;
 			break;
 		}
@@ -132,6 +142,16 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::TORPEDO:
 			enemies[i] = new Enemy_Torpedo(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::TORPEDO;
+			switch (info.typeMovement)
+			{
+			case ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R:
+				enemies[i]->movement = diagonalPathL_R;
+				break;
+			case ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L:
+				enemies[i]->movement = horizontalPathR_L;
+			default:
+				break;
+			}
 			break;
 		case ENEMY_TYPES::METALLICBALLOON:
 			enemies[i] = new Enemy_MetallicBalloon(info.x, info.y);

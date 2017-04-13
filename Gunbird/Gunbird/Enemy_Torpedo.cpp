@@ -2,6 +2,7 @@
 #include "Enemy_Torpedo.h"
 #include "ModuleCollision.h"
 #include "ModuleSceneCastle.h"
+#include "Path.h"
 
 Enemy_Torpedo::Enemy_Torpedo(int x, int y) : Enemy(x, y)
 {
@@ -20,23 +21,10 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 
-	diagonalPathL_R.PushBack({ 2.3f, 2.5f }, 100, &fly);
-	diagonalPathL_R.loop = true;
-
-	horizontalPathR_L.PushBack({ -3.0f, 0.0f }, 72, &fly);
-	horizontalPathR_L.PushBack({ 0.0f, 0.0f }, 100, &fly);
-	horizontalPathR_L.PushBack({ 0.0f, 3.0f }, 300, &fly);
-	horizontalPathR_L.loop = false;
-
 	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_Torpedo::Move()
 {
-	int castleBackground = App->sceneCastle->background_y;
-
-	if((castleBackground > -2050) && (castleBackground < -1750))
-		position = original_pos + diagonalPathL_R.GetCurrentPosition(&animation);
-	else if((castleBackground > -1650) && (castleBackground < -1250))
-		position = original_pos + horizontalPathR_L.GetCurrentPosition(&animation);
+	position = original_pos + movement.GetCurrentPosition(&animation);
 }
