@@ -21,17 +21,9 @@ Enemy_MetallicBalloon::Enemy_MetallicBalloon(int x, int y) : Enemy(x, y)
 	hitWhiteRed.speed = 0.5f;
 	hitWhiteRed.loop = true;
 
-	collider = App->collision->AddCollider({ 0, 0, 42, 53 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 42, 53 }, COLLIDER_TYPE::COLLIDER_ENEMY_FLYING, (Module*)App->enemies);
 
 	animation = &fly;
-
-	path.PushBack({ 0.0f, 1.5f }, 50); // 64
-	path.PushBack({ 0.0f, 0.0f }, 100); // 155
-	path.PushBack({ 0.0f, 1.5f }, 150); // 70
-	path.PushBack({ 0.0f, 0.0f }, 100); // 294
-	path.PushBack({ 0.0f, 1.5f }, 142);
-
-	path.loop = true;
 
 	original_pos.x = x;
 	original_pos.y = y;
@@ -40,7 +32,8 @@ Enemy_MetallicBalloon::Enemy_MetallicBalloon(int x, int y) : Enemy(x, y)
 void Enemy_MetallicBalloon::Move()
 {
 
-	position = original_pos + path.GetCurrentPosition(&animation);
+	//position = original_pos + path.GetCurrentPosition(&animation);
+	position.y += 1;
 
 	if (animation == &hitWhiteRed && lastTime == 0) {
 		lastTime = SDL_GetTicks();

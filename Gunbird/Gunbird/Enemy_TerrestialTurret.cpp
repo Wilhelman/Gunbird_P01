@@ -22,34 +22,15 @@ Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 
-	turret1_path.PushBack({ 0.7f,1.0f }, 45, &turretAnimation);
-	turret1_path.PushBack({ 0.0f,1.0f }, 3000, &turretAnimation);
-	turret1_path.loop = false;
-
-	turret2_path.PushBack({ 0.7f, 1.0f }, 80, &turretAnimation);
-	turret2_path.PushBack({ 0.0f,1.0f }, 3000, &turretAnimation);
-	turret2_path.loop = false;
-
-	turret3_path.PushBack({ 0.7f, 1.0f }, 60, &turretAnimation);
-	turret3_path.PushBack({ 0.0f, 0.2f }, 15, &turretAnimation);
-	turret3_path.PushBack({ 0.0f,1.0f }, 3000, &turretAnimation);
-	turret3_path.loop = false;
+	
 }
 
 void Enemy_TerrestialTurret::Move() {
 
-	int castleBackground = App->sceneCastle->background_y;
+	position.y += 1;
 
 	//position = original_pos + turret3_path.GetCurrentPosition(&animation);
 	
-	if ((castleBackground > -1855) && (castleBackground < -1813))
-		position = original_pos + turret1_path.GetCurrentPosition(&animation);
-
-	if ((castleBackground > -1813) && (castleBackground < -1771))
-		position = original_pos + turret2_path.GetCurrentPosition(&animation);
-
-	if (castleBackground > -1771)
-		position = original_pos + turret3_path.GetCurrentPosition(&animation);
 
 }
 void Enemy_TerrestialTurret::OnCollision(Collider* collider) {

@@ -142,8 +142,6 @@ update_status ModuleSceneCastle::Update()
 		}
 	}
 
-
-
 	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
 	{
 		if (!App->textures->Unload(graphicsSoldier)) {
@@ -162,7 +160,6 @@ update_status ModuleSceneCastle::Update()
 	}
 
 
-
 	//TODO change the position of the player to private to be more pro
 	if ((App->player->position.y < 0 && App->fade->FadeIsOver()) ||/*TODO: remove this condition*/ (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver()))
 		App->fade->FadeToBlack(this, this);
@@ -174,17 +171,34 @@ update_status ModuleSceneCastle::Update()
 
 	//ENEMY SPAWN PHASE
 
-	/*if (background_y == -1850) {
-		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -70);
-		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -30);
-		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 10);
-		
-	}*/
+
+	if (background_y == -2000)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_CASTLE);
+	}
+
+	if (background_y == -2000) {
+		App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG, 149, -275, ENEMY_MOVEMENT::NO_MOVEMENT);
+	}
+
 	if (background_y == -2000) {
 		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -30, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -60, -64, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -90, -96, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -120, -128, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R); 
+	}
+
+	if ((background_y > -1855) && (background_y < -1813)) {
+		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -70, ENEMY_MOVEMENT::TURRET_1_PATH);
+	}
+	else if ((background_y > -1813) && (background_y < -1771))
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -30, ENEMY_MOVEMENT::TURRET_2_PATH);
+
+	}
+	else if (background_y > -1771)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 10, ENEMY_MOVEMENT::TURRET_3_PATH);
 	}
 
 	if (background_y == -1600) {
@@ -194,14 +208,6 @@ update_status ModuleSceneCastle::Update()
 		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 120, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
 	}
 
-	/*if (background_y == -2000)
-	{
-		App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70);
-	}*/
-
-	if (background_y == -2000) {
-		App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG, 149, -275, ENEMY_MOVEMENT::NO_MOVEMENT);
-	}
 
 	if (App->input->keyboard[SDL_SCANCODE_K] && !App->player2->IsEnabled()) {
 		App->player2->Enable();

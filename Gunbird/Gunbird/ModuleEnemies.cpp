@@ -27,6 +27,28 @@ ModuleEnemies::ModuleEnemies()
 	horizontalPathR_L.PushBack({ 0.0f, 0.0f }, 100);
 	horizontalPathR_L.PushBack({ 0.0f, 3.0f }, 300);
 	horizontalPathR_L.loop = false;
+
+	//balloon path
+	balloonPathCastle.PushBack({ 0.0f, 1.5f }, 50); // 64
+	balloonPathCastle.PushBack({ 0.0f, 0.0f }, 100); // 155
+	balloonPathCastle.PushBack({ 0.0f, 1.5f }, 150); // 70
+	balloonPathCastle.PushBack({ 0.0f, 0.0f }, 100); // 294
+	balloonPathCastle.PushBack({ 0.0f, 1.5f }, 142);
+	balloonPathCastle.loop = false;
+
+	//TerrestialTurret paths
+	turret1_path.PushBack({ 0.7f,1.0f }, 45);
+	turret1_path.PushBack({ 0.0f,1.0f }, 3000);
+	turret1_path.loop = false;
+
+	turret2_path.PushBack({ 0.7f, 1.0f }, 80);
+	turret2_path.PushBack({ 0.0f,1.0f }, 3000);
+	turret2_path.loop = false;
+
+	turret3_path.PushBack({ 0.7f, 1.0f }, 60);
+	turret3_path.PushBack({ 0.0f, 0.2f }, 15);
+	turret3_path.PushBack({ 0.0f,1.0f }, 3000);
+	turret3_path.loop = false;
 }
 
 // Destructor
@@ -159,10 +181,33 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::METALLICBALLOON:
 			enemies[i] = new Enemy_MetallicBalloon(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::METALLICBALLOON;
+			switch (info.typeMovement)
+			{
+			case ENEMY_MOVEMENT::BALLOON_PATH_CASTLE:
+				enemies[i]->movement = balloonPathCastle;
+				break;
+			default:
+				break;
+			}
 			break;
 		case ENEMY_TYPES::TERRESTIALTURRET:
 			enemies[i] = new Enemy_TerrestialTurret(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::TERRESTIALTURRET;
+			switch (info.typeMovement)
+			{
+			case ENEMY_MOVEMENT::TURRET_1_PATH:
+				enemies[i]->movement = turret1_path;
+				break;
+			case ENEMY_MOVEMENT::TURRET_2_PATH:
+				enemies[i]->movement = turret2_path;
+				break;
+			case ENEMY_MOVEMENT::TURRET_3_PATH:
+				enemies[i]->movement = turret3_path;
+				break;
+
+			default:
+				break;
+			}
 			break;
 		case ENEMY_TYPES::CASTLE_HOUSEFLAG:
 			enemies[i] = new SceneCastle_houseFlag(info.x, info.y);
