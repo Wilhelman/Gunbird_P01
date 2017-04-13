@@ -9,6 +9,8 @@ class Enemy_TerrestialTurret : public Enemy
 private:
 	
 	Animation turretAnimation;
+	Animation turretRightAnimation;
+	Animation turretLeftAnimation;
 	Animation death;
 	iPoint original_pos;
 	Path turret1_path;
