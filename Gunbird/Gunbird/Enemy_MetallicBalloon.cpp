@@ -32,8 +32,7 @@ Enemy_MetallicBalloon::Enemy_MetallicBalloon(int x, int y) : Enemy(x, y)
 void Enemy_MetallicBalloon::Move()
 {
 
-	//position = original_pos + path.GetCurrentPosition(&animation);
-	position.y += 1;
+	position = original_pos + movement.GetCurrentPosition(&animation);
 
 	if (animation == &hitWhiteRed && lastTime == 0) {
 		lastTime = SDL_GetTicks();

@@ -21,18 +21,12 @@ Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 	
 	original_pos.x = x;
 	original_pos.y = y;
-
-	
 }
 
 void Enemy_TerrestialTurret::Move() {
-
-	position.y += 1;
-
-	//position = original_pos + turret3_path.GetCurrentPosition(&animation);
-	
-
+	position = original_pos + movement.GetCurrentPosition(&animation);
 }
+
 void Enemy_TerrestialTurret::OnCollision(Collider* collider) {
 
 }

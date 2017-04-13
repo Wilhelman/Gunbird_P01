@@ -9,7 +9,6 @@ class Enemy_MetallicBalloon : public Enemy
 private:
 	Animation fly;
 	Animation hitWhiteRed;
-	Path path;
 	iPoint original_pos;
 	
 

@@ -188,18 +188,16 @@ update_status ModuleSceneCastle::Update()
 		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -120, -128, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R); 
 	}
 
-	if ((background_y > -1855) && (background_y < -1813)) {
-		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -70, ENEMY_MOVEMENT::TURRET_1_PATH);
+	if (background_y == -1840) {
+		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -50, ENEMY_MOVEMENT::TURRET_1_PATH);
+		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -15, ENEMY_MOVEMENT::TURRET_2_PATH);
+		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 15, ENEMY_MOVEMENT::TURRET_3_PATH);
 	}
-	else if ((background_y > -1813) && (background_y < -1771))
-	{
-		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -30, ENEMY_MOVEMENT::TURRET_2_PATH);
-
-	}
-	else if (background_y > -1771)
+/*
+	if (background_y == -1771)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 10, ENEMY_MOVEMENT::TURRET_3_PATH);
-	}
+	}*/
 
 	if (background_y == -1600) {
 		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);

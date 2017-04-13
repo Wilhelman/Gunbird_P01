@@ -37,16 +37,16 @@ ModuleEnemies::ModuleEnemies()
 	balloonPathCastle.loop = false;
 
 	//TerrestialTurret paths
-	turret1_path.PushBack({ 0.7f,1.0f }, 45);
+	turret1_path.PushBack({ 0.6f,1.0f }, 60);
+	turret1_path.PushBack({ 0.0f, 0.3f }, 35);
 	turret1_path.PushBack({ 0.0f,1.0f }, 3000);
 	turret1_path.loop = false;
 
-	turret2_path.PushBack({ 0.7f, 1.0f }, 80);
+	turret2_path.PushBack({ 0.6f, 1.0f }, 120);
 	turret2_path.PushBack({ 0.0f,1.0f }, 3000);
 	turret2_path.loop = false;
 
-	turret3_path.PushBack({ 0.7f, 1.0f }, 60);
-	turret3_path.PushBack({ 0.0f, 0.2f }, 15);
+	turret3_path.PushBack({ 0.6f, 1.0f }, 60);
 	turret3_path.PushBack({ 0.0f,1.0f }, 3000);
 	turret3_path.loop = false;
 }
@@ -231,8 +231,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			if (enemies[i]->type == ENEMY_TYPES::METALLICBALLOON) {
 				if (enemies[i]->getLives() == 0) {
  					App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
-					enemies[i] = nullptr;												// c1->rect.x - 31.5, c1->rect.y -27   
-					delete enemies[i];	
+					delete enemies[i];
+					enemies[i] = nullptr;			
 					LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
 					break;  
 				}
@@ -240,8 +240,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			else if (enemies[i]->type == ENEMY_TYPES::TERRESTIALTURRET) {
 				if (enemies[i]->getLives() == 0) {
 					App->particles->AddParticle(App->particles->terrestialTurretExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
-					enemies[i] = nullptr;												// c1->rect.x - 31.5, c1->rect.y -27   
 					delete enemies[i];
+					enemies[i] = nullptr;
 					LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
 					break;
 				}
