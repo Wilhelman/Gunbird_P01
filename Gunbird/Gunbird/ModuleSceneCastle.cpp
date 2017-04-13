@@ -178,7 +178,7 @@ update_status ModuleSceneCastle::Update()
 		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -30, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -60, -64, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -90, -96, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -120, -128, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -120, -128, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R); 
 	}
 
 	if (background_y == -1600) {
@@ -232,6 +232,7 @@ bool ModuleSceneCastle::CleanUp()
 	App->enemies->Disable();
 	App->ui->Disable();
 	App->player->Disable();
+	App->player2->Disable();
 
 	return true;
 }

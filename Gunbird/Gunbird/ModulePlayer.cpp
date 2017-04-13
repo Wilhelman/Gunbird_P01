@@ -60,6 +60,8 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
+	spawnTime = 0;
+	godModeControl = false;
 	playerLives = 2;
 	playerLost = false;
 	deadPlayer = false;
@@ -175,13 +177,13 @@ update_status ModulePlayer::Update()
 					counter++;
 			}
 
-			if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_REPEAT && App->sceneCastle->IsEnabled())
+			if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
 			{
 				godModeControl = !godModeControl;
-				App->player->inmortal = !inmortal;
+				inmortal = !inmortal;
 			}
 
-			if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_REPEAT && App->sceneCastle->IsEnabled())
+			if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
 			{
 				deadPlayer = true;
 			}
@@ -221,37 +223,26 @@ update_status ModulePlayer::Update()
 				playerLost = true;
 			}
 			else {
-				
-				this->position.x = (SCREEN_WIDTH / 2) - 13;
-				//this->position.y = SCREEN_HEIGHT / 2 + 50;
-				playerLives--;
-				//colocar valnus en y = SCREEN_HEIGHT
-				this->position.y = SCREEN_HEIGHT;
+				if (spawnTime == 0) {
+					spawnTime = SDL_GetTicks();
+					playerLives--;
+					this->position.x = (SCREEN_WIDTH / 2) - 13;
+					this->position.y = SCREEN_HEIGHT + 24;
+				}
+
+				//change this animation to blink
+				current_animation = &idle;
 			
-				if (currentTime < lastTime + 1500)
+				if (currentTime < spawnTime + 1000)
 				{
-					//valnus sube position.y -= 1;
 					position.y -= 1;
-					//parpadea mientras lo hace
 				}
 				else {
+					spawnTime = 0;
 					this->deadPlayer = false;
 					App->player->inmortal = true;
 					lastTime = SDL_GetTicks();
 				}
-				/*
-				y que vvaya subiendo sin que el player tenga control sobre el
-				para ello hacer contador de segundo y medio aprox durante el cual:
-					valnus sube position.y -= 1;
-					parpadea mientras lo hace
-					una vez acaba *else*:
-						this->deadPlayer = false;
-						App->player->inmortal = true;
-						lastTime = SDL_GetTicks();
-				*/
-				//this->deadPlayer = false;
-				//App->player->inmortal = true;
-				//lastTime = SDL_GetTicks();
 			}
 		}
 	}

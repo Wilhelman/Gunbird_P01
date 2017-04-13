@@ -19,6 +19,7 @@ private:
 
 	uint currentTime;
 	uint lastTime;
+	uint spawnTime;
 
 public:
 	ModulePlayer();
@@ -50,7 +51,7 @@ public:
 	int counter = 0;
 	bool control = false;
 	bool playerLost;
-	bool godModeControl = false;
+	bool godModeControl;
 
 };
 
