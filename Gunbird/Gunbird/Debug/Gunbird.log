@@ -1,2 +1,5 @@
-﻿ModuleEnemies.obj : error LNK2019: unresolved external symbol "public: __thiscall SceneCastle_houseFlag::SceneCastle_houseFlag(int,int)" (??0SceneCastle_houseFlag@@QAE@HH@Z) referenced in function "private: void __thiscall ModuleEnemies::SpawnEnemy(struct EnemyInfo const &)" (?SpawnEnemy@ModuleEnemies@@AAEXABUEnemyInfo@@@Z)
-C:\Users\Martí\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe : fatal error LNK1120: 1 unresolved externals
+﻿  ModulePlayer.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
+  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
