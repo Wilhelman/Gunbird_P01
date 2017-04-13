@@ -58,6 +58,7 @@ ModuleSceneCastle::ModuleSceneCastle()
 	houseFlag.PushBack({ 520, 943, 95, 101 });
 	houseFlag.PushBack({ 520, 1045, 95, 101 });
 	houseFlag.PushBack({ 520, 1147, 95, 101 });
+	//Sprites missing here
 
 	houseFlag.speed = 0.08f;
 	houseFlag.loop = true;
@@ -81,6 +82,11 @@ bool ModuleSceneCastle::Start()
 
 	bridge_top_y = -718;
 	bridge_top.Reset();
+
+	houseFlag_y = -633;
+	houseFlag.Reset();
+
+
 
 	LOG("Loading SceneCastle assets");
 	bool ret = true;
@@ -130,6 +136,7 @@ update_status ModuleSceneCastle::Update()
 		background_y += speed;
 		soldier_left_y += speed;
 		bridge_top_y += speed;
+		houseFlag_y += speed;
 	}
 
 	// Draw everything --------------------------------------
@@ -160,7 +167,7 @@ update_status ModuleSceneCastle::Update()
 	}
 
 	if (graphicsHouseFlag != nullptr) {
-		if (!App->render->Blit(graphicsHouseFlag, 158, -1462 + SCREEN_HEIGHT, &(houseFlag.GetCurrentFrame()), 0.75f)) {
+		if (!App->render->Blit(graphicsHouseFlag, 149,  houseFlag_y + SCREEN_HEIGHT, &(houseFlag.GetCurrentFrame()), 0.75f)) {
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}

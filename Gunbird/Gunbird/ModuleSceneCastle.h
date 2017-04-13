@@ -20,6 +20,7 @@ private:
 	uint bridge_top_y;
 	
 	Animation houseFlag;
+	uint houseFlag_y;
 
 public:
 	ModuleSceneCastle();
