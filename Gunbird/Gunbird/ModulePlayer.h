@@ -50,6 +50,7 @@ public:
 	int counter = 0;
 	bool control = false;
 	bool playerLost;
+	bool godModeControl = false;
 
 };
 
