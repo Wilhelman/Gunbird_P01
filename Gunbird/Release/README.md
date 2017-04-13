@@ -29,9 +29,20 @@ Player controls:
 - DOWN: S key
 - BASIC SHOT: SPACE key
 
+Player 2 controls:
+- UP: UP_ARROW key
+- LEFT: LEFT_ARROW key
+- RIGHT: RIGHT_ARROW key
+- DOWN: DOWN_ARROW key
+- Join the game / Basic shot: K key
+
 General/developer controls:
 - SKIP SCREEN: INTRO key
 - EXIT GAME: ESC key
+- Show colliders: F1
+- God mode: F2
+- Direct win: F3
+- Direct lose: F4
 
 ## Changelist of all previous versions
 
@@ -70,6 +81,30 @@ _0.3 version:_
 * Two soldier and one bridge.
 
 _0.4 version:_
+
+* Player collider implemented
+* F2 - Debug Mode to show all colliders
+* Solved problem with the texture array (Out of limits)
+* Fixed problem with the particle array limits
+* Bug fixed with the fx sound of the shot
+* Player shot collider
+* Almost finished animation rotatation torpedo enemy and implemented collide box
+* Collision detetcted between torpedo enemy and player basic shot, now particles are destroyed when collided and screen change to ranking score window when player collide with torpedo enemey
+* Soldier animations and bridge fixed with right spritesheet
+
+_0.45 version:_
+
+* Added UI Module with basic information
+* Now the player have three lives
+* Modules enemies and Path implemented
+* Three enemies with their respective movement and interaction
+* Implemented Power Up and the interaction with the player
+* More sprites and animations added
+* Death animation and functionality of the player
+* Cooperative Mode
+* God Mode with F2 key
+* Direct win F3 key
+* Direct loose F4 key
 
 ## Team members
 

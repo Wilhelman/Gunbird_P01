@@ -6,6 +6,8 @@
 #include "Globals.h"
 #include "p2Point.h"
 
+#define INMORTAL_TIME 2000
+
 struct SDL_Texture;
 struct Collider;
 
@@ -17,6 +19,12 @@ private:
 
 	uint currentTime;
 	uint lastTime;
+	uint spawnTime;
+
+	bool hitted;
+	uint hittedTime;
+	uint shotPower;
+
 
 public:
 	ModulePlayer2();
@@ -28,10 +36,13 @@ public:
 
 	void OnCollision(Collider* c1, Collider* c2);
 
+	void removePowerUp();
+
 public:
 
 	SDL_Texture* graphics = nullptr;
 	Animation idle;
+	Animation blink;
 	Animation right_animation;
 	Animation right_idle_animation;
 	Animation left_idle_animation;
@@ -46,8 +57,9 @@ public:
 	int playerLives;
 	bool deadPlayer;
 	int counter = 0;
-	bool control = false;
+	bool shotControl = false;
 	bool playerLost;
+	bool godModeControl;
 
 };
 

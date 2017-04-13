@@ -9,6 +9,8 @@
 #include "Animation.h"
 #include "SDL\include\SDL_timer.h"
 
+#include "ModuleEnemies.h"
+
 //TODO: include the maps
 #include "ModuleSceneCastle.h"
 
@@ -52,6 +54,13 @@ ModulePlayer2::ModulePlayer2()
 	left_animation.PushBack({ 112, 74, 25, 33 });
 	left_animation.speed = 0.2f;
 	left_animation.loop = false;
+
+	//Blink animation
+	blink.PushBack({ 0,0,31,30 });
+	blink.PushBack({ 28,431,31,30 });
+	blink.PushBack({ 38, 0, 31, 29 });
+	blink.speed = 0.5f;
+	blink.loop = true;
 }
 
 ModulePlayer2::~ModulePlayer2()
@@ -60,6 +69,10 @@ ModulePlayer2::~ModulePlayer2()
 // Load assets
 bool ModulePlayer2::Start()
 {
+	hitted = false;
+	shotPower = 0;
+	spawnTime = 0;
+	godModeControl = false;
 	playerLives = 2;
 	playerLost = false;
 	deadPlayer = false;
@@ -89,7 +102,7 @@ update_status ModulePlayer2::Update()
 	int speed = 3;
 
 
-	if (!deadPlayer) {
+	if (!deadPlayer && !hitted) {
 		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT && App->sceneCastle->IsEnabled()))
 		{
 			speed = 5;
@@ -150,32 +163,64 @@ update_status ModulePlayer2::Update()
 				laserType++;
 				if (laserType > 2)
 				laserType = 0;*/
+				if (shotPower == 0) {
+					if (counter == 0)
+					{
+						App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+						shotControl = false;
+					}
+					else if (counter == 7)
+					{
+						App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+					}
+					else if (counter == 14)
+					{
+						App->particles->AddParticle(App->particles->laser2, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+					}
+					else if (counter == 21)
+					{
+						App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+						counter = 0;
+						shotControl = true;
+					}
 
-				if (counter == 0)
-				{
-					App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
-					control = false;
+					if (!shotControl)
+						counter++;
 				}
-				else if (counter == 7)
-				{
-					App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
-				}
-				else if (counter == 14)
-				{
-					App->particles->AddParticle(App->particles->laser2, position.x + 10, position.y - 40, COLLIDER_PLAYER_SHOT);
-				}
-				else if (counter == 21)
-				{
-					App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
-					counter = 0;
-					control = true;
+				else if (shotPower == 1) {
+					if (counter == 0)
+					{
+						App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
+						shotControl = false;
+					}
+					else if (counter == 7)
+					{
+						App->particles->AddParticle(App->particles->laser1_1, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
+					}
+					else if (counter == 14)
+					{
+						App->particles->AddParticle(App->particles->laser2_1, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
+					}
+					else if (counter == 21)
+					{
+						App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
+						counter = 0;
+						shotControl = true;
+					}
+
+					if (!shotControl)
+						counter++;
 				}
 
-				if (!control)
-					counter++;
+			} //end shot space
+
+			if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
+			{
+				godModeControl = !godModeControl;
+				inmortal = !inmortal;
 			}
 
-			if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_REPEAT && App->sceneCastle->IsEnabled())
+			if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
 			{
 				deadPlayer = true;
 			}
@@ -185,16 +230,6 @@ update_status ModulePlayer2::Update()
 
 		}
 		App->render->camera.y = original_camera_y;
-	}
-	else
-	{
-		current_animation = &dead_animation;
-		counter++;
-
-		if (counter > 12)
-		{
-			position.y += speed;
-		}
 	}
 
 	// Draw everything --------------------------------------
@@ -210,27 +245,61 @@ update_status ModulePlayer2::Update()
 
 	if (this->deadPlayer) {
 		LOG("Player is dead");
-		//anim dead player
-		//WHEN DEATH ANIMATION IS FINISHED{
-		if (playerLives < 0) {
-			playerLost = true;
+
+		current_animation = &dead_animation;
+
+		if (lastTime == 0)
+			lastTime = SDL_GetTicks();
+
+		if (currentTime < lastTime + 3000)
+		{
+			position.y += speed;
 		}
 		else {
-			this->deadPlayer = false;
-			this->position.x = SCREEN_WIDTH / 2;
-			this->position.y = SCREEN_HEIGHT / 2 + 50;
-			playerLives--;
-			//TODO: set bombs too
-			this->inmortal = true;
+			if (playerLives < 0) {
+				playerLost = true;
+			}
+			else {
+				if (spawnTime == 0) {
+					spawnTime = SDL_GetTicks();
+					playerLives--;
+					this->position.x = (SCREEN_WIDTH / 2) - 13;
+					this->position.y = SCREEN_HEIGHT + 24;
+				}
 
-			lastTime = SDL_GetTicks();
+				//change this animation to blink
+				current_animation = &blink;
+
+				if (currentTime < spawnTime + 1000)
+				{
+					position.y -= 1;
+				}
+				else {
+					spawnTime = 0;
+					this->deadPlayer = false;
+					this->inmortal = true;
+					lastTime = SDL_GetTicks();
+				}
+			}
 		}
 	}
 
-	currentTime = SDL_GetTicks();
+	if (hitted) {
+		position.y += 1;
+	}
 
-	if (currentTime > (lastTime + 2000))
+	//inmortal control time
+	if (currentTime > (lastTime + INMORTAL_TIME) && inmortal && (godModeControl == false)) {
 		this->inmortal = false;
+		lastTime = 0;
+	}
+
+	//hitted control time
+	if (currentTime > (hittedTime + 1000) && hitted) {
+		hitted = false;
+	}
+
+	currentTime = SDL_GetTicks();
 
 	return status;
 }
@@ -247,10 +316,26 @@ bool ModulePlayer2::CleanUp()
 
 void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 	if (!inmortal) {
-		if (c2->type == COLLIDER_ENEMY)
-			deadPlayer = true;
+		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING && !hitted) {
+			this->removePowerUp();
+		}
+
+		if (c2->type == COLLIDER_POWER_UP)
+			shotPower = 1;
+
 		if (deadPlayer == true) {
 			App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
+		}
+	}
+}
+
+void ModulePlayer2::removePowerUp() {
+	if (!hitted) {
+		hittedTime = SDL_GetTicks();
+		hitted = true;
+		if (shotPower > 0) {
+			shotPower = 0;
+			App->enemies->AddEnemy(ENEMY_TYPES::POWER_UP, position.x, position.y - 50, ENEMY_MOVEMENT::NO_MOVEMENT);
 		}
 	}
 }

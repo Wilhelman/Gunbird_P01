@@ -1,24 +1,14 @@
 ﻿  Application.cpp
-  Main.cpp
-  ModuleAudio.cpp
-  ModuleCharacterSelection.cpp
-  ModuleCollision.cpp
-  ModuleFadeToBlack.cpp
-  ModuleParticles.cpp
-  ModulePlayer.cpp
-  ModuleSceneMine.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(8): note: vea la declaración de 'Animation'
+  ModulePlayer2.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(8): note: vea la declaración de 'Animation'
   ModuleSceneCastle.cpp
-ModuleSceneCastle.cpp(28): warning C4305: '=': truncamiento de 'double' a 'float'
-ModuleSceneCastle.cpp(40): warning C4305: '=': truncamiento de 'double' a 'float'
-ModuleSceneCastle.cpp(122): warning C4305: '-=': truncamiento de 'double' a 'float'
-  ModuleInput.cpp
-  ModuleRender.cpp
-  ModuleScoreRanking.cpp
-  ModuleTextures.cpp
-  ModuleWelcomeScreen.cpp
-  ModuleWindow.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(8): note: vea la declaración de 'Animation'
   Generando código
-  All 150 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 225 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Generación de código finalizada
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Release\Gunbird.exe
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Release\Gunbird.pdb (Full PDB)

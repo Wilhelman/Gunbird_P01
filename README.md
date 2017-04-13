@@ -28,11 +28,21 @@ Player controls:
 - RIGHT: D key
 - DOWN: S key
 - BASIC SHOT: SPACE key
-- SHOW COLLISION BOXES: F2 key
+
+Player 2 controls:
+- UP: UP_ARROW key
+- LEFT: LEFT_ARROW key
+- RIGHT: RIGHT_ARROW key
+- DOWN: DOWN_ARROW key
+- Join the game / Basic shot: K key
 
 General/developer controls:
 - SKIP SCREEN: INTRO key
 - EXIT GAME: ESC key
+- Show colliders: F1
+- God mode: F2
+- Direct win: F3
+- Direct lose: F4
 
 ## Changelist of all previous versions
 
@@ -65,9 +75,10 @@ _0.2 version:_
 _0.3 version:_
 
 * Implemented basic shot with sound fx.
-* Added animations to Castle Scene. (Two soldier and one bridge)
+* Added animations to Castle Scene.*
 * Now we can load sound fx.
-* Now music is in .ogg and the fx sounds in .wav.
+
+* Two soldier and one bridge.
 
 _0.4 version:_
 
@@ -80,6 +91,20 @@ _0.4 version:_
 * Almost finished animation rotatation torpedo enemy and implemented collide box
 * Collision detetcted between torpedo enemy and player basic shot, now particles are destroyed when collided and screen change to ranking score window when player collide with torpedo enemey
 * Soldier animations and bridge fixed with right spritesheet
+
+_0.45 version:_
+
+* Added UI Module with basic information
+* Now the player have three lives
+* Modules enemies and Path implemented
+* Three enemies with their respective movement and interaction
+* Implemented Power Up and the interaction with the player
+* More sprites and animations added
+* Death animation and functionality of the player
+* Cooperative Mode
+* God Mode with F2 key
+* Direct win F3 key
+* Direct loose F4 key
 
 ## Team members
 
@@ -104,4 +129,5 @@ _Termens Vázquez, Ariadna's responsability and Github account_
 * Github account: https://github.com/AriTeva
 
 
--- FrozenSloth Studios -- 
+
+FrozenSloth Studios
