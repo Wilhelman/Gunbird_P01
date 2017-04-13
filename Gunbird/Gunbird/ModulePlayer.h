@@ -35,6 +35,7 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 	Animation idle;
+	Animation blink;
 	Animation right_animation;
 	Animation right_idle_animation;
 	Animation left_idle_animation;

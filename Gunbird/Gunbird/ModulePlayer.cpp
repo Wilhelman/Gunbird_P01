@@ -52,6 +52,13 @@ ModulePlayer::ModulePlayer()
 	left_animation.PushBack({ 112, 74, 25, 33 });
 	left_animation.speed = 0.2f;
 	left_animation.loop = false;
+
+	//Blink animation
+	blink.PushBack({ 0,0,31,30 });
+	blink.PushBack({ 28,431,31,30 });
+	blink.PushBack({ 38, 0, 31, 29 });
+	blink.speed = 0.5f;
+	blink.loop = true;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -231,7 +238,7 @@ update_status ModulePlayer::Update()
 				}
 
 				//change this animation to blink
-				current_animation = &idle;
+				current_animation = &blink;
 			
 				if (currentTime < spawnTime + 1000)
 				{
