@@ -177,7 +177,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 
 	if (collider_type != COLLIDER_NONE) {
 		LOG("Creating particle colliders...");
-		p->collider = App->collision->AddCollider({p->position.x, p->position.y, 15, 19}, collider_type, this);
+		p->collider = App->collision->AddCollider({p->position.x, p->position.y, p->anim.GetCurrentFrame().w , p->anim.GetCurrentFrame().h}, collider_type, this);
 	}
 	 
 	active[last_particle++] = p;
