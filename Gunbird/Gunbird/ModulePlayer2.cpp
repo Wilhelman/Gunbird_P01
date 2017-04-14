@@ -143,7 +143,7 @@ update_status ModulePlayer2::Update()
 					position.y += speed;
 			}
 
-			if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN || (0 < counter))
+			if (App->input->keyboard[SDL_SCANCODE_KP_ENTER] == KEY_STATE::KEY_DOWN || (0 < counter))
 			{
 				//Old switch. Keep it it here for now
 				/*switch (laserType)

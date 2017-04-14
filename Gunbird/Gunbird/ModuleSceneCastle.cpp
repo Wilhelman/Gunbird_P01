@@ -207,7 +207,7 @@ update_status ModuleSceneCastle::Update()
 	}
 
 
-	if (App->input->keyboard[SDL_SCANCODE_K] && !App->player2->IsEnabled()) {
+	if (App->input->keyboard[SDL_SCANCODE_KP_2] && !App->player2->IsEnabled()) {
 		App->player2->Enable();
 	}
 
