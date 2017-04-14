@@ -34,7 +34,8 @@ Player 2 controls:
 - LEFT: LEFT_ARROW key
 - RIGHT: RIGHT_ARROW key
 - DOWN: DOWN_ARROW key
-- Join the game / Basic shot: K key
+- JOIN THE GAME: 2 key (NUMPAD)
+- BASIC SHOT: ENTER key (NUMPAD)
 
 General/developer controls:
 - SKIP SCREEN: INTRO key
