@@ -40,10 +40,10 @@ Player 2 controls:
 General/developer controls:
 - SKIP SCREEN: INTRO key
 - EXIT GAME: ESC key
-- Show colliders: F1
-- God mode: F2
-- Direct win: F3
-- Direct lose: F4
+- SHOW COLLIDERS: F1
+- GOD MODE: F2
+- DIRECT WIN: F3
+- DIRECT LOSE: F4
 
 ## Changelist of all previous versions
 
