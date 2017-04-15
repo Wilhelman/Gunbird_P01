@@ -1,5 +1,35 @@
-﻿  ModulePlayer2.cpp
+﻿  ModuleSceneCastle.cpp
 c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
   c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+  ModulePlayer2.cpp
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+  ModulePlayer.cpp
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+  ModuleParticles.cpp
+  ModuleEnemies.cpp
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): warning C4099: 'Animation': type name first seen using 'struct' now seen using 'class'
+  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\animation.h(7): note: see declaration of 'Animation'
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
+  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
+  Generating Code...
+  Compiling...
+  Enemy_TerrestialTurret.cpp
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
+  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
+  Enemy.cpp
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
+  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
+  Application.cpp
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  ModuleCharacterSelection.cpp
   Gunbird.vcxproj -> C:\Users\Víctor Masó\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
   Gunbird.vcxproj -> C:\Users\Víctor Masó\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)

@@ -3,7 +3,6 @@
 
 #include "Enemy.h"
 
-
 class Power_Up : public Enemy
 {
 private:
@@ -12,7 +11,7 @@ private:
 	bool right;
 
 public:
-
+	
 	Power_Up(int x, int y);
 	void Move();
 

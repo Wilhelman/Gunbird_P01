@@ -42,7 +42,7 @@ Power_Up::Power_Up(int x, int y) : Enemy(x, y)
 
 void Power_Up::Move()
 {
-	//randomize start movement somehow
+	//TODO: randomize start movement somehow
 
 	if (up) 
 		position.y -= 1;

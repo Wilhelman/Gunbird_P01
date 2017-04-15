@@ -62,7 +62,12 @@ public:
 
 	Particle balloonDeathExplosion;
 	Particle terrestialTurretExplosion;
-	
+
+	//Particles for sound FX
+	Particle PowerUp;
+	Particle hitEnemy;
+	Particle valnusDeathScream;
+
 };
 
 #endif // __MODULEPARTICLES_H__

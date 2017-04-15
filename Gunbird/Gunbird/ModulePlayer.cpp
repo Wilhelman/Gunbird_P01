@@ -7,6 +7,7 @@
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "Animation.h"
+#include "ModuleAudio.h"
 #include "SDL\include\SDL_timer.h"
 
 #include "ModuleEnemies.h"
@@ -311,6 +312,11 @@ bool ModulePlayer::CleanUp()
 
 	App->textures->Unload(graphics);
 
+	LOG("Unloading player sound fx");
+	App->audio->UnLoadFx(App->particles->PowerUp.fx);
+	App->audio->UnLoadFx(App->particles->hitEnemy.fx);
+	App->audio->UnLoadFx(App->particles->valnusDeathScream.fx);
+
 	return true;
 }
 
@@ -318,13 +324,21 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 	if (!inmortal) {
 		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING && !hitted) {
 			this->removePowerUp();
+			App->particles->hitEnemy.fx = App->audio->LoadFx("Assets/audio/effects/Valnus_hit_enemy.wav");
+			App->audio->PlayFx(App->particles->hitEnemy.fx);
 		}
 
 		if (c2->type == COLLIDER_POWER_UP)
+		{
 			shotPower = 1;
-
+			App->particles->PowerUp.fx = App->audio->LoadFx("Assets/audio/effects/Valnus_voice_PowerUp.wav");
+			App->audio->PlayFx(App->particles->PowerUp.fx);
+		}
+			
 		if (deadPlayer == true) {
 			App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
+			App->particles->valnusDeathScream.fx = App->audio->LoadFx("Assets/audio/effects/Valnus_Scream_hitted.wav");
+			App->audio->PlayFx(App->particles->valnusDeathScream.fx);
 		}
 	}
 }
