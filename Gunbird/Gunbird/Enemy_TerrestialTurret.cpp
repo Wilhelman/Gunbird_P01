@@ -3,7 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModuleSceneCastle.h"
 #include "ModulePlayer.h"
-#define PI 3.14159265
+#define PI 3.14159265 //TODO: remove if not needed
 #define ANGLE_RANGE 0.20943951
 
 Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
@@ -14,7 +14,14 @@ Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 	turretDownAnimation.speed = 0.2f;
 
 	// RIGHT 1
-	turretRight_1.PushBack({ 29, 30, 28, 41 });
+	//turretRight_1.PushBack({ 29, 30, 28, 41 });
+	turretRight_1.PushBack({ 31, 272, 28, 41 });
+	turretRight_1.PushBack({ 70, 272, 28, 41 });
+	turretRight_1.PushBack({ 110, 272, 28, 41 });
+	turretRight_1.PushBack({ 148, 272, 28, 41 });
+	turretRight_1.PushBack({ 186, 272, 28, 41 });
+	turretRight_1.PushBack({ 223, 272, 28, 41 });
+
 	turretRight_1.loop = true;
 	turretRight_1.speed = 0.2f;
 
@@ -76,13 +83,6 @@ void Enemy_TerrestialTurret::Move() {
 		else if (angle > ANGLE_RANGE * 5 && angle <= ANGLE_RANGE * 6)
 			animation = &turretRight_6;
 	}
-	
-	/*if (App->player->position.x > position.x) {
-		animation = &turretRightAnimation;
-	}
-	else {
-		animation = &turretLeftAnimation;
-	}*/
 }
 
 void Enemy_TerrestialTurret::OnCollision(Collider* collider) {
