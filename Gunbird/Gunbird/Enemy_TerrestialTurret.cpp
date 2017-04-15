@@ -9,24 +9,32 @@
 Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 {
 	// DOWN
-	turretDownAnimation.PushBack({ 111, 195, 28, 41 });
+	turretDownAnimation.PushBack({ 31, 324, 28, 41 });
+	turretDownAnimation.PushBack({ 70, 324, 28, 41 });
+	turretDownAnimation.PushBack({ 110, 324, 28, 41 });
+	turretDownAnimation.PushBack({ 148, 324, 28, 41 });
+	turretDownAnimation.PushBack({ 186, 324, 28, 41 });
+	turretDownAnimation.PushBack({ 223, 324, 28, 41 });
 	turretDownAnimation.loop = true;
 	turretDownAnimation.speed = 0.2f;
 
 	// RIGHT 1
-	//turretRight_1.PushBack({ 29, 30, 28, 41 });
 	turretRight_1.PushBack({ 31, 272, 28, 41 });
 	turretRight_1.PushBack({ 70, 272, 28, 41 });
 	turretRight_1.PushBack({ 110, 272, 28, 41 });
 	turretRight_1.PushBack({ 148, 272, 28, 41 });
 	turretRight_1.PushBack({ 186, 272, 28, 41 });
 	turretRight_1.PushBack({ 223, 272, 28, 41 });
-
 	turretRight_1.loop = true;
 	turretRight_1.speed = 0.2f;
 
 	//RIGHT 2
-	turretRight_2.PushBack({ 68, 30, 28, 41 });
+	turretRight_2.PushBack({ 31, 372, 28, 41 });
+	turretRight_2.PushBack({ 70, 372, 28, 41 });
+	turretRight_2.PushBack({ 110, 372, 28, 41 });
+	turretRight_2.PushBack({ 148, 372, 28, 41 });
+	turretRight_2.PushBack({ 186, 372, 28, 41 });
+	turretRight_2.PushBack({ 223, 372, 28, 41 });
 	turretRight_2.loop = true;
 	turretRight_2.speed = 0.2f;
 
@@ -68,19 +76,19 @@ void Enemy_TerrestialTurret::Move() {
 	{
 		angle = atan2(deltaX, deltaY);
 
-		if (angle == 0)
+		if (angle > - (ANGLE_RANGE / 2) && angle <= (ANGLE_RANGE / 2))
 			animation = &turretDownAnimation;
- 		else if (angle > 0 && angle <= ANGLE_RANGE)
+ 		else if (angle > (ANGLE_RANGE / 2) && angle <= (3/2)*ANGLE_RANGE)
 			animation = &turretRight_1;
-		else if (angle > ANGLE_RANGE && angle <= ANGLE_RANGE * 2)
+		else if (angle > (3/2)*ANGLE_RANGE && angle <= (5/2)*ANGLE_RANGE)
 			animation = &turretRight_2;
-		else if (angle > ANGLE_RANGE * 2 && angle <= ANGLE_RANGE * 3)
+		else if (angle > (5/2)*ANGLE_RANGE && angle <= (7/2)*ANGLE_RANGE)
 			animation = &turretRight_3;
-		else if (angle > ANGLE_RANGE * 3 && angle <= ANGLE_RANGE * 4)
+		else if (angle > (7/2)*ANGLE_RANGE && angle <= (9/2)*ANGLE_RANGE)
 			animation = &turretRight_4;
-		else if (angle > ANGLE_RANGE * 4 && angle <= ANGLE_RANGE * 5)
+		else if (angle > (9/2)*ANGLE_RANGE && angle <= (11/2)*ANGLE_RANGE)
 			animation = &turretRight_5;
-		else if (angle > ANGLE_RANGE * 5 && angle <= ANGLE_RANGE * 6)
+		else if (angle > (11/2)*ANGLE_RANGE && angle <= (13/2)*ANGLE_RANGE)
 			animation = &turretRight_6;
 	}
 }
