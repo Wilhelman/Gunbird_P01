@@ -20,8 +20,9 @@ enum ENEMY_TYPES
 enum ENEMY_MOVEMENT
 {
 	NO_MOVEMENT,
-	TORPEDO_DIAGONALL_R, 
+	TORPEDO_DIAGONALL_R,
 	TORPEDO_HORIZONTALR_L,
+	TORPEDO_STRIGHT_ON,
 	BALLOON_PATH_CASTLE,
 	TURRET_1_PATH,
 	TURRET_2_PATH,
@@ -64,6 +65,7 @@ private:
 	//paths (torpedo)
 	Path diagonalPathL_R;
 	Path horizontalPathR_L;
+	Path strightOnPath;
 
 	// path balloon
 	Path balloonPathCastle;

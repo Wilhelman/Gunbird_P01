@@ -206,6 +206,15 @@ update_status ModuleSceneCastle::Update()
 		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 120, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
 	}
 
+	if (background_y == -1000) {
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, 0, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, 0, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
+	
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_KP_2] && !App->player2->IsEnabled()) {
 		App->player2->Enable();

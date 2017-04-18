@@ -28,6 +28,9 @@ ModuleEnemies::ModuleEnemies()
 	horizontalPathR_L.PushBack({ 0.0f, 3.0f }, 300);
 	horizontalPathR_L.loop = false;
 
+	strightOnPath.PushBack({ 0.0f, 2.0f }, 400);
+	strightOnPath.loop = false;
+
 	//balloon path
 	balloonPathCastle.PushBack({ 0.0f, 1.5f }, 50); // 64
 	balloonPathCastle.PushBack({ 0.0f, 0.0f }, 100); // 155
@@ -174,6 +177,8 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				break;
 			case ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L:
 				enemies[i]->movement = horizontalPathR_L;
+			case ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON:
+				enemies[i]->movement = strightOnPath;
 			default:
 				break;
 			}
