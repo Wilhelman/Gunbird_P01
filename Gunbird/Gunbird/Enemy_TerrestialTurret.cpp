@@ -66,8 +66,8 @@ Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 
 void Enemy_TerrestialTurret::Move() {
 
-	double deltaX =  (App->player->position.x + 21) - (position.x + 15);
-	double deltaY = (App->player->position.y + 21) - (position.y + 15);
+	double deltaX =  ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
+	double deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
 	double angle;
 
 	position = original_pos + movement.GetCurrentPosition(&animation);
@@ -76,7 +76,7 @@ void Enemy_TerrestialTurret::Move() {
 	{
 		angle = atan2(deltaX, deltaY);
 
-		if (angle > - (ANGLE_RANGE / 2) && angle <= (ANGLE_RANGE / 2))
+		if (angle > - (ANGLE_RANGE) && angle <= (ANGLE_RANGE / 2))
 			animation = &turretDownAnimation;
  		else if (angle > (ANGLE_RANGE / 2) && angle <= (3/2)*ANGLE_RANGE)
 			animation = &turretRight_1;
