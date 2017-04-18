@@ -177,7 +177,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				break;
 			case ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L:
 				enemies[i]->movement = horizontalPathR_L;
-			case ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON:
+			case ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON:
 				enemies[i]->movement = strightOnPath;
 			default:
 				break;
@@ -209,7 +209,6 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			case ENEMY_MOVEMENT::TURRET_3_PATH:
 				enemies[i]->movement = turret3_path;
 				break;
-
 			default:
 				break;
 			}
