@@ -31,6 +31,14 @@ ModuleEnemies::ModuleEnemies()
 	strightOnPath.PushBack({ 0.0f, 2.0f }, 400);
 	strightOnPath.loop = false;
 
+	diagonalPath_R_Final.PushBack({ 0.0f,2.0f }, 50);
+	diagonalPath_R_Final.PushBack({ -1.0f,2.5f }, 200);
+	diagonalPath_R_Final.loop = false;
+
+	diagonalPath_L_Final.PushBack({ 0.0f,2.0f }, 100);
+	diagonalPath_L_Final.PushBack({ 1.0f,2.5f }, 200);
+	diagonalPath_L_Final.loop = false;
+
 	//balloon path
 	balloonPathCastle.PushBack({ 0.0f, 1.5f }, 50); // 64
 	balloonPathCastle.PushBack({ 0.0f, 0.0f }, 100); // 155
@@ -177,8 +185,16 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				break;
 			case ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L:
 				enemies[i]->movement = horizontalPathR_L;
+				break;
 			case ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON:
 				enemies[i]->movement = strightOnPath;
+				break;
+			case ENEMY_MOVEMENT::TORPEDO_DIAGONAL_R_FINAL:
+				enemies[i]->movement = diagonalPath_R_Final;
+				break;
+			case ENEMY_MOVEMENT::TORPEDO_DIAGONAL_L_FINAL:
+				enemies[i]->movement = diagonalPath_L_Final;
+				break;
 			default:
 				break;
 			}

@@ -23,6 +23,8 @@ enum ENEMY_MOVEMENT
 	TORPEDO_DIAGONALL_R,
 	TORPEDO_HORIZONTALR_L,
 	TORPEDO_STRIGHT_ON,
+	TORPEDO_DIAGONAL_R_FINAL,
+	TORPEDO_DIAGONAL_L_FINAL,
 	BALLOON_PATH_CASTLE,
 	TURRET_1_PATH,
 	TURRET_2_PATH,
@@ -66,7 +68,8 @@ private:
 	Path diagonalPathL_R;
 	Path horizontalPathR_L;
 	Path strightOnPath;
-
+	Path diagonalPath_R_Final;
+	Path diagonalPath_L_Final;
 	// path balloon
 	Path balloonPathCastle;
 
