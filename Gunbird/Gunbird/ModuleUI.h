@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "SDL\include\SDL_pixels.h"
+#include "Animation.h"
 
 #define MAX_FONTS 10
 #define MAX_FONT_CHARS 256
@@ -34,7 +35,10 @@ public:
 	bool livesCount[3];
 
 	SDL_Rect liveIcon;
+	SDL_Rect p1_Icon;
 	SDL_Rect bombIcon;
+	Animation p2_insertCoin;
+
 	// Load Font
 	int Load(const char* texture_path, const char* characters, uint rows = 1);
 	void UnLoad(int font_id);

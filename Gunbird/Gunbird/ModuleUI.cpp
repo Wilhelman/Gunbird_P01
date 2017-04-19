@@ -21,10 +21,19 @@ ModuleUI::ModuleUI()
 	liveIcon.w = 15;
 	liveIcon.h = 12;
 
+	p1_Icon.x = 77;
+	p1_Icon.y = 69;
+	p1_Icon.w = 15;
+	p1_Icon.h = 12;
+
 	bombIcon.x = 207;
 	bombIcon.y = 151;
 	bombIcon.w = 12;
 	bombIcon.h = 15;
+
+	p2_insertCoin.PushBack({ 77, 24, 77, 13 });
+	p2_insertCoin.PushBack({ 77, 11, 77, 13 });
+	p2_insertCoin.speed = 0.03f;
 }
 
 ModuleUI::~ModuleUI()
@@ -54,35 +63,56 @@ update_status ModuleUI::Update()
 
 	char str[10];
 	sprintf_s(str, "%i", score);
-	this->BlitText(100, 100, font_score, str);
+
+	int x_correction = 70;
+	if (score > 99)
+		x_correction -= fonts[font_score].char_w;
+	if (score > 999)
+		x_correction -= fonts[font_score].char_w;
+	if (score > 9999)
+		x_correction -= fonts[font_score].char_w;
+	this->BlitText(x_correction, 4, font_score, str);
 
 	if (App->player->playerLives >= 0) {
-		if (!App->render->Blit(graphics, 5, 16, &liveIcon, 1.0f)) {
+		if (!App->render->Blit(graphics, 5, 18, &liveIcon, 1.0f)) {
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}
 	}
 
 	if (App->player->playerLives >= 1) {
-		if (!App->render->Blit(graphics, 22, 16, &liveIcon, 1.0f)) {
+		if (!App->render->Blit(graphics, 22, 18, &liveIcon, 1.0f)) {
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}
 	}
 
 	if (App->player->playerLives >= 2) {
-		if (!App->render->Blit(graphics, 38, 16, &liveIcon, 1.0f)) {
+		if (!App->render->Blit(graphics, 38, 18, &liveIcon, 1.0f)) {
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}
 	}
 
+	//BLITTING BOMBS
 	if (!App->render->Blit(graphics, 5 , SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
 		LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}
 
 	if (!App->render->Blit(graphics, 20, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+		LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	//BLITTING 1P
+	if (!App->render->Blit(graphics, 5, 4, &p1_Icon, 1.0f)) {
+		LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	//BLITTING 2P INSERT COIN
+	if (!App->render->Blit(graphics, SCREEN_WIDTH / 2 + 6, 4, &(p2_insertCoin.GetCurrentFrame()), 1.0f)) {
 		LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}
@@ -176,6 +206,9 @@ void ModuleUI::BlitText(int x, int y, int font_id, const char* text) const
 		LOG("Unable to render text with bmp font id %d", font_id);
 		return;
 	}
+
+	if (strcmp(text ,"0") == 0)
+		text = "00";
 
 	const Font* font = &fonts[font_id];
 	SDL_Rect rect;

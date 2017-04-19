@@ -268,6 +268,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				if (enemies[i]->getLives() == 0) {
 					App->ui->score += 500;
  					App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
+					this->AddEnemy(ENEMY_TYPES::POWER_UP, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
 					delete enemies[i];
 					enemies[i] = nullptr;			
 					LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
@@ -295,7 +296,6 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::POWER_UP && c2->type == COLLIDER_TYPE::COLLIDER_PLAYER) {
 				App->ui->score += 2000;
-				this->AddEnemy(ENEMY_TYPES::POWER_UP, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;
