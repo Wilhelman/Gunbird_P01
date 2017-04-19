@@ -139,6 +139,7 @@
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="Power_Up.cpp" />
     <ClCompile Include="SceneCastle_houseFlag.cpp" />
+    <ClCompile Include="SceneCastle_houseFlag2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -170,6 +171,7 @@
     <ClInclude Include="Path.h" />
     <ClInclude Include="Power_Up.h" />
     <ClInclude Include="SceneCastle_houseFlag.h" />
+    <ClInclude Include="SceneCastle_houseFlag2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

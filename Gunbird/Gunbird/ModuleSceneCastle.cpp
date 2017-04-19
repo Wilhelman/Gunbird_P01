@@ -187,7 +187,7 @@ update_status ModuleSceneCastle::Update()
 	}
 
 
-	if (background_y <= -1880 && graphicsSoldier != nullptr) {
+	if (background_y <= -1880  && graphicsSoldier != nullptr) {
 		if (!App->render->Blit(graphicsSoldier, (int)soldier_left_wall_x + 90, soldier_left_wall_y + SCREEN_HEIGHT - 297, &(soldier_left_wall.GetCurrentFrame()), 0.75f)) {
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
@@ -249,6 +249,9 @@ update_status ModuleSceneCastle::Update()
 	if (background_y == -2000) {
 		App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG, 149, -275, ENEMY_MOVEMENT::NO_MOVEMENT);
 	}
+
+
+
 
 	if (background_y == -2000) {
 		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -30, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
