@@ -33,32 +33,6 @@ ModuleSceneCastle::ModuleSceneCastle()
 	soldier_left_y = -145;
 	soldier_left_x = 50;
 
-	soldier_left_wall.PushBack({ 533, 373, 13, 26 });
-	soldier_left_wall.PushBack({ 550, 373, 13, 26 });
-	soldier_left_wall.PushBack({ 566, 373, 13, 26 });
-	soldier_left_wall.PushBack({ 582, 373, 13, 26 });
-	soldier_left_wall.speed = 0.1f;
-	soldier_left_wall_y = -145;
-	soldier_left_wall_x = 50;
-
-
-	soldier_up.PushBack({ 534, 345, 15, 24 });
-	soldier_up.PushBack({ 554, 345, 15, 24 });
-	soldier_up.PushBack({ 573, 345, 15, 24 });
-	soldier_up.PushBack({ 592, 345, 15, 24 });
-	soldier_up.speed = 0.05f;
-	soldier_up_y = -145;
-	soldier_up_x = 50;
-
-	soldier_up_blink.PushBack({ 534, 345, 15, 24 });
-	soldier_up_blink.PushBack({ 554, 345, 15, 24 });
-	soldier_up_blink.PushBack({ 573, 345, 15, 24 });
-	soldier_up_blink.PushBack({ 592, 345, 15, 24 });
-	soldier_up_blink.speed = 0.05f;
-	soldier_up_blink_y = -145;
-	soldier_up_blink_x = 50;
-
-
 	bridge_top.PushBack({ 37, 40, 122, 36 });
 	bridge_top.PushBack({ 162, 40, 122, 46 });
 	bridge_top.PushBack({ 288, 40, 120, 54 });
@@ -89,18 +63,12 @@ bool ModuleSceneCastle::Start()
 	soldier_left_x = 50;
 	soldier_left.Reset();
 
-	soldier_left_wall_y = -145;
-	soldier_left_wall_x = 50;
-	soldier_left_wall.Reset();
-
-	soldier_up_y = -145;
-	soldier_up_x = 50;
-	soldier_up.Reset();
-
 	bridge_top_y = -718;
 	bridge_top.Reset();
 
 	houseFlag_y = -633;
+
+
 
 	LOG("Loading SceneCastle assets");
 	bool ret = true;
@@ -164,42 +132,6 @@ update_status ModuleSceneCastle::Update()
 			status = UPDATE_ERROR;
 		}
 		soldier_left_x -= 0.4f;
-	}
-
-	if (background_y <= -1800 && graphicsSoldier != nullptr) {
-		if (background_y >= -1880)
-		{
-			if (!App->render->Blit(graphicsSoldier, (int)soldier_up_x + 35, soldier_up_y + SCREEN_HEIGHT, &(soldier_up_blink.GetCurrentFrame()), 0.5f)) {
-				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-		}
-
-		if (!App->render->Blit(graphicsSoldier, (int)soldier_up_x + 35, soldier_up_y + SCREEN_HEIGHT, &(soldier_up.GetCurrentFrame()), 0.75f)) {
-			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-			status = UPDATE_ERROR;
-		}
-		if (!App->render->Blit(graphicsSoldier, (int)soldier_up_x + 50, soldier_up_y + SCREEN_HEIGHT + 20, &(soldier_up.GetCurrentFrame()), 0.75f)) {
-			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-			status = UPDATE_ERROR;
-		}
-	}
-
-
-	if (background_y <= -1880 && graphicsSoldier != nullptr) {
-		if (!App->render->Blit(graphicsSoldier, (int)soldier_left_wall_x + 90, soldier_left_wall_y + SCREEN_HEIGHT - 297, &(soldier_left_wall.GetCurrentFrame()), 0.75f)) {
-			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-			status = UPDATE_ERROR;
-		}
-		if (!App->render->Blit(graphicsSoldier, (int)soldier_left_wall_x + 70, soldier_left_wall_y + SCREEN_HEIGHT - 297, &(soldier_left_wall.GetCurrentFrame()), 0.75f)) {
-			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-			status = UPDATE_ERROR;
-		}
-		if (!App->render->Blit(graphicsSoldier, (int)soldier_left_wall_x + 50, soldier_left_wall_y + SCREEN_HEIGHT - 297, &(soldier_left_wall.GetCurrentFrame()), 0.75f)) {
-			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-			status = UPDATE_ERROR;
-		}
-		soldier_left_wall_x -= 0.4f;
 	}
 
 	//bridge animation

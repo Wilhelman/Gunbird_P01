@@ -16,18 +16,6 @@ private:
 	uint soldier_left_y;
 	float soldier_left_x;
 
-	Animation soldier_left_wall;
-	uint soldier_left_wall_y;
-	float soldier_left_wall_x;
-
-	Animation soldier_up;
-	uint soldier_up_y;
-	float soldier_up_x;
-
-	Animation soldier_up_blink;
-	uint soldier_up_blink_y;
-	float soldier_up_blink_x;
-
 	Animation bridge_top;
 	uint bridge_top_y;
 
