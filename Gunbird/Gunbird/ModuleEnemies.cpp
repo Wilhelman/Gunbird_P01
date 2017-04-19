@@ -4,6 +4,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
+#include "ModuleUI.h"
 #include "Enemy.h"
 #include "Enemy_Torpedo.h"
 #include "Enemy_MetallicBalloon.h"
@@ -265,6 +266,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			enemies[i]->OnCollision(c2);
 			if (enemies[i]->type == ENEMY_TYPES::METALLICBALLOON) {
 				if (enemies[i]->getLives() == 0) {
+					App->ui->score += 500;
  					App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
 					delete enemies[i];
 					enemies[i] = nullptr;			
@@ -274,6 +276,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::TERRESTIALTURRET) {
 				if (enemies[i]->getLives() == 0) {
+					App->ui->score += 500;
 					App->particles->AddParticle(App->particles->terrestialTurretExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
 					delete enemies[i];
 					enemies[i] = nullptr;
@@ -284,14 +287,15 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 
 			else if(enemies[i]->type == ENEMY_TYPES::TORPEDO){
 				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
-					//randomize when to drop powerup somehow
-					this->AddEnemy(ENEMY_TYPES::POWER_UP, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
+					App->ui->score += 200;
 					delete enemies[i];
 					enemies[i] = nullptr;
 					break;
 				}
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::POWER_UP && c2->type == COLLIDER_TYPE::COLLIDER_PLAYER) {
+				App->ui->score += 2000;
+				this->AddEnemy(ENEMY_TYPES::POWER_UP, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;
@@ -299,6 +303,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			else if (enemies[i]->type == ENEMY_TYPES::CASTLE_HOUSEFLAG) {
 				if (enemies[i]->getLives() == 0) {
 					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+						App->ui->score += 3000;
 						delete enemies[i];
 						enemies[i] = nullptr;
 						break;
