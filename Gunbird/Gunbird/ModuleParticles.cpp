@@ -93,7 +93,22 @@ ModuleParticles::ModuleParticles()
 	terrestialTurretExplosion.speed.y = 1;
 	terrestialTurretExplosion.anim.loop = false;
 
+	//Torpedo Explosion
 
+	torpedoExplosion.anim.PushBack({ 870,123,22,20 });
+	torpedoExplosion.anim.PushBack({ 894,119,33,28 });
+	torpedoExplosion.anim.PushBack({ 929,119,42,30 });
+	torpedoExplosion.anim.PushBack({ 974,116,49,37 });
+	torpedoExplosion.anim.PushBack({ 1031,118,48,35 });
+	torpedoExplosion.anim.PushBack({ 817,157,41,30 });
+	torpedoExplosion.anim.PushBack({ 919,162,33,22 });
+	torpedoExplosion.anim.PushBack({ 957,166,31,16 });
+	torpedoExplosion.anim.PushBack({ 993,167,26,15 });
+	
+	torpedoExplosion.life = 1000;
+	torpedoExplosion.anim.speed = 0.2f;
+	torpedoExplosion.speed.y = 1;
+	torpedoExplosion.anim.loop = false;
 
 }
 
