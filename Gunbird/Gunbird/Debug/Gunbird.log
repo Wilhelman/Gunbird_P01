@@ -1,13 +1,5 @@
-﻿  SceneCastle_Vase.cpp
+﻿  ModuleSceneCastle.cpp
 c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
   c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
-  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
-  ModuleEnemies.cpp
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): warning C4099: 'Animation': type name first seen using 'struct' now seen using 'class'
-  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\animation.h(7): note: see declaration of 'Animation'
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
-  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
-  Generating Code...
   Gunbird.vcxproj -> C:\Users\Martí\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
   Gunbird.vcxproj -> C:\Users\Martí\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
