@@ -1,5 +1,3 @@
-﻿  ModulePlayer.cpp
-c:\users\guillermogs2\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
-  c:\users\guillermogs2\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
-  Gunbird.vcxproj -> C:\Users\guillermogs2\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
-  Gunbird.vcxproj -> C:\Users\guillermogs2\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
+﻿  ModuleParticles.cpp
+  Gunbird.vcxproj -> C:\Users\Martí\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
+  Gunbird.vcxproj -> C:\Users\Martí\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
