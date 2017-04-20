@@ -10,6 +10,7 @@
 #include "Enemy_MetallicBalloon.h"
 #include "Enemy_TerrestialTurret.h"
 #include "SceneCastle_houseFlag.h"
+#include "SceneCastle_houseFlag2.h"
 #include "SceneCastle_Vase.h"
 
 #include "Power_Up.h"
@@ -253,6 +254,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new SceneCastle_houseFlag(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::CASTLE_HOUSEFLAG;
 			break;
+		case ENEMY_TYPES::CASTLE_HOUSEFLAG_2:
+			enemies[i] = new SceneCastle_houseFlag2(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::CASTLE_HOUSEFLAG_2;
+			break;
 		case ENEMY_TYPES::CASTLE_VASE:
 			enemies[i] = new SceneCastle_Vase(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::CASTLE_VASE;
@@ -319,6 +324,18 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					}
 				}
 			}
+
+			else if (enemies[i]->type == ENEMY_TYPES::CASTLE_HOUSEFLAG_2) {
+				if (enemies[i]->getLives() == 0) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+						App->ui->score += 3000;
+						delete enemies[i];
+						enemies[i] = nullptr;
+						break;
+					}
+				}
+			}
+
 			else if (enemies[i]->type == ENEMY_TYPES::CASTLE_VASE) {
 				if (enemies[i]->getLives() == 0) {
 					App->ui->score += 500; 
