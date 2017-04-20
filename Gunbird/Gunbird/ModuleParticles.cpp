@@ -54,7 +54,7 @@ ModuleParticles::ModuleParticles()
 		deathPlayerExplosion.anim.PushBack({ 762,1744,130,129 });
 		deathPlayerExplosion.anim.PushBack({ 906,1744,130,129 });
 
-		deathPlayerExplosion.anim.speed = 0.8f;
+		deathPlayerExplosion.anim.speed = 1.0f;
 		deathPlayerExplosion.speed.y = 1;
 		deathPlayerExplosion.anim.loop = false;
 	}

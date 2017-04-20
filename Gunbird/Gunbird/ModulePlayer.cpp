@@ -248,10 +248,8 @@ update_status ModulePlayer::Update()
 	}
 
 	if (this->deadPlayer) {
-		LOG("Player is dead");
 
 		current_animation = &dead_animation;
-
 		
 		if (playerExpControl == true)
 		App->particles->AddParticle(App->particles->deathPlayerExplosion, (playerCollider->rect.x - ((60- ((playerCollider->rect.w)) / 2))), (playerCollider->rect.y - ((110 - (playerCollider->rect.h)) / 2)));
