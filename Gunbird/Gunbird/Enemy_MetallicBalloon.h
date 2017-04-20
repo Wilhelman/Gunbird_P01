@@ -10,6 +10,8 @@ private:
 	Animation fly;
 	Animation hitWhiteRed;
 	iPoint original_pos;
+
+	uint lastShot;
 	
 
 public:
@@ -17,6 +19,7 @@ public:
 	Enemy_MetallicBalloon(int x, int y);
 
 	void Move();
+	void Shoot();
 
 	void OnCollision(Collider* collider);
 	uint getLives();

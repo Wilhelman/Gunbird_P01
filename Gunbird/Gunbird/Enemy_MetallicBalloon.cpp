@@ -1,7 +1,10 @@
 #include "Application.h"
 #include "Enemy_MetallicBalloon.h"
 #include "ModuleCollision.h"
+#include "ModuleParticles.h"
 #include "SDL\include\SDL_timer.h"
+
+#define ENEMYSHOOTDELAY 2000
 
 Enemy_MetallicBalloon::Enemy_MetallicBalloon(int x, int y) : Enemy(x, y)
 {
@@ -48,10 +51,31 @@ void Enemy_MetallicBalloon::Move()
 }
 
 void Enemy_MetallicBalloon::OnCollision(Collider* collider) {
-	animation = &hitWhiteRed;
-	lives--;
+	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+		animation = &hitWhiteRed;
+		lives--;
+	}
 }
 
 uint Enemy_MetallicBalloon::getLives() {
 	return lives;
+}
+
+void Enemy_MetallicBalloon::Shoot()
+{
+	unsigned int currentTime = 0;
+
+	currentTime = SDL_GetTicks();
+
+	if (currentTime > (lastShot + ENEMYSHOOTDELAY)) {
+		
+		App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 9, position.y + 47,COLLIDER_TYPE::COLLIDER_NONE);
+		App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 23, position.y + 47, COLLIDER_TYPE::COLLIDER_NONE);
+
+		App->particles->AddParticle(App->particles->enemyBasicShot, position.x + 10, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyBasicShot, position.x + 24, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+
+		lastShot = currentTime;
+	}
+	
 }

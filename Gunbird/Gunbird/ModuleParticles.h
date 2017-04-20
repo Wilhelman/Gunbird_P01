@@ -52,15 +52,22 @@ private:
 
 public:
 
+	//player shots
 	Particle laser0;
 	Particle laser1;
 	Particle laser2;
-
 	Particle laser0_1;
 	Particle laser1_1;
 	Particle laser2_1;
 
+	//player death explosion
 	Particle deathPlayerExplosion;
+
+	//enemies basic shot
+	Particle enemyBasicShot_start;
+	Particle enemyBasicShot;
+
+	//enemies death explosion
 	Particle balloonDeathExplosion;
 	Particle terrestialTurretExplosion;
 	Particle torpedoExplosion;
