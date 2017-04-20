@@ -8,15 +8,15 @@
 class SceneCastle_Vase : public Enemy
 {
 private:
+
 	Animation vase;
 	iPoint original_pos;
 
 public:
 
-
 	SceneCastle_Vase(int x, int y);
-	
 	void OnCollision(Collider* collider);
+	void Move();
 
 };
 

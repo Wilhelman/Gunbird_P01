@@ -252,6 +252,8 @@ update_status ModuleSceneCastle::Update()
 
 		if (background_y == -2000) {
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG, 149, -275, ENEMY_MOVEMENT::NO_MOVEMENT);
+			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 149, -200, ENEMY_MOVEMENT::NO_MOVEMENT);
+
 		}
 
 		if (background_y == -2000) {
@@ -273,6 +275,8 @@ update_status ModuleSceneCastle::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 80, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 120, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
 		}
+
+
 
 		if (background_y == -1000) {
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);

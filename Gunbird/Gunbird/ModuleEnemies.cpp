@@ -10,6 +10,7 @@
 #include "Enemy_MetallicBalloon.h"
 #include "Enemy_TerrestialTurret.h"
 #include "SceneCastle_houseFlag.h"
+#include "SceneCastle_Vase.h"
 
 #include "Power_Up.h"
 
@@ -251,6 +252,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::CASTLE_HOUSEFLAG:
 			enemies[i] = new SceneCastle_houseFlag(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::CASTLE_HOUSEFLAG;
+			break;
+		case ENEMY_TYPES::CASTLE_VASE:
+			enemies[i] = new SceneCastle_Vase(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::CASTLE_VASE;
 			break;
 		case ENEMY_TYPES::POWER_UP:
 			enemies[i] = new Power_Up(info.x, info.y);
