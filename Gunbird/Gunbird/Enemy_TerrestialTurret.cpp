@@ -39,7 +39,14 @@ Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 	turretRight_2.speed = 0.2f;
 
 	//RIGHT 3
-	turretRight_3.PushBack({ 108, 29, 29, 42 });
+	turretRight_3.PushBack({ 31, 423, 28, 41 });
+	turretRight_3.PushBack({ 70, 423, 28, 41 });
+	turretRight_3.PushBack({ 110, 423, 28, 41 });
+	turretRight_3.PushBack({ 148, 423, 28, 41 });
+	turretRight_3.PushBack({ 186, 423, 28, 41 });
+	turretRight_3.PushBack({ 223, 423, 28, 41 });
+	turretRight_3.loop = true;
+	turretRight_3.speed = 0.2f;
 	turretRight_3.loop = true;
 	turretRight_3.speed = 0.2f;
 
