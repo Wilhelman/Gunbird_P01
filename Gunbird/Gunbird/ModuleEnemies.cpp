@@ -314,6 +314,15 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					}
 				}
 			}
+			else if (enemies[i]->type == ENEMY_TYPES::CASTLE_VASE) {
+				if (enemies[i]->getLives() == 0) {
+					App->ui->score += 500; 
+					delete enemies[i];
+					enemies[i] = nullptr;
+					LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
+					break;
+				}
+			}
 		}
 	}
 }
