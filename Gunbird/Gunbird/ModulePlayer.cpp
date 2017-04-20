@@ -74,6 +74,7 @@ bool ModulePlayer::Start()
 	shotPower = 0;
 	spawnTime = 0;
 	godModeControl = false;
+	playerExpControl = false;
 	playerLives = 2;
 	playerLost = false;
 	deadPlayer = false;
@@ -224,6 +225,8 @@ update_status ModulePlayer::Update()
 			if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
 			{
 				deadPlayer = true;
+				playerExpControl = true;
+
 			}
 			
 			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
@@ -249,6 +252,11 @@ update_status ModulePlayer::Update()
 
 		current_animation = &dead_animation;
 
+		
+		if (playerExpControl == true)
+		App->particles->AddParticle(App->particles->deathPlayerExplosion, (playerCollider->rect.x - ((60- ((playerCollider->rect.w)) / 2))), (playerCollider->rect.y - ((110 - (playerCollider->rect.h)) / 2)));
+		playerExpControl = false;
+		
 		if(lastTime == 0)
 			lastTime = SDL_GetTicks();
 
@@ -336,9 +344,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 		}
 			
 		if (deadPlayer == true) {
-			App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
+			//App->particles->AddParticle(App->particles->deathPlayerExplosion, (c1->rect.x - ((130 - (c1->rect.w)) / 2)), (c1->rect.y - ((130 - (c1->rect.h)) / 2)));
 			App->particles->valnusDeathScream.fx = App->audio->LoadFx("Assets/audio/effects/Valnus_Scream_hitted.wav");
 			App->audio->PlayFx(App->particles->valnusDeathScream.fx);
+
 		}
 	}
 }

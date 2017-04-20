@@ -60,6 +60,7 @@ public:
 	Particle laser1_1;
 	Particle laser2_1;
 
+	Particle deathPlayerExplosion;
 	Particle balloonDeathExplosion;
 	Particle terrestialTurretExplosion;
 	Particle torpedoExplosion;

@@ -58,6 +58,7 @@ public:
 	bool deadPlayer;
 	int counter = 0;
 	bool shotControl = false;
+	bool playerExpControl;
 	bool playerLost;
 	bool godModeControl;
 

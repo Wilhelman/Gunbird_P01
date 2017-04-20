@@ -195,7 +195,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			case ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L:
 				enemies[i]->movement = horizontalPathR_L;
 				break;
-			case ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON:
+			case ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON:
 				enemies[i]->movement = strightOnPath;
 				break;
 			case ENEMY_MOVEMENT::TORPEDO_DIAGONAL_R_FINAL:

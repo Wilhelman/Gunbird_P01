@@ -32,12 +32,13 @@ ModuleSceneCastle::ModuleSceneCastle()
 	soldier_left.speed = 0.1f;
 	soldier_left_y = -145;
 	soldier_left_x = 50;
+	soldier_left_wall.loop = true;
 
 	soldier_left_wall.PushBack({ 533, 373, 13, 26 });
 	soldier_left_wall.PushBack({ 550, 373, 13, 26 });
 	soldier_left_wall.PushBack({ 566, 373, 13, 26 });
 	soldier_left_wall.PushBack({ 582, 373, 13, 26 });
-	soldier_left_wall.speed = 0.1f;
+	soldier_left_wall.speed = 0.06f;
 	soldier_left_wall_y = -145;
 	soldier_left_wall_x = 50;
 
@@ -187,7 +188,7 @@ update_status ModuleSceneCastle::Update()
 	}
 
 
-	if (background_y <= -1880  && graphicsSoldier != nullptr) {
+	if (background_y <= -1650  && graphicsSoldier != nullptr) {
 		if (!App->render->Blit(graphicsSoldier, (int)soldier_left_wall_x + 90, soldier_left_wall_y + SCREEN_HEIGHT - 297, &(soldier_left_wall.GetCurrentFrame()), 0.75f)) {
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
@@ -279,43 +280,43 @@ update_status ModuleSceneCastle::Update()
 	}
 
 	if (background_y == -1000) {
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, 0, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, 0, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 	}
 	if(background_y == -910){
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, 0, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_L_FINAL);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, 0, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, 0, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, 0, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_R_FINAL);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_L_FINAL);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_R_FINAL);
 
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 112, -90, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_R_FINAL);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 112, -122, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_R_FINAL);
 	}
 
 	if (background_y == -800) {
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, 0, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, 0, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 	}
 	if (background_y == -710) {
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, 0, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_L_FINAL2);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, 0, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, 0, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, 0, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_R_FINAL2);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_L_FINAL2);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_R_FINAL2);
 
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, -90, ENEMY_MOVEMENT::TORPEDO_STRIGHT_ON);
-		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 112, -90, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_L_FINAL2);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
+		App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 112, -122, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_L_FINAL2);
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_KP_2] && !App->player2->IsEnabled()) {

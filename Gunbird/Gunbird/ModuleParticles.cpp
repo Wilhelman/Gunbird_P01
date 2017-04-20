@@ -13,6 +13,51 @@ ModuleParticles::ModuleParticles()
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
+	//Death Player Explosion
+	
+	deathPlayerExplosion.anim.PushBack({ 241,1059,86,86 });
+	deathPlayerExplosion.anim.PushBack({ 413,1058,97,96 });
+	deathPlayerExplosion.anim.PushBack({ 580,1048,113,111 });
+	deathPlayerExplosion.anim.PushBack({ 750,1055,97,96 });
+	deathPlayerExplosion.anim.PushBack({ 910,1048,113,111 });
+	deathPlayerExplosion.anim.PushBack({ 1089,1051,97,96 });
+	deathPlayerExplosion.anim.PushBack({ 1268,1046,113,111 });
+	deathPlayerExplosion.anim.PushBack({ 42,1202,128,129 });
+	deathPlayerExplosion.anim.PushBack({ 234,1210,102,95 });
+	deathPlayerExplosion.anim.PushBack({ 400,1195,128,129 });
+	deathPlayerExplosion.anim.PushBack({ 582,1196,129,129 });
+	deathPlayerExplosion.anim.PushBack({ 755,1204,106,103 });
+	deathPlayerExplosion.anim.PushBack({ 911,1190,130,129 });
+	deathPlayerExplosion.anim.PushBack({ 1099,1202,106,130 });
+	deathPlayerExplosion.anim.PushBack({ 1267,1187,129,129 });
+	deathPlayerExplosion.anim.PushBack({ 64,1381,100,101 });
+	deathPlayerExplosion.anim.PushBack({ 227,1365,129,129 });
+	deathPlayerExplosion.anim.PushBack({ 424,1375,100,102 });
+	deathPlayerExplosion.anim.PushBack({ 538,1358,127,129 });
+	deathPlayerExplosion.anim.PushBack({ 764,1369,100,102 });
+	deathPlayerExplosion.anim.PushBack({ 917,1358,127,128 });
+	deathPlayerExplosion.anim.PushBack({ 1105,1363,102,105 });
+	deathPlayerExplosion.anim.PushBack({ 1275,1359,127,127 });
+	deathPlayerExplosion.anim.PushBack({ 70,1562,102,104 });
+	deathPlayerExplosion.anim.PushBack({ 248,1557,100,105 });
+	deathPlayerExplosion.anim.PushBack({ 430,1552,100,105 });
+	deathPlayerExplosion.anim.PushBack({ 608,1548,100,107 });
+	deathPlayerExplosion.anim.PushBack({ 770,1551,100,107 });
+	deathPlayerExplosion.anim.PushBack({ 939,1551,100,106 });
+	deathPlayerExplosion.anim.PushBack({ 1121,1573,83,84 });
+	deathPlayerExplosion.anim.PushBack({ 1297,1572,83,84 });
+	deathPlayerExplosion.anim.PushBack({ 80,1757,84,109 });
+	deathPlayerExplosion.anim.PushBack({ 259,1755,84,108 });
+	deathPlayerExplosion.anim.PushBack({ 450,1768,66,81 });
+	deathPlayerExplosion.anim.PushBack({ 629,1763,66,81 });
+	deathPlayerExplosion.anim.PushBack({ 788,1783,71,51 });
+	deathPlayerExplosion.anim.PushBack({ 930,1782,71,51 });
+
+	deathPlayerExplosion.life = 1000;
+	deathPlayerExplosion.anim.speed = 0.25f;
+	deathPlayerExplosion.speed.y = 1;
+	deathPlayerExplosion.anim.loop = false;
+
 
 	//laser particle
 	laser0.anim.PushBack({ 613, 801, 15, 19 });
@@ -118,6 +163,7 @@ ModuleParticles::~ModuleParticles()
 // Load assets
 bool ModuleParticles::Start()
 {
+
 	LOG("Loading particles");
 	graphics = App->textures->Load("Assets/particles/particles.png"); 
 
