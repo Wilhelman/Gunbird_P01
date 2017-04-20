@@ -161,6 +161,31 @@ ModuleParticles::ModuleParticles()
 		torpedoExplosion.anim.loop = false;
 	}
 
+	//Vase Explosion
+	{
+		vaseExplosion.anim.PushBack({ 45,120,47,38 });
+		vaseExplosion.anim.PushBack({ 114,119,47,45 });
+		vaseExplosion.anim.PushBack({ 183,114,49,54 });
+		vaseExplosion.anim.PushBack({ 253,110,55,62 });
+		vaseExplosion.anim.PushBack({ 337,108,51,58 });
+		vaseExplosion.anim.PushBack({ 416,105,54,61 });
+		vaseExplosion.anim.PushBack({ 494,108,54,64 });
+		vaseExplosion.anim.PushBack({ 11,321,54,64 });//change coords
+		vaseExplosion.anim.PushBack({ 83,321,54,65 });//
+		vaseExplosion.anim.PushBack({ 158,322,54,64 });//
+		vaseExplosion.anim.PushBack({ 235,322,57,64 });//
+		vaseExplosion.anim.PushBack({ 305,323,58,66 });//
+		vaseExplosion.anim.PushBack({ 385,325,58,66 });//
+		vaseExplosion.anim.PushBack({ 467,330,56,64 });//
+		vaseExplosion.anim.PushBack({ 14,422,54,61 });//
+		vaseExplosion.anim.PushBack({ 89,425,52,60 });//change coords
+
+		vaseExplosion.life = 1000;
+		vaseExplosion.anim.speed = 0.2f;
+		vaseExplosion.speed.y = 1;
+		vaseExplosion.anim.loop = false;
+	}
+
 	//Enemy Basic Shot
 	{
 		enemyBasicShot.anim.PushBack({ 1509,245,6,6 });
