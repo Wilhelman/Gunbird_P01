@@ -59,7 +59,7 @@ bool Application::Init()
 	player2->Disable();
 	collision->Disable();
 	enemies->Disable();
-
+	
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
 
@@ -68,6 +68,7 @@ bool Application::Init()
 
 	//TODO: remove this in release mode
 	sceneCastle->Enable();
+
 	//player->Enable();
 
 	return ret;

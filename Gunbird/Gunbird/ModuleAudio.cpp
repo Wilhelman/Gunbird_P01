@@ -120,6 +120,10 @@ uint ModuleAudio::LoadFx(const char* path)
 	{
 		fx[last_fx] = chunk;
 		ret = last_fx++;
+		if (last_fx == MAX_FX) {
+			last_fx = 0;
+			ret = last_fx;
+		}
 	}
 
 	return ret;

@@ -134,7 +134,7 @@ bool ModuleUI::CleanUp()
 		ret = false;
 	}
 
-	return false;
+	return ret;
 }
 
 // Load new texture from file path

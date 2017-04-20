@@ -20,8 +20,6 @@
 ModuleSceneCastle::ModuleSceneCastle()
 {
 	// Background
-	background_x = 0;
-	background_y = -2108;
 	background.w = SCREEN_WIDTH;
 	background.h = 2108;
 
@@ -80,14 +78,10 @@ ModuleSceneCastle::~ModuleSceneCastle()
 // Load assets
 bool ModuleSceneCastle::Start()
 {
+
+	//setting bckground
 	background_x = 0;
 	background_y = -2108;
-	background.w = SCREEN_WIDTH;
-	background.h = 2108;
-
-	soldier_left_y = -145;
-	soldier_left_x = 50;
-	soldier_left.Reset();
 
 	soldier_left_wall_y = -145;
 	soldier_left_wall_x = 50;
@@ -101,6 +95,11 @@ bool ModuleSceneCastle::Start()
 	bridge_top.Reset();
 
 	houseFlag_y = -633;
+
+	soldier_left_y = -145;
+	soldier_left_x = 50;
+	soldier_left.Reset();
+
 
 	LOG("Loading SceneCastle assets");
 	bool ret = true;
@@ -232,7 +231,7 @@ update_status ModuleSceneCastle::Update()
 
 	//TODO change the position of the player to private to be more pro
 	if ((App->player->position.y < 0 && App->fade->FadeIsOver()) ||/*TODO: remove this condition*/ (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver()))
-		App->fade->FadeToBlack(this, this);
+		App->fade->FadeToBlack(this, this,0.5f);
 
 	if (App->player->playerLost) {
 		LOG("Player LOST");
@@ -333,7 +332,7 @@ bool ModuleSceneCastle::CleanUp()
 
 	bool ret = true;
 
-	App->audio->Disable();
+	//App->audio->Disable();
 
 	if (graphicsSoldier != nullptr) {
 		if (!App->textures->Unload(graphicsSoldier)) {
