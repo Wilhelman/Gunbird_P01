@@ -71,6 +71,7 @@ public:
 	Particle balloonDeathExplosion;
 	Particle terrestialTurretExplosion;
 	Particle torpedoExplosion;
+	Particle vaseExplosion;
 
 	//Particles for sound FX
 	Particle PowerUp;

@@ -252,8 +252,6 @@ update_status ModuleSceneCastle::Update()
 
 		if (background_y == -2000) {
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG, 149, -275, ENEMY_MOVEMENT::NO_MOVEMENT);
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 149, -200, ENEMY_MOVEMENT::NO_MOVEMENT);
-
 		}
 
 		if (background_y == -1800) {
@@ -275,6 +273,14 @@ update_status ModuleSceneCastle::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -50, ENEMY_MOVEMENT::TURRET_1_PATH);
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -15, ENEMY_MOVEMENT::TURRET_2_PATH);
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 15, ENEMY_MOVEMENT::TURRET_3_PATH);
+		}
+
+		if (background_y == -1500) {
+			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 10, -135, ENEMY_MOVEMENT::NO_MOVEMENT);
+			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 185, -135, ENEMY_MOVEMENT::NO_MOVEMENT);
+			 
+			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 10, -348, ENEMY_MOVEMENT::NO_MOVEMENT);
+			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 185, -348, ENEMY_MOVEMENT::NO_MOVEMENT);
 		}
 
 		if (background_y == -1600) {

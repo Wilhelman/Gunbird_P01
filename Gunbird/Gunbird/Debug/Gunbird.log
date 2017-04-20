@@ -1,13 +1,39 @@
-﻿  SceneCastle_Vase.cpp
+﻿  ModuleSceneCastle.cpp
 c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
   c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
-  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
+  ModulePlayer2.cpp
+c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+  ModulePlayer.cpp
+c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+  ModuleParticles.cpp
   ModuleEnemies.cpp
 c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): warning C4099: 'Animation': type name first seen using 'struct' now seen using 'class'
   c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\animation.h(7): note: see declaration of 'Animation'
 c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
   c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
+  Enemy_TerrestialTurret.cpp
+c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
+  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
+  Enemy_MetallicBalloon.cpp
+c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
+  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
+  Enemy.cpp
+c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
+  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
+  Application.cpp
+c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
   Generating Code...
+  Skipping... (no relevant changes detected)
+  ModuleCharacterSelection.cpp
+  LINK : C:\Users\Martí\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe not found or not built by the last incremental link; performing full link
   Gunbird.vcxproj -> C:\Users\Martí\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
   Gunbird.vcxproj -> C:\Users\Martí\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
