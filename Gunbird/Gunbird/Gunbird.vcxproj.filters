@@ -102,6 +102,9 @@
     <ClCompile Include="SceneCastle_houseFlag2.cpp">
       <Filter>Modules\Enemies\Buildings &amp; Stuff</Filter>
     </ClCompile>
+    <ClCompile Include="SceneCastle_Vase.cpp">
+      <Filter>Modules\Enemies\Buildings &amp; Stuff</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals.h">
@@ -192,6 +195,9 @@
       <Filter>Modules\Enemies\Buildings &amp; Stuff</Filter>
     </ClInclude>
     <ClInclude Include="SceneCastle_houseFlag2.h">
+      <Filter>Modules\Enemies\Buildings &amp; Stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneCastle_Vase.h">
       <Filter>Modules\Enemies\Buildings &amp; Stuff</Filter>
     </ClInclude>
   </ItemGroup>

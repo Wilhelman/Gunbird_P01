@@ -1,3 +1,4 @@
+#pragma once
 #ifndef __SceneCastle_Vase_H__
 #define __SceneCastle_Vase_H__
 

@@ -140,6 +140,7 @@
     <ClCompile Include="Power_Up.cpp" />
     <ClCompile Include="SceneCastle_houseFlag.cpp" />
     <ClCompile Include="SceneCastle_houseFlag2.cpp" />
+    <ClCompile Include="SceneCastle_Vase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="Power_Up.h" />
     <ClInclude Include="SceneCastle_houseFlag.h" />
     <ClInclude Include="SceneCastle_houseFlag2.h" />
+    <ClInclude Include="SceneCastle_Vase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
