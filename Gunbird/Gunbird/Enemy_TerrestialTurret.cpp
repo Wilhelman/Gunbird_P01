@@ -51,7 +51,16 @@ Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 	turretRight_3.speed = 0.2f;
 
 	//RIGHT 4
-	turretRight_4.PushBack({ 146, 29, 29, 42 });
+	turretRight_4.PushBack({ 31, 468, 28, 41 });
+	turretRight_4.PushBack({ 70, 468, 28, 41 });
+	turretRight_4.PushBack({ 110, 468, 28, 41 });
+	turretRight_4.PushBack({ 148, 468, 28, 41 });
+	turretRight_4.PushBack({ 186, 468, 28, 41 });
+	turretRight_4.PushBack({ 223, 468, 28, 41 });
+	turretRight_4.loop = true;
+	turretRight_4.speed = 0.2f;
+	turretRight_4.loop = true;
+	turretRight_4.speed = 0.2f;
 	turretRight_4.loop = true;
 	turretRight_4.speed = 0.2f;
 
@@ -93,10 +102,10 @@ void Enemy_TerrestialTurret::Move() {
 			animation = &turretRight_3;
 		else if (angle > (7/2)*ANGLE_RANGE && angle <= (9/2)*ANGLE_RANGE)
 			animation = &turretRight_4;
-		else if (angle > (9/2)*ANGLE_RANGE && angle <= (11/2)*ANGLE_RANGE)
+		/*else if (angle > (9/2)*ANGLE_RANGE && angle <= (11/2)*ANGLE_RANGE)
 			animation = &turretRight_5;
 		else if (angle > (11/2)*ANGLE_RANGE && angle <= (13/2)*ANGLE_RANGE)
-			animation = &turretRight_6;
+			animation = &turretRight_6;*/
 	}
 }
 
