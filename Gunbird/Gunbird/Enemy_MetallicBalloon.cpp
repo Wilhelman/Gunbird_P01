@@ -163,10 +163,12 @@ void Enemy_MetallicBalloon::Shoot()
 	double deltaX = ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
 	double deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
 	float angle;
+	float auxAngle;
 
 	angle = atan2(deltaX, deltaY);
 
 	angle *= ANGLE_CONVERT;
+
 
 	if (angle < 0) {
 		angle = angle * -1;
@@ -179,11 +181,11 @@ void Enemy_MetallicBalloon::Shoot()
 		if (!left) {
 			if ((angle < 90) && (angle >= 0)) {
 				lastParticle.speed.x = ENEMYSHOOTSPEED * sin(angle * ANGLE_CONVERT_REVERSE);
-				lastParticle.speed.y = ENEMYSHOOTSPEED * cos(angle * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 15) * ANGLE_CONVERT_REVERSE);
 			}
 			else {
 				lastParticle.speed.x = ENEMYSHOOTSPEED * sin(angle * ANGLE_CONVERT_REVERSE);
-				lastParticle.speed.y = ENEMYSHOOTSPEED * cos(angle * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 15) * ANGLE_CONVERT_REVERSE);
 			}
 		}
 		else {
