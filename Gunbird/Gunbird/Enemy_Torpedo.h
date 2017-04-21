@@ -8,12 +8,13 @@ class Enemy_Torpedo : public Enemy
 {
 private:
 	Animation fly;
+	Animation torpedo_white;
 	iPoint original_pos;
 
 public:
 
 	Enemy_Torpedo(int x, int y);
-
+	void OnCollision(Collider* collider);
 	void Move();
 };
 

@@ -15,6 +15,9 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 806, 128, 28, 32 });
 	fly.speed = 0.2f;
 
+	torpedo_white.PushBack({ 839,129,28,33 });
+	torpedo_white.loop = false;
+
 	animation = &fly;
 
 	original_pos.x = x;
@@ -26,4 +29,11 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y) : Enemy(x, y)
 void Enemy_Torpedo::Move()
 {
 	position = original_pos + movement.GetCurrentPosition(&animation);
+}
+
+void Enemy_Torpedo::OnCollision(Collider* collider)
+{
+	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+		animation = &torpedo_white;
+	}
 }
