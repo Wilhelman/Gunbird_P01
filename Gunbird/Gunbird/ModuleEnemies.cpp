@@ -24,7 +24,7 @@ ModuleEnemies::ModuleEnemies()
 		enemies[i] = nullptr;
 
 	//STAY
-	stayPath.PushBack({ 0.0f, 0.4f }, 100);
+	stayPath.PushBack({ 0.0f, 0.5f }, 100);
 	stayPath.loop = true;
 
 	//torpedo movements
@@ -36,19 +36,19 @@ ModuleEnemies::ModuleEnemies()
 	horizontalPathR_L.PushBack({ 0.0f, 3.0f }, 300);
 	horizontalPathR_L.loop = false;
 
-	strightOnPath.PushBack({ 0.0f, 2.0f }, 400);
+	strightOnPath.PushBack({ 0.0f, 2.5f }, 400);
 	strightOnPath.loop = false;
 
-	diagonalPath_R_Final.PushBack({ 0.0f,2.0f }, 50);
-	diagonalPath_R_Final.PushBack({ -1.0f,2.5f }, 200);
+	diagonalPath_R_Final.PushBack({ 0.0f,2.5f }, 50);
+	diagonalPath_R_Final.PushBack({ -1.5f,3.0f }, 200);
 	diagonalPath_R_Final.loop = false;
 
-	diagonalPath_L_Final.PushBack({ 0.0f,2.0f }, 100);
-	diagonalPath_L_Final.PushBack({ 1.0f,2.5f }, 200);
+	diagonalPath_L_Final.PushBack({ 0.0f,2.5f }, 100);
+	diagonalPath_L_Final.PushBack({ 1.5f,3.0f }, 200);
 	diagonalPath_L_Final.loop = false;
 
-	diagonalPath_R_Final2.PushBack({ 0.0f,2.0f }, 100);
-	diagonalPath_R_Final2.PushBack({ -1.0f,2.5f }, 200);
+	diagonalPath_R_Final2.PushBack({ 0.0f,2.5f }, 100);
+	diagonalPath_R_Final2.PushBack({ -1.5f,3.0f }, 200);
 	diagonalPath_R_Final2.loop = false;
 
 	diagonalPath_L_Final2.PushBack({ 0.0f,2.0f }, 50);
@@ -64,17 +64,23 @@ ModuleEnemies::ModuleEnemies()
 	balloonPathCastle.loop = false;
 
 	//TerrestialTurret paths
-	turret1_path.PushBack({ 0.6f,0.4f }, 60);
+	turret1_path.PushBack({ 0.6f,0.5f }, 60);
 	turret1_path.PushBack({ 0.0f, 0.3f }, 35);
-	turret1_path.PushBack({ 0.0f,0.4f }, 3000);
+	turret1_path.PushBack({ 0.0f,0.5f }, 3000);
 	turret1_path.loop = false;
 
-	turret2_path.PushBack({ 0.6f, 0.4f }, 120);
-	turret2_path.PushBack({ 0.0f,0.4f }, 3000);
+	turret1_L_path.PushBack({ -0.6f,0.5f }, 60);
+	turret1_L_path.PushBack({ 0.0f, 0.3f }, 35);
+	turret1_L_path.PushBack({ 0.0f,0.5f }, 3000);
+	turret1_L_path.loop = false;
+
+
+	turret2_path.PushBack({ 0.6f, 0.5f }, 120);
+	turret2_path.PushBack({ 0.0f,0.5f }, 3000);
 	turret2_path.loop = false;
 
-	turret3_path.PushBack({ 0.6f, 0.4f }, 60);
-	turret3_path.PushBack({ 0.0f, 0.4f }, 3000);
+	turret3_path.PushBack({ 0.6f, 0.5f }, 60);
+	turret3_path.PushBack({ 0.0f, 0.5f }, 3000);
 	turret3_path.loop = false;
 }
 
@@ -244,11 +250,17 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			case ENEMY_MOVEMENT::TURRET_1_PATH:
 				enemies[i]->movement = turret1_path;
 				break;
+			case ENEMY_MOVEMENT::TURRET1_L_PATH:
+				enemies[i]->movement = turret1_L_path;
+				break;
 			case ENEMY_MOVEMENT::TURRET_2_PATH:
 				enemies[i]->movement = turret2_path;
 				break;
 			case ENEMY_MOVEMENT::TURRET_3_PATH:
 				enemies[i]->movement = turret3_path;
+				break;
+			case ENEMY_MOVEMENT::STAY:
+				enemies[i]->movement = stayPath;
 				break;
 
 			default:

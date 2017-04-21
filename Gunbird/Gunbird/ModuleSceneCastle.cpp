@@ -19,7 +19,7 @@
 
 ModuleSceneCastle::ModuleSceneCastle()
 {
-	background_speed = 0.4f;
+	background_speed = 0.5f;
 	// Background
 	background.w = SCREEN_WIDTH;
 	background.h = 2108;
@@ -284,28 +284,35 @@ update_status ModuleSceneCastle::Update()
 		if ((int)background_y == -1500 && spawned == 5) {
 			spawned = 6;
 			
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 10, -90, ENEMY_MOVEMENT::STAY);
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 20, -57, ENEMY_MOVEMENT::STAY);
-			
+			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 15, -45, ENEMY_MOVEMENT::STAY);	
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 10, -135, ENEMY_MOVEMENT::STAY);
+			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -20, -85, ENEMY_MOVEMENT::TURRET_1_PATH);
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 185, -135, ENEMY_MOVEMENT::STAY);
-			 
+			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 165, -45, ENEMY_MOVEMENT::STAY); 
+			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 249, -85, ENEMY_MOVEMENT::TURRET1_L_PATH);
+
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 8, -345, ENEMY_MOVEMENT::STAY);
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 185, -348, ENEMY_MOVEMENT::STAY);
+			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 15, -365, ENEMY_MOVEMENT::STAY);
+			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 170, -365, ENEMY_MOVEMENT::STAY);
 			
 		}
 
-		if ((int)background_y == -1600 && spawned == 6) {
+		if ((int)background_y == -1300 && spawned == 6) {
 			spawned = 7;
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 40, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 80, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 120, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
+			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH, 70, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
+			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 30, 70, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
+			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 60, 70, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
+			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 90, 70, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
+			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 120, 70, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
+			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 150, 70, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
+			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 180, 70, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
+			
 		}
 
 
 
-		if ((int)background_y == -1000 && spawned == 7) {
+		if ((int)background_y == -1050 && spawned == 7) {
 			spawned = 8;
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
@@ -315,7 +322,7 @@ update_status ModuleSceneCastle::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 		}
-		if ((int)background_y == -910 && spawned == 8) {
+		if ((int)background_y == -1025 && spawned == 8) {
 			spawned = 9;
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_L_FINAL);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
@@ -327,7 +334,7 @@ update_status ModuleSceneCastle::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 112, -122, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_R_FINAL);
 		}
 
-		if ((int)background_y == -800 && spawned == 9) {
+		if ((int)background_y == -900 && spawned == 9) {
 			spawned = 10;
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
@@ -337,7 +344,7 @@ update_status ModuleSceneCastle::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 		}
-		if ((int)background_y == -710 && spawned == 10) {
+		if ((int)background_y == -875 && spawned == 10) {
 			spawned = 11;
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_L_FINAL2);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);

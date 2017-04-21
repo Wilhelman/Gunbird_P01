@@ -158,8 +158,6 @@ void Enemy_TerrestialTurret::Move() {
 			animation = &turretRight_8;
 		else if (angle > (19 / 2)*ANGLE_RANGE && angle <= (21 / 2)*ANGLE_RANGE)
 			animation = &turretRight_10;
-
-
 	}
 }
 
