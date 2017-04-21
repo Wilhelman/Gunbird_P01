@@ -210,7 +210,6 @@ ModuleParticles::ModuleParticles()
 
 		enemyBasicShot.life = 3000;
 		enemyBasicShot.anim.speed = 0.1f;
-		enemyBasicShot.speed.y = 3;
 		enemyBasicShot.anim.loop = true;
 	}
 

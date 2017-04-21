@@ -3,10 +3,13 @@
 
 #include "Enemy.h"
 #include "Path.h"
+#include "ModuleParticles.h"
 
 class Enemy_MetallicBalloon : public Enemy
 {
 private:
+	bool left;
+
 	Animation fly;
 	Animation hitWhite;
 	Animation redNormal;
@@ -16,6 +19,7 @@ private:
 
 	uint lastShot;
 	
+	Particle lastParticle;
 
 public:
 

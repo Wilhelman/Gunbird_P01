@@ -1,9 +1,14 @@
 #include "Application.h"
 #include "Enemy_MetallicBalloon.h"
 #include "ModuleCollision.h"
-#include "ModuleParticles.h"
+#include "ModulePlayer.h"
 #include "SDL\include\SDL_timer.h"
 
+#define PI 3.14159265
+#define ANGLE_CONVERT (180.0 / PI)
+#define ANGLE_CONVERT_REVERSE (PI / 180.0)
+
+#define ENEMYSHOOTSPEED 3
 #define ENEMYSHOOTDELAY 2000
 
 Enemy_MetallicBalloon::Enemy_MetallicBalloon(int x, int y) : Enemy(x, y)
@@ -137,7 +142,7 @@ void Enemy_MetallicBalloon::Move()
 	}
 	
 
-	
+	lastParticle = App->particles->enemyBasicShot;
 
 }
 
@@ -156,15 +161,60 @@ void Enemy_MetallicBalloon::Shoot()
 {
 	unsigned int currentTime = 0;
 
+	double deltaX = ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
+	double deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
+	double angle;
+
+	if (App->player->position.x >= position.x) {
+		left = true;
+	}
+	else {
+		left = false;
+	}
+
+	if (deltaY != 0)
+	{
+		angle = atan2(deltaX, deltaY);
+		
+		angle *= ANGLE_CONVERT;
+		LOG("Angle %.2f", angle);
+		if (left == true) {
+			if ((angle < 90) && (angle >= 0)) {
+				lastParticle.speed.x = -ENEMYSHOOTSPEED * sin(angle * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.y = ENEMYSHOOTSPEED * cos(angle * ANGLE_CONVERT_REVERSE);
+			}
+			else {
+				lastParticle.speed.x = -ENEMYSHOOTSPEED * sin(angle * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.y = ENEMYSHOOTSPEED * cos(angle * ANGLE_CONVERT_REVERSE);
+			}
+		}
+		else {
+			if ((angle < 90) && (angle >= 0)) {
+				lastParticle.speed.x = ENEMYSHOOTSPEED * sin(angle * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.y = ENEMYSHOOTSPEED * cos(angle * ANGLE_CONVERT_REVERSE);
+			}
+			else {
+				lastParticle.speed.x = ENEMYSHOOTSPEED * sin(angle * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.y = ENEMYSHOOTSPEED * cos(angle * ANGLE_CONVERT_REVERSE);
+			}
+		}
+
+
+	}
+
 	currentTime = SDL_GetTicks();
 
 	if (currentTime > (lastShot + ENEMYSHOOTDELAY)) {
 		
+
+
 		App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 9, position.y + 47,COLLIDER_TYPE::COLLIDER_NONE);
 		App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 23, position.y + 47, COLLIDER_TYPE::COLLIDER_NONE);
 
-		App->particles->AddParticle(App->particles->enemyBasicShot, position.x + 10, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
-		App->particles->AddParticle(App->particles->enemyBasicShot, position.x + 24, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(lastParticle, position.x + 10, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(lastParticle, position.x + 24, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+
+
 
 		lastShot = currentTime;
 	}
