@@ -1,7 +1,16 @@
-﻿  Enemy_MetallicBalloon.cpp
-c:\users\guillermogs2\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
-  c:\users\guillermogs2\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
-c:\users\guillermogs2\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
-  c:\users\guillermogs2\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
-  Gunbird.vcxproj -> C:\Users\guillermogs2\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
-  Gunbird.vcxproj -> C:\Users\guillermogs2\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
+﻿  SceneCastle_houseFlag2.cpp
+c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
+  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
+  SceneCastle_houseFlag.cpp
+c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
+  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
+  ModuleSceneCastle.cpp
+c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+  Generating Code...
+  Gunbird.vcxproj -> C:\Users\Martí\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
+  Gunbird.vcxproj -> C:\Users\Martí\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)

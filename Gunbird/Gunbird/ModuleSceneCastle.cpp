@@ -279,11 +279,16 @@ update_status ModuleSceneCastle::Update()
 
 		if ((int)background_y == -1500 && spawned == 5) {
 			spawned = 6;
+			
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 10, -135, ENEMY_MOVEMENT::STAY);
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 185, -135, ENEMY_MOVEMENT::STAY);
 			 
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 10, -348, ENEMY_MOVEMENT::STAY);
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 185, -348, ENEMY_MOVEMENT::STAY);
+			
+
+			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 10, -90, ENEMY_MOVEMENT::STAY);
+			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 20, -57, ENEMY_MOVEMENT::STAY);
 		}
 
 		if ((int)background_y == -1600 && spawned == 6) {
