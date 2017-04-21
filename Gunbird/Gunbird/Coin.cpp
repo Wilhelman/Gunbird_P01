@@ -15,20 +15,20 @@ Coin::Coin(int x, int y) : Enemy(x, y)
 	coin_animation.PushBack({ 742,615,13,17 });
 	coin_animation.PushBack({ 765,616,13,17 });
 
-	coin_animation.speed = 0.5f;
+	coin_animation.speed = 0.25f;
 	coin_animation.loop = true;
 	
 	animation = &coin_animation;
 
-	position.x = x;
-	position.y = y;
+	original_pos.x = x;
+	original_pos.y = y;
 
-	collider = App->collision->AddCollider({ 0, 0, 13, 17 }, COLLIDER_TYPE::COLLIDER_POWER_UP, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 13, 17 }, COLLIDER_TYPE::COLLIDER_COIN, (Module*)App->enemies);
 
 }
 
 void Coin::Move(){
 
-	position.y += 1;
+	position = original_pos + movement.GetCurrentPosition(&animation);
 
 }

@@ -341,6 +341,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 			App->audio->PlayFx(App->particles->PowerUp.fx);
 		}
 
+
 		if (c2->type == COLLIDER_ENEMY_SHOT)
 		{
 			this->deadPlayer = true;

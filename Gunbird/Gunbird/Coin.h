@@ -7,7 +7,7 @@ class Coin : public Enemy
 {
 private:
 	Animation coin_animation;
-	
+	iPoint original_pos;
 
 public:
 

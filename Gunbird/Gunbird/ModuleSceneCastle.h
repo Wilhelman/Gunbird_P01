@@ -11,6 +11,7 @@ struct SDL_Texture;
 class ModuleSceneCastle : public Module
 {
 private:
+	int spawned = 0;
 	
 	Animation soldier_left;
 	float soldier_left_y;

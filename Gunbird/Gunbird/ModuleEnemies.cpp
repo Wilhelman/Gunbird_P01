@@ -13,6 +13,7 @@
 #include "SceneCastle_houseFlag2.h"
 #include "SceneCastle_Vase.h"
 
+#include "Coin.h"
 #include "Power_Up.h"
 
 #define SPAWN_MARGIN 250
@@ -269,6 +270,11 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i]->type = ENEMY_TYPES::CASTLE_VASE;
 			enemies[i]->movement = stayPath;
 			break;
+		case ENEMY_TYPES::COIN:
+			enemies[i] = new Coin(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::COIN;
+			enemies[i]->movement = stayPath;
+			break;
 		case ENEMY_TYPES::POWER_UP:
 			enemies[i] = new Power_Up(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::POWER_UP;
@@ -315,12 +321,6 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					break;
 				}
 			}
-			else if (enemies[i]->type == ENEMY_TYPES::POWER_UP && c2->type == COLLIDER_TYPE::COLLIDER_PLAYER) {
-				App->ui->score += 2000;
-				delete enemies[i];
-				enemies[i] = nullptr;
-				break;
-			}
 			else if (enemies[i]->type == ENEMY_TYPES::CASTLE_HOUSEFLAG) {
 				if (enemies[i]->getLives() == 0) {
 					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
@@ -347,11 +347,24 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				if (enemies[i]->getLives() == 0) {
 					App->ui->score += 500; 
 					App->particles->AddParticle(App->particles->vaseExplosion, (c1->rect.x - ((58 - (c1->rect.w)) / 2)), (c1->rect.y - ((66 - (c1->rect.h)) / 2)));
+					this->AddEnemy(ENEMY_TYPES::COIN, c1->rect.x + 13, c1->rect.y + 28, ENEMY_MOVEMENT::STAY);
 					delete enemies[i];
 					enemies[i] = nullptr;
 					LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
 					break;
 				}
+			}
+			else if (enemies[i]->type == ENEMY_TYPES::COIN && c2->type == COLLIDER_TYPE::COLLIDER_PLAYER) {
+				App->ui->score += 200;
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
+			}
+			else if (enemies[i]->type == ENEMY_TYPES::POWER_UP && c2->type == COLLIDER_TYPE::COLLIDER_PLAYER) {
+				App->ui->score += 2000;
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
 			}
 		}
 	}
