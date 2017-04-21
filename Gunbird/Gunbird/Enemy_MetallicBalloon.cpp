@@ -163,7 +163,6 @@ void Enemy_MetallicBalloon::Shoot()
 	double deltaX = ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
 	double deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
 	float angle;
-	float auxAngle;
 
 	angle = atan2(deltaX, deltaY);
 
@@ -180,22 +179,22 @@ void Enemy_MetallicBalloon::Shoot()
 
 		if (!left) {
 			if ((angle < 90) && (angle >= 0)) {
-				lastParticle.speed.x = ENEMYSHOOTSPEED * sin(angle * ANGLE_CONVERT_REVERSE);
-				lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 15) * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.x = ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
 			}
 			else {
-				lastParticle.speed.x = ENEMYSHOOTSPEED * sin(angle * ANGLE_CONVERT_REVERSE);
-				lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 15) * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.x = ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
 			}
 		}
 		else {
 			if ((angle < 90) && (angle >= 0)) {
-				lastParticle.speed.x = -ENEMYSHOOTSPEED * sin(angle * ANGLE_CONVERT_REVERSE);
-				lastParticle.speed.y = ENEMYSHOOTSPEED * cos(angle * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.x = -ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
 			}
 			else {
-				lastParticle.speed.x = -ENEMYSHOOTSPEED * sin(angle * ANGLE_CONVERT_REVERSE);
-				lastParticle.speed.y = ENEMYSHOOTSPEED * cos(angle * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.x = -ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
 			}
 		}
 
