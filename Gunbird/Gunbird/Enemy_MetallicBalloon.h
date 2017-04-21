@@ -8,7 +8,10 @@ class Enemy_MetallicBalloon : public Enemy
 {
 private:
 	Animation fly;
-	Animation hitWhiteRed;
+	Animation hitWhite;
+	Animation redNormal;
+	Animation redNormal_2;
+	Animation redNormal_3;
 	iPoint original_pos;
 
 	uint lastShot;
