@@ -19,6 +19,7 @@
 
 ModuleSceneCastle::ModuleSceneCastle()
 {
+	background_speed = 0.4f;
 	// Background
 	background.w = SCREEN_WIDTH;
 	background.h = 2108;
@@ -140,16 +141,15 @@ update_status ModuleSceneCastle::Update()
 
 	update_status status = UPDATE_CONTINUE;
 
-	int speed = 1;
 	if (background_y < -SCREEN_HEIGHT) {
-		background_y += speed;
-		soldier_left_y += speed;
-		soldier_left_wall_y += speed;
-		bridge_top_y += speed;
+		background_y += background_speed;
+		soldier_left_y += background_speed;
+		soldier_left_wall_y += background_speed;
+		bridge_top_y += background_speed;
 	}
 
 	// Draw everything --------------------------------------
-	if (!App->render->Blit(graphics, background_x, background_y + SCREEN_HEIGHT, &background, 0.75f)) {
+	if (!App->render->Blit(graphics,(int)background_x, (int)background_y + SCREEN_HEIGHT, &background, 0.75f)) {
 		LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}
@@ -157,12 +157,12 @@ update_status ModuleSceneCastle::Update()
 	//BACKGROUND ANIMATIONS
 	{
 		//soldier animations
-		if (soldier_left_y >= 30 && soldier_left_x >= -12 && graphicsSoldier != nullptr) {
-			if (!App->render->Blit(graphicsSoldier, (int)soldier_left_x, soldier_left_y + SCREEN_HEIGHT, &(soldier_left.GetCurrentFrame()), 0.75f)) {
+		if (background_y <= -1800.0f && soldier_left_x >= -12 && graphicsSoldier != nullptr) {
+			if (!App->render->Blit(graphicsSoldier, (int)soldier_left_x, (int)soldier_left_y + SCREEN_HEIGHT, &(soldier_left.GetCurrentFrame()), 0.75f)) {
 				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 				status = UPDATE_ERROR;
 			}
-			if (!App->render->Blit(graphicsSoldier, (int)soldier_left_x - 6, soldier_left_y + SCREEN_HEIGHT + 20, &(soldier_left.GetCurrentFrame()), 0.75f)) {
+			if (!App->render->Blit(graphicsSoldier, (int)soldier_left_x - 6, (int)soldier_left_y + SCREEN_HEIGHT + 20, &(soldier_left.GetCurrentFrame()), 0.75f)) {
 				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 				status = UPDATE_ERROR;
 			}
@@ -170,20 +170,20 @@ update_status ModuleSceneCastle::Update()
 		}
 
 
-		if (background_y <= -1800 && graphicsSoldier != nullptr) {
+		if (background_y <= -1800.0f && graphicsSoldier != nullptr) {
 			if (background_y >= -1880)
 			{
-				if (!App->render->Blit(graphicsSoldier, (int)soldier_up_x + 35, soldier_up_y + SCREEN_HEIGHT, &(soldier_up_blink.GetCurrentFrame()), 0.5f)) {
+				if (!App->render->Blit(graphicsSoldier, (int)soldier_up_x + 35, (int)soldier_up_y + SCREEN_HEIGHT, &(soldier_up_blink.GetCurrentFrame()), 0.5f)) {
 					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 					status = UPDATE_ERROR;
 				}
 			}
 
-			if (!App->render->Blit(graphicsSoldier, (int)soldier_up_x + 35, soldier_up_y + SCREEN_HEIGHT, &(soldier_up.GetCurrentFrame()), 0.75f)) {
+			if (!App->render->Blit(graphicsSoldier, (int)soldier_up_x + 35, (int)soldier_up_y + SCREEN_HEIGHT, &(soldier_up.GetCurrentFrame()), 0.75f)) {
 				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 				status = UPDATE_ERROR;
 			}
-			if (!App->render->Blit(graphicsSoldier, (int)soldier_up_x + 50, soldier_up_y + SCREEN_HEIGHT + 20, &(soldier_up.GetCurrentFrame()), 0.75f)) {
+			if (!App->render->Blit(graphicsSoldier, (int)soldier_up_x + 50, (int)soldier_up_y + SCREEN_HEIGHT + 20, &(soldier_up.GetCurrentFrame()), 0.75f)) {
 				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 				status = UPDATE_ERROR;
 			}
@@ -191,15 +191,15 @@ update_status ModuleSceneCastle::Update()
 
 
 		if (background_y <= -1650 && graphicsSoldier != nullptr) {
-			if (!App->render->Blit(graphicsSoldier, (int)soldier_left_wall_x + 90, soldier_left_wall_y + SCREEN_HEIGHT - 297, &(soldier_left_wall.GetCurrentFrame()), 0.75f)) {
+			if (!App->render->Blit(graphicsSoldier, (int)soldier_left_wall_x + 90,(int) soldier_left_wall_y + SCREEN_HEIGHT - 297, &(soldier_left_wall.GetCurrentFrame()), 0.75f)) {
 				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 				status = UPDATE_ERROR;
 			}
-			if (!App->render->Blit(graphicsSoldier, (int)soldier_left_wall_x + 70, soldier_left_wall_y + SCREEN_HEIGHT - 297, &(soldier_left_wall.GetCurrentFrame()), 0.75f)) {
+			if (!App->render->Blit(graphicsSoldier, (int)soldier_left_wall_x + 70, (int)soldier_left_wall_y + SCREEN_HEIGHT - 297, &(soldier_left_wall.GetCurrentFrame()), 0.75f)) {
 				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 				status = UPDATE_ERROR;
 			}
-			if (!App->render->Blit(graphicsSoldier, (int)soldier_left_wall_x + 50, soldier_left_wall_y + SCREEN_HEIGHT - 297, &(soldier_left_wall.GetCurrentFrame()), 0.75f)) {
+			if (!App->render->Blit(graphicsSoldier, (int)soldier_left_wall_x + 50, (int)soldier_left_wall_y + SCREEN_HEIGHT - 297, &(soldier_left_wall.GetCurrentFrame()), 0.75f)) {
 				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 				status = UPDATE_ERROR;
 			}
@@ -208,7 +208,7 @@ update_status ModuleSceneCastle::Update()
 
 		//bridge animation
 		if (bridge_top_y >= -350 && graphicsBridgeTop != nullptr) {
-			if (!App->render->Blit(graphicsBridgeTop, 65, bridge_top_y + SCREEN_HEIGHT, &(bridge_top.GetCurrentFrame()), 0.75f)) {
+			if (!App->render->Blit(graphicsBridgeTop, 65, (int)bridge_top_y + SCREEN_HEIGHT, &(bridge_top.GetCurrentFrame()), 0.75f)) {
 				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 				status = UPDATE_ERROR;
 			}
@@ -245,45 +245,42 @@ update_status ModuleSceneCastle::Update()
 	//ENEMY SPAWN PHASE
 	{
 
-		if (background_y == -2000)
+		if ((int)background_y == -2000)
 		{
 			App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_CASTLE);
 		}
 
-		if (background_y == -2000) {
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG, 149, -275, ENEMY_MOVEMENT::NO_MOVEMENT);
+		if ((int)background_y == -2000) {
+			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG, 149, -275, ENEMY_MOVEMENT::STAY);
 		}
 
-		if (background_y == -1800) {
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG_2, 78, -340, ENEMY_MOVEMENT::NO_MOVEMENT);
+		if ((int)background_y == -1800) {
+			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG_2, 78, -340, ENEMY_MOVEMENT::STAY);
 
 		}
 
-
-
-
-		if (background_y == -2000) {
+		if ((int)background_y == -2000) {
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -30, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -60, -64, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -90, -96, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -120, -128, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 		}
 
-		if (background_y == -1840) {
+		if ((int)background_y == -1840) {
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -50, ENEMY_MOVEMENT::TURRET_1_PATH);
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -15, ENEMY_MOVEMENT::TURRET_2_PATH);
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 15, ENEMY_MOVEMENT::TURRET_3_PATH);
 		}
 
-		if (background_y == -1500) {
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 10, -135, ENEMY_MOVEMENT::NO_MOVEMENT);
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 185, -135, ENEMY_MOVEMENT::NO_MOVEMENT);
+		if ((int)background_y == -1500) {
+			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 10, -135, ENEMY_MOVEMENT::STAY);
+			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 185, -135, ENEMY_MOVEMENT::STAY);
 			 
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 10, -348, ENEMY_MOVEMENT::NO_MOVEMENT);
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 185, -348, ENEMY_MOVEMENT::NO_MOVEMENT);
+			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 10, -348, ENEMY_MOVEMENT::STAY);
+			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 185, -348, ENEMY_MOVEMENT::STAY);
 		}
 
-		if (background_y == -1600) {
+		if ((int)background_y == -1600) {
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 40, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 80, 30, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
@@ -292,7 +289,7 @@ update_status ModuleSceneCastle::Update()
 
 
 
-		if (background_y == -1000) {
+		if ((int)background_y == -1000) {
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 
@@ -301,7 +298,7 @@ update_status ModuleSceneCastle::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 		}
-		if (background_y == -910) {
+		if ((int)background_y == -910) {
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_L_FINAL);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
@@ -312,7 +309,7 @@ update_status ModuleSceneCastle::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 112, -122, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_R_FINAL);
 		}
 
-		if (background_y == -800) {
+		if ((int)background_y == -800) {
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 
@@ -321,7 +318,7 @@ update_status ModuleSceneCastle::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 		}
-		if (background_y == -710) {
+		if ((int)background_y == -710) {
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_L_FINAL2);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);

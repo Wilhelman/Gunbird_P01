@@ -21,7 +21,7 @@ SceneCastle_Vase::SceneCastle_Vase(int x, int y) : Enemy(x, y)
 }
 void SceneCastle_Vase::Move()
 {
-	position.y += 1;
+	position = original_pos + movement.GetCurrentPosition(&animation);
 }
 void SceneCastle_Vase::OnCollision(Collider* collider) {
 

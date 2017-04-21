@@ -292,7 +292,7 @@ update_status ModulePlayer::Update()
 	}
 
 	if (hitted) {
-		position.y += 1;
+		//animation here
 	}
 
 	//inmortal control time

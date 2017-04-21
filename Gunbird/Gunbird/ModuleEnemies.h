@@ -22,6 +22,7 @@ enum ENEMY_TYPES
 enum ENEMY_MOVEMENT
 {
 	NO_MOVEMENT,
+	STAY,
 	TORPEDO_DIAGONALL_R,
 	TORPEDO_HORIZONTALR_L,
 	TORPEDO_STRAIGHT_ON,
@@ -67,6 +68,9 @@ private:
 	void SpawnEnemy(const EnemyInfo& info);
 
 private:
+
+	//path stay
+	Path stayPath;
 
 	//paths (torpedo)
 	Path diagonalPathL_R;

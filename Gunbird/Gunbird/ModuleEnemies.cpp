@@ -22,6 +22,10 @@ ModuleEnemies::ModuleEnemies()
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
 
+	//STAY
+	stayPath.PushBack({ 0.0f, 0.4f }, 100);
+	stayPath.loop = true;
+
 	//torpedo movements
 	diagonalPathL_R.PushBack({ 2.3f, 2.5f }, 100);
 	diagonalPathL_R.loop = true;
@@ -59,17 +63,17 @@ ModuleEnemies::ModuleEnemies()
 	balloonPathCastle.loop = false;
 
 	//TerrestialTurret paths
-	turret1_path.PushBack({ 0.6f,1.0f }, 60);
+	turret1_path.PushBack({ 0.6f,0.4f }, 60);
 	turret1_path.PushBack({ 0.0f, 0.3f }, 35);
-	turret1_path.PushBack({ 0.0f,1.0f }, 3000);
+	turret1_path.PushBack({ 0.0f,0.4f }, 3000);
 	turret1_path.loop = false;
 
-	turret2_path.PushBack({ 0.6f, 1.0f }, 120);
-	turret2_path.PushBack({ 0.0f,1.0f }, 3000);
+	turret2_path.PushBack({ 0.6f, 0.4f }, 120);
+	turret2_path.PushBack({ 0.0f,0.4f }, 3000);
 	turret2_path.loop = false;
 
-	turret3_path.PushBack({ 0.6f, 1.0f }, 60);
-	turret3_path.PushBack({ 0.0f,1.0f }, 3000);
+	turret3_path.PushBack({ 0.6f, 0.4f }, 60);
+	turret3_path.PushBack({ 0.0f, 0.4f }, 3000);
 	turret3_path.loop = false;
 }
 
@@ -253,14 +257,17 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::CASTLE_HOUSEFLAG:
 			enemies[i] = new SceneCastle_houseFlag(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::CASTLE_HOUSEFLAG;
+			enemies[i]->movement = stayPath;
 			break;
 		case ENEMY_TYPES::CASTLE_HOUSEFLAG_2:
 			enemies[i] = new SceneCastle_houseFlag2(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::CASTLE_HOUSEFLAG_2;
+			enemies[i]->movement = stayPath;
 			break;
 		case ENEMY_TYPES::CASTLE_VASE:
 			enemies[i] = new SceneCastle_Vase(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::CASTLE_VASE;
+			enemies[i]->movement = stayPath;
 			break;
 		case ENEMY_TYPES::POWER_UP:
 			enemies[i] = new Power_Up(info.x, info.y);

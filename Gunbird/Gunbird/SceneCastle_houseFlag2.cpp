@@ -31,7 +31,7 @@ SceneCastle_houseFlag2::SceneCastle_houseFlag2(int x, int y) : Enemy(x, y)
 
 void SceneCastle_houseFlag2::Move()
 {
-	position.y += 1;
+	position = original_pos + movement.GetCurrentPosition(&animation);
 }
 
 void SceneCastle_houseFlag2::OnCollision(Collider* collider) {
