@@ -248,7 +248,7 @@ update_status ModuleSceneCastle::Update()
 		if ((int)background_y == -2000 && spawned == 0)
 		{
 			spawned = 1;
-			App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_CASTLE);
+			//App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_CASTLE);
 		}
 
 		if ((int)background_y == -2000 && spawned == 1) {
@@ -359,6 +359,11 @@ update_status ModuleSceneCastle::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_KP_2] && !App->player2->IsEnabled()) {
 		App->player2->Enable();
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, ENEMY_MOVEMENT::STAY);
 	}
 
 	return status;
