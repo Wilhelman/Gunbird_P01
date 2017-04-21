@@ -118,6 +118,71 @@ Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 	turretRight_10.loop = true;
 	turretRight_10.speed = 0.2f;
 
+	//RIGHT 11
+	turretRight_11.PushBack({ 581, 217, 28, 41 });
+	turretRight_11.PushBack({ 620, 217, 28, 41 });
+	turretRight_11.PushBack({ 660, 217, 28, 41 });
+	turretRight_11.PushBack({ 698, 217, 28, 41 });
+	turretRight_11.PushBack({ 736, 217, 28, 41 });
+	turretRight_11.PushBack({ 773, 217, 28, 41 });
+
+	turretRight_11.loop = true;
+	turretRight_11.speed = 0.2f;
+
+	//RIGHT 12
+	turretRight_12.PushBack({ 581, 259, 28, 43 });
+	turretRight_12.PushBack({ 620, 259, 28, 43 });
+	turretRight_12.PushBack({ 660, 259, 28, 43 });
+	turretRight_12.PushBack({ 698, 259, 28, 43 });
+	turretRight_12.PushBack({ 736, 259, 28, 43 });
+	turretRight_12.PushBack({ 773, 259, 28, 43 });
+	
+	turretRight_12.loop = true;
+	turretRight_12.speed = 0.2f;
+
+	//RIGHT 13
+	turretRight_13.PushBack({ 580, 305, 28, 43 });
+	turretRight_13.PushBack({ 619, 305, 28, 43 });
+	turretRight_13.PushBack({ 659, 305, 28, 43 });
+	turretRight_13.PushBack({ 697, 305, 28, 43 });
+	turretRight_13.PushBack({ 735, 305, 28, 43 });
+	turretRight_13.PushBack({ 772, 305, 28, 43 });
+	turretRight_13.loop = true;
+	turretRight_13.speed = 0.2f;
+	
+	//RIGHT 14
+	turretRight_14.PushBack({ 580, 304, 28, 43 });
+	turretRight_14.PushBack({ 619, 304, 28, 43 });
+	turretRight_14.PushBack({ 659, 304, 28, 43 });
+	turretRight_14.PushBack({ 697, 304, 28, 43 });
+	turretRight_14.PushBack({ 735, 304, 28, 43 });
+	turretRight_14.PushBack({ 772, 304, 28, 43 });
+	turretRight_14.loop = true;
+	turretRight_14.speed = 0.2f;
+
+	//RIGHT 15
+	turretRight_15.PushBack({ 581, 356, 28, 41 });
+	turretRight_15.PushBack({ 620, 356, 28, 41 });
+	turretRight_15.PushBack({ 660, 356, 28, 41 });
+	turretRight_15.PushBack({ 698, 356, 28, 41 });
+	turretRight_15.PushBack({ 736, 356, 28, 41 });
+	turretRight_15.PushBack({ 773, 356, 28, 41 });
+	turretRight_15.loop = true;
+	turretRight_15.speed = 0.2f;
+
+	//RIGHT 16
+	turretRight_16.PushBack({ 581, 400, 28, 44 });
+	turretRight_16.PushBack({ 620, 400, 28, 44 });
+	turretRight_16.PushBack({ 660, 400, 28, 44 });
+	turretRight_16.PushBack({ 698, 400, 28, 44 });
+	turretRight_16.PushBack({ 736, 400, 28, 44 });
+	turretRight_16.PushBack({ 772, 400, 28, 44 });
+	turretRight_16.loop = true;
+	turretRight_16.speed = 0.2f;
+
+
+	
+
 	collider = App->collision->AddCollider({ 0, 0, 30, 42 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	
 	original_pos.x = x;
@@ -138,17 +203,17 @@ void Enemy_TerrestialTurret::Move() {
 
 		if (angle > - (ANGLE_RANGE) && angle <= (ANGLE_RANGE / 2))
 			animation = &turretDownAnimation;
- 		else if (angle > (ANGLE_RANGE / 2) && angle <= (3/2)*ANGLE_RANGE)
+ 		else if (angle > (ANGLE_RANGE / 2) && angle <= (3 / 2)*ANGLE_RANGE)
 			animation = &turretRight_1;
-		else if (angle > (3/2)*ANGLE_RANGE && angle <= (5/2)*ANGLE_RANGE)
+		else if (angle > (3 / 2)*ANGLE_RANGE && angle <= (5 / 2)*ANGLE_RANGE)
 			animation = &turretRight_2;
-		else if (angle > (5/2)*ANGLE_RANGE && angle <= (7/2)*ANGLE_RANGE)
+		else if (angle > (5 / 2)*ANGLE_RANGE && angle <= (7 / 2)*ANGLE_RANGE)
 			animation = &turretRight_3;
-		else if (angle > (7/2)*ANGLE_RANGE && angle <= (9/2)*ANGLE_RANGE)
+		else if (angle > (7 / 2)*ANGLE_RANGE && angle <= (9 / 2)*ANGLE_RANGE)
 			animation = &turretRight_4;
-		else if (angle > (9/2)*ANGLE_RANGE && angle <= (11/2)*ANGLE_RANGE)
+		else if (angle > (9 / 2)*ANGLE_RANGE && angle <= (11 / 2)*ANGLE_RANGE)
 			animation = &turretRight_5;
-		else if (angle > (11/2)*ANGLE_RANGE && angle <= (13/2)*ANGLE_RANGE)
+		else if (angle > (11 / 2)*ANGLE_RANGE && angle <= (13 / 2)*ANGLE_RANGE)
 			animation = &turretRight_6;
 		else if (angle > (13 / 2)*ANGLE_RANGE && angle <= (15 / 2)*ANGLE_RANGE)
 			animation = &turretRight_7;
@@ -158,6 +223,19 @@ void Enemy_TerrestialTurret::Move() {
 			animation = &turretRight_8;
 		else if (angle > (19 / 2)*ANGLE_RANGE && angle <= (21 / 2)*ANGLE_RANGE)
 			animation = &turretRight_10;
+		else if (angle > (21 / 2)*ANGLE_RANGE && angle <= (23 / 2)*ANGLE_RANGE)
+			animation = &turretRight_11;
+		else if (angle > (23 / 2)*ANGLE_RANGE && angle <= (25 / 2)*ANGLE_RANGE)
+			animation = &turretRight_12;
+		else if (angle > (25 / 2)*ANGLE_RANGE && angle <= (27 / 2)*ANGLE_RANGE)
+			animation = &turretRight_13;
+		else if (angle > (25 / 2)*ANGLE_RANGE && angle <= (27 / 2)*ANGLE_RANGE)
+			animation = &turretRight_14;
+		else if (angle > (27 / 2)*ANGLE_RANGE && angle <= (29 / 2)*ANGLE_RANGE)
+			animation = &turretRight_15;
+		else if (angle > (29 / 2)*ANGLE_RANGE && angle <= (31 / 2)*ANGLE_RANGE)
+			animation = &turretRight_16;
+
 	}
 }
 
