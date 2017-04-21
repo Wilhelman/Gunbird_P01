@@ -79,7 +79,7 @@ ModuleSceneCastle::~ModuleSceneCastle()
 // Load assets
 bool ModuleSceneCastle::Start()
 {
-
+	spawned = 0;
 	//setting bckground
 	background_x = 0;
 	background_y = -2108;
