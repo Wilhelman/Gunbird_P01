@@ -105,6 +105,9 @@
     <ClCompile Include="SceneCastle_Vase.cpp">
       <Filter>Modules\Enemies\Buildings &amp; Stuff</Filter>
     </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>Modules\Enemies\Items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals.h">
@@ -199,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="SceneCastle_Vase.h">
       <Filter>Modules\Enemies\Buildings &amp; Stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>Modules\Enemies\Items</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
