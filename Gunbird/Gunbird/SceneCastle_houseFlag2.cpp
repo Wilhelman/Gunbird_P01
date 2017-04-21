@@ -11,6 +11,12 @@ SceneCastle_houseFlag2::SceneCastle_houseFlag2(int x, int y) : Enemy(x, y)
 	houseFlag_2.PushBack({ 45, 659, 96, 99 });
 	houseFlag_2.PushBack({ 162, 659, 98, 98 });
 	houseFlag_2.PushBack({ 279, 659, 98, 100 });
+	houseFlag_2.PushBack({ 45, 769, 96, 98 });
+	houseFlag_2.PushBack({ 162, 769, 97, 98 });
+	houseFlag_2.PushBack({ 279, 769, 98, 100 });
+	houseFlag_2.PushBack({ 45, 870, 96, 98 });
+	houseFlag_2.PushBack({ 162, 870, 98, 98 });
+
 
 	houseFlag_2.speed = 0.08f;
 	houseFlag_2.loop = true;
