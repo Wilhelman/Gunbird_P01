@@ -21,53 +21,75 @@ Enemy_MetallicBalloon::Enemy_MetallicBalloon(int x, int y) : Enemy(x, y)
 
 	redNormal.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
 	redNormal.PushBack({ 347, 522, 42, 53 });
-	redNormal.PushBack({ 347, 522, 42, 53 });
-	redNormal.PushBack({ 347, 522, 42, 53 });
 	redNormal.PushBack({ 89, 522, 42, 53 });
-	redNormal.PushBack({ 347, 522, 42, 53 });
-	redNormal.PushBack({ 347, 522, 42, 53 });
-	redNormal.PushBack({ 347, 522, 42, 53 });
 	redNormal.PushBack({ 141, 522, 42, 53 });
-	redNormal.PushBack({ 347, 522, 42, 53 });
-	redNormal.PushBack({ 347, 522, 42, 53 });
-	redNormal.PushBack({ 347, 522, 42, 53 });
 	redNormal.PushBack({ 193, 522, 42, 53 });
-	redNormal.PushBack({ 347, 522, 42, 53 });
-	redNormal.PushBack({ 347, 522, 42, 53 });
-	redNormal.PushBack({ 347, 522, 42, 53 });
 	redNormal.PushBack({ 244, 522, 42, 53 });
-	redNormal.PushBack({ 347, 522, 42, 53 });
-	redNormal.PushBack({ 347, 522, 42, 53 });
-	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
+	redNormal.PushBack({ 89, 522, 42, 53 });
+	redNormal.PushBack({ 141, 522, 42, 53 });
+	redNormal.PushBack({ 193, 522, 42, 53 });
+	redNormal.PushBack({ 244, 522, 42, 53 });
+	redNormal.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
+	redNormal.PushBack({ 89, 522, 42, 53 });
+	redNormal.PushBack({ 141, 522, 42, 53 });
+	redNormal.PushBack({ 193, 522, 42, 53 });
+	redNormal.PushBack({ 244, 522, 42, 53 });
+	redNormal.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
+	redNormal.PushBack({ 89, 522, 42, 53 });
+	redNormal.PushBack({ 141, 522, 42, 53 });
+	redNormal.PushBack({ 193, 522, 42, 53 });
+	redNormal.PushBack({ 244, 522, 42, 53 });
 	redNormal.speed = 0.5f;
 
 	redNormal_2.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
 	redNormal_2.PushBack({ 347, 522, 42, 53 });
+	redNormal_2.PushBack({ 89, 522, 42, 53 });
+	redNormal_2.PushBack({ 141, 522, 42, 53 });
+	redNormal_2.PushBack({ 193, 522, 42, 53 });
+	redNormal_2.PushBack({ 244, 522, 42, 53 });
+	redNormal_2.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
+	redNormal_2.PushBack({ 89, 522, 42, 53 });
+	redNormal_2.PushBack({ 141, 522, 42, 53 });
+	redNormal_2.PushBack({ 193, 522, 42, 53 });
+	redNormal_2.PushBack({ 244, 522, 42, 53 });
+	redNormal_2.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
 	redNormal_2.PushBack({ 347, 522, 42, 53 });
 	redNormal_2.PushBack({ 89, 522, 42, 53 });
-	redNormal_2.PushBack({ 347, 522, 42, 53 });
-	redNormal_2.PushBack({ 347, 522, 42, 53 });
 	redNormal_2.PushBack({ 141, 522, 42, 53 });
-	redNormal_2.PushBack({ 347, 522, 42, 53 });
-	redNormal_2.PushBack({ 347, 522, 42, 53 });
 	redNormal_2.PushBack({ 193, 522, 42, 53 });
-	redNormal_2.PushBack({ 347, 522, 42, 53 });
-	redNormal_2.PushBack({ 347, 522, 42, 53 });
 	redNormal_2.PushBack({ 244, 522, 42, 53 });
-	redNormal_2.PushBack({ 347, 522, 42, 53 });
-	redNormal_2.PushBack({ 347, 522, 42, 53 });
+	redNormal_2.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
+	redNormal_2.PushBack({ 89, 522, 42, 53 });
+	redNormal_2.PushBack({ 141, 522, 42, 53 });
+	redNormal_2.PushBack({ 193, 522, 42, 53 });
+	redNormal_2.PushBack({ 244, 522, 42, 53 });
 	redNormal_2.speed = 0.5f;
 
 	redNormal_3.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
 	redNormal_3.PushBack({ 347, 522, 42, 53 });
 	redNormal_3.PushBack({ 89, 522, 42, 53 });
-	redNormal_3.PushBack({ 347, 522, 42, 53 });;
 	redNormal_3.PushBack({ 141, 522, 42, 53 });
-	redNormal_3.PushBack({ 347, 522, 42, 53 });
 	redNormal_3.PushBack({ 193, 522, 42, 53 });
-	redNormal_3.PushBack({ 347, 522, 42, 53 });
 	redNormal_3.PushBack({ 244, 522, 42, 53 });
+	redNormal_3.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
 	redNormal_3.PushBack({ 347, 522, 42, 53 });
+	redNormal_3.PushBack({ 89, 522, 42, 53 });
+	redNormal_3.PushBack({ 141, 522, 42, 53 });
+	redNormal_3.PushBack({ 193, 522, 42, 53 });
+	redNormal_3.PushBack({ 244, 522, 42, 53 });
+	redNormal_3.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
+	redNormal_3.PushBack({ 347, 522, 42, 53 });
+	redNormal_3.PushBack({ 89, 522, 42, 53 });
+	redNormal_3.PushBack({ 141, 522, 42, 53 });
+	redNormal_3.PushBack({ 193, 522, 42, 53 });
+	redNormal_3.PushBack({ 244, 522, 42, 53 });
+	redNormal_3.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
+	redNormal_3.PushBack({ 347, 522, 42, 53 });
+	redNormal_3.PushBack({ 89, 522, 42, 53 });
+	redNormal_3.PushBack({ 141, 522, 42, 53 });
+	redNormal_3.PushBack({ 193, 522, 42, 53 });
+	redNormal_3.PushBack({ 244, 522, 42, 53 });
 	redNormal_3.speed = 0.5f;
 
 
@@ -99,21 +121,24 @@ void Enemy_MetallicBalloon::Move()
 		lastTime = 0;
 	}
 
-	if (lives <= 12)
+	if (lives <= 12 && animation != &hitWhite)
 	{
 		animation = &redNormal;
 	}
 	
-	if (lives < 12 && lives >= 6)
+	if (lives < 6 && lives > 3 && animation != &hitWhite)
 	{
 		animation = &redNormal_2;
 	}
 
-	if(lives < 6)
+	if(lives <= 3 && animation != &hitWhite)
 	{
 		animation = &redNormal_3;
 	}
 	
+
+	
+
 }
 
 void Enemy_MetallicBalloon::OnCollision(Collider* collider) {
