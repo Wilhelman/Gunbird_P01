@@ -8,7 +8,7 @@
 
 Enemy_MetallicBalloon::Enemy_MetallicBalloon(int x, int y) : Enemy(x, y)
 {
-	lives = 3;
+	lives = 19;
 
 	lastTime = 0;
 
@@ -19,10 +19,61 @@ Enemy_MetallicBalloon::Enemy_MetallicBalloon(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 244, 522, 42, 53 });
 	fly.speed = 0.5f;
 
-	hitWhiteRed.PushBack({ 296, 522, 42, 53});
-	hitWhiteRed.PushBack({ 347, 522, 42, 53 });
-	hitWhiteRed.speed = 0.5f;
-	hitWhiteRed.loop = true;
+	redNormal.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
+	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.PushBack({ 89, 522, 42, 53 });
+	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.PushBack({ 141, 522, 42, 53 });
+	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.PushBack({ 193, 522, 42, 53 });
+	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.PushBack({ 244, 522, 42, 53 });
+	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.PushBack({ 347, 522, 42, 53 });
+	redNormal.speed = 0.5f;
+
+	redNormal_2.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
+	redNormal_2.PushBack({ 347, 522, 42, 53 });
+	redNormal_2.PushBack({ 347, 522, 42, 53 });
+	redNormal_2.PushBack({ 89, 522, 42, 53 });
+	redNormal_2.PushBack({ 347, 522, 42, 53 });
+	redNormal_2.PushBack({ 347, 522, 42, 53 });
+	redNormal_2.PushBack({ 141, 522, 42, 53 });
+	redNormal_2.PushBack({ 347, 522, 42, 53 });
+	redNormal_2.PushBack({ 347, 522, 42, 53 });
+	redNormal_2.PushBack({ 193, 522, 42, 53 });
+	redNormal_2.PushBack({ 347, 522, 42, 53 });
+	redNormal_2.PushBack({ 347, 522, 42, 53 });
+	redNormal_2.PushBack({ 244, 522, 42, 53 });
+	redNormal_2.PushBack({ 347, 522, 42, 53 });
+	redNormal_2.PushBack({ 347, 522, 42, 53 });
+	redNormal_2.speed = 0.5f;
+
+	redNormal_3.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
+	redNormal_3.PushBack({ 347, 522, 42, 53 });
+	redNormal_3.PushBack({ 89, 522, 42, 53 });
+	redNormal_3.PushBack({ 347, 522, 42, 53 });;
+	redNormal_3.PushBack({ 141, 522, 42, 53 });
+	redNormal_3.PushBack({ 347, 522, 42, 53 });
+	redNormal_3.PushBack({ 193, 522, 42, 53 });
+	redNormal_3.PushBack({ 347, 522, 42, 53 });
+	redNormal_3.PushBack({ 244, 522, 42, 53 });
+	redNormal_3.PushBack({ 347, 522, 42, 53 });
+	redNormal_3.speed = 0.5f;
+
+
+	hitWhite.PushBack({ 296, 522, 42, 53});
+	hitWhite.speed = 0.5f;
+	hitWhite.loop = true;
 
 	collider = App->collision->AddCollider({ 0, 0, 42, 53 }, COLLIDER_TYPE::COLLIDER_ENEMY_FLYING, (Module*)App->enemies);
 
@@ -37,7 +88,7 @@ void Enemy_MetallicBalloon::Move()
 
 	position = original_pos + movement.GetCurrentPosition(&animation);
 
-	if (animation == &hitWhiteRed && lastTime == 0) {
+	if (animation == &hitWhite && lastTime == 0) {
 		lastTime = SDL_GetTicks();
 	}
 
@@ -47,14 +98,29 @@ void Enemy_MetallicBalloon::Move()
 		animation = &fly;
 		lastTime = 0;
 	}
+
+	if (lives <= 12)
+	{
+		animation = &redNormal;
+	}
+	
+	if (lives < 12 && lives >= 6)
+	{
+		animation = &redNormal_2;
+	}
+
+	if(lives < 6)
+	{
+		animation = &redNormal_3;
+	}
 	
 }
 
 void Enemy_MetallicBalloon::OnCollision(Collider* collider) {
 	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
-		animation = &hitWhiteRed;
+		animation = &hitWhite;
 		lives--;
-	}
+	} 
 }
 
 uint Enemy_MetallicBalloon::getLives() {
