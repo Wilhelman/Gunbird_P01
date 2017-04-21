@@ -256,39 +256,43 @@ update_status ModuleSceneCastle::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG, 149, -275, ENEMY_MOVEMENT::STAY);
 		}
 
-		if ((int)background_y == -2000 && spawned == 2) {
+		
+
+		if ((int)background_y == -1840 && spawned == 2) {
 			spawned = 3;
+			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -50, ENEMY_MOVEMENT::TURRET_1_PATH);
+			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -15, ENEMY_MOVEMENT::TURRET_2_PATH);
+			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 15, ENEMY_MOVEMENT::TURRET_3_PATH);
+		}
+		
+		
+		if ((int)background_y == -1800 && spawned == 3) {
+			spawned = 4;
+			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG_2, 78, -340, ENEMY_MOVEMENT::STAY);
+
+		}
+
+		if ((int)background_y == -1780 && spawned == 4) {
+			spawned = 5;
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -30, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -60, -64, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -90, -96, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -120, -128, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 		}
 
-		if ((int)background_y == -1840 && spawned == 3) {
-			spawned = 4;
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -50, ENEMY_MOVEMENT::TURRET_1_PATH);
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -15, ENEMY_MOVEMENT::TURRET_2_PATH);
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 15, ENEMY_MOVEMENT::TURRET_3_PATH);
-		}
-
-		if ((int)background_y == -1800 && spawned == 4) {
-			spawned = 5;
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG_2, 78, -340, ENEMY_MOVEMENT::STAY);
-
-		}
 
 		if ((int)background_y == -1500 && spawned == 5) {
 			spawned = 6;
 			
+			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 10, -90, ENEMY_MOVEMENT::STAY);
+			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 20, -57, ENEMY_MOVEMENT::STAY);
+			
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 10, -135, ENEMY_MOVEMENT::STAY);
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 185, -135, ENEMY_MOVEMENT::STAY);
 			 
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 10, -348, ENEMY_MOVEMENT::STAY);
+			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 8, -345, ENEMY_MOVEMENT::STAY);
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 185, -348, ENEMY_MOVEMENT::STAY);
 			
-
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 10, -90, ENEMY_MOVEMENT::STAY);
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 20, -57, ENEMY_MOVEMENT::STAY);
 		}
 
 		if ((int)background_y == -1600 && spawned == 6) {
