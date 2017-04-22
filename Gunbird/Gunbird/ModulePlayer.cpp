@@ -101,6 +101,7 @@ bool ModulePlayer::Start()
 	deadPlayer = false;
 	original_camera_y = App->render->camera.y;
 	laserType = 0;
+	collisionAnimControl = false;
 
 	position.x = SCREEN_WIDTH / 2;
 	position.y = SCREEN_HEIGHT / 2 + 100;
@@ -324,7 +325,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (hitted) {
+	if (hitted && collisionAnimControl) {
 		current_animation = &playerCollision_Anim;
 	}
 
@@ -361,11 +362,21 @@ bool ModulePlayer::CleanUp()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 	if (!inmortal && spawnTime == 0) {
-		if ((c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING || c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_SHOT) && !hitted) {
+
+		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_SHOT && !hitted) {
 			this->removePowerUp();
 			App->particles->hitEnemy.fx = App->audio->LoadFx("Assets/audio/effects/Valnus_hit_enemy.wav");
 			App->audio->PlayFx(App->particles->hitEnemy.fx);
 		}
+
+		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING && !hitted) {
+			this->removePowerUp();
+			collisionAnimControl = true;
+			App->particles->hitEnemy.fx = App->audio->LoadFx("Assets/audio/effects/Valnus_hit_enemy.wav");
+			App->audio->PlayFx(App->particles->hitEnemy.fx);
+		}
+
+		collisionAnimControl = false;
 
 		if (c2->type == COLLIDER_POWER_UP)
 		{

@@ -61,6 +61,7 @@ public:
 	bool playerExpControl;
 	bool playerLost;
 	bool godModeControl;
+	bool collisionAnimControl;
 
 };
 

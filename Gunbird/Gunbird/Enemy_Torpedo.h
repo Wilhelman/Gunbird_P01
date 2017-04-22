@@ -2,6 +2,7 @@
 #define __Enemy_Torpedo_H__
 
 #include "Enemy.h"
+#include "ModuleParticles.h";
 
 
 class Enemy_Torpedo : public Enemy

@@ -79,7 +79,7 @@ public:
 	Particle valnusDeathScream;
 
 	//Particles for player shot collision
-	Animation playerShotCollison;
+	Particle playerShotCollison;
 
 };
 

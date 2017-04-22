@@ -363,6 +363,7 @@ uint Enemy_TerrestialTurret::getLives() {
 void Enemy_TerrestialTurret::OnCollision(Collider* collider) {
 
 	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+		App->particles->AddParticle(App->particles->playerShotCollison, (collider->rect.x - (((collider->rect.w)) / 2)), (collider->rect.y - (((collider->rect.h)))));
 			lives--;
 	}
 }

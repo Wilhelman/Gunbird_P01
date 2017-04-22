@@ -3,6 +3,7 @@
 #define __SceneCastle_Vase_H__
 
 #include "Enemy.h"
+#include "ModuleParticles.h"
 
 
 class SceneCastle_Vase : public Enemy

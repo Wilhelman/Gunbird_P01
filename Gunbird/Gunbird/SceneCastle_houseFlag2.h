@@ -2,6 +2,7 @@
 #define __SceneCastle_houseFlag2_H__
 
 #include "Enemy.h"
+#include "ModuleParticles.h"
 
 
 class SceneCastle_houseFlag2 : public Enemy
