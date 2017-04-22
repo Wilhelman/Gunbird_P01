@@ -149,7 +149,10 @@ void Enemy_MetallicBalloon::Move()
 void Enemy_MetallicBalloon::OnCollision(Collider* collider) {
 	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
 		animation = &hitWhite;
-		lives--;
+		if (App->player->shotPower < 1)
+			lives--;
+		if (App->player->shotPower == 1)
+			lives = lives - 2;
 	} 
 }
 

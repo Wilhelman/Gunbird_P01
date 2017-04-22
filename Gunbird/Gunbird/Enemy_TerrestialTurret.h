@@ -43,6 +43,7 @@ public:
 	Enemy_TerrestialTurret(int x, int y);
 	void Move();
 	void Shoot();          
+	uint getLives();
 	void OnCollision(Collider* collider);
 };
 

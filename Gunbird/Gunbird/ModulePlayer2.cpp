@@ -317,12 +317,17 @@ bool ModulePlayer2::CleanUp()
 
 void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 	if (!inmortal) {
-		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING && !hitted) {
+		if ((c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING || c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_SHOT) && !hitted) {
 			this->removePowerUp();
 		}
 
 		if (c2->type == COLLIDER_POWER_UP)
 			shotPower = 1;
+
+		if (c2->type == COLLIDER_ENEMY_SHOT)
+		{
+			this->deadPlayer = true;
+		}
 
 		if (deadPlayer == true) {
 			App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));

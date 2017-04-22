@@ -342,7 +342,7 @@ bool ModulePlayer::CleanUp()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 	if (!inmortal && spawnTime == 0) {
-		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING && !hitted) {
+		if ((c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING || c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_SHOT) && !hitted) {
 			this->removePowerUp();
 			App->particles->hitEnemy.fx = App->audio->LoadFx("Assets/audio/effects/Valnus_hit_enemy.wav");
 			App->audio->PlayFx(App->particles->hitEnemy.fx);

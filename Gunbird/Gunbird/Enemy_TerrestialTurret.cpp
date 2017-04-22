@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModuleSceneCastle.h"
 #include "ModulePlayer.h"
+#include "SDL\include\SDL_timer.h"
 
 #define PI 3.14159265 
 #define ANGLE_RANGE 0.20943951
@@ -15,6 +16,9 @@
 
 Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 {
+
+	lives = 1;
+
 	// DOWN
 	turretDownAnimation.PushBack({ 31, 324, 28, 41 });
 	turretDownAnimation.PushBack({ 70, 324, 28, 41 });
@@ -241,6 +245,8 @@ void Enemy_TerrestialTurret::Move() {
 			animation = &turretRight_16;
 
 	}
+
+	lastParticle = App->particles->enemyBasicShot;
 }
 
 
@@ -255,6 +261,7 @@ void Enemy_TerrestialTurret::Shoot()
 
 	angle *= ANGLE_CONVERT;
 
+	currentTime = SDL_GetTicks();
 
 	if (angle < 0) {
 		angle = angle * -1;
@@ -285,6 +292,7 @@ void Enemy_TerrestialTurret::Shoot()
 			}
 		}
 
+
 		if (currentTime >(lastShot + ENEMYSHOOTDELAY)) {
 
 
@@ -304,7 +312,13 @@ void Enemy_TerrestialTurret::Shoot()
 
 }
 
+uint Enemy_TerrestialTurret::getLives() {
+	return lives;
+}
 
 void Enemy_TerrestialTurret::OnCollision(Collider* collider) {
 
+	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+			lives--;
+	}
 }

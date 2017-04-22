@@ -23,7 +23,7 @@ private:
 
 	bool hitted;
 	uint hittedTime;
-	uint shotPower;
+	
 
 public:
 	ModulePlayer();
@@ -38,7 +38,7 @@ public:
 	void removePowerUp();
 
 public:
-
+	uint shotPower;
 	SDL_Texture* graphics = nullptr;
 	Animation idle;
 	Animation blink;
