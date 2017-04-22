@@ -41,6 +41,7 @@ ModulePlayer::ModulePlayer()
 	dead_animation_explosion.PushBack({ 72,151,35, 37});
 	dead_animation_explosion.PushBack({ 88,114,31,31});
 	dead_animation_explosion.speed = 0.2f;
+
 	//right animation
 	right_animation.PushBack({ 0, 38, 26, 30 });
 	right_animation.PushBack({ 38, 38, 26, 29 });
@@ -63,6 +64,23 @@ ModulePlayer::ModulePlayer()
 	blink.PushBack({ 38, 0, 31, 29 });
 	blink.speed = 0.5f;
 	blink.loop = true;
+
+	//Player collison animation
+	playerCollision_Anim.PushBack({ 28, 461, 26, 30 });
+	playerCollision_Anim.PushBack({ 71, 461, 31, 30 });
+	playerCollision_Anim.PushBack({ 116, 461, 26, 29 });
+	playerCollision_Anim.PushBack({ 158, 461, 25, 30 });
+	playerCollision_Anim.PushBack({ 202, 461, 31, 32 });
+	playerCollision_Anim.PushBack({ 254, 459, 31, 32 });
+	playerCollision_Anim.PushBack({ 298, 460, 29, 30 });
+	playerCollision_Anim.PushBack({ 342, 460, 31, 32 });
+	playerCollision_Anim.PushBack({ 386, 460, 29, 30 });
+	playerCollision_Anim.PushBack({ 430, 460, 31, 31 });
+	playerCollision_Anim.PushBack({ 430, 460, 29, 30 });
+	playerCollision_Anim.PushBack({ 477, 460, 31, 32 });
+	playerCollision_Anim.speed = 0.5f;
+	playerCollision_Anim.loop = true;
+
 }
 
 ModulePlayer::~ModulePlayer()
@@ -305,7 +323,7 @@ update_status ModulePlayer::Update()
 	}
 
 	if (hitted) {
-		//animation here
+		current_animation = &playerCollision_Anim;
 	}
 
 	//inmortal control time

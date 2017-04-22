@@ -222,6 +222,7 @@ ModuleParticles::ModuleParticles()
 		//enemyBasicShot.speed.y = 0;
 		enemyBasicShot_start.anim.loop = false;
 	}
+
 }
 
 ModuleParticles::~ModuleParticles()
