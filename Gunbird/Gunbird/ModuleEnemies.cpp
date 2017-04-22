@@ -337,6 +337,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				if (enemies[i]->getLives() == 0) {
 					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
 						App->ui->score += 3000;
+						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
 						delete enemies[i];
 						enemies[i] = nullptr;
 						break;
@@ -348,6 +349,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				if (enemies[i]->getLives() == 0) {
 					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
 						App->ui->score += 3000;
+						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
 						delete enemies[i];
 						enemies[i] = nullptr;
 						break;

@@ -130,66 +130,105 @@ Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 	turretRight_10.speed = 0.2f;
 
 	//RIGHT 11
-	turretRight_11.PushBack({ 581, 217, 28, 41 });
-	turretRight_11.PushBack({ 620, 217, 28, 41 });
-	turretRight_11.PushBack({ 660, 217, 28, 41 });
-	turretRight_11.PushBack({ 698, 217, 28, 41 });
-	turretRight_11.PushBack({ 736, 217, 28, 41 });
-	turretRight_11.PushBack({ 773, 217, 28, 41 });
-
+	turretRight_11.PushBack({ 581, 259, 28, 43 });
+	turretRight_11.PushBack({ 620, 259, 28, 43 });
+	turretRight_11.PushBack({ 660, 259, 28, 43 });
+	turretRight_11.PushBack({ 698, 259, 28, 43 });
+	turretRight_11.PushBack({ 736, 259, 28, 43 });
+	turretRight_11.PushBack({ 773, 259, 28, 43 });
+	
 	turretRight_11.loop = true;
 	turretRight_11.speed = 0.2f;
 
 	//RIGHT 12
-	turretRight_12.PushBack({ 581, 259, 28, 43 });
-	turretRight_12.PushBack({ 620, 259, 28, 43 });
-	turretRight_12.PushBack({ 660, 259, 28, 43 });
-	turretRight_12.PushBack({ 698, 259, 28, 43 });
-	turretRight_12.PushBack({ 736, 259, 28, 43 });
-	turretRight_12.PushBack({ 773, 259, 28, 43 });
-	
+	turretRight_12.PushBack({ 580, 305, 28, 43 });
+	turretRight_12.PushBack({ 619, 305, 28, 43 });
+	turretRight_12.PushBack({ 659, 305, 28, 43 });
+	turretRight_12.PushBack({ 697, 305, 28, 43 });
+	turretRight_12.PushBack({ 735, 305, 28, 43 });
+	turretRight_12.PushBack({ 772, 305, 28, 43 });
 	turretRight_12.loop = true;
 	turretRight_12.speed = 0.2f;
-
+	
 	//RIGHT 13
-	turretRight_13.PushBack({ 580, 305, 28, 43 });
-	turretRight_13.PushBack({ 619, 305, 28, 43 });
-	turretRight_13.PushBack({ 659, 305, 28, 43 });
-	turretRight_13.PushBack({ 697, 305, 28, 43 });
-	turretRight_13.PushBack({ 735, 305, 28, 43 });
-	turretRight_13.PushBack({ 772, 305, 28, 43 });
+	turretRight_13.PushBack({ 580, 304, 28, 43 });
+	turretRight_13.PushBack({ 619, 304, 28, 43 });
+	turretRight_13.PushBack({ 659, 304, 28, 43 });
+	turretRight_13.PushBack({ 697, 304, 28, 43 });
+	turretRight_13.PushBack({ 735, 304, 28, 43 });
+	turretRight_13.PushBack({ 772, 304, 28, 43 });
 	turretRight_13.loop = true;
 	turretRight_13.speed = 0.2f;
-	
+
 	//RIGHT 14
-	turretRight_14.PushBack({ 580, 304, 28, 43 });
-	turretRight_14.PushBack({ 619, 304, 28, 43 });
-	turretRight_14.PushBack({ 659, 304, 28, 43 });
-	turretRight_14.PushBack({ 697, 304, 28, 43 });
-	turretRight_14.PushBack({ 735, 304, 28, 43 });
-	turretRight_14.PushBack({ 772, 304, 28, 43 });
+	turretRight_14.PushBack({ 581, 356, 28, 41 });
+	turretRight_14.PushBack({ 620, 356, 28, 41 });
+	turretRight_14.PushBack({ 660, 356, 28, 41 });
+	turretRight_14.PushBack({ 698, 356, 28, 41 });
+	turretRight_14.PushBack({ 736, 356, 28, 41 });
+	turretRight_14.PushBack({ 773, 356, 28, 41 });
 	turretRight_14.loop = true;
 	turretRight_14.speed = 0.2f;
 
 	//RIGHT 15
-	turretRight_15.PushBack({ 581, 356, 28, 41 });
-	turretRight_15.PushBack({ 620, 356, 28, 41 });
-	turretRight_15.PushBack({ 660, 356, 28, 41 });
-	turretRight_15.PushBack({ 698, 356, 28, 41 });
-	turretRight_15.PushBack({ 736, 356, 28, 41 });
-	turretRight_15.PushBack({ 773, 356, 28, 41 });
+	turretRight_15.PushBack({ 581, 400, 28, 44 });
+	turretRight_15.PushBack({ 620, 400, 28, 44 });
+	turretRight_15.PushBack({ 660, 400, 28, 44 });
+	turretRight_15.PushBack({ 698, 400, 28, 44 });
+	turretRight_15.PushBack({ 736, 400, 28, 44 });
+	turretRight_15.PushBack({ 773, 400, 28, 44 });
 	turretRight_15.loop = true;
 	turretRight_15.speed = 0.2f;
 
 	//RIGHT 16
-	turretRight_16.PushBack({ 581, 400, 28, 44 });
-	turretRight_16.PushBack({ 620, 400, 28, 44 });
-	turretRight_16.PushBack({ 660, 400, 28, 44 });
-	turretRight_16.PushBack({ 698, 400, 28, 44 });
-	turretRight_16.PushBack({ 736, 400, 28, 44 });
-	turretRight_16.PushBack({ 773, 400, 28, 44 });
+	turretRight_16.PushBack({ 580, 448, 29, 44 });
+	turretRight_16.PushBack({ 620, 448, 29, 44 });
+	turretRight_16.PushBack({ 660, 448, 29, 44 });
+	turretRight_16.PushBack({ 698, 448, 29, 44 });
+	turretRight_16.PushBack({ 736, 448, 29, 44 });
+	turretRight_16.PushBack({ 773, 448, 29, 44 });
 	turretRight_16.loop = true;
 	turretRight_16.speed = 0.2f;
+
+	//RIGHT 17
+	turretRight_17.PushBack({ 834, 213, 29, 45 });
+	turretRight_17.PushBack({ 873, 213, 29, 45 });
+	turretRight_17.PushBack({ 913, 213, 29, 45 });
+	turretRight_17.PushBack({ 951, 213, 29, 45 });
+	turretRight_17.PushBack({ 989, 213, 29, 45 });
+	turretRight_17.PushBack({ 1026, 213, 29, 45 });
+	turretRight_17.loop = true;
+	turretRight_17.speed = 0.2f;
+
+	//RIGHT 18
+	turretRight_18.PushBack({ 834, 259, 29, 43 });
+	turretRight_18.PushBack({ 873, 259, 29, 43 });
+	turretRight_18.PushBack({ 913, 259, 29, 43 });
+	turretRight_18.PushBack({ 951, 259, 29, 43 });
+	turretRight_18.PushBack({ 989, 259, 29, 43 });
+	turretRight_18.PushBack({ 1026, 259, 29, 43 });
+	turretRight_18.loop = true;
+	turretRight_18.speed = 0.2f;
+
+	//RIGHT 19
+	turretRight_19.PushBack({ 834, 304, 29, 44 });
+	turretRight_19.PushBack({ 873, 304, 29, 44 });
+	turretRight_19.PushBack({ 913, 304, 29, 44 });
+	turretRight_19.PushBack({ 951, 304, 29, 44 });
+	turretRight_19.PushBack({ 989, 304, 29, 44 });
+	turretRight_19.PushBack({ 1026, 304, 29, 44 });
+	turretRight_19.loop = true;
+	turretRight_19.speed = 0.2f;
+
+	//RIGHT 20
+	turretRight_20.PushBack({ 834, 355, 29, 42 });
+	turretRight_20.PushBack({ 873, 355, 29, 42 });
+	turretRight_20.PushBack({ 913, 355, 29, 42 });
+	turretRight_20.PushBack({ 951, 355, 29, 42 });
+	turretRight_20.PushBack({ 989, 355, 29, 42 });
+	turretRight_20.PushBack({ 1026, 355, 29, 42 });
+	turretRight_20.loop = true;
+	turretRight_20.speed = 0.2f;
 
 	collider = App->collision->AddCollider({ 0, 0, 30, 42 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	
@@ -199,8 +238,11 @@ Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 
 void Enemy_TerrestialTurret::Move() {
 
-	double deltaX =  ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
-	double deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
+	//double deltaX =  ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
+	//double deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
+
+	double deltaX = (App->player->position.x - (position.x + 15));
+	double deltaY = (App->player->position.y - (position.y + 21));
 	double angle;
 
 	position = original_pos + movement.GetCurrentPosition(&animation);
@@ -208,6 +250,7 @@ void Enemy_TerrestialTurret::Move() {
 	if (deltaY != 0)
 	{
 		angle = atan2(deltaX, deltaY);
+		LOG("%d", angle);
 
 		if (angle > - (ANGLE_RANGE) && angle <= (ANGLE_RANGE / 2))
 			animation = &turretDownAnimation;
@@ -243,6 +286,14 @@ void Enemy_TerrestialTurret::Move() {
 			animation = &turretRight_15;
 		else if (angle > (31 / 2)*ANGLE_RANGE && angle <= (33 / 2)*ANGLE_RANGE)
 			animation = &turretRight_16;
+		else if (angle > (33 / 2)*ANGLE_RANGE && angle <= (35 / 2)*ANGLE_RANGE)
+			animation = &turretRight_17;
+		else if (angle > (35 / 2)*ANGLE_RANGE && angle <= (37 / 2)*ANGLE_RANGE)
+			animation = &turretRight_18;
+		else if (angle > (37 / 2)*ANGLE_RANGE && angle <= (39 / 2)*ANGLE_RANGE)
+			animation = &turretRight_19;
+		else if (angle > (39 / 2)*ANGLE_RANGE && angle <= (41 / 2)*ANGLE_RANGE)
+			animation = &turretRight_20;
 
 	}
 
@@ -269,7 +320,7 @@ void Enemy_TerrestialTurret::Shoot()
 	}
 
 	LOG("Angle %.2f", angle);
-	if (currentTime >(lastShot + ENEMYSHOOTDELAY)) {
+	if (currentTime > (lastShot + ENEMYSHOOTDELAY)) {
 
 		if (!left) {
 			if ((angle < 90) && (angle >= 0)) {
@@ -293,17 +344,10 @@ void Enemy_TerrestialTurret::Shoot()
 		}
 
 
-		if (currentTime >(lastShot + ENEMYSHOOTDELAY)) {
-
-
-
-			App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 9, position.y + 47, COLLIDER_TYPE::COLLIDER_NONE);
-			App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 23, position.y + 47, COLLIDER_TYPE::COLLIDER_NONE);
-
+		if (currentTime >(lastShot + ENEMYSHOOTDELAY)) 
+		{
+			App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 30, position.y + 32, COLLIDER_TYPE::COLLIDER_NONE);
 			App->particles->AddParticle(lastParticle, position.x + 10, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
-			App->particles->AddParticle(lastParticle, position.x + 24, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
-
-
 
 			lastShot = currentTime;
 		}

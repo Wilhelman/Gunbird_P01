@@ -8,6 +8,8 @@ class SceneCastle_houseFlag : public Enemy
 {
 private:
 	Animation houseFlag;
+	Animation hitWhite;
+	Animation hitRed;
 	iPoint original_pos;
 
 public:

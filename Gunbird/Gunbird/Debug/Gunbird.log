@@ -1,25 +1,7 @@
-﻿  Enemy_TerrestialTurret.cpp
+﻿  SceneCastle_houseFlag2.cpp
 c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
   c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
 c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
   c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(254): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(256): warning C4305: '*=': truncation from 'double' to 'float'
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(269): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(270): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(273): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(274): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(279): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(280): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(283): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(284): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
-  Compiling...
-  ModuleEnemies.cpp
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): warning C4099: 'Animation': type name first seen using 'struct' now seen using 'class'
-  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\animation.h(7): note: see declaration of 'Animation'
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
-  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
-  Generating Code...
   Gunbird.vcxproj -> C:\Users\Víctor Masó\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
   Gunbird.vcxproj -> C:\Users\Víctor Masó\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)

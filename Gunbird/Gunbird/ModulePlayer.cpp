@@ -228,7 +228,6 @@ update_status ModulePlayer::Update()
 				playerLives = 0;
 				deadPlayer = true;
 				playerExpControl = true;
-
 			}
 			
 			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)

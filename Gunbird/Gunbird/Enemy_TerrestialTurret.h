@@ -27,6 +27,20 @@ private:
 	Animation turretRight_14;
 	Animation turretRight_15;
 	Animation turretRight_16;
+	Animation turretRight_17;
+	Animation turretRight_18;
+	Animation turretRight_19;
+	Animation turretRight_20;
+	Animation turretRight_21;
+	Animation turretRight_22;
+	Animation turretRight_23;
+	Animation turretRight_24;
+	Animation turretRight_25;
+	Animation turretRight_26;
+	Animation turretRight_27;
+	Animation turretRight_28;
+	Animation turretRight_29;
+	Animation turretRight_30;
 
 	Animation death;
 	iPoint original_pos;
