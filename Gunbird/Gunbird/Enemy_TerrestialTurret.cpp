@@ -3,8 +3,15 @@
 #include "ModuleCollision.h"
 #include "ModuleSceneCastle.h"
 #include "ModulePlayer.h"
-#define PI 3.14159265 //TODO: remove if not needed
+
+#define PI 3.14159265 
 #define ANGLE_RANGE 0.20943951
+
+#define ANGLE_CONVERT (180.0 / PI)
+#define ANGLE_CONVERT_REVERSE (PI / 180.0)
+
+#define ENEMYSHOOTSPEED 3
+#define ENEMYSHOOTDELAY 2000
 
 Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 {
@@ -176,12 +183,9 @@ Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 	turretRight_16.PushBack({ 660, 400, 28, 44 });
 	turretRight_16.PushBack({ 698, 400, 28, 44 });
 	turretRight_16.PushBack({ 736, 400, 28, 44 });
-	turretRight_16.PushBack({ 772, 400, 28, 44 });
+	turretRight_16.PushBack({ 773, 400, 28, 44 });
 	turretRight_16.loop = true;
 	turretRight_16.speed = 0.2f;
-
-
-	
 
 	collider = App->collision->AddCollider({ 0, 0, 30, 42 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	
@@ -229,15 +233,77 @@ void Enemy_TerrestialTurret::Move() {
 			animation = &turretRight_12;
 		else if (angle > (25 / 2)*ANGLE_RANGE && angle <= (27 / 2)*ANGLE_RANGE)
 			animation = &turretRight_13;
-		else if (angle > (25 / 2)*ANGLE_RANGE && angle <= (27 / 2)*ANGLE_RANGE)
-			animation = &turretRight_14;
 		else if (angle > (27 / 2)*ANGLE_RANGE && angle <= (29 / 2)*ANGLE_RANGE)
-			animation = &turretRight_15;
+			animation = &turretRight_14;
 		else if (angle > (29 / 2)*ANGLE_RANGE && angle <= (31 / 2)*ANGLE_RANGE)
+			animation = &turretRight_15;
+		else if (angle > (31 / 2)*ANGLE_RANGE && angle <= (33 / 2)*ANGLE_RANGE)
 			animation = &turretRight_16;
 
 	}
 }
+
+
+void Enemy_TerrestialTurret::Shoot()
+{
+	left = false;
+	double deltaX = ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
+	double deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
+	float angle;
+
+	angle = atan2(deltaX, deltaY);
+
+	angle *= ANGLE_CONVERT;
+
+
+	if (angle < 0) {
+		angle = angle * -1;
+		left = true;
+	}
+
+	LOG("Angle %.2f", angle);
+	if (currentTime >(lastShot + ENEMYSHOOTDELAY)) {
+
+		if (!left) {
+			if ((angle < 90) && (angle >= 0)) {
+				lastParticle.speed.x = ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
+			}
+			else {
+				lastParticle.speed.x = ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
+			}
+		}
+		else {
+			if ((angle < 90) && (angle >= 0)) {
+				lastParticle.speed.x = -ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
+			}
+			else {
+				lastParticle.speed.x = -ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
+				lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
+			}
+		}
+
+		if (currentTime >(lastShot + ENEMYSHOOTDELAY)) {
+
+
+
+			App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 9, position.y + 47, COLLIDER_TYPE::COLLIDER_NONE);
+			App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 23, position.y + 47, COLLIDER_TYPE::COLLIDER_NONE);
+
+			App->particles->AddParticle(lastParticle, position.x + 10, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 24, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+
+
+
+			lastShot = currentTime;
+		}
+
+	}
+
+}
+
 
 void Enemy_TerrestialTurret::OnCollision(Collider* collider) {
 
