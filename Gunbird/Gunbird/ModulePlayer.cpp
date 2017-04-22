@@ -81,6 +81,8 @@ ModulePlayer::ModulePlayer()
 	playerCollision_Anim.speed = 0.5f;
 	playerCollision_Anim.loop = true;
 
+
+
 }
 
 ModulePlayer::~ModulePlayer()

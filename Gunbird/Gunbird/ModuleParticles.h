@@ -78,6 +78,9 @@ public:
 	Particle hitEnemy;
 	Particle valnusDeathScream;
 
+	//Particles for player shot collision
+	Animation playerShotCollison;
+
 };
 
 #endif // __MODULEPARTICLES_H__

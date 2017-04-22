@@ -84,6 +84,7 @@ void SceneCastle_houseFlag::OnCollision(Collider* collider) {
 
 	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
 		animation = &hitWhite;
+		//App->particles->AddParticle(&(App->particles->playerShotCollison), ); 
 		lives--;
 		// TODO: check if PowerUp increases damage to houses too
 	}

@@ -223,6 +223,15 @@ ModuleParticles::ModuleParticles()
 		enemyBasicShot_start.anim.loop = false;
 	}
 
+
+	//Player shot collision animation
+	{
+		playerShotCollison.PushBack({ 888, 776, 11, 16 });
+		playerShotCollison.PushBack({ 913, 772, 12, 20 });
+		playerShotCollison.PushBack({ 935, 772, 12, 20 });
+		playerShotCollison.speed = 0.5f;
+		playerShotCollison.loop = true;
+	}
 }
 
 ModuleParticles::~ModuleParticles()
