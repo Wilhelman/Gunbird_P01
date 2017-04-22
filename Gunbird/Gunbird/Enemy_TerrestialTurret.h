@@ -2,7 +2,8 @@
 #define __Enemy_TerrestialTurres_H__
 
 #include "Enemy.h"
-#include "Path.h"
+#include "Path.h" 
+#include "ModuleParticles.h"
 
 class Enemy_TerrestialTurret : public Enemy
 {
@@ -33,10 +34,15 @@ private:
 	Path turret2_path;
 	Path turret3_path;
 
+	uint lastShot;
+	Particle lastParticle;
+	bool left;
+
 public:
 
 	Enemy_TerrestialTurret(int x, int y);
 	void Move();
+	void Shoot();          
 	void OnCollision(Collider* collider);
 };
 

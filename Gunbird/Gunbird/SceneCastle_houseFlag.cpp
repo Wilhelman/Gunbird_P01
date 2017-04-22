@@ -25,7 +25,7 @@ SceneCastle_houseFlag::SceneCastle_houseFlag(int x, int y) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 
-	collider = App->collision->AddCollider({ 0, 0, 80, 101 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 22, 64, 80 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
 void SceneCastle_houseFlag::Move()

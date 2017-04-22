@@ -25,7 +25,6 @@ private:
 	uint hittedTime;
 	uint shotPower;
 
-
 public:
 	ModulePlayer();
 	~ModulePlayer();

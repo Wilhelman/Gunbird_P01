@@ -35,6 +35,7 @@ ModulePlayer::ModulePlayer()
 	//dead animation
 	dead_animation.PushBack({ 76, 0, 32, 38 });
 	dead_animation.speed = 0.1f; // TODO: is it necessary if animation is only one frame long?
+
 	//dead animation EXPLOSION
 	dead_animation_explosion.PushBack({ 95,187,47,49});
 	dead_animation_explosion.PushBack({ 72,151,35, 37});
@@ -224,6 +225,7 @@ update_status ModulePlayer::Update()
 
 			if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
 			{
+				playerLives = 0;
 				deadPlayer = true;
 				playerExpControl = true;
 
@@ -246,13 +248,25 @@ update_status ModulePlayer::Update()
 		LOG("Cannot blit the texture in ModulePlayer %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}
+	LOG("%f", App->sceneCastle->background_y);
+	if (App->sceneCastle->background_y >= -2090 && App->sceneCastle->background_y < -2015)
+	{
+		if(App->sceneCastle->background_y == -2090)
+		{ 
+		this->position.x = (SCREEN_WIDTH / 2) - 13;
+		this->position.y = SCREEN_HEIGHT + 24;
+		}
+		current_animation = &blink;
+		position.y -= 1;
+	}
 
 	if (this->deadPlayer) {
 
 		current_animation = &dead_animation;
 		
-		if (playerExpControl == true)
-		App->particles->AddParticle(App->particles->deathPlayerExplosion, (playerCollider->rect.x - ((60- ((playerCollider->rect.w)) / 2))), (playerCollider->rect.y - ((110 - (playerCollider->rect.h)) / 2)));
+		if (playerExpControl == true) {                             
+			App->particles->AddParticle(App->particles->deathPlayerExplosion, (playerCollider->rect.x - ((60 - ((playerCollider->rect.w)) / 2))), (playerCollider->rect.y - ((110 - (playerCollider->rect.h)) / 2)));
+		}
 		playerExpControl = false;
 		
 		if(lastTime == 0)

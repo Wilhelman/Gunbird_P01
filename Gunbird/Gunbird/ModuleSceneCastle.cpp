@@ -171,21 +171,27 @@ update_status ModuleSceneCastle::Update()
 
 
 		if (background_y <= -1800.0f && graphicsSoldier != nullptr) {
-			if (background_y >= -1880)
+			/*if (background_y >= -1880)
 			{
 				if (!App->render->Blit(graphicsSoldier, (int)soldier_up_x + 35, (int)soldier_up_y + SCREEN_HEIGHT, &(soldier_up_blink.GetCurrentFrame()), 0.5f)) {
 					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 					status = UPDATE_ERROR;
 				}
+			}*/
+			if (background_y <= -1810.0f)
+			{ 
+				if (!App->render->Blit(graphicsSoldier, (int)soldier_up_x + 35, (int)soldier_up_y + SCREEN_HEIGHT, &(soldier_up.GetCurrentFrame()), 0.75f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
 			}
 
-			if (!App->render->Blit(graphicsSoldier, (int)soldier_up_x + 35, (int)soldier_up_y + SCREEN_HEIGHT, &(soldier_up.GetCurrentFrame()), 0.75f)) {
-				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-			if (!App->render->Blit(graphicsSoldier, (int)soldier_up_x + 50, (int)soldier_up_y + SCREEN_HEIGHT + 20, &(soldier_up.GetCurrentFrame()), 0.75f)) {
-				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
+			if (background_y <= -1800.0f)
+			{
+				if (!App->render->Blit(graphicsSoldier, (int)soldier_up_x + 50, (int)soldier_up_y + SCREEN_HEIGHT + 20, &(soldier_up.GetCurrentFrame()), 0.75f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
 			}
 		}
 
