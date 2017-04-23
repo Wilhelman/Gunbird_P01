@@ -1,10 +1,13 @@
 #include"Coin.h"
 #include "Application.h"
 #include "ModuleCollision.h"
+#include "ModuleAudio.h"
 #include "Path.h"
 
 Coin::Coin(int x, int y) : Enemy(x, y)
 {
+	LOG("Loading audio fx for coin");
+	pickup_audio = App->audio->LoadFx("Assets/audio/effects/gunbird_Collect_Coin.wav");
 
 	coin_animation.PushBack({ 689,585,13,17 });
 	coin_animation.PushBack({ 713,584,13,17 });
@@ -31,4 +34,10 @@ void Coin::Move(){
 
 	position = original_pos + movement.GetCurrentPosition(&animation);
 
+}
+
+void Coin::OnCollision(Collider* collider) {
+	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER) {
+		App->audio->PlayFx(pickup_audio);
+	}
 }

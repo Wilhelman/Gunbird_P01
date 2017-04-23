@@ -4,7 +4,7 @@
 #include "Module.h"
 #include "Path.h"
 
-#define MAX_ENEMIES 100
+#define MAX_ENEMIES 1000
 
 enum ENEMY_TYPES
 {

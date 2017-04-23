@@ -16,7 +16,7 @@
 #include "Coin.h"
 #include "Power_Up.h"
 
-#define SPAWN_MARGIN 250
+#define SPAWN_MARGIN 500
 
 ModuleEnemies::ModuleEnemies()
 {
@@ -140,9 +140,14 @@ update_status ModuleEnemies::PostUpdate()
 	{
 		if (enemies[i] != nullptr)
 		{
-			if (enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
+			if (enemies[i]->position.x > SCREEN_WIDTH + SPAWN_MARGIN || enemies[i]->position.x < 0 - SPAWN_MARGIN)
 			{
-				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
+				LOG("DeSpawning enemy at %d", enemies[i]->position.x);
+				delete enemies[i];
+				enemies[i] = nullptr;
+			}
+			else if (enemies[i]->position.y > SCREEN_HEIGHT + SPAWN_MARGIN || enemies[i]->position.y < 0 - SPAWN_MARGIN) {
+				LOG("DeSpawning enemy at %d", enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
 			}

@@ -306,12 +306,16 @@ update_status ModuleParticles::Update()
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
-		Particle* p = active[i ];
+		Particle* p = active[i];
 
 		if (p == nullptr)
 			continue;
 
-		if (p->Update() == false)
+		if (p->position.y < -10 || p->position.y > SCREEN_HEIGHT) {
+			delete p;
+			active[i] = nullptr;
+		}
+		else if (p->Update() == false)
 		{
 			delete p;
 			active[i] = nullptr;
@@ -325,6 +329,7 @@ update_status ModuleParticles::Update()
 				App->audio->PlayFx(p->fx);
 			}
 		}
+		
 	}
 	return UPDATE_CONTINUE;
 }

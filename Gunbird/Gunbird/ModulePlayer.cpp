@@ -309,7 +309,7 @@ update_status ModulePlayer::Update()
 		LOG("Cannot blit the texture in ModulePlayer %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}
-	LOG("%f", App->sceneCastle->background_y);
+
 	if (App->sceneCastle->background_y >= -2090 && App->sceneCastle->background_y < -2015)
 	{
 		if(App->sceneCastle->background_y == -2090)
@@ -401,6 +401,11 @@ bool ModulePlayer::CleanUp()
 }
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
+	if (c2->type == COLLIDER_POWER_UP)
+	{
+		shotPower = 1;
+		App->audio->PlayFx(valnus_PowerUp);
+	}
 	if (!inmortal && spawnTime == 0) {
 
 		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_SHOT && !hitted) {
@@ -413,15 +418,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 			hitted = true;
 			App->audio->PlayFx(valnus_Hitted);
 		}
-
-		
-
-		if (c2->type == COLLIDER_POWER_UP)
-		{
-			shotPower = 1;
-			App->audio->PlayFx(valnus_PowerUp);
-		}
-
 
 		if (c2->type == COLLIDER_ENEMY_SHOT)
 		{

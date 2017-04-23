@@ -286,7 +286,7 @@ update_status ModuleSceneCastle::Update()
 
 		if ((int)background_y == -1500 && spawned == 5) {
 			spawned = 6;
-			
+
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 15, -45, ENEMY_MOVEMENT::STAY);	
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 165, -45, ENEMY_MOVEMENT::STAY); // fix
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -20, -85, ENEMY_MOVEMENT::TURRET_1_PATH);

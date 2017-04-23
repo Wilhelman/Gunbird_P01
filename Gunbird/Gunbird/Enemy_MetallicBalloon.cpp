@@ -178,7 +178,7 @@ void Enemy_MetallicBalloon::Shoot()
 		left = true;
 	}
 
-	LOG("Angle %.2f", angle);
+	//LOG("Angle %.2f", angle);
 	if (currentTime > (lastShot + ENEMYSHOOTDELAY)) {
 
 		if (!left) {

@@ -262,7 +262,7 @@ void Enemy_TerrestialTurret::Move() {
 		if (deltaY != 0)
 		{
 			angle = atan2(deltaX, deltaY);
-			LOG("%d", angle);
+			//LOG("%d", angle);
 
 			if (angle > -(ANGLE_RANGE) && angle <= (ANGLE_RANGE / 2))
 				animation = &turretDownAnimation;
@@ -340,7 +340,7 @@ void Enemy_TerrestialTurret::Shoot()
 			left = true;
 		}
 
-		LOG("Angle %.2f", angle);
+		//LOG("Angle %.2f", angle);
 		if (currentTime >(lastShot + ENEMYSHOOTDELAY)) {
 
 			if (!left) {
