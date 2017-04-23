@@ -326,6 +326,7 @@ update_status ModulePlayer::Update()
 
 	if (hitted && collisionAnimControl) {
 		current_animation = &playerCollision_Anim;
+		collisionAnimControl = false;
 	}
 
 	//inmortal control time
@@ -375,7 +376,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 			App->audio->PlayFx(App->particles->hitEnemy.fx);
 		}
 
-		collisionAnimControl = false;
+		
 
 		if (c2->type == COLLIDER_POWER_UP)
 		{
