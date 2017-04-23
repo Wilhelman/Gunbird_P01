@@ -250,15 +250,15 @@ update_status ModuleSceneCastle::Update()
 	//ENEMY SPAWN PHASE
 	{
 		
-		if ((int)background_y == -1950 && spawned == 0)
-		{
+		if ((int)background_y == -2000 && spawned == 0) {
 			spawned = 1;
-			App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_CASTLE);
+			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG, 149, -275, ENEMY_MOVEMENT::STAY);
 		}
 
-		if ((int)background_y == -2000 && spawned == 1) {
+		if ((int)background_y == -1950 && spawned == 1)
+		{
 			spawned = 2;
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG, 149, -275, ENEMY_MOVEMENT::STAY);
+			App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_CASTLE);
 		}
 
 		if ((int)background_y == -1840 && spawned == 2) {
