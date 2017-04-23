@@ -52,6 +52,7 @@ private:
 	Particle lastParticle;
 	bool left;
 	bool dead;
+	float deadTimer;
 
 public:
 

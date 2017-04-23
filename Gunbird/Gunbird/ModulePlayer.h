@@ -12,6 +12,10 @@
 struct SDL_Texture;
 struct Collider;
 
+
+	
+
+
 class ModulePlayer : public Module
 {
 private:
@@ -24,7 +28,11 @@ private:
 
 	bool hitted;
 	uint hittedTime;
-	
+
+	//playerSoundEffects
+	uint valnus_Hitted = 0;
+	uint valnus_Death = 0;
+	uint valnus_PowerUp = 0;
 
 public:
 	ModulePlayer();

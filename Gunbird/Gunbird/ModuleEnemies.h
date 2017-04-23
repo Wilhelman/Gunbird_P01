@@ -53,9 +53,6 @@ class ModuleEnemies : public Module
 {
 public:
 
-	//path stay
-	Path stayPath;
-
 	ModuleEnemies();
 	~ModuleEnemies();
 
@@ -75,6 +72,8 @@ private:
 private:
 
 	
+	//path stay
+	Path stayPath;
 
 	//paths (torpedo)
 	Path diagonalPathL_R;

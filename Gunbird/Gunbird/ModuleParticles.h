@@ -73,11 +73,6 @@ public:
 	Particle torpedoExplosion;
 	Particle vaseExplosion;
 
-	//Particles for sound FX
-	Particle PowerUp;
-	Particle hitEnemy;
-	Particle valnusDeathScream;
-
 	//Particles for player shot collision
 	Particle playerShotCollison;
 

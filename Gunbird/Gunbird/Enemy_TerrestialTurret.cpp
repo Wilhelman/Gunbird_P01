@@ -2,7 +2,6 @@
 #include "Enemy_TerrestialTurret.h"
 #include "ModuleCollision.h"
 #include "ModuleSceneCastle.h"
-#include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "SDL\include\SDL_timer.h"
 
@@ -241,6 +240,8 @@ Enemy_TerrestialTurret::Enemy_TerrestialTurret(int x, int y) : Enemy(x, y)
 	
 	original_pos.x = x;
 	original_pos.y = y;
+
+	deadTimer = 0;
 }
 
 void Enemy_TerrestialTurret::Move() {
@@ -248,10 +249,12 @@ void Enemy_TerrestialTurret::Move() {
 	//double deltaX =  ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
 	//double deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
 
-	position = original_pos + movement.GetCurrentPosition(&animation);
-
+	
+	
 	if (!dead) {
-		
+
+		position = original_pos + movement.GetCurrentPosition(&animation);
+
 		double deltaX = (App->player->position.x - (position.x + 15));
 		double deltaY = (App->player->position.y - (position.y + 21));
 		double angle;
@@ -307,6 +310,13 @@ void Enemy_TerrestialTurret::Move() {
 		}
 
 		lastParticle = App->particles->enemyBasicShot;
+	}
+	else {
+		deadTimer += 0.5f;
+		if (deadTimer == 1.0f) {
+			position.y += 1;
+			deadTimer = 0.0f;
+		}
 	}
 }
 
@@ -380,7 +390,6 @@ void Enemy_TerrestialTurret::OnCollision(Collider* collider) {
 
 	if (lives <= 0) {
 		this->collider->to_delete = true;
-		//movement = App->enemies->stayPath;
 		animation = &death;
 		dead = true;
 	}
