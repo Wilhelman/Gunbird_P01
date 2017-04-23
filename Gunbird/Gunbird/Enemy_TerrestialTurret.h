@@ -51,6 +51,7 @@ private:
 	uint lastShot;
 	Particle lastParticle;
 	bool left;
+	bool dead;
 
 public:
 
