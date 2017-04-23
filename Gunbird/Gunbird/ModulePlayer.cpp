@@ -287,7 +287,7 @@ update_status ModulePlayer::Update()
 
 			if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
 			{
-				playerLives = 0;
+				playerLives = -1;
 				deadPlayer = true;
 				playerExpControl = true;
 			}

@@ -107,6 +107,18 @@ _0.45 version:_
 * Direct win F3 key
 * Direct loose F4 key
 
+_0.46 version:_
+
+* Score is totally implemented for one player
+* Fixed a lot of minor bugs
+* Added audio fx to player, welcome screen and character selection
+* Welcome screen and character selection improved
+* Enemies shots are implemented scouting the player
+* Added more enemies and background houses to the castle scene
+* Hit and life animation to each enemy / house
+* Now the enemies have the lives of the original game
+* Implemented the coin and the vase with all the functionality
+
 ## Team members
 
 _Altimira Bernat, Martí's responsability and Github account_
