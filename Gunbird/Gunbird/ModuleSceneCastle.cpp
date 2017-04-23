@@ -131,6 +131,10 @@ bool ModuleSceneCastle::Start()
 
 	if (!App->audio->PlayMusic("Assets/audio/gunbird_welcome_CastleScreen_music.ogg"))
 		ret = false;
+
+	LOG("Loading audio fx when player 2 joins the game");
+	player2joined = App->audio->LoadFx("Assets/audio/effects/Valnus_Start.wav");
+
 	return ret;
 }
 
@@ -361,6 +365,7 @@ update_status ModuleSceneCastle::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_KP_2] && !App->player2->IsEnabled()) {
 		App->player2->Enable();
+		App->audio->PlayFx(player2joined);
 	}
 
 	/*if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)

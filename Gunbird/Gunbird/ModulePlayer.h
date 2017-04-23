@@ -13,9 +13,6 @@ struct SDL_Texture;
 struct Collider;
 
 
-	
-
-
 class ModulePlayer : public Module
 {
 private:
@@ -70,6 +67,7 @@ public:
 	bool playerExpControl;
 	bool playerLost;
 	bool godModeControl;
+
 };
 
 #endif

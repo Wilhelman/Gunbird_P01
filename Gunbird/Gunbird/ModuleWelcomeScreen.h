@@ -18,7 +18,7 @@ public:
 	bool CleanUp();
 
 public:
-
+	uint start_audio;
 	SDL_Texture* graphics = nullptr;
 	Animation welcomeScreenAnimation;
 

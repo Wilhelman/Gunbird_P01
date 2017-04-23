@@ -275,8 +275,10 @@ bool ModuleParticles::Start()
 	laser0_1.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
 	laser1_1.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
 	laser2_1.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
-	
 
+	LOG("Loading audio fx for enemy hitted by player shot");
+	enemy_hitted = App->audio->LoadFx("Assets/audio/effects/enemy_hitted.wav");
+	
 	return true;
 }
 
@@ -405,4 +407,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			break;
 		}
 	}
+
+	if(c1-> type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT && (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY || c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING))
+		App->audio->PlayFx(enemy_hitted);
 }

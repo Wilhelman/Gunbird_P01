@@ -12,6 +12,7 @@
 #include "SceneCastle_houseFlag.h"
 #include "SceneCastle_houseFlag2.h"
 #include "SceneCastle_Vase.h"
+#include "ModuleAudio.h"
 
 #include "Coin.h"
 #include "Power_Up.h"
@@ -96,6 +97,9 @@ bool ModuleEnemies::Start()
 	/*sprites = App->textures->Load("Assets/maps/castle/enemies_castle.png");*/
 	sprites = App->textures->Load("Assets/maps/castle/Enemies_Castle_definitive.png");
 
+	LOG("Loading audio fx for medium enemy explosion");
+	medium_explosion = App->audio->LoadFx("Assets/audio/effects/medium_explosion.wav");
+	
 	return true;
 }
 
@@ -311,6 +315,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			if (enemies[i]->type == ENEMY_TYPES::METALLICBALLOON) {
 				if (enemies[i]->getLives() == 0) {
 					App->ui->score += 500;
+					App->audio->PlayFx(medium_explosion);
  					App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
 					this->AddEnemy(ENEMY_TYPES::POWER_UP, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
 					delete enemies[i];
@@ -322,6 +327,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			else if (enemies[i]->type == ENEMY_TYPES::TERRESTIALTURRET) {
 				if (enemies[i]->getLives() == 0) {
 					App->ui->score += 500;
+					App->audio->PlayFx(medium_explosion);
 					App->particles->AddParticle(App->particles->terrestialTurretExplosion, (c1->rect.x - ((58 - (c1->rect.w)) / 2)), (c1->rect.y - ((66 - (c1->rect.h)) / 2)));
 					//delete enemies[i];
 					//enemies[i] = nullptr;
@@ -333,6 +339,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			else if(enemies[i]->type == ENEMY_TYPES::TORPEDO){
 				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
 					App->ui->score += 200;
+					App->audio->PlayFx(medium_explosion);
 					App->particles->AddParticle(App->particles->torpedoExplosion, (c1->rect.x - ((49 - (c1->rect.w)) / 2)), (c1->rect.y - ((35 - (c1->rect.h)) / 2)));
 					delete enemies[i];
 					enemies[i] = nullptr;
@@ -343,6 +350,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				if (enemies[i]->getLives() == 0) {
 					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
 						App->ui->score += 3000;
+						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
 						delete enemies[i];
 						enemies[i] = nullptr;
@@ -355,6 +363,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				if (enemies[i]->getLives() == 0) {
 					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
 						App->ui->score += 3000;
+						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
 						delete enemies[i];
 						enemies[i] = nullptr;
@@ -366,6 +375,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			else if (enemies[i]->type == ENEMY_TYPES::CASTLE_VASE) {
 				if (enemies[i]->getLives() == 0) {
 					App->ui->score += 500; 
+					App->audio->PlayFx(medium_explosion);
 					App->particles->AddParticle(App->particles->vaseExplosion, (c1->rect.x - ((58 - (c1->rect.w)) / 2)), (c1->rect.y - ((66 - (c1->rect.h)) / 2)));
 					this->AddEnemy(ENEMY_TYPES::COIN, c1->rect.x + 13, c1->rect.y + 28, ENEMY_MOVEMENT::STAY);
 					delete enemies[i];

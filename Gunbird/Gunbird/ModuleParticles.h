@@ -76,6 +76,8 @@ public:
 	//Particles for player shot collision
 	Particle playerShotCollison;
 
+	uint enemy_hitted;
+
 };
 
 #endif // __MODULEPARTICLES_H__

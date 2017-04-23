@@ -20,6 +20,7 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect background;
+	uint valnus_selection;
 
 };
 

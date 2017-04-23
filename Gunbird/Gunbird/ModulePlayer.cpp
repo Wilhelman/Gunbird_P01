@@ -367,6 +367,7 @@ update_status ModulePlayer::Update()
 
 	if (hitted) {
 		current_animation = &playerCollision_Anim;
+		hitted = false;
 	}
 
 	//inmortal control time

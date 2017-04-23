@@ -36,6 +36,9 @@ bool ModuleCharacterSelection::Start()
 	if (!App->audio->PlayMusic("Assets/audio/gunbird_characterSelection_music.ogg"))
 		ret = false;
 
+	LOG("Loading audio fx for Valnus selection");
+	valnus_selection = App->audio->LoadFx("Assets/audio/effects/Valnus_Start.wav");
+
 	return ret;
 }
 
@@ -46,6 +49,8 @@ update_status ModuleCharacterSelection::Update()
 	update_status status = UPDATE_CONTINUE;
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver()) {
+		
+		App->audio->PlayFx(valnus_selection);
 		App->fade->FadeToBlack(this, App->sceneCastle);
 	}
 

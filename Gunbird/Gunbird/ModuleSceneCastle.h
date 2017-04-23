@@ -53,6 +53,9 @@ public:
 	float background_y;
 
 	float background_speed;
+
+
+	uint player2joined;
 	
 
 };

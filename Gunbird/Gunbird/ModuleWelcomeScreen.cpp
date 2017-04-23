@@ -13,6 +13,8 @@ ModuleWelcomeScreen::ModuleWelcomeScreen()
 	welcomeScreenAnimation.PushBack({ 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT });
 	welcomeScreenAnimation.PushBack({ 224, 0, SCREEN_WIDTH, SCREEN_HEIGHT });
 	welcomeScreenAnimation.speed = 0.05f;
+
+	
 }
 
 ModuleWelcomeScreen::~ModuleWelcomeScreen()
@@ -32,6 +34,9 @@ bool ModuleWelcomeScreen::Start()
 	if (!App->audio->PlayMusic("Assets/audio/gunbird_welcome_CastleScreen_music.ogg"))
 		ret = false;
 
+	LOG("Loading audio fx for start");
+	start_audio = App->audio->LoadFx("Assets/audio/effects/insert_coin.wav");
+
 	return ret;
 }
 
@@ -40,6 +45,7 @@ update_status ModuleWelcomeScreen::Update()
 {
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver()) {
+		App->audio->PlayFx(start_audio);
 		App->fade->FadeToBlack(this, App->characterSelection);
 	}
 
