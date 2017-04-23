@@ -76,7 +76,6 @@ ModulePlayer::ModulePlayer()
 	playerCollision_Anim.PushBack({ 342, 460, 31, 32 });
 	playerCollision_Anim.PushBack({ 386, 460, 29, 30 });
 	playerCollision_Anim.PushBack({ 430, 460, 31, 31 });
-	playerCollision_Anim.PushBack({ 430, 460, 29, 30 });
 	playerCollision_Anim.PushBack({ 477, 460, 31, 32 });
 	playerCollision_Anim.speed = 0.5f;
 	playerCollision_Anim.loop = true;
