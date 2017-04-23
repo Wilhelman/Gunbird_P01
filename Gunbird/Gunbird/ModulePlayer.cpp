@@ -66,22 +66,32 @@ ModulePlayer::ModulePlayer()
 	blink.loop = true;
 
 	//Player collison animation
-	playerCollision_Anim.PushBack({ 28, 461, 26, 30 });
-	playerCollision_Anim.PushBack({ 71, 461, 31, 30 });
-	playerCollision_Anim.PushBack({ 116, 461, 26, 29 });
-	playerCollision_Anim.PushBack({ 158, 461, 25, 30 });
-	playerCollision_Anim.PushBack({ 202, 461, 31, 32 });
-	playerCollision_Anim.PushBack({ 254, 459, 31, 32 });
-	playerCollision_Anim.PushBack({ 298, 460, 29, 30 });
-	playerCollision_Anim.PushBack({ 342, 460, 31, 32 });
-	playerCollision_Anim.PushBack({ 386, 460, 29, 30 });
-	playerCollision_Anim.PushBack({ 430, 460, 31, 31 });
-	playerCollision_Anim.PushBack({ 477, 460, 31, 32 });
-	playerCollision_Anim.speed = 0.5f;
-	playerCollision_Anim.loop = true;
-
-
-
+	{
+		playerCollision_Anim.PushBack({ 1178, 614, 26, 30 });
+		playerCollision_Anim.PushBack({ 1221, 614, 31, 30 });
+		playerCollision_Anim.PushBack({ 1266, 614, 26, 29 });
+		playerCollision_Anim.PushBack({ 1308, 614, 25, 30 });
+		playerCollision_Anim.PushBack({ 1352, 612, 31, 32 });
+		playerCollision_Anim.PushBack({ 1404, 612, 31, 32 });
+		playerCollision_Anim.PushBack({ 1448, 613, 29, 30 });
+		playerCollision_Anim.PushBack({ 1492, 613, 31, 32 });
+		playerCollision_Anim.PushBack({ 1536, 613, 29, 30 });
+		playerCollision_Anim.PushBack({ 1580, 613, 31, 31 });
+		playerCollision_Anim.PushBack({ 1627, 613, 31, 32 });
+		playerCollision_Anim.PushBack({ 1177, 662, 31, 32 });
+		playerCollision_Anim.PushBack({ 1218, 662, 31, 32 });
+		playerCollision_Anim.PushBack({ 1262, 662, 31, 32 });
+		playerCollision_Anim.PushBack({ 1311, 662, 31, 32 });
+		playerCollision_Anim.PushBack({ 1358, 662, 31, 32 });
+		playerCollision_Anim.PushBack({ 1405, 662, 31, 32 });
+		playerCollision_Anim.PushBack({ 1447, 662, 31, 32 });
+		playerCollision_Anim.PushBack({ 1495, 662, 31, 32 });
+		playerCollision_Anim.PushBack({ 1538, 662, 31, 32 });
+		playerCollision_Anim.PushBack({ 1583, 662, 31, 32 });
+		playerCollision_Anim.PushBack({ 1624, 662, 31, 32 });
+		playerCollision_Anim.speed = 0.5f;
+		playerCollision_Anim.loop = true;
+	}
 }
 
 ModulePlayer::~ModulePlayer()
@@ -336,7 +346,7 @@ update_status ModulePlayer::Update()
 	}
 
 	//hitted control time
-	if (currentTime > (hittedTime + 1000) && hitted) {
+	if (currentTime > (hittedTime + HITTED_TIME) && hitted) {
 		hitted = false;
 	}
 
