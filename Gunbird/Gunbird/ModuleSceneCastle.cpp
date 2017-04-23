@@ -41,7 +41,6 @@ ModuleSceneCastle::ModuleSceneCastle()
 	soldier_left_wall_y = -145;
 	soldier_left_wall_x = 50;
 
-
 	soldier_up.PushBack({ 534, 345, 15, 24 });
 	soldier_up.PushBack({ 554, 345, 15, 24 });
 	soldier_up.PushBack({ 573, 345, 15, 24 });
@@ -251,18 +250,16 @@ update_status ModuleSceneCastle::Update()
 	//ENEMY SPAWN PHASE
 	{
 		
-		if ((int)background_y == -2000 && spawned == 0)
+		if ((int)background_y == -1950 && spawned == 0)
 		{
 			spawned = 1;
-			//App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_CASTLE);
+			App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_CASTLE);
 		}
 
 		if ((int)background_y == -2000 && spawned == 1) {
 			spawned = 2;
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG, 149, -275, ENEMY_MOVEMENT::STAY);
 		}
-
-		
 
 		if ((int)background_y == -1840 && spawned == 2) {
 			spawned = 3;
@@ -291,9 +288,9 @@ update_status ModuleSceneCastle::Update()
 			spawned = 6;
 			
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 15, -45, ENEMY_MOVEMENT::STAY);	
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 165, -45, ENEMY_MOVEMENT::STAY); //vbn
+			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 165, -45, ENEMY_MOVEMENT::STAY); // fix
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -20, -85, ENEMY_MOVEMENT::TURRET_1_PATH);
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 235, -85, ENEMY_MOVEMENT::TURRET1_L_PATH);//sdfg
+			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 235, -85, ENEMY_MOVEMENT::TURRET1_L_PATH);// fix
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 15, -375, ENEMY_MOVEMENT::STAY);
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 170, -375, ENEMY_MOVEMENT::STAY);
 
@@ -316,8 +313,6 @@ update_status ModuleSceneCastle::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 180, 70, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
 			
 		}
-
-
 
 		if ((int)background_y == -1050 && spawned == 7) {
 			spawned = 8;
@@ -368,10 +363,10 @@ update_status ModuleSceneCastle::Update()
 		App->player2->Enable();
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
+	/*if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, ENEMY_MOVEMENT::STAY);
-	}
+	}*/
 
 	return status;
 }
