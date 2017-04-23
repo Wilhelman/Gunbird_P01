@@ -89,6 +89,34 @@ ModulePlayer::ModulePlayer()
 		playerCollision_Anim.PushBack({ 1538, 662, 31, 32 });
 		playerCollision_Anim.PushBack({ 1583, 662, 31, 32 });
 		playerCollision_Anim.PushBack({ 1624, 662, 31, 32 });
+		playerCollision_Anim.PushBack({ 1176, 758, 31, 32 });
+		playerCollision_Anim.PushBack({ 1217, 758, 31, 32 });
+		playerCollision_Anim.PushBack({ 1265, 758, 31, 32 });
+		playerCollision_Anim.PushBack({ 1310, 758, 31, 32 });
+		playerCollision_Anim.PushBack({ 1355, 758, 31, 32 });
+		playerCollision_Anim.PushBack({ 1402, 758, 31, 32 });
+		playerCollision_Anim.PushBack({ 1449, 758, 31, 32 });
+		playerCollision_Anim.PushBack({ 1496, 758, 31, 32 });
+		playerCollision_Anim.PushBack({ 1541, 758, 31, 32 });
+		playerCollision_Anim.PushBack({ 1588, 758, 31, 32 });
+		playerCollision_Anim.PushBack({ 1631, 758, 31, 32 });
+		playerCollision_Anim.PushBack({ 1178, 811, 31, 32 });
+		playerCollision_Anim.PushBack({ 1213, 811, 31, 32 });
+		playerCollision_Anim.PushBack({ 1261, 811, 31, 32 });
+		playerCollision_Anim.PushBack({ 1309, 811, 31, 32 });
+		playerCollision_Anim.PushBack({ 1356, 811, 31, 32 });
+		playerCollision_Anim.PushBack({ 1399, 811, 31, 32 });
+		playerCollision_Anim.PushBack({ 1447, 811, 31, 32 });
+		playerCollision_Anim.PushBack({ 1497, 811, 31, 32 });
+		playerCollision_Anim.PushBack({ 1543, 811, 31, 32 });
+		playerCollision_Anim.PushBack({ 1584, 811, 31, 32 });
+		playerCollision_Anim.PushBack({ 1629, 811, 31, 32 });
+		playerCollision_Anim.PushBack({ 1178, 859, 31, 32 });
+		playerCollision_Anim.PushBack({ 1214, 859, 31, 32 });
+		playerCollision_Anim.PushBack({ 1259, 859, 31, 32 });
+		playerCollision_Anim.PushBack({ 1309, 859, 31, 32 });
+		playerCollision_Anim.PushBack({ 1353, 859, 31, 32 });
+		playerCollision_Anim.PushBack({ 1399, 859, 31, 32 });
 		playerCollision_Anim.speed = 0.5f;
 		playerCollision_Anim.loop = true;
 	}
@@ -110,7 +138,6 @@ bool ModulePlayer::Start()
 	deadPlayer = false;
 	original_camera_y = App->render->camera.y;
 	laserType = 0;
-	collisionAnimControl = false;
 
 	position.x = SCREEN_WIDTH / 2;
 	position.y = SCREEN_HEIGHT / 2 + 100;
@@ -334,9 +361,8 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (hitted && collisionAnimControl) {
+	if (hitted) {
 		current_animation = &playerCollision_Anim;
-		collisionAnimControl = false;
 	}
 
 	//inmortal control time
@@ -381,7 +407,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 
 		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING && !hitted) {
 			this->removePowerUp();
-			collisionAnimControl = true;
+			hitted = true;
 			App->particles->hitEnemy.fx = App->audio->LoadFx("Assets/audio/effects/Valnus_hit_enemy.wav");
 			App->audio->PlayFx(App->particles->hitEnemy.fx);
 		}

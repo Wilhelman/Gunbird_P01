@@ -7,7 +7,7 @@
 #include "p2Point.h"
 
 #define INMORTAL_TIME 2000
-#define HITTED_TIME 1000
+#define HITTED_TIME 1500
 
 struct SDL_Texture;
 struct Collider;
@@ -62,8 +62,6 @@ public:
 	bool playerExpControl;
 	bool playerLost;
 	bool godModeControl;
-	bool collisionAnimControl;
-
 };
 
 #endif
