@@ -17,6 +17,10 @@
 
 ModulePlayer2::ModulePlayer2()
 {
+	//godMode
+	godMode.PushBack({ 152,0,31,29 });
+	godMode.loop = true;
+
 	// idle animation
 	idle.PushBack({ 47, 446, 31, 30 });
 	idle.PushBack({ 85, 446, 31, 30 });
@@ -56,9 +60,9 @@ ModulePlayer2::ModulePlayer2()
 	left_animation.loop = false;
 
 	//Blink animation
-	blink.PushBack({ 0,0,31,30 });
-	blink.PushBack({ 28,431,31,30 });
-	blink.PushBack({ 38, 0, 31, 29 });
+	blink.PushBack({ 47,446,31,30 });
+	blink.PushBack({ 876,243,31,30 });
+	blink.PushBack({ 85, 446, 31, 29 });
 	blink.speed = 0.5f;
 	blink.loop = true;
 
@@ -125,6 +129,8 @@ ModulePlayer2::ModulePlayer2()
 		player2Collision_Anim.speed = 0.5f;
 		player2Collision_Anim.loop = true;
 	}
+
+	playerLives = 3;
 }
 
 ModulePlayer2::~ModulePlayer2()
@@ -138,14 +144,10 @@ bool ModulePlayer2::Start()
 	spawnTime = 0;
 	godModeControl = false;
 	playerExpControl = false;
-	playerLives = 2;
+	//playerLives = 2;
 	playerLost = false;
-	deadPlayer = false;
 	original_camera_y = App->render->camera.y;
 	laserType = 0;
-
-	position.x = SCREEN_WIDTH / 2;
-	position.y = SCREEN_HEIGHT / 2 + 100;
 
 	LOG("Creating player collider");
 	playerCollider = App->collision->AddCollider({ position.x,position.y,31,30 }, COLLIDER_PLAYER2, this);
@@ -161,6 +163,11 @@ bool ModulePlayer2::Start()
 	valnus_PowerUp = App->audio->LoadFx("Assets/audio/effects/Valnus_voice_PowerUp.wav");
 	valnus_Death = App->audio->LoadFx("Assets/audio/effects/Valnus_Scream_hitted.wav");
 
+	this->position.x = 0;
+	this->position.y = SCREEN_HEIGHT + 200;
+	this->spawining = true;
+	this->deadPlayer = true;
+
 	return ret;
 }
 
@@ -172,7 +179,7 @@ update_status ModulePlayer2::Update()
 	int speed = 3;
 
 
-	if (!deadPlayer && !hitted) {
+	if (!deadPlayer && !hitted && !spawining) {
 		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT && App->sceneCastle->IsEnabled()))
 		{
 			speed = 5;
@@ -284,12 +291,38 @@ update_status ModulePlayer2::Update()
 
 			} //end shot space
 
+			if (App->input->keyboard[SDL_SCANCODE_KP_7] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
+			{
+				godModeControl = !godModeControl;
+				if (godModeControl)
+					inmortal = true;
+
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_KP_8] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
+			{
+				playerLives = -1;
+				deadPlayer = true;
+				playerExpControl = true;
+			}
+
 			if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)
 				current_animation = &idle;
 
 		}
 		App->render->camera.y = original_camera_y;
 	}
+
+
+
+	if (spawining || inmortal)
+		current_animation = &blink;
+
+	if (deadPlayer)
+		current_animation = &dead_animation;
+
+	if (godModeControl)
+		current_animation = &godMode;
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
@@ -302,20 +335,7 @@ update_status ModulePlayer2::Update()
 		status = UPDATE_ERROR;
 	}
 
-	if (App->sceneCastle->background_y >= -2090 && App->sceneCastle->background_y < -2015)
-	{
-		if (App->sceneCastle->background_y == -2090)
-		{
-			this->position.x = (SCREEN_WIDTH / 2) - 13;
-			this->position.y = SCREEN_HEIGHT + 24;
-		}
-		current_animation = &blink;
-		position.y -= 1;
-	}
-
 	if (this->deadPlayer) {
-
-		current_animation = &dead_animation;
 
 		if (!inmortal) {
 			App->particles->AddParticle(App->particles->deathPlayerExplosion, (playerCollider->rect.x - ((60 - ((playerCollider->rect.w)) / 2))), (playerCollider->rect.y - ((110 - (playerCollider->rect.h)) / 2)));
@@ -335,23 +355,10 @@ update_status ModulePlayer2::Update()
 			}
 			else {
 				if (spawnTime == 0) {
-					spawnTime = SDL_GetTicks();
+					spawining = true;
 					playerLives--;
-					this->position.x = (SCREEN_WIDTH / 2) - 13;
-					this->position.y = SCREEN_HEIGHT + 24;
-				}
-
-				//change this animation to blink
-				current_animation = &blink;
-
-				if (currentTime < spawnTime + 1000)
-				{
-					position.y -= 1;
-				}
-				else {
-					spawnTime = 0;
+					this->spawning();
 					this->deadPlayer = false;
-					lastTime = SDL_GetTicks();
 				}
 			}
 		}
@@ -364,13 +371,24 @@ update_status ModulePlayer2::Update()
 
 	//inmortal control time
 	if (currentTime > (lastTime + INMORTAL_TIME) && inmortal && (godModeControl == false) && spawnTime == 0) {
-		inmortal = false;
+		this->inmortal = false;
 		lastTime = 0;
 	}
 
 	//hitted control time
 	if (currentTime > (hittedTime + HITTED_TIME) && hitted) {
 		hitted = false;
+	}
+
+	//spawining control time
+	if (currentTime < spawnTime + 1000 && spawining)
+	{
+		position.y -= 1;
+	}
+	else if (spawining) {
+		spawining = false;
+		spawnTime = 0;
+		lastTime = SDL_GetTicks();
 	}
 
 	currentTime = SDL_GetTicks();
@@ -382,7 +400,7 @@ update_status ModulePlayer2::Update()
 bool ModulePlayer2::CleanUp()
 {
 	LOG("Unloading player");
-
+	this->playerLives = 3;
 	App->textures->Unload(graphics);
 
 	LOG("Unloading player sound fx");
@@ -433,4 +451,10 @@ void ModulePlayer2::removePowerUp() {
 			App->enemies->AddEnemy(ENEMY_TYPES::POWER_UP, position.x, position.y - 50, ENEMY_MOVEMENT::NO_MOVEMENT);
 		}
 	}
+}
+
+void ModulePlayer2::spawning() {
+	spawnTime = SDL_GetTicks();
+	this->position.x = (SCREEN_WIDTH / 2) - 14;
+	this->position.y = SCREEN_HEIGHT + 24;
 }

@@ -492,8 +492,8 @@ void Enemy_TerrestialTurret::Shoot()
 
 			if (currentTime >(lastShot + DELAY_SHOT_ENEMY))
 			{
-				App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 30, position.y + 32, COLLIDER_TYPE::COLLIDER_NONE);
-				App->particles->AddParticle(lastParticle, position.x + 10, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 15, position.y + 21, COLLIDER_TYPE::COLLIDER_NONE);
+				App->particles->AddParticle(lastParticle, position.x + 15, position.y + 21, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
 
 				lastShot = currentTime;
 			}
@@ -509,7 +509,7 @@ uint Enemy_TerrestialTurret::getLives() {
 void Enemy_TerrestialTurret::OnCollision(Collider* collider) {
 
 	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT|| collider->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
-		App->particles->AddParticle(App->particles->playerShotCollison, (collider->rect.x - (((collider->rect.w)) / 2)), (collider->rect.y - (((collider->rect.h)))));
+		App->particles->AddParticle(App->particles->playerShotCollison, (collider->rect.x + (((collider->rect.w)) / 2)), (collider->rect.y + (((collider->rect.h)))));
 			lives--;
 	}
 

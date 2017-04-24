@@ -251,6 +251,13 @@ update_status ModuleSceneCastle::Update()
 		App->fade->FadeToBlack(this, App->scoreRanking);
 	}
 
+	if (App->player2->playerLost) {
+		LOG("Player2 LOST");
+		App->ui->p2 = false;
+		App->player2->playerCollider->to_delete = true;
+		App->player2->Disable();
+	}
+
 	//ENEMY SPAWN PHASE
 	{
 		

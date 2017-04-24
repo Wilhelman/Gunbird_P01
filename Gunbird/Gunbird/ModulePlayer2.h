@@ -42,10 +42,12 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 
 	void removePowerUp();
+	void spawning();
 
 public:
 	uint shotPower;
 	SDL_Texture* graphics = nullptr;
+	Animation godMode;
 	Animation idle;
 	Animation blink;
 	Animation right_animation;
@@ -67,6 +69,7 @@ public:
 	bool playerExpControl;
 	bool playerLost;
 	bool godModeControl;
+	bool spawining;
 
 };
 

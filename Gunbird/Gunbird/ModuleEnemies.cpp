@@ -345,8 +345,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						App->ui->score += 500;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->terrestialTurretExplosion, (c1->rect.x - ((58 - (c1->rect.w)) / 2)), (c1->rect.y - ((66 - (c1->rect.h)) / 2)));
-						delete enemies[i];
-						enemies[i] = nullptr;
+						//delete enemies[i];
+						//enemies[i] = nullptr;
 						LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
 						break;
 					}
