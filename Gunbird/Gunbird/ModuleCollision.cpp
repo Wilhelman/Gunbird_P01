@@ -220,6 +220,9 @@ void ModuleCollision::DebugDraw()
 		case COLLIDER_POWER_UP: // orange
 			App->render->DrawQuad(colliders[i]->rect, 255, 165, 0, alpha);
 			break;
+		case COLLIDER_PLAYER2: // pink
+			App->render->DrawQuad(colliders[i]->rect, 243, 143, 237, alpha);
+			break;
 		}
 	}
 }

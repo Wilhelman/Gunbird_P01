@@ -51,6 +51,7 @@ public:
 
 	int score;
 	int scoreP2;
+	int highestScore;
 	bool p2;
 private:
 

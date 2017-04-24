@@ -5,6 +5,7 @@
 #include "ModuleUI.h"
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
+#include "ModuleSceneCastle.h"
 
 #include <string.h>
 #include<stdio.h>
@@ -43,6 +44,7 @@ ModuleUI::ModuleUI()
 
 	score = 0;
 	scoreP2 = 0;
+	highestScore = 0;
 }
 
 ModuleUI::~ModuleUI()
@@ -56,7 +58,6 @@ bool ModuleUI::Start()
 	bool ret = true;
 	font_score = this->Load("Assets/Userinterface/score_numberPoints.png", "0123456789", 1);
 	graphics = App->textures->Load("Assets/Userinterface/userinterface.png");
-
 	if (graphics == nullptr) {
 		LOG("Cannot load the texture in ModuleUI");
 		ret = false;
@@ -70,114 +71,158 @@ update_status ModuleUI::Update()
 {
 
 	update_status status = UPDATE_CONTINUE;
-
-	char str[10];
-	sprintf_s(str, "%i", score);
-
-	int x_correction = 70;
-	if (score > 99)
-		x_correction -= fonts[font_score].char_w;
-	if (score > 999)
-		x_correction -= fonts[font_score].char_w;
-	if (score > 9999)
-		x_correction -= fonts[font_score].char_w;
-	this->BlitText(x_correction, 4, font_score, str);
-
-	if (App->player->playerLives >= 0) {
-		if (!App->render->Blit(graphics, 5, 18, &liveIcon, 1.0f)) {
-			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-			status = UPDATE_ERROR;
-		}
-	}
-
-	if (App->player->playerLives >= 1) {
-		if (!App->render->Blit(graphics, 22, 18, &liveIcon, 1.0f)) {
-			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-			status = UPDATE_ERROR;
-		}
-	}
-
-	if (App->player->playerLives >= 2) {
-		if (!App->render->Blit(graphics, 38, 18, &liveIcon, 1.0f)) {
-			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-			status = UPDATE_ERROR;
-		}
-	}
-
-	//BLITTING BOMBS
-	if (!App->render->Blit(graphics, 5 , SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
-		LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-		status = UPDATE_ERROR;
-	}
-
-	if (!App->render->Blit(graphics, 20, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
-		LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-		status = UPDATE_ERROR;
-	}
-
-	//BLITTING 1P
-	if (!App->render->Blit(graphics, 5, 4, &p1_Icon, 1.0f)) {
-		LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-		status = UPDATE_ERROR;
-	}
-
-	if (!p2) {
-		//BLITTING 2P INSERT COIN
-		if (!App->render->Blit(graphics, SCREEN_WIDTH / 2 + 6, 4, &(p2_insertCoin.GetCurrentFrame()), 1.0f)) {
-			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-			status = UPDATE_ERROR;
-		}
-	}
-	else { //2P STUFF
-		//BLITTING 2P
-		if (!App->render->Blit(graphics, SCREEN_WIDTH / 2 + 6, 4, &p2_Icon, 1.0f)) {
-			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-			status = UPDATE_ERROR;
-		}
-
-		//BLITTING BOMBS 2P
-		if (!App->render->Blit(graphics, SCREEN_WIDTH -17, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
-			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-			status = UPDATE_ERROR;
-		}
-		if (!App->render->Blit(graphics, SCREEN_WIDTH - 32, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
-			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-			status = UPDATE_ERROR;
-		}
-
-		if (App->player2->playerLives >= 0) {
-			if (!App->render->Blit(graphics, SCREEN_WIDTH - 87, 18, &liveIcon, 1.0f)) {
-				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-		}
-
-		if (App->player2->playerLives >= 1) {
-			if (!App->render->Blit(graphics, SCREEN_WIDTH - 70, 18, &liveIcon, 1.0f)) {
-				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-		}
-
-		if (App->player2->playerLives >= 2) {
-			if (!App->render->Blit(graphics, SCREEN_WIDTH - 53, 18, &liveIcon, 1.0f)) {
-				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-		}
-
+	if (App->sceneCastle->IsEnabled()) {
 		char str[10];
-		sprintf_s(str, "%i", scoreP2);
+		sprintf_s(str, "%i", score);
 
-		int x_correction = SCREEN_WIDTH - 30 ;
-		if (scoreP2 > 99)
+		int x_correction = 70;
+		if (score > 99)
 			x_correction -= fonts[font_score].char_w;
-		if (scoreP2 > 999)
+		if (score > 999)
 			x_correction -= fonts[font_score].char_w;
-		if (scoreP2 > 9999)
+		if (score > 9999)
 			x_correction -= fonts[font_score].char_w;
 		this->BlitText(x_correction, 4, font_score, str);
+
+		if (App->player->playerLives >= 0) {
+			if (!App->render->Blit(graphics, 5, 18, &liveIcon, 1.0f)) {
+				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+		}
+
+		if (App->player->playerLives >= 1) {
+			if (!App->render->Blit(graphics, 22, 18, &liveIcon, 1.0f)) {
+				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+		}
+
+		if (App->player->playerLives >= 2) {
+			if (!App->render->Blit(graphics, 38, 18, &liveIcon, 1.0f)) {
+				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+		}
+
+		//BLITTING BOMBS
+		if (!App->render->Blit(graphics, 5, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+
+		if (!App->render->Blit(graphics, 20, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+
+		//BLITTING 1P
+		if (!App->render->Blit(graphics, 5, 4, &p1_Icon, 1.0f)) {
+			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+
+		if (!p2) {
+			//BLITTING 2P INSERT COIN
+			if (!App->render->Blit(graphics, SCREEN_WIDTH / 2 + 6, 4, &(p2_insertCoin.GetCurrentFrame()), 1.0f)) {
+				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+		}
+		else { //2P STUFF
+			   //BLITTING 2P
+			if (!App->render->Blit(graphics, SCREEN_WIDTH / 2 + 6, 4, &p2_Icon, 1.0f)) {
+				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+
+			//BLITTING BOMBS 2P
+			if (!App->render->Blit(graphics, SCREEN_WIDTH - 17, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+			if (!App->render->Blit(graphics, SCREEN_WIDTH - 32, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+
+			if (App->player2->playerLives >= 0) {
+				if (!App->render->Blit(graphics, SCREEN_WIDTH - 87, 18, &liveIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			if (App->player2->playerLives >= 1) {
+				if (!App->render->Blit(graphics, SCREEN_WIDTH - 70, 18, &liveIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			if (App->player2->playerLives >= 2) {
+				if (!App->render->Blit(graphics, SCREEN_WIDTH - 53, 18, &liveIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			char str[10];
+			sprintf_s(str, "%i", scoreP2);
+
+			int x_correction = SCREEN_WIDTH - 30;
+			if (scoreP2 > 99)
+				x_correction -= fonts[font_score].char_w;
+			if (scoreP2 > 999)
+				x_correction -= fonts[font_score].char_w;
+			if (scoreP2 > 9999)
+				x_correction -= fonts[font_score].char_w;
+			this->BlitText(x_correction, 4, font_score, str);
+		}
 	}
+	else { //UI
+
+		if (highestScore > 0) {
+			char str3[10];
+			sprintf_s(str3, "%i", highestScore);
+			int x_correction = SCREEN_WIDTH / 2;
+			if (highestScore > 99)
+				x_correction -= fonts[font_score].char_w;
+			if (highestScore > 999)
+				x_correction -= fonts[font_score].char_w;
+			if (highestScore > 9999)
+				x_correction -= fonts[font_score].char_w;
+			this->BlitText( x_correction, 44, font_score, str3);
+		}
+
+		if (!App->render->Blit(graphics, 40, 60, &liveIcon, 1.0f)) {
+			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+		
+		if (!App->render->Blit(graphics, 60, 60, &p1_Icon, 1.0f)) {
+			LOG("Cannot blit the texture in ScoreRanking %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+		char str[10];
+		sprintf_s(str, "%i", score);
+		this->BlitText(140, 60, font_score, str);
+
+
+		if (!App->render->Blit(graphics, 40, 80, &liveIcon, 1.0f)) {
+			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+		if (!App->render->Blit(graphics, 60, 80, &p2_Icon, 1.0f)) {
+			LOG("Cannot blit the texture in ScoreRanking %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+
+		char str2[10];
+		sprintf_s(str, "%i", scoreP2);
+		this->BlitText(140, 80, font_score, str2);
+	}
+	
 	
 	
 
@@ -187,7 +232,12 @@ update_status ModuleUI::Update()
 bool ModuleUI::CleanUp()
 {
 	LOG("Unloading ModuleUI");
-
+	if (score > scoreP2 && score > highestScore) {
+		highestScore = score;
+	}
+	else if (score < scoreP2 && scoreP2 < highestScore) {
+		highestScore = scoreP2;
+	}
 	bool ret = true;
 
 	this->UnLoad(font_score);

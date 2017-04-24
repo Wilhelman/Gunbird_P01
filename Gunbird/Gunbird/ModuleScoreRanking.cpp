@@ -7,6 +7,7 @@
 #include "ModuleWelcomeScreen.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleInput.h"
+#include "ModuleUI.h"
 
 ModuleScoreRanking::ModuleScoreRanking()
 {
@@ -15,6 +16,7 @@ ModuleScoreRanking::ModuleScoreRanking()
 	background.y = 0;
 	background.w = SCREEN_WIDTH;
 	background.h = SCREEN_HEIGHT;
+
 }
 
 ModuleScoreRanking::~ModuleScoreRanking()
@@ -25,8 +27,8 @@ bool ModuleScoreRanking::Start()
 {
 	LOG("Loading ScoreRanking assets");
 	bool ret = true;
-
-	graphics = App->textures->Load("Assets/scoreRanking/scoreRanking_example.png");
+	App->ui->Enable();
+	graphics = App->textures->Load("Assets/scoreRanking/scoreRanking_definitive.png");
 	if (graphics == nullptr) {
 		LOG("Cannot load the texture in ScoreRanking");
 		ret = false;
@@ -60,7 +62,9 @@ bool ModuleScoreRanking::CleanUp()
 {
 	//TODO check if we can control this
 	LOG("Unloading Score Ranking");
-
+	App->ui->score = 0;
+	App->ui->scoreP2 = 0;
+	App->ui->Disable();
 	App->audio->Disable();
 	App->textures->Unload(graphics);
 
