@@ -170,11 +170,11 @@ update_status ModuleUI::Update()
 		sprintf_s(str, "%i", scoreP2);
 
 		int x_correction = SCREEN_WIDTH - 30 ;
-		if (score > 99)
+		if (scoreP2 > 99)
 			x_correction -= fonts[font_score].char_w;
-		if (score > 999)
+		if (scoreP2 > 999)
 			x_correction -= fonts[font_score].char_w;
-		if (score > 9999)
+		if (scoreP2 > 9999)
 			x_correction -= fonts[font_score].char_w;
 		this->BlitText(x_correction, 4, font_score, str);
 	}
