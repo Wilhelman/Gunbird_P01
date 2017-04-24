@@ -27,7 +27,7 @@ public:
 	Enemy(int x, int y);
 	virtual ~Enemy();
 
-	Collider* GetCollider() const;
+	const Collider* GetCollider() const;
 
 	virtual void Move() {};
 	virtual void Shoot() {};

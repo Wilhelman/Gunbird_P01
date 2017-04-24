@@ -13,7 +13,7 @@ Enemy::~Enemy()
 		collider->to_delete = true;
 }
 
-Collider* Enemy::GetCollider() const
+const Collider* Enemy::GetCollider() const
 {
 	return collider;
 }
