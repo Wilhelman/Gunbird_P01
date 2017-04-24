@@ -147,11 +147,13 @@ update_status ModuleEnemies::PostUpdate()
 			if (enemies[i]->position.x > SCREEN_WIDTH + SPAWN_MARGIN || enemies[i]->position.x < 0 - SPAWN_MARGIN)
 			{
 				LOG("DeSpawning enemy at %d", enemies[i]->position.x);
+				//enemies[i]->GetCollider()->to_delete = true;
 				delete enemies[i];
 				enemies[i] = nullptr;
 			}
 			else if (enemies[i]->position.y > SCREEN_HEIGHT + SPAWN_MARGIN || enemies[i]->position.y < 0 - SPAWN_MARGIN) {
 				LOG("DeSpawning enemy at %d", enemies[i]->position.y);
+				//enemies[i]->GetCollider()->to_delete = true;
 				delete enemies[i];
 				enemies[i] = nullptr;
 			}
@@ -172,6 +174,7 @@ bool ModuleEnemies::CleanUp()
 	{
 		if (enemies[i] != nullptr)
 		{
+			//enemies[i]->GetCollider()->to_delete = true;
 			delete enemies[i];
 			enemies[i] = nullptr;
 		}
@@ -342,8 +345,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						App->ui->score += 500;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->terrestialTurretExplosion, (c1->rect.x - ((58 - (c1->rect.w)) / 2)), (c1->rect.y - ((66 - (c1->rect.h)) / 2)));
-						//delete enemies[i];
-						//enemies[i] = nullptr;
+						delete enemies[i];
+						enemies[i] = nullptr;
 						LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
 						break;
 					}
@@ -353,8 +356,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						App->ui->scoreP2 += 500;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->terrestialTurretExplosion, (c1->rect.x - ((58 - (c1->rect.w)) / 2)), (c1->rect.y - ((66 - (c1->rect.h)) / 2)));
-						//delete enemies[i];
-						//enemies[i] = nullptr;
+						delete enemies[i];
+						enemies[i] = nullptr;
 						LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
 						break;
 					}
