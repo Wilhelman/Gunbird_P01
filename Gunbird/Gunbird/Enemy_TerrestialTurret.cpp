@@ -262,9 +262,60 @@ void Enemy_TerrestialTurret::Move() {
 		if (deltaY != 0)
 		{
 			angle = atan2(deltaX, deltaY);
-			//LOG("%d", angle);
+
+			angle *= ANGLE_CONVERT;
+			LOG("%d", angle);
+
+			if (angle < 0) {
+				angle = angle * -1;
+				left = true;
+			}
 
 			if (angle > -(ANGLE_RANGE) && angle <= (ANGLE_RANGE / 2))
+				animation = &turretDownAnimation;
+			else if (angle > (ANGLE_RANGE / 2) && angle <= (3 / 2)*ANGLE_RANGE)
+				animation = &turretRight_1;
+			else if (angle > (3 / 2)*ANGLE_RANGE && angle <= (5 / 2)*ANGLE_RANGE)
+				animation = &turretRight_2;
+			else if (angle > (5 / 2)*ANGLE_RANGE && angle <= (7 / 2)*ANGLE_RANGE)
+				animation = &turretRight_3;
+			else if (angle > (7 / 2)*ANGLE_RANGE && angle <= (9 / 2)*ANGLE_RANGE)
+				animation = &turretRight_4;
+			else if (angle > (9 / 2)*ANGLE_RANGE && angle <= (11 / 2)*ANGLE_RANGE)
+				animation = &turretRight_5;
+			else if (angle > (11 / 2)*ANGLE_RANGE && angle <= (13 / 2)*ANGLE_RANGE)
+				animation = &turretRight_6;
+			else if (angle > (13 / 2)*ANGLE_RANGE && angle <= (15 / 2)*ANGLE_RANGE)
+				animation = &turretRight_7;
+			else if (angle > (15 / 2)*ANGLE_RANGE && angle <= (17 / 2)*ANGLE_RANGE)
+				animation = &turretRight_9;
+			else if (angle > (17 / 2)*ANGLE_RANGE && angle <= (19 / 2)*ANGLE_RANGE)
+				animation = &turretRight_8;
+			else if (angle > (19 / 2)*ANGLE_RANGE && angle <= (21 / 2)*ANGLE_RANGE)
+				animation = &turretRight_10;
+			else if (angle > (21 / 2)*ANGLE_RANGE && angle <= (23 / 2)*ANGLE_RANGE)
+				animation = &turretRight_11;
+			else if (angle > (23 / 2)*ANGLE_RANGE && angle <= (25 / 2)*ANGLE_RANGE)
+				animation = &turretRight_12;
+			else if (angle > (25 / 2)*ANGLE_RANGE && angle <= (27 / 2)*ANGLE_RANGE)
+				animation = &turretRight_13;
+			else if (angle > (27 / 2)*ANGLE_RANGE && angle <= (29 / 2)*ANGLE_RANGE)
+				animation = &turretRight_14;
+			else if (angle > (29 / 2)*ANGLE_RANGE && angle <= (31 / 2)*ANGLE_RANGE)
+			animation = &turretRight_15;
+			else if (angle > (31 / 2)*ANGLE_RANGE && angle <= (33 / 2)*ANGLE_RANGE)
+				animation = &turretRight_16;
+			else if (angle > (33 / 2)*ANGLE_RANGE && angle <= (35 / 2)*ANGLE_RANGE)
+				animation = &turretRight_17;
+			else if (angle > (35 / 2)*ANGLE_RANGE && angle <= (37 / 2)*ANGLE_RANGE)
+				animation = &turretRight_18;
+			else if (angle > (37 / 2)*ANGLE_RANGE && angle <= (39 / 2)*ANGLE_RANGE)
+				animation = &turretRight_19;
+			else if (angle > (39 / 2)*ANGLE_RANGE && angle <= (41 / 2)*ANGLE_RANGE)
+				animation = &turretRight_20;
+
+
+			/*if (angle > -(ANGLE_RANGE) && angle <= (ANGLE_RANGE / 2))
 				animation = &turretDownAnimation;
 			else if (angle > (ANGLE_RANGE / 2) && angle <= (3 / 2)*ANGLE_RANGE)
 				animation = &turretRight_1;
@@ -305,7 +356,7 @@ void Enemy_TerrestialTurret::Move() {
 			else if (angle > (37 / 2)*ANGLE_RANGE && angle <= (39 / 2)*ANGLE_RANGE)
 				animation = &turretRight_19;
 			else if (angle > (39 / 2)*ANGLE_RANGE && angle <= (41 / 2)*ANGLE_RANGE)
-				animation = &turretRight_20;
+				animation = &turretRight_20;*/
 
 		}
 
