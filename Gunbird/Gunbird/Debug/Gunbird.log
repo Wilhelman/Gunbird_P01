@@ -1,5 +1,22 @@
-﻿  ModuleSceneCastle.cpp
+﻿  Enemy_TerrestialTurret.cpp
 c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
   c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: vea la declaración de 'Path'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(347): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(348): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(353): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(354): warning C4305: '*=': truncamiento de 'double' a 'float'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(457): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(459): warning C4305: '*=': truncamiento de 'double' a 'float'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(473): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(474): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(477): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(478): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(483): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(484): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(487): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(488): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  LINK : no se encontró C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
