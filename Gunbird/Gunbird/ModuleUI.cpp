@@ -232,10 +232,10 @@ update_status ModuleUI::Update()
 bool ModuleUI::CleanUp()
 {
 	LOG("Unloading ModuleUI");
-	if (score > scoreP2 && score > highestScore) {
+	if (score >= scoreP2 && score > highestScore) {
 		highestScore = score;
 	}
-	else if (score < scoreP2 && scoreP2 < highestScore) {
+	else if (score < scoreP2 && scoreP2 > highestScore) {
 		highestScore = scoreP2;
 	}
 	bool ret = true;
