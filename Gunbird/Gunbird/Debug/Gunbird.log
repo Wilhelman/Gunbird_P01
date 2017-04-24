@@ -1,5 +1,104 @@
-﻿  ModulePlayer.cpp
+﻿  SceneCastle_houseFlag2.cpp
 c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
   c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: vea la declaración de 'Path'
+  SceneCastle_houseFlag.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: vea la declaración de 'Path'
+  SceneCastle_Vase.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: vea la declaración de 'Path'
+  Power_Up.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: vea la declaración de 'Path'
+  ModuleWindow.cpp
+  ModuleWelcomeScreen.cpp
+  ModuleUI.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\moduleui.cpp(286): warning C4018: '<': no coinciden signed/unsigned
+  ModuleTextures.cpp
+  ModuleScoreRanking.cpp
+  ModuleSceneCastle.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+  ModuleRender.cpp
+  ModulePlayer2.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+  ModulePlayer.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+  ModuleParticles.cpp
+  ModuleInput.cpp
+  ModuleFadeToBlack.cpp
+  ModuleEnemies.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(7): note: vea la declaración de 'Animation'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: vea la declaración de 'Path'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_torpedo.h(5): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+  ModuleCollision.cpp
+  ModuleCharacterSelection.cpp
+  ModuleAudio.cpp
+  Generando código...
+  Compilando...
+  Main.cpp
+  Enemy_Torpedo.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: vea la declaración de 'Path'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_torpedo.h(5): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+  Enemy_TerrestialTurret.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: vea la declaración de 'Path'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(332): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(334): warning C4305: '*=': truncamiento de 'double' a 'float'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(348): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(349): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(352): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(353): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(358): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(359): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(362): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(363): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  Enemy_MetallicBalloon.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: vea la declaración de 'Path'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_metallicballoon.cpp(171): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_metallicballoon.cpp(173): warning C4305: '*=': truncamiento de 'double' a 'float'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_metallicballoon.cpp(186): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_metallicballoon.cpp(187): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_metallicballoon.cpp(190): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_metallicballoon.cpp(191): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_metallicballoon.cpp(196): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_metallicballoon.cpp(197): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_metallicballoon.cpp(200): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_metallicballoon.cpp(201): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  Enemy.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: vea la declaración de 'Path'
+  Coin.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: vea la declaración de 'Path'
+  Application.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+  Generando código...
+  LINK : no se encontró C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
