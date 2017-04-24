@@ -17,8 +17,8 @@
 ModulePlayer2::ModulePlayer2()
 {
 	// idle animation
-	idle.PushBack({ 0, 0, 31, 30 });
-	idle.PushBack({ 38, 0, 31, 29 });
+	idle.PushBack({ 47, 446, 31, 30 });
+	idle.PushBack({ 85, 446, 31, 30 });
 	idle.speed = 0.05f;
 
 	//TODO: the animations are wrong
@@ -32,7 +32,7 @@ ModulePlayer2::ModulePlayer2()
 	//idle left animation
 
 	//dead animation
-	dead_animation.PushBack({ 76, 0, 32, 38 });
+	dead_animation.PushBack({ 123, 446, 32, 38 });
 	dead_animation.speed = 0.1f; // TODO: is it necessary if animation is only one frame long?
 								 //dead animation EXPLOSION
 	dead_animation_explosion.PushBack({ 95,187,47,49 });
@@ -40,18 +40,18 @@ ModulePlayer2::ModulePlayer2()
 	dead_animation_explosion.PushBack({ 88,114,31,31 });
 	dead_animation_explosion.speed = 0.2f;
 	//right animation
-	right_animation.PushBack({ 0, 38, 26, 30 });
-	right_animation.PushBack({ 38, 38, 26, 29 });
-	right_animation.PushBack({ 76, 38, 21, 30 });
-	right_animation.PushBack({ 114, 38, 21, 29 });
+	right_animation.PushBack({ 47, 484, 26, 30 });
+	right_animation.PushBack({ 85, 484, 26, 29 });
+	right_animation.PushBack({ 123, 484, 21, 30 });
+	right_animation.PushBack({ 161, 484, 21, 29 });
 	right_animation.speed = 0.2f;
 	right_animation.loop = false;
 
 	//left animation
-	left_animation.PushBack({ 0, 74, 28, 33 });
-	left_animation.PushBack({ 36, 74, 28, 33 });
-	left_animation.PushBack({ 74, 74, 25, 33 });
-	left_animation.PushBack({ 112, 74, 25, 33 });
+	left_animation.PushBack({ 47, 522, 26, 30 });
+	left_animation.PushBack({ 85, 522, 26, 29 });
+	left_animation.PushBack({ 123, 522, 21, 30 });
+	left_animation.PushBack({ 161, 522, 21, 29 });
 	left_animation.speed = 0.2f;
 	left_animation.loop = false;
 
@@ -61,6 +61,70 @@ ModulePlayer2::ModulePlayer2()
 	blink.PushBack({ 38, 0, 31, 29 });
 	blink.speed = 0.5f;
 	blink.loop = true;
+
+	//Colision Animation
+	{
+		player2Collision_Anim.PushBack({ 57, 672, 26, 30 });
+		player2Collision_Anim.PushBack({ 99, 672, 31, 30 });
+		player2Collision_Anim.PushBack({ 145, 672, 26, 29 });
+		player2Collision_Anim.PushBack({ 187, 672, 25, 30 });
+		player2Collision_Anim.PushBack({ 231, 670, 31, 32 });
+		player2Collision_Anim.PushBack({ 280, 670, 31, 32 });
+		player2Collision_Anim.PushBack({ 327, 671, 29, 30 });
+		player2Collision_Anim.PushBack({ 371, 672, 31, 32 });
+		player2Collision_Anim.PushBack({ 415, 71, 29, 30 });
+		player2Collision_Anim.PushBack({ 459, 671, 31, 31 });
+		player2Collision_Anim.PushBack({ 506, 613, 31, 32 });
+		player2Collision_Anim.PushBack({ 56, 720, 31, 32 });
+		player2Collision_Anim.PushBack({ 97, 719, 31, 32 });
+		player2Collision_Anim.PushBack({ 141, 719, 31, 32 });
+		player2Collision_Anim.PushBack({ 190, 719, 31, 32 });
+		player2Collision_Anim.PushBack({ 237, 720, 31, 32 });
+		player2Collision_Anim.PushBack({ 326, 720, 31, 32 });
+		player2Collision_Anim.PushBack({ 374, 721, 31, 32 });
+		player2Collision_Anim.PushBack({ 417, 720, 31, 32 });
+		player2Collision_Anim.PushBack({ 462, 720, 31, 32 });
+		player2Collision_Anim.PushBack({ 503, 720, 31, 32 });
+		player2Collision_Anim.PushBack({ 57, 769, 31, 32 });
+		player2Collision_Anim.PushBack({ 142, 770, 31, 32 });
+		player2Collision_Anim.PushBack({ 187, 770, 31, 32 });
+		player2Collision_Anim.PushBack({ 238, 770, 31, 32 });
+		player2Collision_Anim.PushBack({ 281, 770, 31, 32 });
+		player2Collision_Anim.PushBack({ 328, 770, 31, 32 });
+		player2Collision_Anim.PushBack({ 374, 770, 31, 32 });
+		player2Collision_Anim.PushBack({ 422, 770, 31, 32 });
+		player2Collision_Anim.PushBack({ 469, 770, 31, 32 });
+		player2Collision_Anim.PushBack({ 509, 770, 31, 32 });
+		player2Collision_Anim.PushBack({ 55, 817, 31, 32 });
+		player2Collision_Anim.PushBack({ 96, 817, 31, 32 });
+		player2Collision_Anim.PushBack({ 144, 817, 31, 32 });
+		player2Collision_Anim.PushBack({ 189, 817, 31, 32 });
+		player2Collision_Anim.PushBack({ 234, 817, 31, 32 });
+		player2Collision_Anim.PushBack({ 281, 817, 31, 32 });
+		player2Collision_Anim.PushBack({ 328, 817, 31, 32 });
+		player2Collision_Anim.PushBack({ 375, 817, 31, 32 });
+		player2Collision_Anim.PushBack({ 420, 815, 31, 32 });
+		player2Collision_Anim.PushBack({ 467, 815, 31, 32 });
+		player2Collision_Anim.PushBack({ 510, 815, 31, 32 });
+		player2Collision_Anim.PushBack({ 57, 868, 31, 32 });
+		player2Collision_Anim.PushBack({ 92, 869, 31, 32 });
+		player2Collision_Anim.PushBack({ 140, 869, 31, 32 });
+		player2Collision_Anim.PushBack({ 188, 869, 31, 32 });
+		player2Collision_Anim.PushBack({ 235, 869, 31, 32 });
+		player2Collision_Anim.PushBack({ 278, 869, 31, 32 });
+		player2Collision_Anim.PushBack({ 326, 869, 31, 32 });
+		player2Collision_Anim.PushBack({ 422, 869, 31, 32 });
+		player2Collision_Anim.PushBack({ 463, 870, 31, 32 });
+		player2Collision_Anim.PushBack({ 508, 870, 31, 32 });
+		player2Collision_Anim.PushBack({ 57, 917, 31, 32 });
+		player2Collision_Anim.PushBack({ 93, 917, 31, 32 });
+		player2Collision_Anim.PushBack({ 138, 917, 31, 32 });
+		player2Collision_Anim.PushBack({ 188, 917, 31, 32 });
+		player2Collision_Anim.PushBack({ 232, 917, 31, 32 });
+		player2Collision_Anim.PushBack({ 278, 917, 31, 32 });
+		player2Collision_Anim.speed = 0.5f;
+		player2Collision_Anim.loop = true;
+	}
 }
 
 ModulePlayer2::~ModulePlayer2()
@@ -286,7 +350,8 @@ update_status ModulePlayer2::Update()
 	}
 
 	if (hitted) {
-		position.y += 1;
+		current_animation = &player2Collision_Anim;
+		hitted = false;
 	}
 
 	//inmortal control time
