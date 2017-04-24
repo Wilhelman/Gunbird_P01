@@ -7,9 +7,11 @@
 #include "p2Point.h"
 
 #define INMORTAL_TIME 2000
+#define HITTED_TIME 1500
 
 struct SDL_Texture;
 struct Collider;
+
 
 class ModulePlayer2 : public Module
 {
@@ -23,8 +25,11 @@ private:
 
 	bool hitted;
 	uint hittedTime;
-	uint shotPower;
 
+	//playerSoundEffects
+	uint valnus_Hitted = 0;
+	uint valnus_Death = 0;
+	uint valnus_PowerUp = 0;
 
 public:
 	ModulePlayer2();
@@ -39,7 +44,7 @@ public:
 	void removePowerUp();
 
 public:
-
+	uint shotPower;
 	SDL_Texture* graphics = nullptr;
 	Animation idle;
 	Animation blink;
@@ -59,6 +64,7 @@ public:
 	bool deadPlayer;
 	int counter = 0;
 	bool shotControl = false;
+	bool playerExpControl;
 	bool playerLost;
 	bool godModeControl;
 

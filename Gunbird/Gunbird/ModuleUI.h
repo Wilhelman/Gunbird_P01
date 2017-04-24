@@ -37,7 +37,10 @@ public:
 	SDL_Rect liveIcon;
 	SDL_Rect p1_Icon;
 	SDL_Rect bombIcon;
+
 	Animation p2_insertCoin;
+	SDL_Rect p2_Icon;
+	SDL_Rect p2_liveIcon;
 
 	// Load Font
 	int Load(const char* texture_path, const char* characters, uint rows = 1);
@@ -47,7 +50,8 @@ public:
 	void BlitText(int x, int y, int bmp_font_id, const char* text) const;
 
 	int score;
-
+	int scoreP2;
+	bool p2;
 private:
 
 	Font	 fonts[MAX_FONTS];

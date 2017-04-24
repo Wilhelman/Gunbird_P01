@@ -7,6 +7,7 @@
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "Animation.h"
+#include "ModuleAudio.h"
 #include "SDL\include\SDL_timer.h"
 
 #include "ModuleEnemies.h"
@@ -21,7 +22,6 @@ ModulePlayer2::ModulePlayer2()
 	idle.PushBack({ 85, 446, 31, 30 });
 	idle.speed = 0.05f;
 
-	//TODO: the animations are wrong
 
 	//idle right animation
 	left_idle_animation.PushBack({ 114, 38, 21, 29 });
@@ -137,6 +137,7 @@ bool ModulePlayer2::Start()
 	shotPower = 0;
 	spawnTime = 0;
 	godModeControl = false;
+	playerExpControl = false;
 	playerLives = 2;
 	playerLost = false;
 	deadPlayer = false;
@@ -154,6 +155,11 @@ bool ModulePlayer2::Start()
 	graphics = App->textures->Load("Assets/characters/valnus_spritesheet.png");
 	if (graphics == nullptr)
 		ret = false;
+
+	LOG("Loading player audios");
+	valnus_Hitted = App->audio->LoadFx("Assets/audio/effects/Valnus_hit_enemy.wav");
+	valnus_PowerUp = App->audio->LoadFx("Assets/audio/effects/Valnus_voice_PowerUp.wav");
+	valnus_Death = App->audio->LoadFx("Assets/audio/effects/Valnus_Scream_hitted.wav");
 
 	return ret;
 }
@@ -207,7 +213,7 @@ update_status ModulePlayer2::Update()
 					position.y += speed;
 			}
 
-			if (App->input->keyboard[SDL_SCANCODE_KP_ENTER] == KEY_STATE::KEY_DOWN || (0 < counter))
+			if (App->input->keyboard[SDL_SCANCODE_KP_1] == KEY_STATE::KEY_DOWN || (0 < counter))
 			{
 				//Old switch. Keep it it here for now
 				/*switch (laserType)
@@ -278,19 +284,7 @@ update_status ModulePlayer2::Update()
 
 			} //end shot space
 
-			if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
-			{
-				godModeControl = !godModeControl;
-				inmortal = !inmortal;
-			}
-
-			if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
-			{
-				deadPlayer = true;
-				playerLives = 0;
-			}
-
-			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+			if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)
 				current_animation = &idle;
 
 		}
@@ -308,15 +302,30 @@ update_status ModulePlayer2::Update()
 		status = UPDATE_ERROR;
 	}
 
+	if (App->sceneCastle->background_y >= -2090 && App->sceneCastle->background_y < -2015)
+	{
+		if (App->sceneCastle->background_y == -2090)
+		{
+			this->position.x = (SCREEN_WIDTH / 2) - 13;
+			this->position.y = SCREEN_HEIGHT + 24;
+		}
+		current_animation = &blink;
+		position.y -= 1;
+	}
+
 	if (this->deadPlayer) {
-		LOG("Player is dead");
 
 		current_animation = &dead_animation;
+
+		if (!inmortal) {
+			App->particles->AddParticle(App->particles->deathPlayerExplosion, (playerCollider->rect.x - ((60 - ((playerCollider->rect.w)) / 2))), (playerCollider->rect.y - ((110 - (playerCollider->rect.h)) / 2)));
+			inmortal = true;
+		}
 
 		if (lastTime == 0)
 			lastTime = SDL_GetTicks();
 
-		if (currentTime < lastTime + 3000)
+		if (currentTime < lastTime + 2000)
 		{
 			position.y += speed;
 		}
@@ -342,7 +351,6 @@ update_status ModulePlayer2::Update()
 				else {
 					spawnTime = 0;
 					this->deadPlayer = false;
-					this->inmortal = true;
 					lastTime = SDL_GetTicks();
 				}
 			}
@@ -355,13 +363,13 @@ update_status ModulePlayer2::Update()
 	}
 
 	//inmortal control time
-	if (currentTime > (lastTime + INMORTAL_TIME) && inmortal && (godModeControl == false)) {
-		this->inmortal = false;
+	if (currentTime > (lastTime + INMORTAL_TIME) && inmortal && (godModeControl == false) && spawnTime == 0) {
+		inmortal = false;
 		lastTime = 0;
 	}
 
 	//hitted control time
-	if (currentTime > (hittedTime + 1000) && hitted) {
+	if (currentTime > (hittedTime + HITTED_TIME) && hitted) {
 		hitted = false;
 	}
 
@@ -377,17 +385,32 @@ bool ModulePlayer2::CleanUp()
 
 	App->textures->Unload(graphics);
 
+	LOG("Unloading player sound fx");
+	App->audio->UnLoadFx(valnus_Hitted);
+	App->audio->UnLoadFx(valnus_Death);
+	App->audio->UnLoadFx(valnus_PowerUp);
+
 	return true;
 }
 
 void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
-	if (!inmortal) {
-		if ((c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING || c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_SHOT) && !hitted) {
+	if (c2->type == COLLIDER_POWER_UP)
+	{
+		shotPower = 1;
+		App->audio->PlayFx(valnus_PowerUp);
+	}
+	if (!inmortal && spawnTime == 0) {
+
+		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_SHOT && !hitted) {
 			this->removePowerUp();
+			App->audio->PlayFx(valnus_Hitted);
 		}
 
-		if (c2->type == COLLIDER_POWER_UP)
-			shotPower = 1;
+		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING && !hitted) {
+			this->removePowerUp();
+			hitted = true;
+			App->audio->PlayFx(valnus_Hitted);
+		}
 
 		if (c2->type == COLLIDER_ENEMY_SHOT)
 		{
@@ -395,7 +418,8 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		}
 
 		if (deadPlayer == true) {
-			App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
+			App->particles->AddParticle(App->particles->deathPlayerExplosion, (c1->rect.x - ((130 - (c1->rect.w)) / 2)), (c1->rect.y - ((130 - (c1->rect.h)) / 2)));
+			App->audio->PlayFx(valnus_Death);
 		}
 	}
 }

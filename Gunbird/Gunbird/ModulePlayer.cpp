@@ -22,7 +22,6 @@ ModulePlayer::ModulePlayer()
 	idle.PushBack({ 38, 0, 31, 29 });
 	idle.speed = 0.05f;
 
-	//TODO: the animations are wrong
 
 	//idle right animation
 	left_idle_animation.PushBack({ 114, 38, 21, 29 });
