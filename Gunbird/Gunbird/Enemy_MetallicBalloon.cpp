@@ -5,7 +5,7 @@
 #include "SDL\include\SDL_timer.h"
 
 #define PI 3.14159265
-#define ANGLE_CONVERT (180.0 / PI)
+#define RAD_TO_DEGREES (180.0 / PI)
 #define ANGLE_CONVERT_REVERSE (PI / 180.0)
 
 #define ENEMYSHOOTSPEED 3
@@ -170,7 +170,7 @@ void Enemy_MetallicBalloon::Shoot()
 
 	angle = atan2(deltaX, deltaY);
 
-	angle *= ANGLE_CONVERT;
+	angle *= RAD_TO_DEGREES;
 
 
 	if (angle < 0) {
