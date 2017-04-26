@@ -12,6 +12,7 @@ ModuleWelcomeScreen::ModuleWelcomeScreen()
 {
 	welcomeScreenAnimation.PushBack({ 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT });
 	welcomeScreenAnimation.PushBack({ 224, 0, SCREEN_WIDTH, SCREEN_HEIGHT });
+	welcomeScreenAnimation.PushBack({ 448, 0, SCREEN_WIDTH, SCREEN_HEIGHT });
 	welcomeScreenAnimation.speed = 0.05f;
 
 	
