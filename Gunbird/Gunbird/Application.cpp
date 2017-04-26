@@ -57,6 +57,8 @@ bool Application::Init()
 	ui->Disable();
 	player->Disable();
 	player2->Disable();
+
+	scoreRanking->Disable();
 	collision->Disable();
 	enemies->Disable();
 	

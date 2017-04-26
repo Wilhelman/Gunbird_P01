@@ -15,6 +15,11 @@
 //TODO: include the maps
 #include "ModuleSceneCastle.h"
 
+bool ModulePlayer::Init() {
+	playerLives = 3;
+	return true;
+}
+
 ModulePlayer::ModulePlayer()
 {
 	//godMode
@@ -124,7 +129,7 @@ ModulePlayer::ModulePlayer()
 		playerCollision_Anim.loop = true;
 	}
 
-	playerLives = 3;
+	
 }
 
 ModulePlayer::~ModulePlayer()
@@ -138,7 +143,6 @@ bool ModulePlayer::Start()
 	spawnTime = 0;
 	godModeControl = false;
 	playerExpControl = false;
-	//playerLives = 2;
 	playerLost = false;
 	original_camera_y = App->render->camera.y;
 	laserType = 0;
@@ -169,13 +173,14 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 	update_status status = UPDATE_CONTINUE;
-
+	LOG("Player lives: %i", playerLives);
 	int speed = 3;
 	
 
 	if (!deadPlayer && !hitted && !spawining) {
 		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT && App->sceneCastle->IsEnabled())) 
 		{
+			
 			speed = 5;
 			position.y -= speed;
 		}
@@ -394,7 +399,7 @@ update_status ModulePlayer::Update()
 bool ModulePlayer::CleanUp()
 {
 	LOG("Unloading player");
-	App->player->playerLives = 3;
+	App->player->playerLives += 1;
 	if (playerCollider != nullptr){
 		App->collision->EraseCollider(playerCollider);
 		playerCollider = nullptr;
@@ -453,6 +458,6 @@ void ModulePlayer::removePowerUp() {
 
 void ModulePlayer::spawning() {
 	spawnTime = SDL_GetTicks();
-	this->position.x = (SCREEN_WIDTH / 2) - 14;
+	this->position.x = (SCREEN_WIDTH / 2) - 14 - 30;
 	this->position.y = SCREEN_HEIGHT + 24;
 }

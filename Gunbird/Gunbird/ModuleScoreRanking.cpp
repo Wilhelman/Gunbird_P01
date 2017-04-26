@@ -8,6 +8,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleInput.h"
 #include "ModuleUI.h"
+#include "ModulePlayer.h"
 
 ModuleScoreRanking::ModuleScoreRanking()
 {
@@ -62,8 +63,10 @@ bool ModuleScoreRanking::CleanUp()
 {
 	//TODO check if we can control this
 	LOG("Unloading Score Ranking");
+	App->player->playerLives = 3;
 	App->ui->score = 0;
 	App->ui->scoreP2 = 0;
+	App->ui->p2 = false;
 	App->ui->Disable();
 	App->audio->Disable();
 	App->textures->Unload(graphics);

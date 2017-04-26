@@ -140,6 +140,16 @@ _0.48 version:_
 * Removed memory leaks
 * Fixed collider box problems
 
+_0.49 version:_
+
+* Fixed problem with the highest score
+* Player2 collider is now visible
+* Fixed lives problem
+* Removed enter key functionality
+* Now player2 is still alive when the Castle is over
+* Removed credit and improved the backgrounds
+* Add character selection animation with locks over not playable characters and remove other elements
+
 ## Team members
 
 _Altimira Bernat, Martí's responsability and Github account_

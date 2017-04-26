@@ -45,6 +45,8 @@ ModuleUI::ModuleUI()
 	score = 0;
 	scoreP2 = 0;
 	highestScore = 0;
+
+	p2 = false;
 }
 
 ModuleUI::~ModuleUI()
@@ -54,7 +56,6 @@ ModuleUI::~ModuleUI()
 bool ModuleUI::Start()
 {
 	LOG("Loading ModuleUI assets");
-	p2 = false;
 	bool ret = true;
 	font_score = this->Load("Assets/Userinterface/score_numberPoints.png", "0123456789", 1);
 	graphics = App->textures->Load("Assets/Userinterface/userinterface.png");
@@ -219,7 +220,7 @@ update_status ModuleUI::Update()
 		}
 
 		char str2[10];
-		sprintf_s(str, "%i", scoreP2);
+		sprintf_s(str2, "%i", scoreP2);
 		this->BlitText(140, 80, font_score, str2);
 	}
 	
@@ -232,12 +233,14 @@ update_status ModuleUI::Update()
 bool ModuleUI::CleanUp()
 {
 	LOG("Unloading ModuleUI");
+
 	if (score >= scoreP2 && score > highestScore) {
 		highestScore = score;
 	}
 	else if (score < scoreP2 && scoreP2 > highestScore) {
 		highestScore = scoreP2;
 	}
+
 	bool ret = true;
 
 	this->UnLoad(font_score);

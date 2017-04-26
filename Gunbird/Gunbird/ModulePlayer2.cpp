@@ -130,7 +130,7 @@ ModulePlayer2::ModulePlayer2()
 		player2Collision_Anim.loop = true;
 	}
 
-	playerLives = 3;
+	playerLives = 2;
 }
 
 ModulePlayer2::~ModulePlayer2()
@@ -144,7 +144,6 @@ bool ModulePlayer2::Start()
 	spawnTime = 0;
 	godModeControl = false;
 	playerExpControl = false;
-	//playerLives = 2;
 	playerLost = false;
 	original_camera_y = App->render->camera.y;
 	laserType = 0;
@@ -400,7 +399,7 @@ update_status ModulePlayer2::Update()
 bool ModulePlayer2::CleanUp()
 {
 	LOG("Unloading player");
-	this->playerLives = 3;
+	this->playerLives += 1;
 	App->textures->Unload(graphics);
 	if (playerCollider != nullptr) {
 		App->collision->EraseCollider(playerCollider);
@@ -458,6 +457,6 @@ void ModulePlayer2::removePowerUp() {
 
 void ModulePlayer2::spawning() {
 	spawnTime = SDL_GetTicks();
-	this->position.x = (SCREEN_WIDTH / 2) - 14;
+	this->position.x = (SCREEN_WIDTH / 2) - 14 + 30;
 	this->position.y = SCREEN_HEIGHT + 24;
 }

@@ -107,6 +107,10 @@ bool ModuleSceneCastle::Start()
 
 	App->player->Enable();
 	App->ui->Enable();
+	
+	if(App->player2->playerLives > 0 && App->ui->p2 == true)
+		App->player2->Enable();
+	
 	App->collision->Enable();
 	App->enemies->Enable();
 	App->particles->Enable();
@@ -237,13 +241,13 @@ update_status ModuleSceneCastle::Update()
 		}
 		graphicsBridgeTop = nullptr;
 		App->enemies->Disable();
-		//App->player->playerCollider->to_delete = true;
+		App->particles->Disable();
 		background_y = -SCREEN_HEIGHT;
 	}
 
 
 	//TODO change the position of the player to private to be more pro
-	if ((App->player->position.y < 0 && App->fade->FadeIsOver()) ||/*TODO: remove this condition*/ (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver()))
+	if (App->player->position.y < 0 && App->fade->FadeIsOver())
 		App->fade->FadeToBlack(this, this,1.0f);
 
 	if (App->player->playerLost) {
@@ -254,7 +258,6 @@ update_status ModuleSceneCastle::Update()
 	if (App->player2->playerLost) {
 		LOG("Player2 LOST");
 		App->ui->p2 = false;
-		//App->player2->playerCollider->to_delete = true;
 		App->player2->Disable();
 	}
 
@@ -375,6 +378,7 @@ update_status ModuleSceneCastle::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_KP_1] && !App->player2->IsEnabled()) {
 		App->ui->p2 = true;
+		App->player2->playerLives = 3;
 		App->player2->Enable();
 		App->audio->PlayFx(player2joined);
 	}

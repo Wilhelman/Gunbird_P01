@@ -34,16 +34,22 @@ Player 2 controls:
 - LEFT: LEFT_ARROW key
 - RIGHT: RIGHT_ARROW key
 - DOWN: DOWN_ARROW key
-- JOIN THE GAME: 2 key (NUMPAD)
-- BASIC SHOT: ENTER key (NUMPAD)
+- JOIN THE GAME: 1 key (NUMPAD)
+- BASIC SHOT: 1 key (NUMPAD)
 
 General/developer controls:
 - SKIP SCREEN: INTRO key
 - EXIT GAME: ESC key
 - SHOW COLLIDERS: F1
-- GOD MODE: F2
 - DIRECT WIN: F3
+
+General/developer controls for Player 1:
+- GOD MODE: F2
 - DIRECT LOSE: F4
+
+General/developer controls for Player 2:
+- GOD MODE: 7 key (NUMPAD)
+- DIRECT LOSE: 8 key (NUMPAD)
 
 ## Changelist of all previous versions
 
@@ -118,6 +124,31 @@ _0.46 version:_
 * Hit and life animation to each enemy / house
 * Now the enemies have the lives of the original game
 * Implemented the coin and the vase with all the functionality
+
+_0.47 version:_
+
+* Score is totally implemented for both players
+* Now is avaliable the highest score
+* Fixed a lot of minor bugs
+* Now player 2 have more functionality and is fully playable
+* The tank enemy now move the cannon in all directions
+* Changed some of the controls ( Check the controls for more info )
+* Now the god mode is visible
+
+_0.48 version:_
+
+* Removed memory leaks
+* Fixed collider box problems
+
+_0.49 version:_
+
+* Fixed problem with the highest score
+* Player2 collider is now visible
+* Fixed lives problem
+* Removed enter key functionality
+* Now player2 is still alive when the Castle is over
+* Removed credit and improved the backgrounds
+* Add character selection animation with locks over not playable characters and remove other elements
 
 ## Team members
 
