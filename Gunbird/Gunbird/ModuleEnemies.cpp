@@ -66,8 +66,8 @@ ModuleEnemies::ModuleEnemies()
 	balloonPathCastle.loop = false;
 
 	//TerrestialTurret paths
-	turret1_path.PushBack({ 0.6f,0.5f }, 60);
-	turret1_path.PushBack({ 0.0f, 0.3f }, 35);
+	turret1_path.PushBack({ 0.6f,0.5f }, 70);
+	turret1_path.PushBack({ 0.0f, 0.3f }, 45);
 	turret1_path.PushBack({ 0.0f,0.5f }, 3000);
 	turret1_path.loop = false;
 

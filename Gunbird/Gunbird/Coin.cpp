@@ -37,7 +37,7 @@ void Coin::Move(){
 }
 
 void Coin::OnCollision(Collider* collider) {
-	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER) {
+	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER || collider->type == COLLIDER_TYPE::COLLIDER_PLAYER2) {
 		App->audio->PlayFx(pickup_audio);
 	}
 }

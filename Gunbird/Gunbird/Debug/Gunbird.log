@@ -19,9 +19,8 @@ c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warni
 c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
   c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: vea la declaración de 'Path'
   ModuleWelcomeScreen.cpp
-  ModuleSceneCastle.cpp
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+  ModuleUI.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\moduleui.cpp(339): warning C4018: '<': no coinciden signed/unsigned
   ModulePlayer2.cpp
 c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
   c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
@@ -35,20 +34,6 @@ c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): 
 c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
   c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: vea la declaración de 'Path'
 c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_torpedo.h(5): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-  Generando código...
-  Compilando...
-  ModuleWindow.cpp
-  ModuleUI.cpp
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\moduleui.cpp(339): warning C4018: '<': no coinciden signed/unsigned
-  ModuleTextures.cpp
-  ModuleScoreRanking.cpp
-  ModuleRender.cpp
-  ModuleInput.cpp
-  ModuleFadeToBlack.cpp
-  ModuleCollision.cpp
-  ModuleCharacterSelection.cpp
-  ModuleAudio.cpp
-  Main.cpp
   Enemy_Torpedo.cpp
 c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
   c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
@@ -102,6 +87,21 @@ c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warn
   Application.cpp
 c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
   c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+  Generando código...
+  Compilando...
+  ModuleWindow.cpp
+  ModuleTextures.cpp
+  ModuleScoreRanking.cpp
+  ModuleSceneCastle.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+  ModuleRender.cpp
+  ModuleInput.cpp
+  ModuleFadeToBlack.cpp
+  ModuleCollision.cpp
+  ModuleCharacterSelection.cpp
+  ModuleAudio.cpp
+  Main.cpp
   Generando código...
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
