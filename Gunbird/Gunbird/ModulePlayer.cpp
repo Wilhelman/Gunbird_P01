@@ -173,9 +173,8 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 	update_status status = UPDATE_CONTINUE;
-	LOG("Player lives: %i", playerLives);
+
 	int speed = 3;
-	
 
 	if (!deadPlayer && !hitted && !spawining) {
 		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT && App->sceneCastle->IsEnabled())) 

@@ -150,6 +150,12 @@ _0.49 version:_
 * Removed credit and improved the backgrounds
 * Add character selection animation with locks over not playable characters and remove other elements
 
+_0.5 version:_
+
+* Added the last turrets in the castle
+* Fixed the fx sound of the coin for the player 2
+* Release optimized
+
 ## Team members
 
 _Altimira Bernat, Martí's responsability and Github account_

@@ -102,7 +102,7 @@ c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): warni
 c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\Enemy.h(8): warning C4099: 'Path': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
   c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\Path.h(17): note: vea la declaración de 'Path'
   Generando código
-  1 of 260 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+  2 of 260 functions ( 0.8%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
