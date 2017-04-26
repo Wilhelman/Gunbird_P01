@@ -135,6 +135,11 @@ _0.47 version:_
 * Changed some of the controls ( Check the controls for more info )
 * Now the god mode is visible
 
+_0.48 version:_
+
+* Removed memory leaks
+* Fixed collider box problems
+
 ## Team members
 
 _Altimira Bernat, Martí's responsability and Github account_
