@@ -9,8 +9,10 @@ Enemy::Enemy(int x, int y) : position(x, y)
 
 Enemy::~Enemy()
 {
-	if (collider != nullptr)
-		collider->to_delete = true;
+	if (collider != nullptr) {
+		App->collision->EraseCollider(collider);
+		collider = nullptr;
+	}
 }
 
 const Collider* Enemy::GetCollider() const

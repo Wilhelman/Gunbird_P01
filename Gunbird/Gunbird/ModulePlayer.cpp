@@ -395,6 +395,10 @@ bool ModulePlayer::CleanUp()
 {
 	LOG("Unloading player");
 	App->player->playerLives = 3;
+	if (playerCollider != nullptr){
+		App->collision->EraseCollider(playerCollider);
+		playerCollider = nullptr;
+	}
 	App->textures->Unload(graphics);
 
 	LOG("Unloading player sound fx");

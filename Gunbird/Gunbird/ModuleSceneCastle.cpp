@@ -237,7 +237,7 @@ update_status ModuleSceneCastle::Update()
 		}
 		graphicsBridgeTop = nullptr;
 		App->enemies->Disable();
-		App->player->playerCollider->to_delete = true;
+		//App->player->playerCollider->to_delete = true;
 		background_y = -SCREEN_HEIGHT;
 	}
 
@@ -254,7 +254,7 @@ update_status ModuleSceneCastle::Update()
 	if (App->player2->playerLost) {
 		LOG("Player2 LOST");
 		App->ui->p2 = false;
-		App->player2->playerCollider->to_delete = true;
+		//App->player2->playerCollider->to_delete = true;
 		App->player2->Disable();
 	}
 

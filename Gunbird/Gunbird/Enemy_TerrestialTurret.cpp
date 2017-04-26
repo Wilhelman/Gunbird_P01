@@ -514,7 +514,10 @@ void Enemy_TerrestialTurret::OnCollision(Collider* collider) {
 	}
 
 	if (lives <= 0) {
-		this->collider->to_delete = true;
+		if (this->collider != nullptr) {
+			App->collision->EraseCollider(this->collider);
+			this->collider = nullptr;
+		}
 		animation = &death;
 		dead = true;
 	}

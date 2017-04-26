@@ -59,6 +59,8 @@ public:
 	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback = nullptr);
 	void DebugDraw();
 
+	bool EraseCollider(Collider* collider);
+
 private:
 
 	Collider* colliders[MAX_COLLIDERS];

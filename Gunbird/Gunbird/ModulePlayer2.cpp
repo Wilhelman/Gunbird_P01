@@ -402,7 +402,10 @@ bool ModulePlayer2::CleanUp()
 	LOG("Unloading player");
 	this->playerLives = 3;
 	App->textures->Unload(graphics);
-
+	if (playerCollider != nullptr) {
+		App->collision->EraseCollider(playerCollider);
+		playerCollider = nullptr;
+	}
 	LOG("Unloading player sound fx");
 	App->audio->UnLoadFx(valnus_Hitted);
 	App->audio->UnLoadFx(valnus_Death);

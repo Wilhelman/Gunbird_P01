@@ -1,5 +1,34 @@
-﻿  Application.cpp
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
-  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
-  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
+﻿  ModulePlayer2.cpp
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+  ModulePlayer.cpp
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+  ModuleParticles.cpp
+  Enemy_TerrestialTurret.cpp
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
+  c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(347): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(348): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(353): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(354): warning C4305: '*=': truncation from 'double' to 'float'
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(457): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(459): warning C4305: '*=': truncation from 'double' to 'float'
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(473): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(474): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(477): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(478): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(483): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(484): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(487): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy_terrestialturret.cpp(488): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Enemy.cpp
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
+  c:\users\guillermogs2\desktop\gunbird_p01\gunbird\gunbird\path.h(17): note: see declaration of 'Path'
+  Generating Code...
+  Gunbird.vcxproj -> C:\Users\guillermogs2\Desktop\Gunbird_P01\Gunbird\Debug\Gunbird.exe
+  Gunbird.vcxproj -> C:\Users\guillermogs2\Desktop\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)

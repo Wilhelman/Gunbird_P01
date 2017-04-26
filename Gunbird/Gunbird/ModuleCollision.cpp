@@ -260,6 +260,24 @@ Collider* ModuleCollision::AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module
 	return ret;
 }
 
+bool ModuleCollision::EraseCollider(Collider* collider)
+{
+	if (collider != nullptr)
+	{
+		for (uint i = 0; i < MAX_COLLIDERS; ++i)
+		{
+			if (colliders[i] == collider)
+			{
+				collider->to_delete = true;
+				break;
+			}
+		}
+	}
+
+
+	return false;
+}
+
 // -----------------------------------------------------
 
 bool Collider::CheckCollision(const SDL_Rect& r) const
@@ -269,3 +287,4 @@ bool Collider::CheckCollision(const SDL_Rect& r) const
 		rect.y < r.y + r.h &&
 		rect.h + rect.y > r.y);
 }
+
