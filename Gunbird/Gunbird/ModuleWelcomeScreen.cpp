@@ -50,6 +50,10 @@ update_status ModuleWelcomeScreen::Update()
 		App->fade->FadeToBlack(this, App->characterSelection);
 	}
 
+	if (App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		LOG("HOLAAA");
+	}
+
 	update_status status = UPDATE_CONTINUE;
 
 	if (!App->render->Blit(graphics, 0, 0, &(welcomeScreenAnimation.GetCurrentFrame()))) //welcomeScreen animation
