@@ -14,6 +14,7 @@
 
 //TODO: include the maps
 #include "ModuleSceneCastle.h"
+#include "ModuleSceneForest.h"
 
 bool ModulePlayer::Init() {
 	playerLives = 3;
@@ -177,7 +178,7 @@ update_status ModulePlayer::Update()
 	int speed = 3;
 
 	if (!deadPlayer && !hitted && !spawining) {
-		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT && App->sceneCastle->IsEnabled())) 
+		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT || App->sceneForest->background_y == -SCREEN_HEIGHT) && (App->sceneCastle->IsEnabled() ||App->sceneForest->IsEnabled()))
 		{
 			
 			speed = 5;
@@ -289,7 +290,7 @@ update_status ModulePlayer::Update()
 				
 			} //end shot space
 
-			if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
+			if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN && (App->sceneCastle->IsEnabled() || App->sceneForest->IsEnabled()))
 			{
 				godModeControl = !godModeControl;
 				if (godModeControl)
@@ -297,7 +298,7 @@ update_status ModulePlayer::Update()
 				
 			}
 
-			if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
+			if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && (App->sceneCastle->IsEnabled() || App->sceneForest->IsEnabled()))
 			{
 				playerLives = -1;
 				deadPlayer = true;

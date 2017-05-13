@@ -12,6 +12,7 @@
 #include "ModuleCharacterSelection.h"
 #include "ModuleScoreRanking.h"
 #include "ModuleSceneCastle.h"
+#include "ModuleSceneForest.h"
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
 #include "ModuleEnemies.h"
@@ -28,6 +29,7 @@ Application::Application()
 	modules[i++] = welcomeScreen = new ModuleWelcomeScreen();
 	modules[i++] = characterSelection = new ModuleCharacterSelection();
 	modules[i++] = scoreRanking = new ModuleScoreRanking();
+	modules[i++] = sceneForest = new ModuleSceneForest();
 	modules[i++] = sceneCastle = new ModuleSceneCastle();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = particles = new ModuleParticles();
@@ -50,10 +52,11 @@ bool Application::Init()
 
 	// Player will be enabled on the first update of a new scene
 	// Disable the modules that you do not start with
-	//welcomeScreen->Disable();
+	welcomeScreen->Disable();
 	characterSelection->Disable();
 	scoreRanking->Disable();
 	sceneCastle->Disable();
+	sceneForest->Disable();
 	ui->Disable();
 	player->Disable();
 	player2->Disable();
@@ -69,6 +72,7 @@ bool Application::Init()
 		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
 
 	//TODO: remove this in release mode
+	sceneForest->Enable();
 	//sceneCastle->Enable();
 
 	//player->Enable();

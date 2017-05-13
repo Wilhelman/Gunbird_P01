@@ -108,6 +108,9 @@
     <ClCompile Include="Coin.cpp">
       <Filter>Modules\Enemies\Items</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleSceneForest.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals.h">
@@ -205,6 +208,9 @@
     </ClInclude>
     <ClInclude Include="Coin.h">
       <Filter>Modules\Enemies\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneForest.h">
+      <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

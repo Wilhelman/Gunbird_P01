@@ -95,7 +95,7 @@ bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
 	/*sprites = App->textures->Load("Assets/maps/castle/enemies_castle.png");*/
-	sprites = App->textures->Load("Assets/maps/castle/Enemies_Castle_definitive.png");
+	sprites = App->textures->Load("Assets/enemies/enemies_definitive.png");
 
 	LOG("Loading audio fx for medium enemy explosion");
 	medium_explosion = App->audio->LoadFx("Assets/audio/effects/medium_explosion.wav");

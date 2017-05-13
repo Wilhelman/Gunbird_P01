@@ -70,6 +70,8 @@ ModuleSceneCastle::ModuleSceneCastle()
 	bridge_top.loop = false;
 	bridge_top_y = -710;
 
+
+	background_y = -2108;
 }
 
 ModuleSceneCastle::~ModuleSceneCastle()

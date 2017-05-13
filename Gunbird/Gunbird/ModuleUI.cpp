@@ -6,6 +6,7 @@
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
 #include "ModuleSceneCastle.h"
+#include "ModuleSceneForest.h"
 
 #include <string.h>
 #include<stdio.h>
@@ -72,7 +73,7 @@ update_status ModuleUI::Update()
 {
 
 	update_status status = UPDATE_CONTINUE;
-	if (App->sceneCastle->IsEnabled()) {
+	if (App->sceneCastle->IsEnabled() || App->sceneForest->IsEnabled()) {
 		char str[10];
 		sprintf_s(str, "%i", score);
 
