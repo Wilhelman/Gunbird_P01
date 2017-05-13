@@ -27,9 +27,9 @@ private:
 	uint hittedTime;
 
 	//playerSoundEffects
-	uint valnus_Hitted = 0;
-	uint valnus_Death = 0;
-	uint valnus_PowerUp = 0;
+	uint tetsu_Hitted = 0;
+	uint tetsu_Death = 0;
+	uint tetsu_PowerUp = 0;
 
 public:
 	ModulePlayer2();
