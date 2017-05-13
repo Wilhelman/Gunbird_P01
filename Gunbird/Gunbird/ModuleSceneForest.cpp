@@ -141,7 +141,7 @@ update_status ModuleSceneForest::Update()
 
 
 	//TODO change the position of the player to private to be more pro
-	if (App->player->position.y < 0 && App->fade->FadeIsOver())
+	if (App->player->position.y < 0 && App->fade->FadeIsOver() /*delete this in big releases*/ ||(App->input->keyboard[SDL_SCANCODE_RETURN] == KEY_STATE::KEY_DOWN))
 		App->fade->FadeToBlack(this, this, 1.0f);
 
 	if (App->player->playerLost) {
@@ -156,123 +156,27 @@ update_status ModuleSceneForest::Update()
 	}
 
 	//ENEMY SPAWN PHASE
-	/*
+	
 	{
 
-		if ((int)background_y == -2000 && spawned == 0) {
+		if ((int)background_y == -1600 && spawned == 0) {
 			spawned = 1;
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG, 149, -275, ENEMY_MOVEMENT::STAY);
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -10, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH, -20, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
+
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 50, -30, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH /2 + 30, -29, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
 		}
 
-		if ((int)background_y == -1950 && spawned == 1)
+		/*if ((int)background_y == -1950 && spawned == 1)
 		{
 			spawned = 2;
 			App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_CASTLE);
-		}
+		}*/
 
-		if ((int)background_y == -1840 && spawned == 2) {
-			spawned = 3;
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -50, ENEMY_MOVEMENT::TURRET_1_PATH);
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -15, ENEMY_MOVEMENT::TURRET_2_PATH);
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 15, ENEMY_MOVEMENT::TURRET_3_PATH);
-		}
-
-
-		if ((int)background_y == -1800 && spawned == 3) {
-			spawned = 4;
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG_2, 78, -340, ENEMY_MOVEMENT::STAY);
-
-		}
-
-		if ((int)background_y == -1780 && spawned == 4) {
-			spawned = 5;
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -30, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -60, -64, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -90, -96, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -120, -128, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
-		}
-
-
-		if ((int)background_y == -1500 && spawned == 5) {
-			spawned = 6;
-
-
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, SCREEN_WIDTH - 10, -45, ENEMY_MOVEMENT::TURRET1_L_PATH);
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, SCREEN_WIDTH - 30, -85, ENEMY_MOVEMENT::TURRET1_L_PATH);
-
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 15, -45, ENEMY_MOVEMENT::STAY);
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -2, -85, ENEMY_MOVEMENT::TURRET_1_PATH);
-
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 40, -375, ENEMY_MOVEMENT::STAY);
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, 170, -375, ENEMY_MOVEMENT::STAY);
-
-			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, SCREEN_WIDTH - 40, -475, ENEMY_MOVEMENT::STAY);
-
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 10, -135, ENEMY_MOVEMENT::STAY);
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 185, -135, ENEMY_MOVEMENT::STAY);
-
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 8, -345, ENEMY_MOVEMENT::STAY);
-			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_VASE, 185, -348, ENEMY_MOVEMENT::STAY);
-
-		}
-
-		if ((int)background_y == -1300 && spawned == 6) {
-			spawned = 7;
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH, 70, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 30, 70, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 60, 70, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 90, 70, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 120, 70, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 150, 70, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, SCREEN_WIDTH + 180, 70, ENEMY_MOVEMENT::TORPEDO_HORIZONTALR_L);
-
-		}
-
-		if ((int)background_y == -1050 && spawned == 7) {
-			spawned = 8;
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-		}
-		if ((int)background_y == -1025 && spawned == 8) {
-			spawned = 9;
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_L_FINAL);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_R_FINAL);
-
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 112, -122, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_R_FINAL);
-		}
-
-		if ((int)background_y == -900 && spawned == 9) {
-			spawned = 10;
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-		}
-		if ((int)background_y == -875 && spawned == 10) {
-			spawned = 11;
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 10, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_L_FINAL2);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 50, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 140, -32, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 180, -32, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_R_FINAL2);
-
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
-			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 112, -122, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_L_FINAL2);
-		}
+		
 	}
-	*/
+	
 
 	if (App->input->keyboard[SDL_SCANCODE_KP_1] && !App->player2->IsEnabled()) {
 		App->ui->p2 = true;

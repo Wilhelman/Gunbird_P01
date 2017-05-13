@@ -117,6 +117,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy_Bee.cpp" />
     <ClCompile Include="Enemy_MetallicBalloon.cpp" />
     <ClCompile Include="Enemy_TerrestialTurret.cpp" />
     <ClCompile Include="Globals.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy_Bee.h" />
     <ClInclude Include="Enemy_MetallicBalloon.h" />
     <ClInclude Include="Enemy_TerrestialTurret.h" />
     <ClInclude Include="Globals.h" />

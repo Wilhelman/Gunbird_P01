@@ -422,20 +422,16 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 	}
 	if (!inmortal && spawnTime == 0) {
 
-		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_SHOT && !hitted) {
+		if ((c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING_AGGRESSIVE)&& !hitted) {
 			this->removePowerUp();
 			App->audio->PlayFx(valnus_Hitted);
+			this->deadPlayer = true;
 		}
 
 		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING && !hitted) {
 			this->removePowerUp();
 			hitted = true;
 			App->audio->PlayFx(valnus_Hitted);
-		}
-
-		if (c2->type == COLLIDER_ENEMY_SHOT)
-		{
-			this->deadPlayer = true;
 		}
 			
 		if (deadPlayer == true) {

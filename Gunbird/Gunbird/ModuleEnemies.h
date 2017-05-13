@@ -15,6 +15,8 @@ enum ENEMY_TYPES
 	CASTLE_HOUSEFLAG,
 	CASTLE_HOUSEFLAG_2,
 	CASTLE_VASE,
+
+	BEE,
 	
 	COIN,
 	POWER_UP
@@ -36,6 +38,11 @@ enum ENEMY_MOVEMENT
 	TURRET1_L_PATH,
 	TURRET_2_PATH,
 	TURRET_3_PATH,
+
+	BEE_CORNER_LEFT_PATH,
+	BEE_CORNER_LEFT_PATH2,
+	BEE_CORNER_RIGHT_PATH,
+	BEE_CORNER_RIGHT_PATH2,
 
 	POWER_UP_MOVEMENT
 };
@@ -91,6 +98,12 @@ private:
 	Path turret1_L_path;
 	Path turret2_path;
 	Path turret3_path;
+
+	//paths bees
+	Path bee_corner_left_path;
+	Path bee_corner_right_path;
+	Path bee_corner_left_path2;
+	Path bee_corner_right_path2;
 
 	//path power_up
 	Path powerUpPath;

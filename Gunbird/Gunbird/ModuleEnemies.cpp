@@ -7,6 +7,7 @@
 #include "ModuleUI.h"
 #include "Enemy.h"
 #include "Enemy_Torpedo.h"
+#include "Enemy_Bee.h"
 #include "Enemy_MetallicBalloon.h"
 #include "Enemy_TerrestialTurret.h"
 #include "SceneCastle_houseFlag.h"
@@ -84,6 +85,27 @@ ModuleEnemies::ModuleEnemies()
 	turret3_path.PushBack({ 0.6f, 0.5f }, 60);
 	turret3_path.PushBack({ 0.0f, 0.5f }, 3000);
 	turret3_path.loop = false;
+
+	//Bee paths
+	bee_corner_left_path.PushBack({ 1.5f,2.5f }, 20);
+	bee_corner_left_path.PushBack({ 0.0f, 0.0f }, 80);
+	bee_corner_left_path.PushBack({ 1.0f,2.5f }, 3000);
+	bee_corner_left_path.loop = false;
+
+	bee_corner_right_path.PushBack({ -1.9f,2.5f }, 20);
+	bee_corner_right_path.PushBack({ 0.0f, 0.0f }, 90);
+	bee_corner_right_path.PushBack({ -0.3f,2.5f }, 3000);
+	bee_corner_right_path.loop = false;
+
+	bee_corner_left_path2.PushBack({ 1.5f,2.5f }, 20);
+	bee_corner_left_path2.PushBack({ 0.0f, 0.0f }, 100);
+	bee_corner_left_path2.PushBack({ -0.5f,2.5f }, 3000);
+	bee_corner_left_path2.loop = false;
+
+	bee_corner_right_path2.PushBack({ -0.3f,2.5f }, 30);
+	bee_corner_right_path2.PushBack({ 0.0f, 0.0f }, 60);
+	bee_corner_right_path2.PushBack({ -0.8f,2.5f }, 3000);
+	bee_corner_right_path2.loop = false;
 }
 
 // Destructor
@@ -280,6 +302,27 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				break;
 			}
 			break;
+		case ENEMY_TYPES::BEE:
+			enemies[i] = new Enemy_Bee(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::BEE;
+			switch (info.typeMovement)
+			{
+			case ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH:
+				enemies[i]->movement = bee_corner_left_path;
+				break;
+			case ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH:
+				enemies[i]->movement = bee_corner_right_path;
+				break;
+			case ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2:
+				enemies[i]->movement = bee_corner_left_path2;
+				break;
+			case ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2:
+				enemies[i]->movement = bee_corner_right_path2;
+				break;
+			default:
+				break;
+			}
+			break;
 		case ENEMY_TYPES::CASTLE_HOUSEFLAG:
 			enemies[i] = new SceneCastle_houseFlag(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::CASTLE_HOUSEFLAG;
@@ -365,6 +408,24 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 
 			else if(enemies[i]->type == ENEMY_TYPES::TORPEDO){
+				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+					App->ui->score += 200;
+					App->audio->PlayFx(medium_explosion);
+					App->particles->AddParticle(App->particles->torpedoExplosion, (c1->rect.x - ((49 - (c1->rect.w)) / 2)), (c1->rect.y - ((35 - (c1->rect.h)) / 2)));
+					delete enemies[i];
+					enemies[i] = nullptr;
+					break;
+				}
+				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+					App->ui->scoreP2 += 200;
+					App->audio->PlayFx(medium_explosion);
+					App->particles->AddParticle(App->particles->torpedoExplosion, (c1->rect.x - ((49 - (c1->rect.w)) / 2)), (c1->rect.y - ((35 - (c1->rect.h)) / 2)));
+					delete enemies[i];
+					enemies[i] = nullptr;
+					break;
+				}
+			}
+			else if (enemies[i]->type == ENEMY_TYPES::BEE) {
 				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
 					App->ui->score += 200;
 					App->audio->PlayFx(medium_explosion);
