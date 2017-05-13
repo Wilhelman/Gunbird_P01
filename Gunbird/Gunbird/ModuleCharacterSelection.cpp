@@ -19,6 +19,14 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 	selectorPos1[3] = false;
 	selectorPos1[4] = false;
 
+	selectorPos2[0] = false;
+	selectorPos2[1] = false;
+	selectorPos2[2] = false;
+	selectorPos2[3] = false;
+	selectorPos2[4] = true;
+
+	player2_joined = false;
+
 	// Background
 	background.x = 0;
 	background.y = 0;
@@ -57,9 +65,22 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 	{
 		selector_p1.x = 311;
 		selector_p1.y = 74;
-		selector_p1.w = 31;
+		selector_p1.w = 32;
 		selector_p1.h = 52;
+
+		selector_p2.x = 368;
+		selector_p2.y = 74;
+		selector_p2.w = 32;
+		selector_p2.h = 52;
 	}
+
+	// SKY
+	sky.x = 63;
+	sky.y = 406;
+	sky.w = 416;
+	sky.h = 96;
+
+	currentTime = SDL_GetTicks();
 }
 
 ModuleCharacterSelection::~ModuleCharacterSelection()
@@ -105,31 +126,70 @@ update_status ModuleCharacterSelection::Update()
 		status = UPDATE_ERROR;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_DOWN && selectorPos1[4] == false)
+	if (currentTime + 10000 > SDL_GetTicks())
+	{
+		sky.x--;
+	}
+
+	if (!App->render->Blit(characterGraphics, -182, 144, &sky, 1.0f)) {
+		LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_KP_2] == KEY_STATE::KEY_DOWN)
+		player2_joined = true;
+
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN && selectorPos1[4] == false)
 	{
 		for (int i = 0; i < 5; ++i)
 		{
-			if (selectorPos1[i] && selection_control == false)
+			if (selectorPos1[i] && selection_control_P1 == false)
 			{
 					selectorPos1[i] = false;
 					selectorPos1[i + 1] = true;
-					selection_control = true;
+					selection_control_P1 = true;
 			}
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_DOWN && selectorPos1[0] == false)
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && selectorPos1[0] == false)
 	{
 		for (int i = 0; i < 5; ++i)
 		{
-			if (selectorPos1[i] && selection_control == false)
+			if (selectorPos1[i] && selection_control_P1 == false)
 			{
-					selectorPos1[i] = false;
-					selectorPos1[i - 1] = true;
-					selection_control = true;
+				selectorPos1[i] = false;
+				selectorPos1[i - 1] = true;
+				selection_control_P1 = true;
 			}
 		}
 	}
+
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_DOWN && selectorPos2[4] == false && player2_joined)
+	{
+		for (int i = 0; i < 5; ++i)
+		{
+			if (selectorPos2[i] && selection_control_P2 == false)
+			{
+				selectorPos2[i] = false;
+				selectorPos2[i + 1] = true;
+				selection_control_P2 = true;
+			}
+		}
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_DOWN && selectorPos2[0] == false && player2_joined)
+	{
+		for (int i = 0; i < 5; ++i)
+		{
+			if (selectorPos2[i] && selection_control_P2 == false)
+			{
+				selectorPos2[i] = false;
+				selectorPos2[i - 1] = true;
+				selection_control_P2 = true;
+			}
+		}
+	} 
 
 	if (selectorPos1[0])
 		currentCharacter_P1 = ASH;
@@ -141,6 +201,20 @@ update_status ModuleCharacterSelection::Update()
 		currentCharacter_P1 = YUANG_NANG;
 	else if (selectorPos1[4])
 		currentCharacter_P1 = TETSU;
+
+	if (player2_joined)
+	{
+		if (selectorPos2[0])
+			currentCharacter_P2 = ASH;
+		else if (selectorPos2[1])
+			currentCharacter_P2 = MARION;
+		else if (selectorPos2[2])
+			currentCharacter_P2 = VALNUS;
+		else if (selectorPos2[3])
+			currentCharacter_P2 = YUANG_NANG;
+		else if (selectorPos2[4])
+			currentCharacter_P2 = TETSU;
+	}
 
 	if (currentCharacter_P1 == ASH)
 	{
@@ -168,8 +242,42 @@ update_status ModuleCharacterSelection::Update()
 		App->render->Blit(characterGraphics, 174, 244, &selector_p1, 1.0f);
 	}
 
-	if (selection_control)
-		selection_control = false;
+	if (selection_control_P1)
+		selection_control_P1 = false;
+
+	//PLAYER 2
+
+	if (player2_joined)
+	{
+		if (currentCharacter_P2 == ASH)
+		{
+			App->render->Blit(characterGraphics, 116, 32, &ash_frame, 1.0f);
+			App->render->Blit(characterGraphics, 14, 244, &selector_p2, 1.0f);
+		}
+		else if (currentCharacter_P2 == MARION)
+		{
+			App->render->Blit(characterGraphics, 116, 32, &marion_frame, 1.0f);
+			App->render->Blit(characterGraphics, 54, 244, &selector_p2, 1.0f);
+		}
+		else if (currentCharacter_P2 == VALNUS)
+		{
+			App->render->Blit(characterGraphics, 116, 32, &valnus_frame, 1.0f);
+			App->render->Blit(characterGraphics, 94, 244, &selector_p2, 1.0f);
+		}
+		else if (currentCharacter_P2 == YUANG_NANG)
+		{
+			App->render->Blit(characterGraphics, 116, 32, &yuang_nang_frame, 1.0f);
+			App->render->Blit(characterGraphics, 134, 244, &selector_p2, 1.0f);
+		}
+		else if ((currentCharacter_P2 == TETSU))
+		{
+			App->render->Blit(characterGraphics, 116, 32, &tetsu_frame, 1.0f);
+			App->render->Blit(characterGraphics, 174, 244, &selector_p2, 1.0f);
+		}
+
+		if (selection_control_P2)
+			selection_control_P2 = false;
+	}
 
 	return status;
 

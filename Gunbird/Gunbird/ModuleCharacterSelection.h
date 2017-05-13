@@ -29,11 +29,17 @@ public:
 	SDL_Rect yuang_nang_frame;
 	SDL_Rect selector_p1;
 	SDL_Rect selector_p2;
+	SDL_Rect sky;
 
 	bool selectorPos1[5];
-	bool selection_control;
+	bool selectorPos2[5];
+	bool selection_control_P1;
+	bool selection_control_P2;
+	bool player2_joined;
 
 	uint valnus_selection;
+	uint scrollLeft;
+	uint currentTime;
 
 	enum CHARACTER
 	{
@@ -45,8 +51,7 @@ public:
 	};
 
 	CHARACTER currentCharacter_P1;
-
-
+	CHARACTER currentCharacter_P2;
 };
 
 #endif
