@@ -35,15 +35,18 @@ public:
 
 	uint valnus_selection;
 
-	enum Chracter
+	enum CHARACTER
 	{
-		NONE,
 		ASH, 
 		MARION,
 		VALNUS,
 		YUANG_NANG,
 		TETSU
 	};
+
+	CHARACTER currentCharacter_P1;
+
+
 };
 
 #endif

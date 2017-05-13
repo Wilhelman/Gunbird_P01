@@ -131,27 +131,38 @@ update_status ModuleCharacterSelection::Update()
 		}
 	}
 
-	if (selectorPos1[0]) //ASH
+	if (selectorPos1[0])
+		currentCharacter_P1 = ASH;
+	else if (selectorPos1[1])
+		currentCharacter_P1 = MARION;
+	else if (selectorPos1[2])
+		currentCharacter_P1 = VALNUS;
+	else if (selectorPos1[3])
+		currentCharacter_P1 = YUANG_NANG;
+	else if (selectorPos1[4])
+		currentCharacter_P1 = TETSU;
+
+	if (currentCharacter_P1 == ASH)
 	{
 		App->render->Blit(characterGraphics, 12, 32, &ash_frame, 1.0f);
 		App->render->Blit(characterGraphics, 14, 244, &selector_p1, 1.0f);
 	}
-	else if (selectorPos1[1]) //MARION
+	else if (currentCharacter_P1 == MARION) 
 	{
 		App->render->Blit(characterGraphics, 12, 32, &marion_frame, 1.0f);
 		App->render->Blit(characterGraphics, 54, 244, &selector_p1, 1.0f);
 	}
-	else if (selectorPos1[2]) //VALNUS
+	else if (currentCharacter_P1 == VALNUS)
 	{
 		App->render->Blit(characterGraphics, 12, 32, &valnus_frame, 1.0f);
 		App->render->Blit(characterGraphics, 94, 244, &selector_p1, 1.0f);
 	}
-	else if (selectorPos1[3]) //YUANG NANG
+	else if (currentCharacter_P1 == YUANG_NANG)
 	{
 		App->render->Blit(characterGraphics, 12, 32, &yuang_nang_frame, 1.0f);
 		App->render->Blit(characterGraphics, 134, 244, &selector_p1, 1.0f);
 	}
-	else if (selectorPos1[4]) //TETSU 
+	else if ((currentCharacter_P1 == TETSU))
 	{
 		App->render->Blit(characterGraphics, 12, 32, &tetsu_frame, 1.0f);
 		App->render->Blit(characterGraphics, 174, 244, &selector_p1, 1.0f);
