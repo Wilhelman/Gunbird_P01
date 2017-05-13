@@ -18,124 +18,129 @@
 ModulePlayer2::ModulePlayer2()
 {
 	//godMode
-	godMode.PushBack({ 481, 27, 26, 37 });
-	godMode.loop = true;
+	{
+		godMode.PushBack({ 481, 27, 26, 37 });
+		godMode.loop = true;
+	}
 
-	// idle animation
-	idle.PushBack({ 11, 26, 30, 37 });
-	idle.PushBack({ 51, 26, 30, 37 });
-	idle.PushBack({ 91, 26, 30, 37 });
-	idle.PushBack({ 131, 26, 30, 37 });
-	idle.PushBack({ 171, 26, 30, 37 });
+	//Idle animation
+	{
+		idle.PushBack({ 11, 26, 30, 37 });
+		idle.PushBack({ 51, 26, 30, 37 });
+		idle.PushBack({ 91, 26, 30, 37 });
+		idle.PushBack({ 131, 26, 30, 37 });
+		idle.PushBack({ 171, 26, 30, 37 });
 
-	idle.PushBack({ 11, 73, 30, 37 });
-	idle.PushBack({ 51, 73, 30, 37 });
-	idle.PushBack({ 91, 73, 30, 37 });
-	idle.PushBack({ 131, 73, 30, 37 });
-	idle.PushBack({ 171, 73, 30, 37 });
+		idle.PushBack({ 11, 73, 30, 37 });
+		idle.PushBack({ 51, 73, 30, 37 });
+		idle.PushBack({ 91, 73, 30, 37 });
+		idle.PushBack({ 131, 73, 30, 37 });
+		idle.PushBack({ 171, 73, 30, 37 });
 
-	idle.PushBack({ 11, 120, 30, 37 });
-	idle.PushBack({ 51, 120, 30, 37 });
-	idle.PushBack({ 91, 120, 30, 37 });
-	idle.PushBack({ 129, 120, 30, 37 });
-	idle.PushBack({ 171, 120, 30, 37 });
+		idle.PushBack({ 11, 120, 30, 37 });
+		idle.PushBack({ 51, 120, 30, 37 });
+		idle.PushBack({ 91, 120, 30, 37 });
+		idle.PushBack({ 129, 120, 30, 37 });
+		idle.PushBack({ 171, 120, 30, 37 });
 
-	idle.PushBack({ 11, 167, 30, 37 });
-	idle.PushBack({ 51, 167, 30, 37 });
-	idle.PushBack({ 91, 167, 30, 37 });
-	idle.PushBack({ 131, 167, 30, 37 });
-	idle.PushBack({ 171, 167, 30, 37 });
+		idle.PushBack({ 11, 167, 30, 37 });
+		idle.PushBack({ 51, 167, 30, 37 });
+		idle.PushBack({ 91, 167, 30, 37 });
+		idle.PushBack({ 131, 167, 30, 37 });
+		idle.PushBack({ 171, 167, 30, 37 });
 
-	idle.PushBack({ 11, 213, 30, 37 });
-	idle.PushBack({ 51, 213, 30, 37 });
-	idle.PushBack({ 91, 213, 30, 37 });
-	idle.PushBack({ 131, 213, 30, 37 });
+		idle.PushBack({ 11, 213, 30, 37 });
+		idle.PushBack({ 51, 213, 30, 37 });
+		idle.PushBack({ 91, 213, 30, 37 });
+		idle.PushBack({ 131, 213, 30, 37 });
 
-	idle.speed = 0.4f;
+		idle.speed = 0.4f;
+	}
 
+	//Dead animation - TO CHANGE
+	{
+		dead_animation.PushBack({ 123, 446, 32, 38 });
+		dead_animation.speed = 0.1f;
+	}
 
-	//idle right animation
-	left_idle_animation.PushBack({ 114, 38, 21, 29 });
-	left_idle_animation.PushBack({ 145, 76, 21, 29 });
+	//remove (valnus sprites)?
+	{
+		dead_animation_explosion.PushBack({ 95,187,47,49 });
+		dead_animation_explosion.PushBack({ 72,151,35, 37 });
+		dead_animation_explosion.PushBack({ 88,114,31,31 });
+		dead_animation_explosion.speed = 0.2f;
+	}
 
-	left_idle_animation.loop = true;
-	left_idle_animation.speed = 0.1f;
+	//Right animation
+	{
+		right_animation.PushBack({ 243, 29, 28, 37 });
+		right_animation.PushBack({ 283, 29, 28, 37 });
+		right_animation.PushBack({ 323, 29, 28, 37 });
+		right_animation.PushBack({ 363, 29, 28, 37 });
+		right_animation.PushBack({ 403, 29, 28, 37 });
 
-	//idle left animation
+		right_animation.PushBack({ 243, 76, 28, 37 });
+		right_animation.PushBack({ 283, 76, 28, 37 });
+		right_animation.PushBack({ 323, 76, 28, 37 });
+		right_animation.PushBack({ 363, 76, 28, 37 });
+		right_animation.PushBack({ 403, 76, 28, 37 });
 
-	//dead animation
-	dead_animation.PushBack({ 123, 446, 32, 38 });
-	dead_animation.speed = 0.1f; 
-	dead_animation_explosion.PushBack({ 95,187,47,49 });
-	dead_animation_explosion.PushBack({ 72,151,35, 37 });
-	dead_animation_explosion.PushBack({ 88,114,31,31 });
-	dead_animation_explosion.speed = 0.2f;
+		right_animation.PushBack({ 243, 123, 28, 37 });
+		right_animation.PushBack({ 283, 123, 28, 37 });
+		right_animation.PushBack({ 323, 123, 28, 37 });
+		right_animation.PushBack({ 363, 123, 28, 37 });
+		right_animation.PushBack({ 403, 123, 28, 37 });
 
-	//right animation
-	right_animation.PushBack({ 243, 29, 28, 37 });
-	right_animation.PushBack({ 283, 29, 28, 37 });
-	right_animation.PushBack({ 323, 29, 28, 37 });
-	right_animation.PushBack({ 363, 29, 28, 37 });
-	right_animation.PushBack({ 403, 29, 28, 37 });
+		right_animation.PushBack({ 243, 170, 28, 37 });
+		right_animation.PushBack({ 283, 170, 28, 37 });
+		right_animation.PushBack({ 323, 170, 28, 37 });
+		right_animation.PushBack({ 363, 170, 28, 37 });
+		right_animation.PushBack({ 403, 170, 28, 37 });
 
-	right_animation.PushBack({ 243, 76, 28, 37 });
-	right_animation.PushBack({ 283, 76, 28, 37 });
-	right_animation.PushBack({ 323, 76, 28, 37 });
-	right_animation.PushBack({ 363, 76, 28, 37 });
-	right_animation.PushBack({ 403, 76, 28, 37 });
+		right_animation.PushBack({ 243, 217, 28, 37 });
+		right_animation.PushBack({ 283, 217, 28, 37 });
+		right_animation.PushBack({ 323, 217, 28, 37 });
+		right_animation.PushBack({ 363, 217, 28, 37 });
+		right_animation.PushBack({ 402, 217, 28, 37 });
 
-	right_animation.PushBack({ 243, 123, 28, 37 });
-	right_animation.PushBack({ 283, 123, 28, 37 });
-	right_animation.PushBack({ 323, 123, 28, 37 });
-	right_animation.PushBack({ 363, 123, 28, 37 });
-	right_animation.PushBack({ 403, 123, 28, 37 });
+		right_animation.PushBack({ 243, 262, 28, 37 });
+		right_animation.PushBack({ 282, 264, 28, 37 });
+		right_animation.PushBack({ 326, 262, 28, 37 });
+		right_animation.PushBack({ 363, 264, 28, 37 });
+		right_animation.PushBack({ 402, 264, 28, 37 });
 
-	right_animation.PushBack({ 243, 170, 28, 37 });
-	right_animation.PushBack({ 283, 170, 28, 37 });
-	right_animation.PushBack({ 323, 170, 28, 37 });
-	right_animation.PushBack({ 363, 170, 28, 37 });
-	right_animation.PushBack({ 403, 170, 28, 37 });
+		right_animation.PushBack({ 243, 305, 28, 37 });
+		right_animation.PushBack({ 284, 305, 28, 37 });
+		right_animation.PushBack({ 324, 306, 28, 37 });
+		right_animation.PushBack({ 363, 306, 28, 37 });
+		right_animation.PushBack({ 406, 306, 28, 37 });
 
-	right_animation.PushBack({ 243, 217, 28, 37 });
-	right_animation.PushBack({ 283, 217, 28, 37 });
-	right_animation.PushBack({ 323, 217, 28, 37 });
-	right_animation.PushBack({ 363, 217, 28, 37 });
-	right_animation.PushBack({ 402, 217, 28, 37 });
+		right_animation.PushBack({ 243, 356, 28, 37 });
+		right_animation.PushBack({ 283, 357, 28, 37 });
+		right_animation.PushBack({ 323, 357, 28, 37 });
+		right_animation.PushBack({ 362, 357, 28, 37 });
+		right_animation.PushBack({ 402, 357, 28, 37 });
 
-	right_animation.PushBack({ 243, 262, 28, 37 });
-	right_animation.PushBack({ 282, 264, 28, 37 });
-	right_animation.PushBack({ 326, 262, 28, 37 });
-	right_animation.PushBack({ 363, 264, 28, 37 });
-	right_animation.PushBack({ 402, 264, 28, 37 });
+		right_animation.PushBack({ 242, 404, 28, 37 });
+		right_animation.PushBack({ 285, 404, 28, 37 });
+		right_animation.PushBack({ 322, 404, 28, 37 });
+		right_animation.PushBack({ 364, 404, 28, 37 });
+		right_animation.PushBack({ 403, 404, 28, 37 });
 
-	right_animation.PushBack({ 243, 305, 28, 37 });
-	right_animation.PushBack({ 284, 305, 28, 37 });
-	right_animation.PushBack({ 324, 306, 28, 37 });
-	right_animation.PushBack({ 363, 306, 28, 37 });
-	right_animation.PushBack({ 406, 306, 28, 37 });
+		right_animation.PushBack({ 245, 451, 28, 37 });
+		right_animation.PushBack({ 287, 451, 28, 37 });
+		right_animation.PushBack({ 322, 451, 28, 37 });
+		right_animation.PushBack({ 361, 451, 28, 37 });
+		right_animation.PushBack({ 403, 451, 28, 37 });
 
-	right_animation.PushBack({ 243, 356, 28, 37 });
-	right_animation.PushBack({ 283, 357, 28, 37 });
-	right_animation.PushBack({ 323, 357, 28, 37 });
-	right_animation.PushBack({ 362, 357, 28, 37 });
-	right_animation.PushBack({ 402, 357, 28, 37 });
+		right_animation.speed = 0.4f;
+		right_animation.loop = true;
 
-	right_animation.PushBack({ 242, 404, 28, 37 });
-	right_animation.PushBack({ 285, 404, 28, 37 });
-	right_animation.PushBack({ 322, 404, 28, 37 });
-	right_animation.PushBack({ 364, 404, 28, 37 });
-	right_animation.PushBack({ 403, 404, 28, 37 });
+	}
 
-	right_animation.PushBack({ 245, 451, 28, 37 });
-	right_animation.PushBack({ 287, 451, 28, 37 });
-	right_animation.PushBack({ 322, 451, 28, 37 });
-	right_animation.PushBack({ 361, 451, 28, 37 });
-	right_animation.PushBack({ 403, 451, 28, 37 });
+	//Left animation
+	{
 
-	right_animation.speed = 0.4f;
-	right_animation.loop = true;
-
-	//left animation
 	left_animation.PushBack({ 8, 294, 28, 37 });
 	left_animation.PushBack({ 48, 294, 28, 37 });
 	left_animation.PushBack({ 88, 294, 28, 37 });
@@ -153,7 +158,7 @@ ModulePlayer2::ModulePlayer2()
 	left_animation.PushBack({ 88, 388, 28, 37 });
 	left_animation.PushBack({ 128, 388, 28, 37 });
 	left_animation.PushBack({ 168, 388, 28, 37 });
-	
+
 	left_animation.PushBack({ 8, 435, 28, 37 });
 	left_animation.PushBack({ 48, 435, 28, 37 });
 	left_animation.PushBack({ 88, 435, 28, 37 });
@@ -165,8 +170,6 @@ ModulePlayer2::ModulePlayer2()
 	left_animation.PushBack({ 88, 482, 28, 37 });
 	left_animation.PushBack({ 128, 482, 28, 37 });
 	left_animation.PushBack({ 168, 482, 28, 37 });
-
-	//MARTÍ
 
 	left_animation.PushBack({ 8, 527, 28, 37 });
 	left_animation.PushBack({ 47, 529, 28, 37 });
@@ -200,15 +203,34 @@ ModulePlayer2::ModulePlayer2()
 
 	left_animation.speed = 0.4f;
 	left_animation.loop = true;
-
-	
+}
 
 	//Blink animation
-	blink.PushBack({ 47,446,31,30 });
-	blink.PushBack({ 876,243,31,30 });
-	blink.PushBack({ 85, 446, 31, 29 });
-	blink.speed = 0.5f;
-	blink.loop = true;
+	{
+		blink.PushBack({ 11, 26, 30, 37 });
+		blink.PushBack({ 188, 224, 30, 37 }); // space
+		blink.PushBack({ 51, 26, 30, 37 });
+		blink.PushBack({ 188, 224, 30, 37 }); // space
+		blink.PushBack({ 91, 26, 30, 37 });
+		blink.PushBack({ 188, 224, 30, 37 }); // space
+		blink.PushBack({ 131, 26, 30, 37 });
+		blink.PushBack({ 188, 224, 30, 37 }); // space
+		blink.PushBack({ 171, 26, 30, 37 });
+		blink.PushBack({ 188, 224, 30, 37 }); // space
+		idle.PushBack({ 11, 73, 30, 37 });
+		blink.PushBack({ 188, 224, 30, 37 }); // space
+		idle.PushBack({ 51, 73, 30, 37 });
+		blink.PushBack({ 188, 224, 30, 37 }); // space
+		idle.PushBack({ 91, 73, 30, 37 });
+		blink.PushBack({ 188, 224, 30, 37 }); // space
+		idle.PushBack({ 131, 73, 30, 37 });
+		blink.PushBack({ 188, 224, 30, 37 }); // space
+		idle.PushBack({ 171, 73, 30, 37 });
+		blink.PushBack({ 188, 224, 30, 37 }); // space
+
+		blink.speed = 0.8f;
+		blink.loop = true;
+	}
 
 	//Colision Animation
 	{
@@ -303,8 +325,8 @@ bool ModulePlayer2::Start()
 
 	LOG("Loading player audios");
 	tetsu_Hitted = App->audio->LoadFx("Assets/audio/effects/Valnus_hit_enemy.wav");
-	tetsu_PowerUp = App->audio->LoadFx("Assets/audio/effects/Valnus_voice_PowerUp.wav");
-	tetsu_Death = App->audio->LoadFx("Assets/audio/effects/Valnus_Scream_hitted.wav");
+	tetsu_PowerUp = App->audio->LoadFx("Assets/audio/effects/Tetsu_voice_PowerUp.wav");
+	tetsu_Death = App->audio->LoadFx("Assets/audio/effects/tetsu_scream_hitted.wav");
 
 	this->position.x = 0;
 	this->position.y = SCREEN_HEIGHT + 200;

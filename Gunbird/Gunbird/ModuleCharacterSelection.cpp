@@ -27,7 +27,8 @@ bool ModuleCharacterSelection::Start()
 {
 	LOG("Loading Character Selection assets");
 	bool ret = true;
-	graphics = App->textures->Load("Assets/characterSelection/exampleCharacterSelection.png");
+	graphics = App->textures->Load("Assets/characterSelection/character_selection_template.png");
+	
 	if (graphics == nullptr) {
 		LOG("Cannot load the texture in Character Selection");
 		ret = false;
