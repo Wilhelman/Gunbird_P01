@@ -22,20 +22,23 @@ _IMPORTANT: do not modify, change or add any folder or file as you might not be 
 
 ## Controls
 
-Player controls:
+Player 1 controls:
 - UP: W key
-- LEFT: A key
-- RIGHT: D key
+- LEFT / MOVE SELECTOR LEFT: A key
+- RIGHT / MOVE SELECTOR RIGHT:: D key
 - DOWN: S key
 - BASIC SHOT: SPACE key
+- SELECT CHARACTER: SPACE key 
 
 Player 2 controls:
 - UP: UP_ARROW key
-- LEFT: LEFT_ARROW key
-- RIGHT: RIGHT_ARROW key
+- LEFT / MOVE SELECTOR LEFT: LEFT_ARROW key
+- RIGHT / MOVE SELECTOR RIGHT:: RIGHT_ARROW key
 - DOWN: DOWN_ARROW key
-- JOIN THE GAME: 1 key (NUMPAD)
 - BASIC SHOT: 1 key (NUMPAD)
+- JOIN THE GAME: 2 key (NUMPAD)
+- JOIN THE GAME (in-game): 1 key (NUMPAD)
+- SELECT CHARACTER: 1 key (NUMPAD) 
 
 General/developer controls:
 - SKIP SCREEN: INTRO key
