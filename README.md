@@ -183,4 +183,4 @@ _Termens Vázquez, Ariadna's responsability and Github account_
 
 
 
-FrozenSloth Studios
+ ~ FrozenSloth Studios ~ 
