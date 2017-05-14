@@ -72,8 +72,8 @@ bool Application::Init()
 		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
 
 	//TODO: remove this in release mode
-	characterSelection->Enable();
-	//sceneForest->Enable();
+	//characterSelection->Enable();
+	sceneForest->Enable();
 	//sceneCastle->Enable();
 
 	//player->Enable();

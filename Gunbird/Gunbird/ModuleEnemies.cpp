@@ -8,6 +8,7 @@
 #include "Enemy.h"
 #include "Enemy_Torpedo.h"
 #include "Enemy_Bee.h"
+#include "Enemy_Big_Red_Turret.h"
 #include "Enemy_MetallicBalloon.h"
 #include "Enemy_TerrestialTurret.h"
 #include "SceneCastle_houseFlag.h"
@@ -323,6 +324,19 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				break;
 			}
 			break;
+		case ENEMY_TYPES::BIG_RED_TURRET:
+			enemies[i] = new Enemy_Big_Red_Turret(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::BIG_RED_TURRET;
+			switch (info.typeMovement)
+			{
+			case ENEMY_MOVEMENT::STAY:
+				enemies[i]->movement = stayPath;
+				break;
+
+			default:
+				break;
+			}
+			break;
 		case ENEMY_TYPES::CASTLE_HOUSEFLAG:
 			enemies[i] = new SceneCastle_houseFlag(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::CASTLE_HOUSEFLAG;
@@ -359,6 +373,30 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		{
 			enemies[i]->OnCollision(c2);
 			if (enemies[i]->type == ENEMY_TYPES::METALLICBALLOON) {
+				if (enemies[i]->getLives() == 0) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+						App->ui->score += 500;
+						App->audio->PlayFx(medium_explosion);
+						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
+						this->AddEnemy(ENEMY_TYPES::POWER_UP, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
+						delete enemies[i];
+						enemies[i] = nullptr;
+						LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
+						break;
+					}
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+						App->ui->scoreP2 += 500;
+						App->audio->PlayFx(medium_explosion);
+						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
+						this->AddEnemy(ENEMY_TYPES::POWER_UP, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
+						delete enemies[i];
+						enemies[i] = nullptr;
+						LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
+						break;
+					}
+				}
+			}
+			else if (enemies[i]->type == ENEMY_TYPES::BIG_RED_TURRET) {
 				if (enemies[i]->getLives() == 0) {
 					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
 						App->ui->score += 500;

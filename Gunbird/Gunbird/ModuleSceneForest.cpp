@@ -168,11 +168,19 @@ update_status ModuleSceneForest::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH /2 + 30, -29, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
 		}
 
-		/*if ((int)background_y == -1950 && spawned == 1)
+		if ((int)background_y == -1500 && spawned == 1)
 		{
 			spawned = 2;
-			App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_CASTLE);
-		}*/
+			App->enemies->AddEnemy(ENEMY_TYPES::BIG_RED_TURRET, 40, -52, ENEMY_MOVEMENT::STAY);
+
+			
+		}
+
+		if ((int)background_y == -1450 && spawned == 2)
+		{
+			spawned = 3;
+			App->enemies->AddEnemy(ENEMY_TYPES::BIG_RED_TURRET, 130, -52, ENEMY_MOVEMENT::STAY);
+		}
 
 		
 	}
