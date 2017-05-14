@@ -8,12 +8,14 @@
 #include "ModuleCollision.h"
 #include "Animation.h"
 #include "ModuleAudio.h"
+#include "ModuleCharacterSelection.h"
 #include "SDL\include\SDL_timer.h"
 
 #include "ModuleEnemies.h"
 
 //TODO: include the maps
 #include "ModuleSceneCastle.h"
+#include "ModuleSceneForest.h"
 
 ModulePlayer2::ModulePlayer2()
 {
@@ -345,140 +347,262 @@ update_status ModulePlayer2::Update()
 
 
 	if (!deadPlayer && !hitted && !spawining) {
-		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT && App->sceneCastle->IsEnabled()))
+		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT || App->sceneForest->background_y == -SCREEN_HEIGHT) && (App->sceneCastle->IsEnabled() || App->sceneForest->IsEnabled()))
 		{
 			speed = 5;
 			position.y -= speed;
 		}
 		else {
 
-			if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+			if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::TETSU_SELECTED)
 			{
-				if (position.x < SCREEN_WIDTH - 34) // TODO: correct limits so they are all equal
-					position.x += speed;
-				if (current_animation != &right_animation)
+				if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 				{
-					current_animation = &right_animation;
-					right_animation.Reset();
+					if (position.x < SCREEN_WIDTH - 34) // TODO: correct limits so they are all equal
+						position.x += speed;
+					if (current_animation != &right_animation)
+					{
+						current_animation = &right_animation;
+						right_animation.Reset();
+					}
 				}
-			}
 
-			if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
-				if (position.x > 3)
-					position.x -= speed;
-				if (current_animation != &left_animation)
+				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) {
+					if (position.x > 3)
+						position.x -= speed;
+					if (current_animation != &left_animation)
+					{
+						left_animation.Reset();
+						current_animation = &left_animation;
+					}
+				}
+
+				if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 				{
-					left_animation.Reset();
-					current_animation = &left_animation;
+					if (position.y > 34)
+						position.y -= speed;
 				}
-			}
 
-			if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
-			{
-				if (position.y > 34)
-					position.y -= speed;
-			}
-
-			if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
-			{
-				if (position.y <  SCREEN_HEIGHT - 3)
-					position.y += speed;
-			}
-
-			if (App->input->keyboard[SDL_SCANCODE_KP_1] == KEY_STATE::KEY_DOWN || (0 < counter))
-			{
-				//Old switch. Keep it it here for now
-				/*switch (laserType)
+				if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 				{
-				case 0:
-				App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
-				break;
-				case 1:
-				App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
-				break;
-				case 2:
-				App->particles->AddParticle(App->particles->laser2, position.x + 10, position.y - 40, COLLIDER_PLAYER_SHOT);
-				break;
-				default:
-				break;
-				}
-				laserType++;
-				if (laserType > 2)
-				laserType = 0;*/
-				if (shotPower == 0) {
-					if (counter == 0)
-					{
-						App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
-						shotControl = false;
-					}
-					else if (counter == 7)
-					{
-						App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
-					}
-					else if (counter == 14)
-					{
-						App->particles->AddParticle(App->particles->laser2, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
-					}
-					else if (counter == 21)
-					{
-						App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
-						counter = 0;
-						shotControl = true;
-					}
-
-					if (!shotControl)
-						counter++;
-				}
-				else if (shotPower == 1) {
-					if (counter == 0)
-					{
-						App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
-						shotControl = false;
-					}
-					else if (counter == 7)
-					{
-						App->particles->AddParticle(App->particles->laser1_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
-					}
-					else if (counter == 14)
-					{
-						App->particles->AddParticle(App->particles->laser2_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
-					}
-					else if (counter == 21)
-					{
-						App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
-						counter = 0;
-						shotControl = true;
-					}
-
-					if (!shotControl)
-						counter++;
+					if (position.y <  SCREEN_HEIGHT - 3)
+						position.y += speed;
 				}
 
-			} //end shot space
+				if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || (0 < counter))
+				{
+					//Old switch. Keep it it here for now
+					/*switch (laserType)
+					{
+					case 0:
+					App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
+					break;
+					case 1:
+					App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+					break;
+					case 2:
+					App->particles->AddParticle(App->particles->laser2, position.x + 10, position.y - 40, COLLIDER_PLAYER_SHOT);
+					break;
+					default:
+					break;
+					}
+					laserType++;
+					if (laserType > 2)
+					laserType = 0;*/
 
-			if (App->input->keyboard[SDL_SCANCODE_KP_7] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
-			{
-				godModeControl = !godModeControl;
-				if (godModeControl)
-					inmortal = true;
+					if (shotPower == 0) {
+						if (counter == 0)
+						{
+							App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+							shotControl = false;
+						}
+						else if (counter == 7)
+						{
+							App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 14)
+						{
+							App->particles->AddParticle(App->particles->laser2, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 21)
+						{
+							App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+							counter = 0;
+							shotControl = true;
+						}
 
+						if (!shotControl)
+							counter++;
+					}
+					else if (shotPower == 1) {
+						if (counter == 0)
+						{
+							App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							shotControl = false;
+						}
+						else if (counter == 7)
+						{
+							App->particles->AddParticle(App->particles->laser1_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 14)
+						{
+							App->particles->AddParticle(App->particles->laser2_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 21)
+						{
+							App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							counter = 0;
+							shotControl = true;
+						}
+
+						if (!shotControl)
+							counter++;
+					}
+
+				} //end shot space
+
+				if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN && (App->sceneCastle->IsEnabled() || App->sceneForest->IsEnabled()))
+				{
+					godModeControl = !godModeControl;
+					if (godModeControl)
+						inmortal = true;
+
+				}
+
+				if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && (App->sceneCastle->IsEnabled() || App->sceneForest->IsEnabled()))
+				{
+					playerLives = -1;
+					deadPlayer = true;
+					playerExpControl = true;
+				}
+
+				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+					current_animation = &idle;
 			}
-
-			if (App->input->keyboard[SDL_SCANCODE_KP_8] == KEY_STATE::KEY_DOWN && App->sceneCastle->IsEnabled())
+			else if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::TETSU_SELECTED)
 			{
-				playerLives = -1;
-				deadPlayer = true;
-				playerExpControl = true;
+				if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+				{
+					if (position.x < SCREEN_WIDTH - 34) // TODO: correct limits so they are all equal
+						position.x += speed;
+					if (current_animation != &right_animation)
+					{
+						current_animation = &right_animation;
+						right_animation.Reset();
+					}
+				}
+
+				if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
+					if (position.x > 3)
+						position.x -= speed;
+					if (current_animation != &left_animation)
+					{
+						left_animation.Reset();
+						current_animation = &left_animation;
+					}
+				}
+
+				if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+				{
+					if (position.y > 34)
+						position.y -= speed;
+				}
+
+				if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+				{
+					if (position.y <  SCREEN_HEIGHT - 3)
+						position.y += speed;
+				}
+
+				if (App->input->keyboard[SDL_SCANCODE_KP_1] == KEY_STATE::KEY_DOWN || (0 < counter))
+				{
+					//Old switch. Keep it it here for now
+					/*switch (laserType)
+					{
+					case 0:
+					App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
+					break;
+					case 1:
+					App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+					break;
+					case 2:
+					App->particles->AddParticle(App->particles->laser2, position.x + 10, position.y - 40, COLLIDER_PLAYER_SHOT);
+					break;
+					default:
+					break;
+					}
+					laserType++;
+					if (laserType > 2)
+					laserType = 0;*/
+
+					if (shotPower == 0) {
+						if (counter == 0)
+						{
+							App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+							shotControl = false;
+						}
+						else if (counter == 7)
+						{
+							App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 14)
+						{
+							App->particles->AddParticle(App->particles->laser2, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 21)
+						{
+							App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+							counter = 0;
+							shotControl = true;
+						}
+
+						if (!shotControl)
+							counter++;
+					}
+					else if (shotPower == 1) {
+						if (counter == 0)
+						{
+							App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							shotControl = false;
+						}
+						else if (counter == 7)
+						{
+							App->particles->AddParticle(App->particles->laser1_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 14)
+						{
+							App->particles->AddParticle(App->particles->laser2_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 21)
+						{
+							App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							counter = 0;
+							shotControl = true;
+						}
+
+						if (!shotControl)
+							counter++;
+					}
+
+				} //end shot space
+				if (App->input->keyboard[SDL_SCANCODE_KP_7] == KEY_STATE::KEY_DOWN && (App->sceneCastle->IsEnabled() || App->sceneForest->IsEnabled()))
+				{
+					godModeControl = !godModeControl;
+					if (godModeControl)
+						inmortal = true;
+				}
+				if (App->input->keyboard[SDL_SCANCODE_KP_8] == KEY_STATE::KEY_DOWN && (App->sceneCastle->IsEnabled() || App->sceneForest->IsEnabled()))
+				{
+					playerLives = -1;
+					deadPlayer = true;
+					playerExpControl = true;
+				}
+				if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)
+					current_animation = &idle;
 			}
-
-			if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)
-				current_animation = &idle;
-
 		}
 		App->render->camera.y = original_camera_y;
 	}
-
-
 
 	if (spawining || inmortal)
 		current_animation = &blink;

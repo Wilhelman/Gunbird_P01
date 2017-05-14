@@ -7,6 +7,16 @@
 
 struct SDL_Texture;
 
+enum CHARACTER_SELECTED
+{
+	NONE_SELECTED,
+	ASH_SELECTED,
+	MARION_SELECTED,
+	VALNUS_SELECTED,
+	YUANG_NANG_SELECTED,
+	TETSU_SELECTED
+};
+
 class ModuleCharacterSelection : public Module
 {
 public:
@@ -69,15 +79,7 @@ public:
 		TETSU
 	};
 
-	enum CHARACTER_SELECTED
-	{
-		NONE_SELECTED,
-		ASH_SELECTED,
-		MARION_SELECTED,
-		VALNUS_SELECTED,
-		YUANG_NANG_SELECTED,
-		TETSU_SELECTED
-	};
+	
 
 	CHARACTER_SELECTOR currentCharacter_P1;
 	CHARACTER_SELECTOR currentCharacter_P2;

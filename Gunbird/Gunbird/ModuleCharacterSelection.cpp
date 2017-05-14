@@ -174,11 +174,9 @@ update_status ModuleCharacterSelection::Update()
 
 	if ((App->input->keyboard[SDL_SCANCODE_RETURN] 
 		|| (selected_P1_done && player2_joined == false) 
-		|| (selected_P1_done && selected_P2_done)
-		/*|| (currentTime + 10000) <= SDL_GetTicks()*/)
-		&& App->fade->FadeIsOver()) 
+		|| (selected_P1_done && selected_P2_done))
+		&& App->fade->FadeIsOver())
 	{
-		App->audio->PlayFx(valnus_selection);
 		App->fade->FadeToBlack(this, App->sceneForest);
 	}
 
@@ -218,8 +216,11 @@ update_status ModuleCharacterSelection::Update()
 	if (App->input->keyboard[SDL_SCANCODE_KP_2] == KEY_STATE::KEY_DOWN && selected_P1_done == false && selected_P2_done == false)
 	{
 		player2_joined = true;
+		if (selectorPos1[4])
+			selectorPos2[2] = true;
+		else
 		selectorPos2[4] = true;
-		characterSelected_P2 = VALNUS_SELECTED;
+		//characterSelected_P2 = VALNUS_SELECTED;
 	}
 
 	/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
@@ -480,17 +481,14 @@ update_status ModuleCharacterSelection::Update()
 		switch (currentCharacter_P1)
 		{
 		case ASH:
-			characterSelected_P1 = ASH_SELECTED;
-			break;
 		case MARION:
-			characterSelected_P1 = MARION_SELECTED;
+		case YUANG_NANG:
+			characterSelected_P1 = NONE_SELECTED;
+			selected_P1_done = false; 
 			break;
 		case VALNUS:
 			characterSelected_P1 = VALNUS_SELECTED;
 			App->audio->PlayFx(valnus_selection);
-			break;
-		case YUANG_NANG:
-			characterSelected_P1 = YUANG_NANG_SELECTED;
 			break;
 		case TETSU:
 			characterSelected_P1 = TETSU_SELECTED;
@@ -507,17 +505,14 @@ update_status ModuleCharacterSelection::Update()
 		switch (currentCharacter_P2)
 		{
 		case ASH:
-			characterSelected_P2 = ASH_SELECTED;
-			break;
 		case MARION:
-			characterSelected_P2 = MARION_SELECTED;
+		case YUANG_NANG:
+			characterSelected_P2 = NONE_SELECTED;
+			selected_P2_done = false;
 			break;
 		case VALNUS:
 			characterSelected_P2 = VALNUS_SELECTED;
 			App->audio->PlayFx(valnus_selection);
-			break;
-		case YUANG_NANG:
-			characterSelected_P2 = YUANG_NANG_SELECTED;
 			break;
 		case TETSU:
 			characterSelected_P2 = TETSU_SELECTED;

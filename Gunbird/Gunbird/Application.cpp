@@ -73,7 +73,8 @@ bool Application::Init()
 
 	//TODO: remove this in release mode
 	//characterSelection->Enable();
-	sceneForest->Enable();
+	//sceneForest->Enable();
+	characterSelection->Enable();
 	//sceneCastle->Enable();
 
 	//player->Enable();

@@ -11,6 +11,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleScoreRanking.h"
 #include "ModuleUI.h"
+#include "ModuleCharacterSelection.h"
 #include "SDL\include\SDL_timer.h"
 
 //TODO: remove this if not necesary
@@ -51,14 +52,30 @@ bool ModuleSceneForest::Start()
 	soldier_left_wall_x = 50;
 	soldier_left_wall.Reset();*/
 
-
-
 	LOG("Loading SceneForest assets");
 	bool ret = true;
 	
+	// ENABLING SELECTED CHARACTER
 
-	App->player->Enable();
-	App->ui->Enable();
+	if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::VALNUS_SELECTED)
+	{
+		App->player->Enable();
+		App->ui->Enable();
+	}
+	else if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::TETSU_SELECTED)
+	{
+		App->player2->Enable();
+	}
+
+	if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::VALNUS_SELECTED)
+	{
+		App->player->Enable();
+		App->ui->Enable();
+	}
+	else if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::TETSU_SELECTED)
+	{
+		App->player2->Enable();
+	}
 
 	if (App->player2->playerLives > 0 && App->ui->p2 == true)
 		App->player2->Enable();
@@ -192,6 +209,8 @@ update_status ModuleSceneForest::Update()
 		App->player2->Enable();
 		App->audio->PlayFx(player2joined);
 	}
+
+
 
 	/*if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
 	{
