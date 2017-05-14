@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Globals.h"
+#include "Animation.h"
 
 struct SDL_Texture;
 
@@ -36,22 +37,42 @@ public:
 	bool selection_control_P1;
 	bool selection_control_P2;
 	bool player2_joined;
+	bool selected_P1_done;
+	bool selected_P2_done;
 
+	//AUDIO
 	uint valnus_selection;
+	uint tetsu_selection;
+	uint selector_mov;
+
 	uint scrollLeft;
 	uint currentTime;
 
-	enum CHARACTER
+	enum CHARACTER_SELECTOR
 	{
-		ASH, 
+		NONE,
+		ASH,
 		MARION,
 		VALNUS,
 		YUANG_NANG,
 		TETSU
 	};
 
-	CHARACTER currentCharacter_P1;
-	CHARACTER currentCharacter_P2;
+	enum CHARACTER_SELECTED
+	{
+		NONE_SELECTED,
+		ASH_SELECTED,
+		MARION_SELECTED,
+		VALNUS_SELECTED,
+		YUANG_NANG_SELECTED,
+		TETSU_SELECTED
+	};
+
+	CHARACTER_SELECTOR currentCharacter_P1;
+	CHARACTER_SELECTOR currentCharacter_P2;
+
+	CHARACTER_SELECTED characterSelected_P1;
+	CHARACTER_SELECTED characterSelected_P2;
 };
 
 #endif

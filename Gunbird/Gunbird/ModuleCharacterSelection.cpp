@@ -6,12 +6,19 @@
 #include "ModuleCharacterSelection.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleInput.h"
+#include "ModulePlayer2.h"
 
 //TODO include only the random maps?
 #include "ModuleSceneCastle.h"
+#include "ModuleSceneForest.h"
 
 ModuleCharacterSelection::ModuleCharacterSelection()
 {
+	currentCharacter_P1 = VALNUS;
+	currentCharacter_P2 = NONE;
+
+	//characterSelected_P1 = VALNUS_SELECTED;
+	characterSelected_P2 = NONE_SELECTED;
 
 	selectorPos1[0] = false;
 	selectorPos1[1] = false;
@@ -26,6 +33,9 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 	selectorPos2[4] = true;
 
 	player2_joined = false;
+
+	selected_P1_done = false;
+	selected_P2_done = false;
 
 	// Background
 	background.x = 0;
@@ -104,6 +114,8 @@ bool ModuleCharacterSelection::Start()
 
 	LOG("Loading audio fx for Valnus selection");
 	valnus_selection = App->audio->LoadFx("Assets/audio/effects/Valnus_Start.wav");
+	tetsu_selection = App->audio->LoadFx("Assets/audio/effects/Tetsu_start.wav");
+	selector_mov = App->audio->LoadFx("Assets/audio/effects/characterSelector_movement.wav");
 
 	return ret;
 }
@@ -114,10 +126,15 @@ update_status ModuleCharacterSelection::Update()
 
 	update_status status = UPDATE_CONTINUE;
 
-	if (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver()) {
+	if ((App->input->keyboard[SDL_SCANCODE_RETURN] 
+		|| (selected_P1_done && player2_joined == false) 
+		|| (selected_P1_done && selected_P2_done)
+		/*|| (currentTime + 10000) <= SDL_GetTicks()*/)
+		&& App->fade->FadeIsOver()) 
+	{
 		
 		App->audio->PlayFx(valnus_selection);
-		App->fade->FadeToBlack(this, App->sceneCastle);
+		App->fade->FadeToBlack(this, App->sceneForest);
 	}
 
 	// Draw everything --------------------------------------
@@ -136,60 +153,79 @@ update_status ModuleCharacterSelection::Update()
 		status = UPDATE_ERROR;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_KP_2] == KEY_STATE::KEY_DOWN)
-		player2_joined = true;
-
-	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN && selectorPos1[4] == false)
+	if (App->input->keyboard[SDL_SCANCODE_KP_2] == KEY_STATE::KEY_DOWN && selected_P1_done == false && selected_P2_done == false)
 	{
-		for (int i = 0; i < 5; ++i)
+		player2_joined = true;
+		characterSelected_P2 = VALNUS_SELECTED;
+	}
+
+	/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		selected_P1_done = true;
+
+	if (App->input->keyboard[SDL_SCANCODE_KP_1] == KEY_STATE::KEY_DOWN && player2_joined)
+		selected_P2_done = true;*/
+
+	if (selected_P1_done == false)
+	{
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN && selectorPos1[4] == false)
 		{
-			if (selectorPos1[i] && selection_control_P1 == false)
+			App->audio->PlayFx(selector_mov);
+			for (int i = 0; i < 5; ++i)
 			{
+				if (selectorPos1[i] && selection_control_P1 == false)
+				{
 					selectorPos1[i] = false;
 					selectorPos1[i + 1] = true;
 					selection_control_P1 = true;
+				}
+			}
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && selectorPos1[0] == false)
+		{
+			App->audio->PlayFx(selector_mov);
+			for (int i = 0; i < 5; ++i)
+			{
+				if (selectorPos1[i] && selection_control_P1 == false)
+				{
+					selectorPos1[i] = false;
+					selectorPos1[i - 1] = true;
+					selection_control_P1 = true;
+				}
 			}
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && selectorPos1[0] == false)
+	if (selected_P2_done == false)
 	{
-		for (int i = 0; i < 5; ++i)
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_DOWN && selectorPos2[4] == false && player2_joined)
 		{
-			if (selectorPos1[i] && selection_control_P1 == false)
+			App->audio->PlayFx(selector_mov);
+			for (int i = 0; i < 5; ++i)
 			{
-				selectorPos1[i] = false;
-				selectorPos1[i - 1] = true;
-				selection_control_P1 = true;
+				if (selectorPos2[i] && selection_control_P2 == false)
+				{
+					selectorPos2[i] = false;
+					selectorPos2[i + 1] = true;
+					selection_control_P2 = true;
+				}
+			}
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_DOWN && selectorPos2[0] == false && player2_joined)
+		{
+			App->audio->PlayFx(selector_mov);
+			for (int i = 0; i < 5; ++i)
+			{
+				if (selectorPos2[i] && selection_control_P2 == false)
+				{
+					selectorPos2[i] = false;
+					selectorPos2[i - 1] = true;
+					selection_control_P2 = true;
+				}
 			}
 		}
 	}
-
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_DOWN && selectorPos2[4] == false && player2_joined)
-	{
-		for (int i = 0; i < 5; ++i)
-		{
-			if (selectorPos2[i] && selection_control_P2 == false)
-			{
-				selectorPos2[i] = false;
-				selectorPos2[i + 1] = true;
-				selection_control_P2 = true;
-			}
-		}
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_DOWN && selectorPos2[0] == false && player2_joined)
-	{
-		for (int i = 0; i < 5; ++i)
-		{
-			if (selectorPos2[i] && selection_control_P2 == false)
-			{
-				selectorPos2[i] = false;
-				selectorPos2[i - 1] = true;
-				selection_control_P2 = true;
-			}
-		}
-	} 
 
 	if (selectorPos1[0])
 		currentCharacter_P1 = ASH;
@@ -215,6 +251,8 @@ update_status ModuleCharacterSelection::Update()
 		else if (selectorPos2[4])
 			currentCharacter_P2 = TETSU;
 	}
+
+	//PLAYER 1
 
 	if (currentCharacter_P1 == ASH)
 	{
@@ -279,8 +317,60 @@ update_status ModuleCharacterSelection::Update()
 			selection_control_P2 = false;
 	}
 
-	return status;
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	{
+		selected_P1_done = true;
 
+		switch (currentCharacter_P1)
+		{
+		case ASH:
+			characterSelected_P1 = ASH_SELECTED;
+			break;
+		case MARION:
+			characterSelected_P1 = MARION_SELECTED;
+			break;
+		case VALNUS:
+			characterSelected_P1 = VALNUS_SELECTED;
+			App->audio->PlayFx(valnus_selection);
+			break;
+		case YUANG_NANG:
+			characterSelected_P1 = YUANG_NANG_SELECTED;
+			break;
+		case TETSU:
+			characterSelected_P1 = TETSU_SELECTED;
+			App->audio->PlayFx(tetsu_selection);
+			break;
+		}
+	}
+		
+
+	if (App->input->keyboard[SDL_SCANCODE_KP_1] == KEY_STATE::KEY_DOWN && player2_joined)
+	{
+		selected_P2_done = true;
+
+		switch (currentCharacter_P2)
+		{
+		case ASH:
+			characterSelected_P2 = ASH_SELECTED;
+			break;
+		case MARION:
+			characterSelected_P2 = MARION_SELECTED;
+			break;
+		case VALNUS:
+			characterSelected_P2 = VALNUS_SELECTED;
+			App->audio->PlayFx(valnus_selection);
+			break;
+		case YUANG_NANG:
+			characterSelected_P2 = YUANG_NANG_SELECTED;
+			break;
+		case TETSU:
+			characterSelected_P2 = TETSU_SELECTED;
+			App->audio->PlayFx(tetsu_selection);
+			break;
+		}
+	}
+		
+	return status;
 }
 
 bool ModuleCharacterSelection::CleanUp()
