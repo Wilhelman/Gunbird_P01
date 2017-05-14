@@ -1,9 +1,27 @@
-﻿  ModuleEnemies.cpp
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
-  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(7): note: vea la declaración de 'Animation'
+﻿  Enemy_Big_Red_Turret.cpp
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
 c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy.h(8): warning C4099: 'Path': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
   c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(17): note: vea la declaración de 'Path'
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_torpedo.h(5): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_bee.h(5): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(63): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(64): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(66): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(67): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(76): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(77): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(79): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(80): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(91): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(92): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(94): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(95): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(104): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(105): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(107): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(108): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(117): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(118): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(120): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\enemy_big_red_turret.cpp(121): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)

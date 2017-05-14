@@ -13,9 +13,9 @@ Enemy_Big_Red_Turret::Enemy_Big_Red_Turret(int x, int y) : Enemy(x, y)
 
 	lastTime = 0;
 
-	fly.PushBack({ 1040, 742, 46, 58 });
-	fly.PushBack({ 1096, 742, 46, 58 });
-	fly.PushBack({ 1153, 742, 46, 58 });
+	fly.PushBack({ 1044, 752, 46, 58 });
+	fly.PushBack({ 1096, 752, 46, 58 });
+	fly.PushBack({ 1147, 752, 46, 58 });
 	fly.speed = 0.1f;
 
 	collider = App->collision->AddCollider({ 0, 0, 46, 58 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);

@@ -22,6 +22,9 @@
     <Filter Include="Modules\Enemies\Buildings &amp; Stuff">
       <UniqueIdentifier>{729cf171-ed5a-4025-b69f-76b0f7d770c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Enemies\SceneCastle">
+      <UniqueIdentifier>{0b2d63f7-9c76-4e49-8388-fd02dc4ea65e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -78,17 +81,11 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_Torpedo.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy_MetallicBalloon.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="ModuleUI.cpp">
       <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_TerrestialTurret.cpp">
-      <Filter>Modules\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="ModulePlayer2.cpp">
       <Filter>Modules</Filter>
@@ -113,6 +110,15 @@
     </ClCompile>
     <ClCompile Include="Enemy_Bee.cpp">
       <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Big_Red_Turret.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_TerrestialTurret.cpp">
+      <Filter>Modules\Enemies\SceneCastle</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Torpedo.cpp">
+      <Filter>Modules\Enemies\SceneCastle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -182,17 +188,11 @@
     <ClInclude Include="Enemy.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_Torpedo.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy_MetallicBalloon.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="ModuleUI.h">
       <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_TerrestialTurret.h">
-      <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="ModulePlayer2.h">
       <Filter>Modules</Filter>
@@ -217,6 +217,15 @@
     </ClInclude>
     <ClInclude Include="Enemy_Bee.h">
       <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Big_Red_Turret.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_TerrestialTurret.h">
+      <Filter>Modules\Enemies\SceneCastle</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Torpedo.h">
+      <Filter>Modules\Enemies\SceneCastle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
