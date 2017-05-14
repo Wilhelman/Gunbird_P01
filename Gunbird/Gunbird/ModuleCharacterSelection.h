@@ -21,6 +21,8 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* characterGraphics = nullptr;
+	SDL_Texture* tetsuAnimGraphics = nullptr;
+	SDL_Texture* valnusAnimGrahics = nullptr;
 
 	SDL_Rect background;
 	SDL_Rect valnus_frame;
@@ -47,6 +49,15 @@ public:
 
 	uint scrollLeft;
 	uint currentTime;
+
+	float sky_speed;
+	float sky_x;
+
+	Animation idleTetsu;
+	Animation* tetsu;
+	Animation idleValnus;
+	Animation* valnus;
+
 
 	enum CHARACTER_SELECTOR
 	{

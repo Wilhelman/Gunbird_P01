@@ -17,6 +17,9 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 	currentCharacter_P1 = VALNUS;
 	currentCharacter_P2 = NONE;
 
+	sky_x = -182.0f;
+	sky_speed = 0.3f;
+
 	//characterSelected_P1 = VALNUS_SELECTED;
 	characterSelected_P2 = NONE_SELECTED;
 
@@ -30,7 +33,7 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 	selectorPos2[1] = false;
 	selectorPos2[2] = false;
 	selectorPos2[3] = false;
-	selectorPos2[4] = true;
+	selectorPos2[4] = false;
 
 	player2_joined = false;
 
@@ -91,6 +94,47 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 	sky.h = 96;
 
 	currentTime = SDL_GetTicks();
+
+	// Idle Tetsu Animation
+	{
+		idleTetsu.PushBack({ 11, 26, 30, 37 });
+		idleTetsu.PushBack({ 51, 26, 30, 37 });
+		idleTetsu.PushBack({ 91, 26, 30, 37 });
+		idleTetsu.PushBack({ 131, 26, 30, 37 });
+		idleTetsu.PushBack({ 171, 26, 30, 37 });
+
+		idleTetsu.PushBack({ 11, 73, 30, 37 });
+		idleTetsu.PushBack({ 51, 73, 30, 37 });
+		idleTetsu.PushBack({ 91, 73, 30, 37 });
+		idleTetsu.PushBack({ 131, 73, 30, 37 });
+		idleTetsu.PushBack({ 171, 73, 30, 37 });
+
+		idleTetsu.PushBack({ 11, 120, 30, 37 });
+		idleTetsu.PushBack({ 51, 120, 30, 37 });
+		idleTetsu.PushBack({ 91, 120, 30, 37 });
+		idleTetsu.PushBack({ 129, 120, 30, 37 });
+		idleTetsu.PushBack({ 171, 120, 30, 37 });
+
+		idleTetsu.PushBack({ 11, 167, 30, 37 });
+		idleTetsu.PushBack({ 51, 167, 30, 37 });
+		idleTetsu.PushBack({ 91, 167, 30, 37 });
+		idleTetsu.PushBack({ 131, 167, 30, 37 });
+		idleTetsu.PushBack({ 171, 167, 30, 37 });
+
+		idleTetsu.PushBack({ 11, 213, 30, 37 });
+		idleTetsu.PushBack({ 51, 213, 30, 37 });
+		idleTetsu.PushBack({ 91, 213, 30, 37 });
+		idleTetsu.PushBack({ 131, 213, 30, 37 });
+
+		idleTetsu.speed = 0.4f;
+	}
+
+	//Valnus idle animation
+	{
+		idleValnus.PushBack({ 0, 0, 31, 30 });
+		idleValnus.PushBack({ 38, 0, 31, 29 });
+		idleValnus.speed = 0.05f;
+	}
 }
 
 ModuleCharacterSelection::~ModuleCharacterSelection()
@@ -103,8 +147,10 @@ bool ModuleCharacterSelection::Start()
 	bool ret = true;
 	graphics = App->textures->Load("Assets/characterSelection/character_selection_template.png");
 	characterGraphics = App->textures->Load("Assets/characterSelection/character_selection.png");
+	tetsuAnimGraphics = App->textures->Load("Assets/characters/Tetsu/tetsu_spritesheet.png");
+	valnusAnimGrahics = App->textures->Load("Assets/characters/valnus_spritesheet.png");
 	
-	if (graphics == nullptr || characterGraphics == nullptr) {
+	if (graphics == nullptr || characterGraphics == nullptr || valnusAnimGrahics == nullptr) {
 		LOG("Cannot load the texture in Character Selection");
 		ret = false;
 	}
@@ -132,7 +178,6 @@ update_status ModuleCharacterSelection::Update()
 		/*|| (currentTime + 10000) <= SDL_GetTicks()*/)
 		&& App->fade->FadeIsOver()) 
 	{
-		
 		App->audio->PlayFx(valnus_selection);
 		App->fade->FadeToBlack(this, App->sceneForest);
 	}
@@ -143,12 +188,29 @@ update_status ModuleCharacterSelection::Update()
 		status = UPDATE_ERROR;
 	}
 
-	if (currentTime + 10000 > SDL_GetTicks())
-	{
-		sky.x--;
+	tetsu = &idleTetsu;
+	SDL_Rect r_tetsu = tetsu->GetCurrentFrame();
+
+	if (!App->render->Blit(tetsuAnimGraphics, 178, 254, &r_tetsu)) {
+		LOG("Cannot blit the texture in ModulePlayer %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
 	}
 
-	if (!App->render->Blit(characterGraphics, -182, 144, &sky, 1.0f)) {
+	valnus = &idleValnus;
+	SDL_Rect r_valnus = valnus->GetCurrentFrame();
+
+	if (!App->render->Blit(valnusAnimGrahics, 97, 255, &r_valnus)) {
+		LOG("Cannot blit the texture in ModulePlayer %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+
+	if (sky_x < 0)
+		sky_x += sky_speed;
+	else
+		sky_x = -182;
+	
+	if (!App->render->Blit(characterGraphics, (int)sky_x, 144, &sky, 1.0f)) {
 		LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}
@@ -156,6 +218,7 @@ update_status ModuleCharacterSelection::Update()
 	if (App->input->keyboard[SDL_SCANCODE_KP_2] == KEY_STATE::KEY_DOWN && selected_P1_done == false && selected_P2_done == false)
 	{
 		player2_joined = true;
+		selectorPos2[4] = true;
 		characterSelected_P2 = VALNUS_SELECTED;
 	}
 
@@ -167,60 +230,153 @@ update_status ModuleCharacterSelection::Update()
 
 	if (selected_P1_done == false)
 	{
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN && selectorPos1[4] == false)
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN)
 		{
 			App->audio->PlayFx(selector_mov);
 			for (int i = 0; i < 5; ++i)
 			{
 				if (selectorPos1[i] && selection_control_P1 == false)
 				{
-					selectorPos1[i] = false;
-					selectorPos1[i + 1] = true;
+					//TRY THIS ONE
+					if (selectorPos1[3] && selectorPos2[4])
+					{
+						selectorPos1[3] = false;
+						selectorPos1[0] = true;
+					}
+					else if (selectorPos1[4] && selectorPos2[0])
+					{
+						selectorPos1[4] = false;
+						selectorPos1[1] = true;
+					}
+					else if (selectorPos1[4] && (selectorPos2[0] == false || player2_joined == false))
+					{
+						selectorPos1[4] = false;
+						selectorPos1[0] = true;
+					}
+					else if (selectorPos2[i + 1])
+					{
+						selectorPos1[i] = false;
+						selectorPos1[i + 2] = true;
+					}
+					else
+					{
+						selectorPos1[i] = false;
+						selectorPos1[i + 1] = true;
+					}
 					selection_control_P1 = true;
 				}
 			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && selectorPos1[0] == false)
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN)
 		{
 			App->audio->PlayFx(selector_mov);
 			for (int i = 0; i < 5; ++i)
 			{
 				if (selectorPos1[i] && selection_control_P1 == false)
 				{
-					selectorPos1[i] = false;
-					selectorPos1[i - 1] = true;
+					if (selectorPos1[1] && selectorPos2[0])
+					{
+						selectorPos1[1] = false;
+						selectorPos1[4] = true;
+					}
+					else if (selectorPos1[0] && selectorPos2[4])
+					{
+						selectorPos1[0] = false;
+						selectorPos1[3] = true;
+					}
+					else if (selectorPos1[0] && (selectorPos2[4] == false || player2_joined == false))
+					{
+						selectorPos1[0] = false;
+						selectorPos1[4] = true;
+					}
+					else if (selectorPos2[i - 1])
+					{
+						selectorPos1[i] = false;
+						selectorPos1[i - 2] = true;
+					}
+					else
+					{
+						selectorPos1[i] = false;
+						selectorPos1[i - 1] = true;
+					}
 					selection_control_P1 = true;
 				}
 			}
 		}
 	}
 
-	if (selected_P2_done == false)
+	if (selected_P2_done == false && player2_joined)
 	{
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_DOWN && selectorPos2[4] == false && player2_joined)
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_DOWN)
 		{
 			App->audio->PlayFx(selector_mov);
 			for (int i = 0; i < 5; ++i)
 			{
 				if (selectorPos2[i] && selection_control_P2 == false)
 				{
-					selectorPos2[i] = false;
-					selectorPos2[i + 1] = true;
+					if (selectorPos2[3] && selectorPos1[4])
+					{
+						selectorPos2[3] = false;
+						selectorPos2[0] = true;
+					}
+					else if (selectorPos2[4] && selectorPos1[0])
+					{
+						selectorPos2[4] = false;
+						selectorPos2[1] = true;
+					}
+					else if (selectorPos2[4] && selectorPos1[0] == false)
+					{
+						selectorPos2[4] = false;
+						selectorPos2[0] = true;
+					}
+					else if (selectorPos1[i + 1])
+					{
+						selectorPos2[i] = false;
+						selectorPos2[i + 2] = true;
+					}
+					else
+					{
+						selectorPos2[i] = false;
+						selectorPos2[i + 1] = true;
+					}
 					selection_control_P2 = true;
 				}
 			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_DOWN && selectorPos2[0] == false && player2_joined)
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_DOWN)
 		{
 			App->audio->PlayFx(selector_mov);
 			for (int i = 0; i < 5; ++i)
 			{
 				if (selectorPos2[i] && selection_control_P2 == false)
 				{
-					selectorPos2[i] = false;
-					selectorPos2[i - 1] = true;
+					if (selectorPos2[1] && selectorPos1[0])
+					{
+						selectorPos2[1] = false;
+						selectorPos2[4] = true;
+					}
+					else if (selectorPos2[0] && selectorPos1[4])
+					{
+						selectorPos2[0] = false;
+						selectorPos2[3] = true;
+					}
+					else if (selectorPos2[0] && selectorPos1[4] == false)
+					{
+						selectorPos2[0] = false;
+						selectorPos2[4] = true;
+					}
+					else if (selectorPos1[i - 1])
+					{
+						selectorPos2[i] = false;
+						selectorPos2[i - 2] = true;
+					}
+					else
+					{
+						selectorPos2[i] = false;
+						selectorPos2[i - 1] = true;
+					}
 					selection_control_P2 = true;
 				}
 			}
@@ -267,7 +423,7 @@ update_status ModuleCharacterSelection::Update()
 	else if (currentCharacter_P1 == VALNUS)
 	{
 		App->render->Blit(characterGraphics, 12, 32, &valnus_frame, 1.0f);
-		App->render->Blit(characterGraphics, 94, 244, &selector_p1, 1.0f);
+		App->render->Blit(characterGraphics, 96, 244, &selector_p1, 1.0f);
 	}
 	else if (currentCharacter_P1 == YUANG_NANG)
 	{
@@ -277,7 +433,7 @@ update_status ModuleCharacterSelection::Update()
 	else if ((currentCharacter_P1 == TETSU))
 	{
 		App->render->Blit(characterGraphics, 12, 32, &tetsu_frame, 1.0f);
-		App->render->Blit(characterGraphics, 174, 244, &selector_p1, 1.0f);
+		App->render->Blit(characterGraphics, 176, 244, &selector_p1, 1.0f);
 	}
 
 	if (selection_control_P1)
@@ -300,7 +456,7 @@ update_status ModuleCharacterSelection::Update()
 		else if (currentCharacter_P2 == VALNUS)
 		{
 			App->render->Blit(characterGraphics, 116, 32, &valnus_frame, 1.0f);
-			App->render->Blit(characterGraphics, 94, 244, &selector_p2, 1.0f);
+			App->render->Blit(characterGraphics, 96, 244, &selector_p2, 1.0f);
 		}
 		else if (currentCharacter_P2 == YUANG_NANG)
 		{
@@ -310,7 +466,7 @@ update_status ModuleCharacterSelection::Update()
 		else if ((currentCharacter_P2 == TETSU))
 		{
 			App->render->Blit(characterGraphics, 116, 32, &tetsu_frame, 1.0f);
-			App->render->Blit(characterGraphics, 174, 244, &selector_p2, 1.0f);
+			App->render->Blit(characterGraphics, 176, 244, &selector_p2, 1.0f);
 		}
 
 		if (selection_control_P2)
