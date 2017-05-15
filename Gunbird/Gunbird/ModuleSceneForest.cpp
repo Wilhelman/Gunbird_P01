@@ -199,6 +199,14 @@ update_status ModuleSceneForest::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::BIG_RED_TURRET, 130, -52, ENEMY_MOVEMENT::STAY);
 		}
 
+		if ((int)background_y == -1350 && spawned == 3)
+		{
+			spawned = 4;
+			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 70, -30, ENEMY_MOVEMENT::STAY);
+			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 150, -50, ENEMY_MOVEMENT::STAY);
+			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 200, -90, ENEMY_MOVEMENT::STAY);
+		}
+
 		
 	}
 	

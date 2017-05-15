@@ -159,6 +159,19 @@ _0.5 version:_
 * Fixed the fx sound of the coin for the player 2
 * Release optimized
 
+_0.55 version:_
+
+* Castle Scene is now hidden
+* Started all the Forest Scene
+* Changed the background with some functionality
+* Implemented the Bee enemy
+* Implemented the Red Turret enemy
+* Implemented the Big Red Turret enemy
+* Character selector implemented
+* Now you can play with Tetsu*
+
+_*Unstable_
+
 ## Team members
 
 _Altimira Bernat, Martí's responsability and Github account_

@@ -120,6 +120,9 @@
     <ClCompile Include="Enemy_Torpedo.cpp">
       <Filter>Modules\Enemies\SceneCastle</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_Red_Turret.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals.h">
@@ -226,6 +229,9 @@
     </ClInclude>
     <ClInclude Include="Enemy_Torpedo.h">
       <Filter>Modules\Enemies\SceneCastle</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Red_Turret.h">
+      <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
