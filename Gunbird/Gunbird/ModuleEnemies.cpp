@@ -10,6 +10,7 @@
 #include "Enemy_Bee.h"
 #include "Enemy_Red_Turret.h"
 #include "Enemy_Big_Red_Turret.h"
+#include "Enemy_Trump_Red_Mecha.h"
 #include "Enemy_MetallicBalloon.h"
 #include "Enemy_TerrestialTurret.h"
 #include "SceneCastle_houseFlag.h"
@@ -108,6 +109,11 @@ ModuleEnemies::ModuleEnemies()
 	bee_corner_right_path2.PushBack({ 0.0f, 0.0f }, 60);
 	bee_corner_right_path2.PushBack({ -0.8f,2.5f }, 3000);
 	bee_corner_right_path2.loop = false;
+
+	//Trump red Mecha path
+	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 300);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 3000);
+	trump_red_mecha_path.loop = false;
 }
 
 // Destructor
@@ -351,6 +357,19 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				break;
 			}
 			break;
+		case ENEMY_TYPES::TRUMP_RED_MECHA:
+			enemies[i] = new Enemy_Trump_Red_Mecha(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::TRUMP_RED_MECHA;
+			switch (info.typeMovement)
+			{
+			case ENEMY_MOVEMENT::TRUMP_RED_MECHA_PATH:
+				enemies[i]->movement = trump_red_mecha_path;
+				break;
+
+			default:
+				break;
+			}
+			break;
 		case ENEMY_TYPES::CASTLE_HOUSEFLAG:
 			enemies[i] = new SceneCastle_houseFlag(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::CASTLE_HOUSEFLAG;
@@ -516,6 +535,26 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					delete enemies[i];
 					enemies[i] = nullptr;
 					break;
+				}
+			}
+			else if (enemies[i]->type == ENEMY_TYPES::TRUMP_RED_MECHA) {
+				if (enemies[i]->getLives() == 0) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+						App->ui->score += 3000;
+						App->audio->PlayFx(medium_explosion);
+						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
+						delete enemies[i];
+						enemies[i] = nullptr;
+						break;
+					}
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+						App->ui->scoreP2 += 3000;
+						App->audio->PlayFx(medium_explosion);
+						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
+						delete enemies[i];
+						enemies[i] = nullptr;
+						break;
+					}
 				}
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::CASTLE_HOUSEFLAG) {

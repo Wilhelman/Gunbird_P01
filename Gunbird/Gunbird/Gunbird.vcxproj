@@ -122,6 +122,7 @@
     <ClCompile Include="Enemy_MetallicBalloon.cpp" />
     <ClCompile Include="Enemy_Red_Turret.cpp" />
     <ClCompile Include="Enemy_TerrestialTurret.cpp" />
+    <ClCompile Include="Enemy_Trump_Red_Mecha.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="Enemy_MetallicBalloon.h" />
     <ClInclude Include="Enemy_Red_Turret.h" />
     <ClInclude Include="Enemy_TerrestialTurret.h" />
+    <ClInclude Include="Enemy_Trump_Red_Mecha.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
