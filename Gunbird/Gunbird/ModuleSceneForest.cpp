@@ -111,6 +111,7 @@ bool ModuleSceneForest::Start()
 // Update: draw background
 update_status ModuleSceneForest::Update()
 {
+	//App->characterSelection->player2_joined = false;
 
 	update_status status = UPDATE_CONTINUE;
 

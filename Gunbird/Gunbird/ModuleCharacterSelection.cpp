@@ -178,7 +178,6 @@ update_status ModuleCharacterSelection::Update()
 	{
 		App->fade->FadeToBlack(this, App->sceneForest);
 
-		player2_joined = false;
 		selected_P1_done = false;
 		selected_P2_done = false;
 	}
