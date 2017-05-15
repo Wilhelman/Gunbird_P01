@@ -65,6 +65,7 @@ bool ModuleSceneForest::Start()
 	else if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::TETSU_SELECTED)
 	{
 		App->player2->Enable();
+		App->ui->Enable();
 	}
 
 	if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::VALNUS_SELECTED)
@@ -75,6 +76,7 @@ bool ModuleSceneForest::Start()
 	else if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::TETSU_SELECTED)
 	{
 		App->player2->Enable();
+		App->ui->Enable();
 	}
 
 	if (App->player2->playerLives > 0 && App->ui->p2 == true)

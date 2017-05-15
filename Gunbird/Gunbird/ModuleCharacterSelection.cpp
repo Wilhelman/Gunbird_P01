@@ -172,12 +172,15 @@ update_status ModuleCharacterSelection::Update()
 
 	update_status status = UPDATE_CONTINUE;
 
-	if ((App->input->keyboard[SDL_SCANCODE_RETURN] 
-		|| (selected_P1_done && player2_joined == false) 
+	if (((selected_P1_done && player2_joined == false) 
 		|| (selected_P1_done && selected_P2_done))
 		&& App->fade->FadeIsOver())
 	{
 		App->fade->FadeToBlack(this, App->sceneForest);
+
+		player2_joined = false;
+		selected_P1_done = false;
+		selected_P2_done = false;
 	}
 
 	// Draw everything --------------------------------------
@@ -464,7 +467,7 @@ update_status ModuleCharacterSelection::Update()
 			App->render->Blit(characterGraphics, 116, 32, &yuang_nang_frame, 1.0f);
 			App->render->Blit(characterGraphics, 134, 244, &selector_p2, 1.0f);
 		}
-		else if ((currentCharacter_P2 == TETSU))
+		else if (currentCharacter_P2 == TETSU)
 		{
 			App->render->Blit(characterGraphics, 116, 32, &tetsu_frame, 1.0f);
 			App->render->Blit(characterGraphics, 176, 244, &selector_p2, 1.0f);
