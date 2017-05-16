@@ -33,6 +33,7 @@ public:
 	SDL_Texture* characterGraphics = nullptr;
 	SDL_Texture* tetsuAnimGraphics = nullptr;
 	SDL_Texture* valnusAnimGrahics = nullptr;
+	SDL_Texture* icons_locked = nullptr;
 
 	SDL_Rect background;
 	SDL_Rect valnus_frame;
@@ -56,6 +57,7 @@ public:
 	uint valnus_selection;
 	uint tetsu_selection;
 	uint selector_mov;
+	uint locked_character;
 
 	uint scrollLeft;
 	uint currentTime;
@@ -65,9 +67,18 @@ public:
 
 	Animation idleTetsu;
 	Animation* tetsu;
+
 	Animation idleValnus;
 	Animation* valnus;
 
+	Animation lockedYuangNang;
+	Animation* yuangNang;
+
+	Animation lockedAsh;
+	Animation* ash;
+
+	Animation lockedMarion;
+	Animation* marion;
 
 	enum CHARACTER_SELECTOR
 	{

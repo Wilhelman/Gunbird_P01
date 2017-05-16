@@ -135,6 +135,24 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 		idleValnus.PushBack({ 38, 0, 31, 29 });
 		idleValnus.speed = 0.05f;
 	}
+
+	// Marion locked icon
+	{
+		lockedMarion.PushBack({63, 254, 20, 32});
+		lockedMarion.speed = 0.05f;
+	}
+
+	// Yuang Nang locked icon
+	{
+		lockedYuangNang.PushBack({ 137, 249, 27, 48 });
+		lockedYuangNang.speed = 0.05f;
+	}
+
+	// Ash locked icon
+	{
+		lockedAsh.PushBack({ 23, 256, 19, 32 });
+		lockedAsh.speed = 0.05f;
+	}
 }
 
 ModuleCharacterSelection::~ModuleCharacterSelection()
@@ -149,8 +167,9 @@ bool ModuleCharacterSelection::Start()
 	characterGraphics = App->textures->Load("Assets/characterSelection/character_selection.png");
 	tetsuAnimGraphics = App->textures->Load("Assets/characters/Tetsu/tetsu_spritesheet.png");
 	valnusAnimGrahics = App->textures->Load("Assets/characters/valnus_spritesheet.png");
+	icons_locked = App->textures->Load("Assets/characterSelection/exampleCharacterSelection.png");
 	
-	if (graphics == nullptr || characterGraphics == nullptr || valnusAnimGrahics == nullptr) {
+	if (graphics == nullptr || characterGraphics == nullptr || valnusAnimGrahics == nullptr || icons_locked == nullptr) {
 		LOG("Cannot load the texture in Character Selection");
 		ret = false;
 	}
@@ -162,6 +181,7 @@ bool ModuleCharacterSelection::Start()
 	valnus_selection = App->audio->LoadFx("Assets/audio/effects/Valnus_Start.wav");
 	tetsu_selection = App->audio->LoadFx("Assets/audio/effects/Tetsu_start.wav");
 	selector_mov = App->audio->LoadFx("Assets/audio/effects/characterSelector_movement.wav");
+	locked_character = App->audio->LoadFx("Assets/audio/effects/locked_character.wav");
 
 	return ret;
 }
@@ -203,6 +223,31 @@ update_status ModuleCharacterSelection::Update()
 		LOG("Cannot blit the texture in ModulePlayer %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}
+
+	marion = &lockedMarion;
+	SDL_Rect r_marion = marion->GetCurrentFrame();
+
+	if (!App->render->Blit(icons_locked, 63, 254, &r_marion)) {
+		LOG("Cannot blit the texture in ModulePlayer %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	yuangNang = &lockedYuangNang;
+	SDL_Rect r_yuangNang = yuangNang->GetCurrentFrame();
+
+	if (!App->render->Blit(icons_locked, 137, 249, &r_yuangNang)) {
+		LOG("Cannot blit the texture in ModulePlayer %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	ash = &lockedAsh;
+	SDL_Rect r_ash = ash->GetCurrentFrame();
+
+	if (!App->render->Blit(icons_locked, 23, 256, &r_ash)) {
+		LOG("Cannot blit the texture in ModulePlayer %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
 
 	if (sky_x < 0)
 		sky_x += sky_speed;
@@ -408,12 +453,12 @@ update_status ModuleCharacterSelection::Update()
 	if (currentCharacter_P1 == ASH)
 	{
 		App->render->Blit(characterGraphics, 12, 32, &ash_frame, 1.0f);
-		App->render->Blit(characterGraphics, 14, 244, &selector_p1, 1.0f);
+		App->render->Blit(characterGraphics, 16, 244, &selector_p1, 1.0f);
 	}
 	else if (currentCharacter_P1 == MARION) 
 	{
 		App->render->Blit(characterGraphics, 12, 32, &marion_frame, 1.0f);
-		App->render->Blit(characterGraphics, 54, 244, &selector_p1, 1.0f);
+		App->render->Blit(characterGraphics, 56, 244, &selector_p1, 1.0f);
 	}
 	else if (currentCharacter_P1 == VALNUS)
 	{
@@ -423,7 +468,7 @@ update_status ModuleCharacterSelection::Update()
 	else if (currentCharacter_P1 == YUANG_NANG)
 	{
 		App->render->Blit(characterGraphics, 12, 32, &yuang_nang_frame, 1.0f);
-		App->render->Blit(characterGraphics, 134, 244, &selector_p1, 1.0f);
+		App->render->Blit(characterGraphics, 136, 244, &selector_p1, 1.0f);
 	}
 	else if ((currentCharacter_P1 == TETSU))
 	{
@@ -441,12 +486,12 @@ update_status ModuleCharacterSelection::Update()
 		if (currentCharacter_P2 == ASH)
 		{
 			App->render->Blit(characterGraphics, 116, 32, &ash_frame, 1.0f);
-			App->render->Blit(characterGraphics, 14, 244, &selector_p2, 1.0f);
+			App->render->Blit(characterGraphics, 16, 244, &selector_p2, 1.0f);
 		}
 		else if (currentCharacter_P2 == MARION)
 		{
 			App->render->Blit(characterGraphics, 116, 32, &marion_frame, 1.0f);
-			App->render->Blit(characterGraphics, 54, 244, &selector_p2, 1.0f);
+			App->render->Blit(characterGraphics, 56, 244, &selector_p2, 1.0f);
 		}
 		else if (currentCharacter_P2 == VALNUS)
 		{
@@ -456,7 +501,7 @@ update_status ModuleCharacterSelection::Update()
 		else if (currentCharacter_P2 == YUANG_NANG)
 		{
 			App->render->Blit(characterGraphics, 116, 32, &yuang_nang_frame, 1.0f);
-			App->render->Blit(characterGraphics, 134, 244, &selector_p2, 1.0f);
+			App->render->Blit(characterGraphics, 136, 244, &selector_p2, 1.0f);
 		}
 		else if (currentCharacter_P2 == TETSU)
 		{
@@ -477,6 +522,7 @@ update_status ModuleCharacterSelection::Update()
 		case ASH:
 		case MARION:
 		case YUANG_NANG:
+			App->audio->PlayFx(locked_character);
 			characterSelected_P1 = NONE_SELECTED;
 			selected_P1_done = false; 
 			break;
@@ -501,6 +547,7 @@ update_status ModuleCharacterSelection::Update()
 		case ASH:
 		case MARION:
 		case YUANG_NANG:
+			App->audio->PlayFx(locked_character);
 			characterSelected_P2 = NONE_SELECTED;
 			selected_P2_done = false;
 			break;
