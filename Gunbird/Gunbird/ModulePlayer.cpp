@@ -576,6 +576,12 @@ void ModulePlayer::removePowerUp() {
 
 void ModulePlayer::spawning() {
 	spawnTime = SDL_GetTicks();
-	this->position.x = (SCREEN_WIDTH / 2) - 14 - 30;
+
+	if(App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::VALNUS_SELECTED)
+		this->position.x = (SCREEN_WIDTH / 2) - 44;
+	else if(App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::VALNUS_SELECTED)
+		this->position.x = (SCREEN_WIDTH / 2) + 16;
+
+
 	this->position.y = SCREEN_HEIGHT + 24;
 }

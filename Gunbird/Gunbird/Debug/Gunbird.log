@@ -1,5 +1,13 @@
 ﻿  ModuleSceneForest.cpp
 c:\users\victormg6\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
   c:\users\victormg6\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+  ModulePlayer2.cpp
+c:\users\victormg6\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\victormg6\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+  ModulePlayer.cpp
+c:\users\victormg6\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\victormg6\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+  Generating Code...
+  LINK : C:\Users\victormg6\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe not found or not built by the last incremental link; performing full link
   Gunbird.vcxproj -> C:\Users\victormg6\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
   Gunbird.vcxproj -> C:\Users\victormg6\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
