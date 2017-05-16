@@ -204,7 +204,6 @@ update_status ModuleCharacterSelection::Update()
 		status = UPDATE_ERROR;
 	}
 
-
 	if (sky_x < 0)
 		sky_x += sky_speed;
 	else
@@ -522,7 +521,6 @@ update_status ModuleCharacterSelection::Update()
 			break;
 		}
 	}
-		
 	return status;
 }
 
