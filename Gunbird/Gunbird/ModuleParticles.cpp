@@ -107,18 +107,22 @@ ModuleParticles::ModuleParticles()
 		laser_Tetsu0_0.anim.loop = false;
 		laser_Tetsu0_0.anim.speed = 0.1f;
 		laser_Tetsu0_0.speed.y = -5;
+		laser_Tetsu0_0.life = 3000;
 
 		laser_Tetsu1_0.anim.loop = false;
 		laser_Tetsu1_0.anim.speed = 0.1f;
 		laser_Tetsu1_0.speed.y = -5;
+		laser_Tetsu1_0.life = 3000;
 
 		laser_Tetsu2_0.anim.loop = false;
 		laser_Tetsu2_0.anim.speed = 0.1f;
 		laser_Tetsu2_0.speed.y = -5;
+		laser_Tetsu2_0.life = 3000;
 
 		laser_Tetsu3_0.anim.loop = false;
 		laser_Tetsu3_0.anim.speed = 0.1f;
 		laser_Tetsu3_0.speed.y = -5;
+		laser_Tetsu3_0.life = 3000;
 
 
 		laser_Tetsu0_1.anim.PushBack({ 1585,1055,31,41 });
@@ -129,18 +133,22 @@ ModuleParticles::ModuleParticles()
 		laser_Tetsu0_1.anim.loop = false;
 		laser_Tetsu0_1.anim.speed = 0.1f;
 		laser_Tetsu0_1.speed.y = -5;
+		laser_Tetsu0_1.life = 3000;
 
 		laser_Tetsu1_1.anim.loop = false;
 		laser_Tetsu1_1.anim.speed = 0.1f;
 		laser_Tetsu1_1.speed.y = -5;
+		laser_Tetsu1_1.life = 3000;
 
 		laser_Tetsu2_1.anim.loop = false;
 		laser_Tetsu2_1.anim.speed = 0.1f;
 		laser_Tetsu2_1.speed.y = -5;
+		laser_Tetsu2_1.life = 3000;
 
 		laser_Tetsu3_1.anim.loop = false;
 		laser_Tetsu3_1.anim.speed = 0.1f;
 		laser_Tetsu3_1.speed.y = -5;
+		laser_Tetsu3_1.life = 3000;
 	}
 	//balloon death explosion
 	{
