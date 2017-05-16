@@ -221,14 +221,7 @@ update_status ModuleCharacterSelection::Update()
 			selectorPos2[2] = true;
 		else
 		selectorPos2[4] = true;
-		//characterSelected_P2 = VALNUS_SELECTED;
 	}
-
-	/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-		selected_P1_done = true;
-
-	if (App->input->keyboard[SDL_SCANCODE_KP_1] == KEY_STATE::KEY_DOWN && player2_joined)
-		selected_P2_done = true;*/
 
 	if (selected_P1_done == false)
 	{
