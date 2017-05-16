@@ -112,7 +112,22 @@ ModuleEnemies::ModuleEnemies()
 
 	//Trump red Mecha path
 	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 300);
-	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 3000);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
 	trump_red_mecha_path.loop = false;
 }
 

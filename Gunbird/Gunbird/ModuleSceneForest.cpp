@@ -179,8 +179,12 @@ update_status ModuleSceneForest::Update()
 	//ENEMY SPAWN PHASE
 	
 	{
-
 		if ((int)background_y == -1600 && spawned == 0) {
+			spawned = 1;
+			App->enemies->AddEnemy(ENEMY_TYPES::TRUMP_RED_MECHA, 20, 20, ENEMY_MOVEMENT::TRUMP_RED_MECHA_PATH);
+			
+		}
+		/*if ((int)background_y == -1600 && spawned == 0) {
 			spawned = 1;
 			App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -10, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
 			App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH, -20, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
@@ -209,7 +213,7 @@ update_status ModuleSceneForest::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 70, -30, ENEMY_MOVEMENT::STAY);
 			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 150, -50, ENEMY_MOVEMENT::STAY);
 			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 200, -90, ENEMY_MOVEMENT::STAY);
-		}
+		}*/
 
 		
 	}
