@@ -162,10 +162,10 @@ update_status ModuleSceneForest::Update()
 
 
 	//TODO change the position of the player to private to be more pro
-	if (App->player->position.y < 0 && App->fade->FadeIsOver() /*delete this in big releases*/ ||(App->input->keyboard[SDL_SCANCODE_RETURN] == KEY_STATE::KEY_DOWN))
+	if ((App->player2->position.y < 0 || App->player->position.y < 0) && App->fade->FadeIsOver() /*delete this in big releases*/ ||(App->input->keyboard[SDL_SCANCODE_RETURN] == KEY_STATE::KEY_DOWN))
 		App->fade->FadeToBlack(this, this, 1.0f);
 
-	if (App->player->playerLost || App->player2->playerLost) {
+	if (App->player->playerLost) {
 		LOG("Player LOST");
 		App->fade->FadeToBlack(this, App->scoreRanking);
 	}
@@ -242,8 +242,6 @@ update_status ModuleSceneForest::Update()
 		App->audio->PlayFx(player2joined);
 	}
 	
-
-
 
 	/*if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
 	{
