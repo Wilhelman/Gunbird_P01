@@ -60,6 +60,18 @@ public:
 	Particle laser1_1;
 	Particle laser2_1;
 
+	//TETSU shots
+	Particle laser_Tetsu0_0;
+	Particle laser_Tetsu1_0;
+	Particle laser_Tetsu2_0;
+	Particle laser_Tetsu3_0;
+
+	Particle laser_Tetsu0_1;
+	Particle laser_Tetsu1_1;
+	Particle laser_Tetsu2_1;
+	Particle laser_Tetsu3_1;
+
+	
 	//player death explosion
 	Particle deathPlayerExplosion;
 

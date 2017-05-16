@@ -59,7 +59,7 @@ ModuleParticles::ModuleParticles()
 		deathPlayerExplosion.anim.loop = false;
 	}
 
-	//laser particle
+	//laser particle VALNUS
 	{
 		laser0.anim.PushBack({ 613, 801, 15, 19 });
 		laser1.anim.PushBack({ 634, 801, 15, 19 });
@@ -97,6 +97,51 @@ ModuleParticles::ModuleParticles()
 		laser2_1.life = 2000;
 	}
 
+	//laser particle TETSU
+	{
+		laser_Tetsu0_0.anim.PushBack({ 1640,1067,15,29 });
+		laser_Tetsu1_0.anim.PushBack({ 1640,1027,15,29 });
+		laser_Tetsu2_0.anim.PushBack({ 1640,987,15,29 });
+		laser_Tetsu3_0.anim.PushBack({ 1640,947,15,29 });
+		
+		laser_Tetsu0_0.anim.loop = false;
+		laser_Tetsu0_0.anim.speed = 0.1f;
+		laser_Tetsu0_0.speed.y = -5;
+
+		laser_Tetsu1_0.anim.loop = false;
+		laser_Tetsu1_0.anim.speed = 0.1f;
+		laser_Tetsu1_0.speed.y = -5;
+
+		laser_Tetsu2_0.anim.loop = false;
+		laser_Tetsu2_0.anim.speed = 0.1f;
+		laser_Tetsu2_0.speed.y = -5;
+
+		laser_Tetsu3_0.anim.loop = false;
+		laser_Tetsu3_0.anim.speed = 0.1f;
+		laser_Tetsu3_0.speed.y = -5;
+
+
+		laser_Tetsu0_1.anim.PushBack({ 1585,1055,31,41 });
+		laser_Tetsu1_1.anim.PushBack({ 1585,995,31,41 });
+		laser_Tetsu2_1.anim.PushBack({ 1585,935,31,41 });
+		laser_Tetsu3_1.anim.PushBack({ 1585,875,31,41 });
+
+		laser_Tetsu0_1.anim.loop = false;
+		laser_Tetsu0_1.anim.speed = 0.1f;
+		laser_Tetsu0_1.speed.y = -5;
+
+		laser_Tetsu1_1.anim.loop = false;
+		laser_Tetsu1_1.anim.speed = 0.1f;
+		laser_Tetsu1_1.speed.y = -5;
+
+		laser_Tetsu2_1.anim.loop = false;
+		laser_Tetsu2_1.anim.speed = 0.1f;
+		laser_Tetsu2_1.speed.y = -5;
+
+		laser_Tetsu3_1.anim.loop = false;
+		laser_Tetsu3_1.anim.speed = 0.1f;
+		laser_Tetsu3_1.speed.y = -5;
+	}
 	//balloon death explosion
 	{
 		balloonDeathExplosion.anim.PushBack({ 54, 504, 92, 86 });
