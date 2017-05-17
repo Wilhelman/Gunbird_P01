@@ -267,8 +267,6 @@ update_status ModuleCharacterSelection::Update()
 		status = UPDATE_ERROR;
 	}
 
-	
-
 
 	if (App->input->keyboard[SDL_SCANCODE_KP_2] == KEY_STATE::KEY_DOWN && selected_P1_done == false && selected_P2_done == false)
 	{
@@ -439,14 +437,7 @@ update_status ModuleCharacterSelection::Update()
 	else if (selectorPos1[1])
 		currentCharacter_P1 = MARION;
 	else if (selectorPos1[2])
-	{
 		currentCharacter_P1 = VALNUS;
-		if (!App->render->Blit(characterGraphics, 22, 165, &valnusName, 1.0f)) {
-			LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
-			status = UPDATE_ERROR;
-		}
-	}
-		
 	else if (selectorPos1[3])
 		currentCharacter_P1 = YUANG_NANG;
 	else if (selectorPos1[4])
@@ -466,6 +457,16 @@ update_status ModuleCharacterSelection::Update()
 			currentCharacter_P2 = TETSU;
 	}
 
+	//IMPORTANT THINGS TO BE AWARE OF WHEN ADDING MISSING SPRITES/ANIMATIONS:
+	/*
+	- Player 1 big character animation appears under Player 2 big character animation. 
+	  This means we must blit player 1 animation first, before player 2.
+	- When player 2 has joined the game character names appear above character frames.
+	- While player 2 has not joined the game "start icon" animation appears at the top right of window. 
+	  If player 2 joins the game it disappears
+	- All this is done in the next two sets of code (PLAYER 1 & PLAYER 2).
+	*/
+
 	//PLAYER 1
 
 	if (currentCharacter_P1 == ASH)
@@ -480,6 +481,13 @@ update_status ModuleCharacterSelection::Update()
 	}
 	else if (currentCharacter_P1 == VALNUS)
 	{
+		if (player2_joined == false)
+		{
+			if (!App->render->Blit(characterGraphics, 22, 165, &valnusName, 1.0f)) {
+				LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+		}
 		App->render->Blit(characterGraphics, 12, 32, &valnus_frame, 1.0f);
 		App->render->Blit(characterGraphics, 96, 244, &selector_p1, 1.0f);
 	}
