@@ -488,6 +488,13 @@ update_status ModuleCharacterSelection::Update()
 				status = UPDATE_ERROR;
 			}
 		}
+		else
+		{
+			if (!App->render->Blit(characterGraphics, 34, 5, &valnusName, 1.0f)) {
+				LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+		}
 		App->render->Blit(characterGraphics, 12, 32, &valnus_frame, 1.0f);
 		App->render->Blit(characterGraphics, 96, 244, &selector_p1, 1.0f);
 	}
