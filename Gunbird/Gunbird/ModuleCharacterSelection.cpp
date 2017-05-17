@@ -46,6 +46,12 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 	background.w = SCREEN_WIDTH;
 	background.h = SCREEN_HEIGHT;
 
+	//Valnus name
+	valnusName.x = 169;
+	valnusName.y = 772;
+	valnusName.w = 53;
+	valnusName.h = 22;
+
 	// Characters frames
 	{
 		valnus_frame.x = 56;
@@ -153,6 +159,8 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 		lockedAsh.PushBack({ 23, 256, 19, 32 });
 		lockedAsh.speed = 0.05f;
 	}
+
+
 }
 
 ModuleCharacterSelection::~ModuleCharacterSelection()
@@ -258,6 +266,9 @@ update_status ModuleCharacterSelection::Update()
 		LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}
+
+	
+
 
 	if (App->input->keyboard[SDL_SCANCODE_KP_2] == KEY_STATE::KEY_DOWN && selected_P1_done == false && selected_P2_done == false)
 	{
@@ -428,7 +439,14 @@ update_status ModuleCharacterSelection::Update()
 	else if (selectorPos1[1])
 		currentCharacter_P1 = MARION;
 	else if (selectorPos1[2])
+	{
 		currentCharacter_P1 = VALNUS;
+		if (!App->render->Blit(characterGraphics, 22, 165, &valnusName, 1.0f)) {
+			LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+	}
+		
 	else if (selectorPos1[3])
 		currentCharacter_P1 = YUANG_NANG;
 	else if (selectorPos1[4])

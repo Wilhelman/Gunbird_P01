@@ -44,6 +44,7 @@ public:
 	SDL_Rect selector_p1;
 	SDL_Rect selector_p2;
 	SDL_Rect sky;
+	SDL_Rect valnusName;
 
 	bool selectorPos1[5];
 	bool selectorPos2[5];
