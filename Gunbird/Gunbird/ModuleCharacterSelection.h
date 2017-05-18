@@ -45,6 +45,10 @@ public:
 	SDL_Rect selector_p2;
 	SDL_Rect sky;
 	SDL_Rect valnusName;
+	SDL_Rect marionName;
+	SDL_Rect ashName;
+	SDL_Rect tetsuName;
+	SDL_Rect yuangNangName;
 
 	bool selectorPos1[5];
 	bool selectorPos2[5];
