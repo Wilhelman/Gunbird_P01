@@ -67,6 +67,7 @@ public:
 
 	uint scrollLeft;
 	uint currentTime;
+	uint lastTime;
 
 	float sky_speed;
 	float sky_x;
@@ -100,7 +101,7 @@ public:
 		TETSU
 	};
 
-	
+	int moveAnim_y;
 
 	CHARACTER_SELECTOR currentCharacter_P1;
 	CHARACTER_SELECTOR currentCharacter_P2;

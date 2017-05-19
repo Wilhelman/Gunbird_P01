@@ -17,6 +17,8 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 	currentCharacter_P1 = VALNUS;
 	currentCharacter_P2 = NONE;
 
+	lastTime = SDL_GetTicks();
+
 	sky_x = -182.0f;
 	sky_speed = 0.3f;
 
@@ -39,6 +41,8 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 
 	selected_P1_done = false;
 	selected_P2_done = false;
+
+	moveAnim_y = 0;
 
 	// Background
 	background.x = 0;
@@ -129,8 +133,6 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 	sky.y = 406;
 	sky.w = 416;
 	sky.h = 96;
-
-	currentTime = SDL_GetTicks();
 
 	// Idle Tetsu Animation
 	{
@@ -245,6 +247,25 @@ update_status ModuleCharacterSelection::Update()
 {
 
 	update_status status = UPDATE_CONTINUE;
+	currentTime = SDL_GetTicks();
+
+	// Control animation time
+	{
+		if (currentTime < lastTime + 150)
+			moveAnim_y = -1;
+		if (currentTime < lastTime + 300)
+			moveAnim_y = -2;
+		else if (currentTime < lastTime + 375)
+			moveAnim_y = 0;
+		else if (currentTime < lastTime + 525)
+			moveAnim_y = 1;
+		else if (currentTime < lastTime + 825)
+			moveAnim_y = 2;
+		else if (currentTime < lastTime + 975)
+			moveAnim_y = 0;
+		else
+			lastTime = currentTime;
+	}
 
 	if (((selected_P1_done && player2_joined == false) 
 		|| (selected_P1_done && selected_P2_done))
@@ -562,9 +583,8 @@ update_status ModuleCharacterSelection::Update()
 		if (player2_joined == false)
 		{
 			App->render->Blit(characterGraphics, 22, 165, &valnusName, 1.0f);
-			App->render->Blit(characterGraphics, 90, 117, &(valnusFigure.GetCurrentFrame()), 0.22f);
+			App->render->Blit(characterGraphics, 90, 117 + moveAnim_y, &(valnusFigure.GetCurrentFrame()), 0.22f);
 		}
-
 		else
 			App->render->Blit(characterGraphics, 34, 5, &valnusName, 1.0f);
 
