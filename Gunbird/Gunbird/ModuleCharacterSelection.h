@@ -49,6 +49,7 @@ public:
 	SDL_Rect ashName;
 	SDL_Rect tetsuName;
 	SDL_Rect yuangNangName;
+	SDL_Rect yuangNangName_short;
 
 	bool selectorPos1[5];
 	bool selectorPos2[5];
@@ -57,7 +58,7 @@ public:
 	bool player2_joined;
 	bool selected_P1_done;
 	bool selected_P2_done;
-
+	
 	//AUDIO
 	uint valnus_selection;
 	uint tetsu_selection;
@@ -84,6 +85,10 @@ public:
 
 	Animation lockedMarion;
 	Animation* marion;
+
+	Animation valnusFigure;
+
+	Animation tetsuFigure;
 
 	enum CHARACTER_SELECTOR
 	{
