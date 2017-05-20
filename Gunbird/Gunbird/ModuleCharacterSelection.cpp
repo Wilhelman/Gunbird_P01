@@ -204,8 +204,28 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 
 	//Tetsu figure animation
 	{
+		//First row
 		tetsuFigure.PushBack({ 599, 522, 121, 111 });
-		tetsuFigure.speed = 0.5f;
+		tetsuFigure.PushBack({ 747, 521, 120, 112 });
+		tetsuFigure.PushBack({ 894, 521, 120, 112 });
+		tetsuFigure.PushBack({ 1029, 525, 119, 112 });
+		tetsuFigure.PushBack({ 1177, 525, 119, 112 });
+		tetsuFigure.PushBack({ 1324, 525, 117, 111 });
+
+		//Second row
+
+
+		//Third row
+
+
+		//Fourth row
+
+
+		//Fifth row
+
+
+
+		tetsuFigure.speed = 0.1f;
 	}
 
 	//Marion figure animation
@@ -632,21 +652,17 @@ update_status ModuleCharacterSelection::Update()
 	}
 	else if (currentCharacter_P1 == YUANG_NANG)
 	{
+		App->render->Blit(characterGraphics, 12, 32, &yuang_nang_frame, 1.0f);
+
 		if (player2_joined == false)
 		{
-			if (!App->render->Blit(characterGraphics, 19, 165, &yuangNangName_short, 1.0f)) {
-				LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
+			App->render->Blit(characterGraphics, 19, 165, &yuangNangName_short, 1.0f);
 		}
 		else
 		{
-			if (!App->render->Blit(characterGraphics, 19, 5, &yuangNangName, 1.0f)) {
-				LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
+			App->render->Blit(characterGraphics, 19, 5, &yuangNangName, 1.0f);
 		}
-		App->render->Blit(characterGraphics, 12, 32, &yuang_nang_frame, 1.0f);
+		
 		App->render->Blit(characterGraphics, 136, 244, &selector_p1, 1.0f);
 	}
 	else if ((currentCharacter_P1 == TETSU))
@@ -658,8 +674,13 @@ update_status ModuleCharacterSelection::Update()
 			App->render->Blit(characterGraphics, 43, 166, &tetsuName, 1.0f);
 			App->render->Blit(characterGraphics, 95, 128, &(tetsuFigure.GetCurrentFrame()), 0.22f);
 		}
-	else
-		App->render->Blit(characterGraphics, 39, 6, &tetsuName, 1.0f);
+		else
+		{
+			App->render->Blit(characterGraphics, 39, 6, &tetsuName, 1.0f);
+			App->render->Blit(characterGraphics, 11, 129, &(tetsuFigure.GetCurrentFrame()), 0.22f);
+
+		}
+		
 			
 		App->render->Blit(characterGraphics, 176, 244, &selector_p1, 1.0f);
 	}
@@ -703,11 +724,9 @@ update_status ModuleCharacterSelection::Update()
 		}
 		else if (currentCharacter_P2 == TETSU)
 		{
-			if (!App->render->Blit(characterGraphics, 143, 6, &tetsuName, 1.0f)) {
-				LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
+			App->render->Blit(characterGraphics, 143, 6, &tetsuName, 1.0f);
 			App->render->Blit(characterGraphics, 116, 32, &tetsu_frame, 1.0f);
+			App->render->Blit(characterGraphics, 119, 129, &(tetsuFigure.GetCurrentFrame()), 0.22f);
 			App->render->Blit(characterGraphics, 176, 244, &selector_p2, 1.0f);
 		}
 
