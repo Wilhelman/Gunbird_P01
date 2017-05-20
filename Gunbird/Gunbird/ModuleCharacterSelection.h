@@ -68,6 +68,8 @@ public:
 	uint scrollLeft;
 	uint currentTime;
 	uint lastTime;
+	uint lastTime2;
+	uint counter;
 
 	float sky_speed;
 	float sky_x;
@@ -88,8 +90,10 @@ public:
 	Animation* marion;
 
 	Animation valnusFigure;
-
 	Animation tetsuFigure;
+	Animation marionFigure;
+	Animation yuangNangFigure;
+	Animation ashFigure;
 
 	enum CHARACTER_SELECTOR
 	{
@@ -102,6 +106,7 @@ public:
 	};
 
 	int moveAnim_y;
+	int moveAnim_y2;
 
 	CHARACTER_SELECTOR currentCharacter_P1;
 	CHARACTER_SELECTOR currentCharacter_P2;

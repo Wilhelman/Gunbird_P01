@@ -16,7 +16,7 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 {
 	currentCharacter_P1 = VALNUS;
 	currentCharacter_P2 = NONE;
-
+	counter = 0;
 	lastTime = SDL_GetTicks();
 
 	sky_x = -182.0f;
@@ -208,6 +208,13 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 		tetsuFigure.speed = 0.5f;
 	}
 
+	//Marion figure animation
+	{
+		marionFigure.PushBack({ 25, 1193, 128, 103 });
+		marionFigure.PushBack({ 184, 1197, 128, 103 });
+		marionFigure.PushBack({ 328, 1195, 128, 103 });
+		marionFigure.speed = 0.25f;
+	}
 
 }
 
@@ -265,6 +272,32 @@ update_status ModuleCharacterSelection::Update()
 			moveAnim_y = 0;
 		else
 			lastTime = currentTime;
+
+
+		if (player2_joined)
+		{
+			if (counter == 1)
+			{
+				lastTime2 = SDL_GetTicks();
+			}
+
+			if (currentTime < lastTime2 + 150)
+				moveAnim_y2 = -1;
+			if (currentTime < lastTime2 + 300)
+				moveAnim_y2 = -2;
+			else if (currentTime < lastTime2 + 375)
+				moveAnim_y2 = 0;
+			else if (currentTime < lastTime2 + 525)
+				moveAnim_y2 = 1;
+			else if (currentTime < lastTime2 + 825)
+				moveAnim_y2 = 2;
+			else if (currentTime < lastTime2 + 975)
+				moveAnim_y2 = 0;
+			else
+				lastTime2 = currentTime;
+
+			counter = 0;
+		}
 	}
 
 	if (((selected_P1_done && player2_joined == false) 
@@ -338,6 +371,7 @@ update_status ModuleCharacterSelection::Update()
 	if (App->input->keyboard[SDL_SCANCODE_KP_2] == KEY_STATE::KEY_DOWN && selected_P1_done == false && selected_P2_done == false)
 	{
 		player2_joined = true;
+		counter = 1;
 		if (selectorPos1[4])
 			selectorPos2[2] = true;
 		else
@@ -559,21 +593,19 @@ update_status ModuleCharacterSelection::Update()
 	}
 	else if (currentCharacter_P1 == MARION)
 	{
+		App->render->Blit(characterGraphics, 12, 32, &marion_frame, 1.0f);
+
 		if (player2_joined == false)
 		{
-			if (!App->render->Blit(characterGraphics, 21, 165, &marionName, 1.0f)) {
-				LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
+			App->render->Blit(characterGraphics, 21, 165, &marionName, 1.0f);
+			App->render->Blit(characterGraphics, 80, 132 + moveAnim_y, &(marionFigure.GetCurrentFrame()), 0.22f);
 		}
 		else
 		{
-			if (!App->render->Blit(characterGraphics, 34, 5, &marionName, 1.0f)) {
-				LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
+			App->render->Blit(characterGraphics, 34, 5, &marionName, 1.0f);
+			App->render->Blit(characterGraphics, 0, 134 + moveAnim_y, &(marionFigure.GetCurrentFrame()), 0.22f);
+			
 		}
-		App->render->Blit(characterGraphics, 12, 32, &marion_frame, 1.0f);
 		App->render->Blit(characterGraphics, 56, 244, &selector_p1, 1.0f);
 	}
 	else if (currentCharacter_P1 == VALNUS)
@@ -660,7 +692,7 @@ update_status ModuleCharacterSelection::Update()
 			}
 
 			App->render->Blit(characterGraphics, 116, 32, &valnus_frame, 1.0f);
-			App->render->Blit(characterGraphics, 114, 118 + moveAnim_y, &(valnusFigure.GetCurrentFrame()), 0.22f);
+			App->render->Blit(characterGraphics, 114, 118 + moveAnim_y2, &(valnusFigure.GetCurrentFrame()), 0.22f);
 			App->render->Blit(characterGraphics, 96, 244, &selector_p2, 1.0f);
 		}
 		else if (currentCharacter_P2 == YUANG_NANG)
