@@ -586,7 +586,10 @@ update_status ModuleCharacterSelection::Update()
 			App->render->Blit(characterGraphics, 90, 117 + moveAnim_y, &(valnusFigure.GetCurrentFrame()), 0.22f);
 		}
 		else
+		{
+			App->render->Blit(characterGraphics, 2, 118 + moveAnim_y, &(valnusFigure.GetCurrentFrame()), 0.22f);
 			App->render->Blit(characterGraphics, 34, 5, &valnusName, 1.0f);
+		}
 
 		App->render->Blit(characterGraphics, 96, 244, &selector_p1, 1.0f);
 	}
@@ -655,7 +658,9 @@ update_status ModuleCharacterSelection::Update()
 				LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
 				status = UPDATE_ERROR;
 			}
+
 			App->render->Blit(characterGraphics, 116, 32, &valnus_frame, 1.0f);
+			App->render->Blit(characterGraphics, 114, 118 + moveAnim_y, &(valnusFigure.GetCurrentFrame()), 0.22f);
 			App->render->Blit(characterGraphics, 96, 244, &selector_p2, 1.0f);
 		}
 		else if (currentCharacter_P2 == YUANG_NANG)
