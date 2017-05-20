@@ -216,6 +216,14 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 		marionFigure.speed = 0.25f;
 	}
 
+	//Ash figure animation
+	{
+		ashFigure.PushBack({ 21 , 1316, 104, 101 });
+		ashFigure.PushBack({ 140, 1317, 104, 108 });
+		ashFigure.PushBack({ 260, 1319, 104, 108 });
+		ashFigure.PushBack({ 373, 1321, 104, 108 });
+		ashFigure.speed = 0.17f;
+	}
 }
 
 ModuleCharacterSelection::~ModuleCharacterSelection()
@@ -572,23 +580,20 @@ update_status ModuleCharacterSelection::Update()
 
 	if (currentCharacter_P1 == ASH)
 	{
+		App->render->Blit(characterGraphics, 12, 32, &ash_frame, 1.0f);
 
 		if (player2_joined == false)
 		{
-			if (!App->render->Blit(characterGraphics, 51, 165, &ashName, 1.0f)) {
-				LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
+			App->render->Blit(characterGraphics, 51, 165, &ashName, 1.0f);
+			App->render->Blit(characterGraphics, 96, 129 + moveAnim_y, &(ashFigure.GetCurrentFrame()), 0.22f);
+
 		}
 		else
 		{
-			if (!App->render->Blit(characterGraphics, 47, 5, &ashName, 1.0f)) {
-				LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-		}
+			App->render->Blit(characterGraphics, 47, 5, &ashName, 1.0f);
+			App->render->Blit(characterGraphics, 8, 129 + moveAnim_y, &(ashFigure.GetCurrentFrame()), 0.22f);
 
-		App->render->Blit(characterGraphics, 12, 32, &ash_frame, 1.0f);
+		}
 		App->render->Blit(characterGraphics, 16, 244, &selector_p1, 1.0f);
 	}
 	else if (currentCharacter_P1 == MARION)
@@ -668,29 +673,21 @@ update_status ModuleCharacterSelection::Update()
 	{
 		if (currentCharacter_P2 == ASH)
 		{
-				if (!App->render->Blit(characterGraphics, 151, 5, &ashName, 1.0f)) {
-					LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
-					status = UPDATE_ERROR;
-				}
+			App->render->Blit(characterGraphics, 151, 5, &ashName, 1.0f);
 			App->render->Blit(characterGraphics, 116, 32, &ash_frame, 1.0f);
+			App->render->Blit(characterGraphics, 120, 129 + moveAnim_y2, &(ashFigure.GetCurrentFrame()), 0.22f);
 			App->render->Blit(characterGraphics, 16, 244, &selector_p2, 1.0f);
 		}
 		else if (currentCharacter_P2 == MARION)
 		{
-			if (!App->render->Blit(characterGraphics, 138, 5, &marionName, 1.0f)) {
-				LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
+			App->render->Blit(characterGraphics, 138, 5, &marionName, 1.0f);
 			App->render->Blit(characterGraphics, 116, 32, &marion_frame, 1.0f);
+			App->render->Blit(characterGraphics, 112, 134 + moveAnim_y2, &(marionFigure.GetCurrentFrame()), 0.22f);
 			App->render->Blit(characterGraphics, 56, 244, &selector_p2, 1.0f);
 		}
 		else if (currentCharacter_P2 == VALNUS)
 		{
-			if (!App->render->Blit(characterGraphics, 138, 5, &valnusName, 1.0f)) {
-				LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-
+			App->render->Blit(characterGraphics, 138, 5, &valnusName, 1.0f);
 			App->render->Blit(characterGraphics, 116, 32, &valnus_frame, 1.0f);
 			App->render->Blit(characterGraphics, 114, 118 + moveAnim_y2, &(valnusFigure.GetCurrentFrame()), 0.22f);
 			App->render->Blit(characterGraphics, 96, 244, &selector_p2, 1.0f);
