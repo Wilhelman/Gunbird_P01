@@ -41,7 +41,7 @@ Player 2 controls:
 - SELECT CHARACTER: 1 key (NUMPAD) 
 
 General/developer controls:
-- SKIP SCREEN: INTRO key
+- SKIP SCREEN: SPACE key
 - EXIT GAME: ESC key
 - SHOW COLLIDERS: F1
 - DIRECT WIN: F3

@@ -111,7 +111,8 @@ bool ModuleSceneForest::Start()
 // Update: draw background
 update_status ModuleSceneForest::Update()
 {
-	//App->characterSelection->player2_joined = false;
+	if (App->characterSelection->player2_joined)
+		App->characterSelection->player2_joined = false;
 
 	update_status status = UPDATE_CONTINUE;
 
@@ -161,7 +162,7 @@ update_status ModuleSceneForest::Update()
 
 
 	//TODO change the position of the player to private to be more pro
-	if (App->player->position.y < 0 && App->fade->FadeIsOver() /*delete this in big releases*/ ||(App->input->keyboard[SDL_SCANCODE_RETURN] == KEY_STATE::KEY_DOWN))
+	if ((App->player2->position.y < 0 || App->player->position.y < 0) && App->fade->FadeIsOver() /*delete this in big releases*/ ||(App->input->keyboard[SDL_SCANCODE_RETURN] == KEY_STATE::KEY_DOWN))
 		App->fade->FadeToBlack(this, this, 1.0f);
 
 	if (App->player->playerLost) {
@@ -178,8 +179,12 @@ update_status ModuleSceneForest::Update()
 	//ENEMY SPAWN PHASE
 	
 	{
-
 		if ((int)background_y == -1600 && spawned == 0) {
+			spawned = 1;
+			App->enemies->AddEnemy(ENEMY_TYPES::TRUMP_RED_MECHA, 20, 20, ENEMY_MOVEMENT::TRUMP_RED_MECHA_PATH);
+			
+		}
+		/*if ((int)background_y == -1600 && spawned == 0) {
 			spawned = 1;
 			App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -10, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
 			App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH, -20, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
@@ -208,20 +213,39 @@ update_status ModuleSceneForest::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 70, -30, ENEMY_MOVEMENT::STAY);
 			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 150, -50, ENEMY_MOVEMENT::STAY);
 			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 200, -90, ENEMY_MOVEMENT::STAY);
-		}
+		}*/
 
 		
 	}
 	
 
-	if (App->input->keyboard[SDL_SCANCODE_KP_1] && !App->player2->IsEnabled()) {
+	if (App->input->keyboard[SDL_SCANCODE_KP_1] && !App->player2->IsEnabled()) 
+	{
 		App->ui->p2 = true;
 		App->player2->playerLives = 3;
 		App->player2->Enable();
+		App->characterSelection->player2_joined = true;
+
+		if(App->characterSelection->characterSelected_P1 = CHARACTER_SELECTED::VALNUS_SELECTED)
+			App->characterSelection->characterSelected_P2 = CHARACTER_SELECTED::TETSU_SELECTED;
+
 		App->audio->PlayFx(player2joined);
 	}
 
 
+	if (App->input->keyboard[SDL_SCANCODE_KP_1] && !App->player->IsEnabled())
+	{
+		App->ui->p2 = true;
+		App->player->playerLives = 3;
+		App->player->Enable();
+		App->characterSelection->player2_joined = true;
+
+		if (App->characterSelection->characterSelected_P2 = CHARACTER_SELECTED::VALNUS_SELECTED)
+			App->characterSelection->characterSelected_P1 = CHARACTER_SELECTED::TETSU_SELECTED;
+
+		App->audio->PlayFx(player2joined);
+	}
+	
 
 	/*if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
 	{

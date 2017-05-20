@@ -10,7 +10,8 @@ class Enemy_Trump_Red_Mecha : public Enemy
 private:
 	bool left;
 
-	Animation fly;
+	Animation walking_around;
+	Animation standing;
 	iPoint original_pos;
 
 	uint lastShot;

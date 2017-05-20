@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "SDL\include\SDL_timer.h"
+#include "ModuleSceneForest.h"
 
 #define ENEMYSHOOTSPEED 3
 #define ENEMYSHOOTDELAY 2000
@@ -13,22 +14,24 @@ Enemy_Trump_Red_Mecha::Enemy_Trump_Red_Mecha(int x, int y) : Enemy(x, y)
 
 	lastTime = 0;
 
-	fly.PushBack({ 1362, 673, 60, 63 });
-	fly.PushBack({ 1437, 673, 60, 63 });
-	fly.PushBack({ 1517, 673, 60, 63 });
-	fly.PushBack({ 1596, 673, 60, 63 });
-	fly.PushBack({ 1674, 673, 60, 63 });
+	standing.PushBack({ 1362, 673, 60, 63 });
+	standing.speed = 0.1f;
 
-	fly.PushBack({ 1364, 744, 60, 63 });
-	fly.PushBack({ 1437, 744, 60, 63 });
-	fly.PushBack({ 1519, 744, 60, 63 });
-	fly.PushBack({ 1596, 744, 60, 63 });
-	fly.PushBack({ 1673, 744, 60, 63 });
-	fly.speed = 0.1f;
+	walking_around.PushBack({ 1362, 673, 60, 63 });
+	walking_around.PushBack({ 1437, 673, 60, 63 });
+	walking_around.PushBack({ 1517, 673, 60, 63 });
+	walking_around.PushBack({ 1596, 673, 60, 63 });
+	walking_around.PushBack({ 1674, 673, 60, 63 });
+	walking_around.PushBack({ 1364, 744, 60, 63 });
+	walking_around.PushBack({ 1437, 744, 60, 63 });
+	walking_around.PushBack({ 1519, 744, 60, 63 });
+	walking_around.PushBack({ 1596, 744, 60, 63 });
+	walking_around.PushBack({ 1673, 744, 60, 63 });
+	walking_around.speed = 0.07f;
 
 	collider = App->collision->AddCollider({ 0, 0, 60, 63 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	animation = &fly;
+	animation = &standing;
 
 	original_pos.x = x;
 	original_pos.y = y;
@@ -41,6 +44,11 @@ void Enemy_Trump_Red_Mecha::Move()
 {
 
 	position = original_pos + movement.GetCurrentPosition(&animation);
+
+	if ((int)App->sceneForest->background_y > -1600 && (int)App->sceneForest->background_y < -1440)
+		animation = &standing;
+	else
+		animation = &walking_around;
 
 }
 

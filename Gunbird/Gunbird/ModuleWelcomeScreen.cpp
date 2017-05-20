@@ -45,7 +45,7 @@ bool ModuleWelcomeScreen::Start()
 update_status ModuleWelcomeScreen::Update()
 {
 
-	if (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver()) {
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] && App->fade->FadeIsOver()) {
 		App->audio->PlayFx(start_audio);
 		App->fade->FadeToBlack(this, App->characterSelection);
 	}

@@ -413,20 +413,20 @@ update_status ModulePlayer2::Update()
 					if (shotPower == 0) {
 						if (counter == 0)
 						{
-							App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu0_0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
 							shotControl = false;
 						}
 						else if (counter == 7)
 						{
-							App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu1_0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
 						}
 						else if (counter == 14)
 						{
-							App->particles->AddParticle(App->particles->laser2, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu2_0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
 						}
 						else if (counter == 21)
 						{
-							App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu3_0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
 							counter = 0;
 							shotControl = true;
 						}
@@ -437,20 +437,20 @@ update_status ModulePlayer2::Update()
 					else if (shotPower == 1) {
 						if (counter == 0)
 						{
-							App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu1_0, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
 							shotControl = false;
 						}
 						else if (counter == 7)
 						{
-							App->particles->AddParticle(App->particles->laser1_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu1_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
 						}
 						else if (counter == 14)
 						{
-							App->particles->AddParticle(App->particles->laser2_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu2_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
 						}
 						else if (counter == 21)
 						{
-							App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu3_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
 							counter = 0;
 							shotControl = true;
 						}
@@ -711,20 +711,16 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 	}
 	if (!inmortal && spawnTime == 0) {
 
-		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_SHOT && !hitted) {
+		if ((c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING_AGGRESSIVE) && !hitted) {
 			this->removePowerUp();
 			App->audio->PlayFx(tetsu_Hitted);
+			this->deadPlayer = true;
 		}
 
 		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING && !hitted) {
 			this->removePowerUp();
 			hitted = true;
 			App->audio->PlayFx(tetsu_Hitted);
-		}
-
-		if (c2->type == COLLIDER_ENEMY_SHOT)
-		{
-			this->deadPlayer = true;
 		}
 
 		if (deadPlayer == true) {
@@ -747,6 +743,12 @@ void ModulePlayer2::removePowerUp() {
 
 void ModulePlayer2::spawning() {
 	spawnTime = SDL_GetTicks();
-	this->position.x = (SCREEN_WIDTH / 2) - 14 + 30;
+
+	if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::TETSU_SELECTED)
+		this->position.x = (SCREEN_WIDTH / 2) - 44;
+	else if(App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::TETSU_SELECTED)
+		this->position.x = (SCREEN_WIDTH / 2) + 16;
+
+
 	this->position.y = SCREEN_HEIGHT + 24;
 }
