@@ -213,7 +213,12 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 		tetsuFigure.PushBack({ 1316, 524, 128, 112 });
 
 		//Second row
-
+		tetsuFigure.PushBack({ 586, 680, 128, 112 });
+		tetsuFigure.PushBack({ 734, 680, 128, 112 });
+		tetsuFigure.PushBack({ 881, 680, 128, 112 });
+		tetsuFigure.PushBack({ 1016, 685, 128, 112 });
+		tetsuFigure.PushBack({ 1164, 685, 128, 112 });
+		tetsuFigure.PushBack({ 1311, 685, 128, 112 });
 
 		//Third row
 
@@ -703,11 +708,9 @@ update_status ModuleCharacterSelection::Update()
 		else
 		{
 			App->render->Blit(characterGraphics, 39, 6, &tetsuName, 1.0f);
-			App->render->Blit(characterGraphics, 8, 135 + moveAnim_y, &(tetsuFigure.GetCurrentFrame()), 0.22f);
+			App->render->Blit(characterGraphics, 3, 135 + moveAnim_y, &(tetsuFigure.GetCurrentFrame()), 0.22f);
 
 		}
-		
-			
 		App->render->Blit(characterGraphics, 176, 244, &selector_p1, 1.0f);
 	}
 
