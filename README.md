@@ -172,6 +172,13 @@ _0.55 version:_
 
 _*Unstable_
 
+_0.56 version:_
+
+* Added full character selector
+* Started implementing tetsu character. Just movement and death for now
+* Started red mecha enemy implementation
+* Added motionless trees over main background
+
 ## Team members
 
 _Altimira Bernat, Martí's responsability and Github account_
