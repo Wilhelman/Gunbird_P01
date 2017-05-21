@@ -179,6 +179,7 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 	{
 		start_icon.PushBack({389, 148, 68, 15});
 		start_icon.PushBack({ 309, 147, 68, 15 });
+		start_icon.PushBack({ 0, 0, 68, 15 });
 		start_icon.speed = 0.05f;
 	}
 
@@ -434,9 +435,13 @@ update_status ModuleCharacterSelection::Update()
 	}
 
 	//Animation start icon
-	if (!App->render->Blit(characterGraphics, 118, 5, &start_icon.GetCurrentFrame(), 1.0f)) {
-		LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
-		status = UPDATE_ERROR;
+	if (player2_joined == false)
+	{
+		if (!App->render->Blit(characterGraphics, 118, 5, &start_icon.GetCurrentFrame(), 0.5f)) 
+		{
+			LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
 	}
 
 
