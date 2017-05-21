@@ -177,19 +177,19 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 
 	// Marion locked icon
 	{
-		lockedMarion.PushBack({63, 254, 20, 32});
+		lockedMarion.PushBack({400, 608, 20, 32});
 		lockedMarion.speed = 0.05f;
 	}
 
 	// Yuang Nang locked icon
 	{
-		lockedYuangNang.PushBack({ 137, 249, 27, 48 });
+		lockedYuangNang.PushBack({ 325, 598, 27, 48 });
 		lockedYuangNang.speed = 0.05f;
 	}
 
 	// Ash locked icon
 	{
-		lockedAsh.PushBack({ 23, 256, 19, 32 });
+		lockedAsh.PushBack({ 371, 608, 19, 32 });
 		lockedAsh.speed = 0.05f;
 	}
 
@@ -205,12 +205,12 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 	//Tetsu figure animation
 	{
 		//First row
-		tetsuFigure.PushBack({ 599, 522, 121, 111 });
-		tetsuFigure.PushBack({ 747, 521, 120, 112 });
-		tetsuFigure.PushBack({ 894, 521, 120, 112 });
-		tetsuFigure.PushBack({ 1029, 525, 119, 112 });
-		tetsuFigure.PushBack({ 1177, 525, 119, 112 });
-		tetsuFigure.PushBack({ 1324, 525, 117, 111 });
+		tetsuFigure.PushBack({ 592, 521, 128, 112 });
+		tetsuFigure.PushBack({ 739, 521, 128, 112 });
+		tetsuFigure.PushBack({ 886, 521, 128, 112 });
+		tetsuFigure.PushBack({ 1021, 525, 128, 112 });
+		tetsuFigure.PushBack({ 1169, 525, 128, 112 });
+		tetsuFigure.PushBack({ 1316, 524, 128, 112 });
 
 		//Second row
 
@@ -222,10 +222,14 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 
 
 		//Fifth row
+		tetsuFigure.PushBack({ 585, 1114, 128, 112 });
+		tetsuFigure.PushBack({ 739, 1114, 128, 112 });
+		tetsuFigure.PushBack({ 886, 1114, 128, 112 });
+		tetsuFigure.PushBack({ 1018, 1118, 128, 112 });
+		tetsuFigure.PushBack({ 1169, 1116, 128, 112 });
+		tetsuFigure.PushBack({ 1322, 1116, 128, 112 });
 
-
-
-		tetsuFigure.speed = 0.1f;
+		tetsuFigure.speed = 0.6f;
 	}
 
 	//Marion figure animation
@@ -243,6 +247,27 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 		ashFigure.PushBack({ 260, 1319, 104, 108 });
 		ashFigure.PushBack({ 373, 1321, 104, 108 });
 		ashFigure.speed = 0.17f;
+	}
+
+	//Yuang-Nang figure animation
+	{
+		yuangNangFigure.PushBack({ 585, 37 ,135, 124 }); 
+		yuangNangFigure.PushBack({ 727, 38, 135, 123 }); 
+		yuangNangFigure.PushBack({ 868, 37, 136, 124 }); 
+		yuangNangFigure.PushBack({ 1015, 37, 136, 125 }); 
+		yuangNangFigure.PushBack({ 1156, 37, 136, 124 }); 
+		yuangNangFigure.PushBack({ 1297, 37, 136, 123 });
+		yuangNangFigure.PushBack({ 585, 190, 136, 124 }); 
+		yuangNangFigure.PushBack({ 723, 190, 135, 124 }); 
+		yuangNangFigure.PushBack({ 879, 190, 135, 124 });
+		yuangNangFigure.PushBack({ 1021, 191, 135, 123 }); 
+		yuangNangFigure.PushBack({ 1156, 190, 136, 124 }); 
+		yuangNangFigure.PushBack({ 1297, 191, 136, 124 }); 
+		yuangNangFigure.PushBack({ 585, 342, 136, 124 }); 
+		yuangNangFigure.PushBack({ 723, 343, 136, 123 }); 
+		yuangNangFigure.PushBack({ 879, 342, 136, 124 });
+		yuangNangFigure.PushBack({ 1021, 342 ,135, 124 });
+		yuangNangFigure.speed = 0.25f;
 	}
 }
 
@@ -363,7 +388,7 @@ update_status ModuleCharacterSelection::Update()
 	marion = &lockedMarion;
 	SDL_Rect r_marion = marion->GetCurrentFrame();
 
-	if (!App->render->Blit(icons_locked, 63, 254, &r_marion)) {
+	if (!App->render->Blit(characterGraphics, 63, 254, &r_marion)) {
 		LOG("Cannot blit the texture in ModulePlayer %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}
@@ -371,7 +396,7 @@ update_status ModuleCharacterSelection::Update()
 	yuangNang = &lockedYuangNang;
 	SDL_Rect r_yuangNang = yuangNang->GetCurrentFrame();
 
-	if (!App->render->Blit(icons_locked, 137, 249, &r_yuangNang)) {
+	if (!App->render->Blit(characterGraphics, 137, 249, &r_yuangNang)) {
 		LOG("Cannot blit the texture in ModulePlayer %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}
@@ -379,7 +404,7 @@ update_status ModuleCharacterSelection::Update()
 	ash = &lockedAsh;
 	SDL_Rect r_ash = ash->GetCurrentFrame();
 
-	if (!App->render->Blit(icons_locked, 23, 256, &r_ash)) {
+	if (!App->render->Blit(characterGraphics, 23, 256, &r_ash)) {
 		LOG("Cannot blit the texture in ModulePlayer %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}
@@ -656,13 +681,14 @@ update_status ModuleCharacterSelection::Update()
 
 		if (player2_joined == false)
 		{
+			App->render->Blit(characterGraphics, 72, 117 + moveAnim_y, &(yuangNangFigure.GetCurrentFrame()), 0.22f);
 			App->render->Blit(characterGraphics, 19, 165, &yuangNangName_short, 1.0f);
 		}
 		else
 		{
+			App->render->Blit(characterGraphics, 0, 117 + moveAnim_y, &(yuangNangFigure.GetCurrentFrame()), 0.22f);
 			App->render->Blit(characterGraphics, 19, 5, &yuangNangName, 1.0f);
 		}
-		
 		App->render->Blit(characterGraphics, 136, 244, &selector_p1, 1.0f);
 	}
 	else if ((currentCharacter_P1 == TETSU))
@@ -672,12 +698,12 @@ update_status ModuleCharacterSelection::Update()
 		if (player2_joined == false)
 		{
 			App->render->Blit(characterGraphics, 43, 166, &tetsuName, 1.0f);
-			App->render->Blit(characterGraphics, 95, 128, &(tetsuFigure.GetCurrentFrame()), 0.22f);
+			App->render->Blit(characterGraphics, 96, 135 + moveAnim_y, &(tetsuFigure.GetCurrentFrame()), 0.22f);
 		}
 		else
 		{
 			App->render->Blit(characterGraphics, 39, 6, &tetsuName, 1.0f);
-			App->render->Blit(characterGraphics, 11, 129, &(tetsuFigure.GetCurrentFrame()), 0.22f);
+			App->render->Blit(characterGraphics, 8, 135 + moveAnim_y, &(tetsuFigure.GetCurrentFrame()), 0.22f);
 
 		}
 		
@@ -715,18 +741,17 @@ update_status ModuleCharacterSelection::Update()
 		}
 		else if (currentCharacter_P2 == YUANG_NANG)
 		{
-			if (!App->render->Blit(characterGraphics, 123, 5, &yuangNangName, 1.0f)) {
-				LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
+			App->render->Blit(characterGraphics, 123, 5, &yuangNangName, 1.0f);
 			App->render->Blit(characterGraphics, 116, 32, &yuang_nang_frame, 1.0f);
+			App->render->Blit(characterGraphics, 104, 117 + moveAnim_y2, &(yuangNangFigure.GetCurrentFrame()), 0.22f);
+
 			App->render->Blit(characterGraphics, 136, 244, &selector_p2, 1.0f);
 		}
 		else if (currentCharacter_P2 == TETSU)
 		{
 			App->render->Blit(characterGraphics, 143, 6, &tetsuName, 1.0f);
 			App->render->Blit(characterGraphics, 116, 32, &tetsu_frame, 1.0f);
-			App->render->Blit(characterGraphics, 119, 129, &(tetsuFigure.GetCurrentFrame()), 0.22f);
+			App->render->Blit(characterGraphics, 111, 129 + moveAnim_y2, &(tetsuFigure.GetCurrentFrame()), 0.22f);
 			App->render->Blit(characterGraphics, 176, 244, &selector_p2, 1.0f);
 		}
 
