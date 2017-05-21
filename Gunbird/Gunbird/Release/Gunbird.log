@@ -91,6 +91,12 @@ Enemy_TerrestialTurret.cpp(483): warning C4244: '=': conversion from 'double' to
 Enemy_TerrestialTurret.cpp(484): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 Enemy_TerrestialTurret.cpp(487): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 Enemy_TerrestialTurret.cpp(488): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Enemy_Torpedo.cpp
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(8): note: see declaration of 'Animation'
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
+  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(17): note: see declaration of 'Path'
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Enemy_Torpedo.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Enemy_Trump_Red_Mecha.cpp
 c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
   c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(8): note: see declaration of 'Animation'
@@ -116,7 +122,6 @@ Enemy_Trump_Red_Mecha.cpp(133): warning C4244: '=': conversion from 'float' to '
 Enemy_Trump_Red_Mecha.cpp(134): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 Enemy_Trump_Red_Mecha.cpp(136): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 Enemy_Trump_Red_Mecha.cpp(137): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Globals.cpp
   Main.cpp
   ModuleAudio.cpp
   ModuleCharacterSelection.cpp
@@ -129,6 +134,7 @@ c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Enemy.h(8): 
 c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Enemy_Torpedo.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Enemy_Bee.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   ModuleFadeToBlack.cpp
+  ModuleInput.cpp
   ModuleParticles.cpp
   ModulePlayer.cpp
 c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
@@ -136,28 +142,26 @@ c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): w
   ModulePlayer2.cpp
 c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
   c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(8): note: see declaration of 'Animation'
+  Compiling...
+  ModuleRender.cpp
   ModuleSceneCastle.cpp
 c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
   c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(8): note: see declaration of 'Animation'
-  Compiling...
-  ModuleInput.cpp
-  ModuleRender.cpp
   ModuleSceneForest.cpp
 c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
   c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(8): note: see declaration of 'Animation'
   ModuleScoreRanking.cpp
   ModuleTextures.cpp
-  Enemy_Torpedo.cpp
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
-  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(8): note: see declaration of 'Animation'
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
-  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(17): note: see declaration of 'Path'
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Enemy_Torpedo.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   ModuleUI.cpp
 ModuleUI.cpp(340): warning C4018: '<': signed/unsigned mismatch
   ModuleWelcomeScreen.cpp
   ModuleWindow.cpp
   Power_Up.cpp
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(8): note: see declaration of 'Animation'
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
+  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(17): note: see declaration of 'Path'
+  SceneCastle_Vase.cpp
 c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
   c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(8): note: see declaration of 'Animation'
 c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
@@ -172,14 +176,9 @@ c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): w
   c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(8): note: see declaration of 'Animation'
 c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
   c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(17): note: see declaration of 'Path'
-  SceneCastle_Vase.cpp
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
-  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(8): note: see declaration of 'Animation'
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
-  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(17): note: see declaration of 'Path'
   Generating code
-  295 of 298 functions (99.0%) were compiled, the rest were copied from previous compilation.
-    8 functions were new in current compilation
+  1 of 298 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Gunbird.vcxproj -> C:\Users\Víctor Masó\Documents\GitHub\Gunbird_P01\Gunbird\Release\Gunbird.exe
