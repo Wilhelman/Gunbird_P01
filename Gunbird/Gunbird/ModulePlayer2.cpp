@@ -61,7 +61,7 @@ ModulePlayer2::ModulePlayer2()
 
 	//Dead animation - TO CHANGE
 	{
-		dead_animation.PushBack({ 123, 446, 32, 38 });
+		dead_animation.PushBack({ 295, 533, 130, 129 });
 		dead_animation.speed = 0.1f;
 	}
 

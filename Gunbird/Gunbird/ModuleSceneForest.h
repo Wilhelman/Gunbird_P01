@@ -23,16 +23,17 @@ public:
 
 public:
 	SDL_Texture* graphics = nullptr;
+	SDL_Texture* motionless_trees = nullptr;
 	SDL_Rect background;
+	SDL_Rect m_trees;
 	float background_x;
 	float background_y;
 
 	float background_speed;
 
-
 	uint player2joined;
 
-
+	
 };
 
 #endif

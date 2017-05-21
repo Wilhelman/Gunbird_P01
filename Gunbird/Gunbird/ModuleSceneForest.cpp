@@ -23,7 +23,10 @@ ModuleSceneForest::ModuleSceneForest()
 	background_speed = 0.5f;
 	// Background
 	background.w = SCREEN_WIDTH;
-	background.h = 1717;
+	background.h = 2800;
+	m_trees.w = SCREEN_WIDTH;
+	m_trees.h = 2800;
+
 
 
 	/*soldier_left_wall.loop = true;
@@ -46,7 +49,8 @@ bool ModuleSceneForest::Start()
 	spawned = 0;
 	//setting bckground
 	background_x = 0;
-	background_y = -1717.0f;
+	background_y = -2800.0f;
+
 	//EXAMPLE
 	/*soldier_left_wall_y = -145;
 	soldier_left_wall_x = 50;
@@ -54,6 +58,10 @@ bool ModuleSceneForest::Start()
 
 	LOG("Loading SceneForest assets");
 	bool ret = true;
+
+	if(App->characterSelection->characterSelected_P1 != CHARACTER_SELECTED::NONE_SELECTED && App->characterSelection->characterSelected_P2 != CHARACTER_SELECTED::NONE_SELECTED)
+		App->ui->p2 = true;
+
 	
 	// ENABLING SELECTED CHARACTER
 
@@ -86,8 +94,10 @@ bool ModuleSceneForest::Start()
 	App->enemies->Enable();
 	App->particles->Enable();
 
-	graphics = App->textures->Load("Assets/maps/forest/map_forest_background.png");
-	if (graphics == nullptr) {
+	graphics = App->textures->Load("Assets/maps/forest/map_forest_background_.png");
+	motionless_trees = App->textures->Load("Assets/maps/forest/Motionless_Trees.png");
+
+	if (graphics == nullptr ||motionless_trees == nullptr) {
 		LOG("Cannot load the texture in SceneForest");
 		ret = false;
 	}
@@ -124,6 +134,11 @@ update_status ModuleSceneForest::Update()
 
 	// Draw everything --------------------------------------
 	if (!App->render->Blit(graphics, (int)background_x, (int)background_y + SCREEN_HEIGHT, &background, 0.75f)) {
+		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	if (!App->render->Blit(motionless_trees, (int)background_x, (int)background_y + SCREEN_HEIGHT, &m_trees, 0.75f)) {
 		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}

@@ -229,11 +229,20 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 		tetsuFigure.PushBack({ 1164, 685, 128, 112 });
 		tetsuFigure.PushBack({ 1311, 685, 128, 112 });
 
-		//Third row
+		//Third row - NEED TO FIX
+		tetsuFigure.PushBack({ 591, 820, 128, 112 });
+		tetsuFigure.PushBack({ 738, 820, 128, 112 });
+		tetsuFigure.PushBack({ 888, 820, 128, 112 });
+		tetsuFigure.PushBack({ 1023, 823, 128, 112 });
+		tetsuFigure.PushBack({ 1171, 823, 128, 112});
+		tetsuFigure.PushBack({ 1318, 822, 128, 112 });
 
-
-		//Fourth row
-
+		//Fourth row - NEED TO FIX
+		tetsuFigure.PushBack({ 591,970,128,112 });
+		tetsuFigure.PushBack({ 745,968,128,112 });
+		tetsuFigure.PushBack({ 890,969,128,112 });
+		tetsuFigure.PushBack({ 1022,974,128,112 });
+		tetsuFigure.PushBack({ 1323,975,128,112 });
 
 		//Fifth row
 		tetsuFigure.PushBack({ 585, 1114, 128, 112 });
