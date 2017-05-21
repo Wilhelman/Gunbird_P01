@@ -89,6 +89,8 @@ public:
 	Animation lockedMarion;
 	Animation* marion;
 
+	Animation start_icon;
+
 	Animation valnusFigure;
 	Animation tetsuFigure;
 	Animation marionFigure;

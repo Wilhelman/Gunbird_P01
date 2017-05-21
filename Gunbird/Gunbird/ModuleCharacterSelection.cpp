@@ -175,6 +175,14 @@ ModuleCharacterSelection::ModuleCharacterSelection()
 		idleValnus.speed = 0.05f;
 	}
 
+	//Start icon animation
+	{
+		start_icon.PushBack({389, 148, 68, 15});
+		start_icon.PushBack({ 309, 147, 68, 15 });
+		start_icon.speed = 0.05f;
+	}
+
+
 	// Marion locked icon
 	{
 		lockedMarion.PushBack({400, 608, 20, 32});
@@ -421,6 +429,12 @@ update_status ModuleCharacterSelection::Update()
 		sky_x = -182;
 	
 	if (!App->render->Blit(characterGraphics, (int)sky_x, 144, &sky, 1.0f)) {
+		LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	//Animation start icon
+	if (!App->render->Blit(characterGraphics, 118, 5, &start_icon.GetCurrentFrame(), 1.0f)) {
 		LOG("Cannot blit the texture in Character Selection %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}
