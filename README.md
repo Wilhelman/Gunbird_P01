@@ -178,6 +178,7 @@ _0.56 version:_
 * Started implementing tetsu character. Just movement and death for now
 * Started red mecha enemy implementation
 * Added motionless trees over main background
+* Fixed minor bugs and polished details
 
 ## Team members
 
