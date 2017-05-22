@@ -60,7 +60,7 @@ ModuleEnemies::ModuleEnemies()
 	diagonalPath_L_Final2.PushBack({ 1.0f,2.5f }, 200);
 	diagonalPath_L_Final2.loop = false;
 
-	//balloon path
+	//balloon path castle
 	balloonPathCastle.PushBack({ 0.0f, 0.9f }, 175); // 64
 	balloonPathCastle.PushBack({ 0.0f, 0.4f }, 20); // 155
 	balloonPathCastle.PushBack({ 0.0f, -0.35f }, 45); // 70
@@ -68,6 +68,22 @@ ModuleEnemies::ModuleEnemies()
 	balloonPathCastle.PushBack({ 0.0f, -0.35f }, 120);
 	balloonPathCastle.PushBack({ 0.0f, 1.0f }, 1000);
 	balloonPathCastle.loop = false;
+
+	//Balloon path forest
+	balloonPathForest.PushBack({ 0.0f, 1.5f }, 55);
+	balloonPathForest.PushBack({ 0.0f, 1.2f }, 10);
+	balloonPathForest.PushBack({ 0.0f, 1.0 }, 10);
+	balloonPathForest.PushBack({ 0.0f, 0.0f }, 100);
+	balloonPathForest.PushBack({ 1.0f, 1.5f }, 55);
+	balloonPathForest.PushBack({ 0.8f, 1.3f }, 10);
+	balloonPathForest.PushBack({ 0.0f, 0.0f }, 55);
+	balloonPathForest.PushBack({ -1.0f, 1.5f }, 35);
+	balloonPathForest.PushBack({ -0.8f, 1.3f }, 20);
+	balloonPathForest.PushBack({ 0.0f, 0.0f }, 150);
+	balloonPathForest.PushBack({ 0.0f, 0.25f }, 10);
+	balloonPathForest.PushBack({ 0.0f, 1.5f }, 150);
+
+	balloonPathForest.loop = false;
 
 	//TerrestialTurret paths
 	turret1_path.PushBack({ 0.6f,0.5f }, 70);
@@ -295,6 +311,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			{
 			case ENEMY_MOVEMENT::BALLOON_PATH_CASTLE:
 				enemies[i]->movement = balloonPathCastle;
+				break;
+			case ENEMY_MOVEMENT::BALLOON_PATH_FOREST:
+				enemies[i]->movement = balloonPathForest;
 				break;
 			default:
 				break;

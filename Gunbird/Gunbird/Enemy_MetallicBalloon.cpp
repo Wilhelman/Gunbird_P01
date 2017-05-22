@@ -10,6 +10,7 @@
 
 #define ENEMYSHOOTSPEED 3
 #define ENEMYSHOOTDELAY 2000
+#define ENEMY_DELAY_DOUBLE_SHOT 100
 
 Enemy_MetallicBalloon::Enemy_MetallicBalloon(int x, int y) : Enemy(x, y)
 {
@@ -179,7 +180,7 @@ void Enemy_MetallicBalloon::Shoot()
 	}
 
 	//LOG("Angle %.2f", angle);
-	if (currentTime > (lastShot + ENEMYSHOOTDELAY)) {
+	/*if (currentTime > (lastShot + ENEMYSHOOTDELAY)) {
 
 		if (!left) {
 			if ((angle < 90) && (angle >= 0)) {
@@ -200,7 +201,7 @@ void Enemy_MetallicBalloon::Shoot()
 				lastParticle.speed.x = -ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
 				lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
 			}
-		}
+		}*/
 
 		if (currentTime > (lastShot + ENEMYSHOOTDELAY)) {
 
@@ -209,14 +210,18 @@ void Enemy_MetallicBalloon::Shoot()
 			App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 9, position.y + 47, COLLIDER_TYPE::COLLIDER_NONE);
 			App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 23, position.y + 47, COLLIDER_TYPE::COLLIDER_NONE);
 
-			App->particles->AddParticle(lastParticle, position.x + 10, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
-			App->particles->AddParticle(lastParticle, position.x + 24, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			lastParticle.speed.x = -1.0f;
+			lastParticle.speed.y = 2.0f;
+			App->particles->AddParticle(lastParticle, position.x + 25, position.y + 56, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
 
+			lastParticle.speed.x = 1.0f;
+			lastParticle.speed.y = 2.0f;
+			App->particles->AddParticle(lastParticle, position.x + 15, position.y + 56, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
 
+			//App->particles->AddParticle(lastParticle, position.x + 10, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			//App->particles->AddParticle(lastParticle, position.x + 24, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
 
 			lastShot = currentTime;
 		}
 
 	}
-	
-}

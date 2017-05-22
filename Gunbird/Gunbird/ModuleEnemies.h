@@ -37,6 +37,7 @@ enum ENEMY_MOVEMENT
 	TORPEDO_DIAGONAL_R_FINAL2,
 	TORPEDO_DIAGONAL_L_FINAL2,
 	BALLOON_PATH_CASTLE,
+	BALLOON_PATH_FOREST,
 	TURRET_1_PATH,
 	TURRET1_L_PATH,
 	TURRET_2_PATH,
@@ -94,8 +95,10 @@ private:
 	Path diagonalPath_L_Final;
 	Path diagonalPath_R_Final2;
 	Path diagonalPath_L_Final2;
+
 	// path balloon
 	Path balloonPathCastle;
+	Path balloonPathForest;
 
 	//paths terrestial turret
 	Path turret1_path;
