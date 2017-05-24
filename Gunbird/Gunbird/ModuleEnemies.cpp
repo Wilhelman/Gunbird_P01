@@ -619,6 +619,26 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					}
 				}
 			}
+			else if (enemies[i]->type == ENEMY_TYPES::FLYING_MACHINE) {
+				if (enemies[i]->getLives() == 0) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+						App->ui->score += 3000;
+						App->audio->PlayFx(medium_explosion);
+						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
+						delete enemies[i];
+						enemies[i] = nullptr;
+						break;
+					}
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+						App->ui->scoreP2 += 3000;
+						App->audio->PlayFx(medium_explosion);
+						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
+						delete enemies[i];
+						enemies[i] = nullptr;
+						break;
+					}
+				}
+			}
 			else if (enemies[i]->type == ENEMY_TYPES::CASTLE_HOUSEFLAG) {
 				if (enemies[i]->getLives() == 0) {
 					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {

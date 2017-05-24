@@ -11,29 +11,31 @@
 
 #define RAD_TO_DEGREES (180.0 / PI)
 #define DEGREES_TO_RAD (PI / 180.0)
+#define ANGLE_RANGE_CIRCLE 22.5f
 
 #define SHOT_ENEMY_VEC 3
 #define DELAY_SHOT_ENEMY 2000
 
 Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 {
-
+	shot_done = false;
 	lives = 3;
 
-	fly.PushBack({ 749,943,77,66 });
-	fly.PushBack({ 836,941,77,66 });
+	//fly.PushBack({ 749,943,77,66 });
+	//fly.PushBack({ 836,941,77,66 });
 	fly.PushBack({ 928,947,77,66 });
-	fly.PushBack({ 1020,950,77,66 });
-	fly.PushBack({ 750,1044,77,66 });
-	fly.PushBack({ 843,1046,77,66 });
-	fly.PushBack({ 926,1046,77,66 });
-	fly.PushBack({ 1020,1049,77,66 });
-	fly.PushBack({ 749,1141,77,66 });
-	fly.PushBack({ 847,1140,77,66 });
-
-
+	//fly.PushBack({ 1020,950,77,66 });
+	//fly.PushBack({ 750,1044,77,66 });
 	fly.loop = true;
 	fly.speed = 0.05f;
+
+	shot_phase_anim.PushBack({ 843,1046,77,66 });
+	shot_phase_anim.PushBack({ 926,1046,77,66 });
+	shot_phase_anim.PushBack({ 1020,1049,77,66 });
+	shot_phase_anim.PushBack({ 749,1141,77,66 });
+	shot_phase_anim.PushBack({ 847,1140,77,66 });
+	shot_phase_anim.loop = false;
+	shot_phase_anim.speed = 0.05;
 
 	animation = &fly;
 	dead = false;
@@ -51,73 +53,149 @@ void Enemy_Flying_Machine::Move() {
 
 	position = original_pos + movement.GetCurrentPosition(&animation);
 
+	if (position.x == 50)
+		animation = &shot_phase_anim;
+
+	if (shot_done == true && position.x == SCREEN_WIDTH - 100) {
+		shot_done = false;
+		animation = &shot_phase_anim;
+		shot_phase_anim.Reset();
+	}
 }
 
 
 void Enemy_Flying_Machine::Shoot()
 {
-	/*if (!dead) {
-	left = false;
-	double deltaX;
-	double deltaY;
-	if (App->player->IsEnabled()) {
-	deltaX = ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
-	deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
-	}
-	else if (App->player2->IsEnabled()) {
-	deltaX = ((App->player2->position.x + (App->player2->playerCollider->rect.w / 2))) - (position.x + 15);
-	deltaY = ((App->player2->position.y + (App->player2->playerCollider->rect.h / 2))) - (position.y + 21);
-	}
+	if (!dead) {
 
-	float angle;
+		currentTime = SDL_GetTicks();
 
-	angle = atan2(deltaX, deltaY);
+		if (animation == &shot_phase_anim && shot_phase_anim.Finished() && shot_done == false)
+		{
+			int i = 1;
+			
+			shot_done = true;
+			animation = &fly;
+			
 
-	angle *= RAD_TO_DEGREES;
+			App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_NONE);
+			App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_NONE);
+		
+			// 1
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			i++;
 
-	currentTime = SDL_GetTicks();
+			// 2
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			i++;
 
-	if (angle < 0) {
-	angle = angle * -1;
-	left = true;
+			// 3
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);;
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			i++;
+
+			// 4
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			i++;
+
+			// 5
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			i++;
+
+			// 6
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			i++;
+
+			// 7
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			i++;
+
+			// 8
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			i++;
+
+			// 9
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			i++;
+
+			// 10
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			i++;
+
+			// 11
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			i++;
+
+			// 12
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			i++;
+
+			// 13
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			i++;
+
+			// 14
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			i++;
+
+			// 15
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			i++;
+
+			// 16
+			lastParticle.speed.x = SHOT_ENEMY_VEC * cos(ANGLE_RANGE_CIRCLE * i);
+			lastParticle.speed.y = SHOT_ENEMY_VEC * sin(ANGLE_RANGE_CIRCLE* i);
+			App->particles->AddParticle(lastParticle, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+
+		}
 	}
-
-	//LOG("Angle %.2f", angle);
-	if (currentTime >(lastShot + DELAY_SHOT_ENEMY)) {
-
-	if (!left) {
-	if ((angle < 90) && (angle >= 0)) {
-	lastParticle.speed.x = SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
-	lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
-	}
-	else {
-	lastParticle.speed.x = SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
-	lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
-	}
-	}
-	else {
-	if ((angle < 90) && (angle >= 0)) {
-	lastParticle.speed.x = -SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
-	lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
-	}
-	else {
-	lastParticle.speed.x = -SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
-	lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
-	}
-	}
-
-
-	if (currentTime >(lastShot + DELAY_SHOT_ENEMY))
-	{
-	App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 11, position.y + 7, COLLIDER_TYPE::COLLIDER_NONE);
-	App->particles->AddParticle(lastParticle, position.x + 12, position.y + 8, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
-
-	lastShot = currentTime;
-	}
-
-	}
-	}*/
 }
+	
 
 uint Enemy_Flying_Machine::getLives() {
 	return lives;

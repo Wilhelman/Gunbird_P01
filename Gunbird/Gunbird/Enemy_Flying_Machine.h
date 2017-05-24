@@ -11,13 +11,14 @@ private:
 
 
 	Animation fly;
+	Animation shot_phase_anim;
 
 	iPoint original_pos;
 
 	uint lastShot;
 	Particle lastParticle;
-	bool left;
 	bool dead;
+	bool shot_done;
 	float deadTimer;
 
 public:

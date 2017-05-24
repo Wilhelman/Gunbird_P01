@@ -1,12 +1,43 @@
-﻿  ModuleEnemies.cpp
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(8): warning C4099: 'Animation': type name first seen using 'struct' now seen using 'class'
-  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(7): note: see declaration of 'Animation'
+﻿  Enemy_Flying_Machine.cpp
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Animation.h(8): note: see declaration of 'Animation'
 c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Enemy.h(8): warning C4099: 'Path': type name first seen using 'class' now seen using 'struct'
   c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Path.h(17): note: see declaration of 'Path'
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Enemy_Torpedo.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\Enemy_Bee.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+Enemy_Flying_Machine.cpp(38): warning C4305: '=': truncation from 'double' to 'float'
+Enemy_Flying_Machine.cpp(88): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(89): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(95): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(96): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(102): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(103): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(109): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(110): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(116): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(117): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(123): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(124): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(130): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(137): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(138): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(144): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(145): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(151): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(152): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(158): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(159): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(165): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(166): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(172): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(173): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(179): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(180): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(186): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(187): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(193): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Enemy_Flying_Machine.cpp(194): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   Generating code
-  3 of 306 functions ( 1.0%) were compiled, the rest were copied from previous compilation.
+  2 of 306 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
