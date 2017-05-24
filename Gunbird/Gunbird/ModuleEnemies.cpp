@@ -13,6 +13,7 @@
 #include "Enemy_Trump_Red_Mecha.h"
 #include "Enemy_MetallicBalloon.h"
 #include "Enemy_TerrestialTurret.h"
+#include "Enemy_Flying_Machine.h"
 #include "SceneCastle_houseFlag.h"
 #include "SceneCastle_houseFlag2.h"
 #include "SceneCastle_Vase.h"
@@ -145,6 +146,19 @@ ModuleEnemies::ModuleEnemies()
 	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
 	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
 	trump_red_mecha_path.loop = false;
+
+
+	//Flying Machine Path (forest)
+	flying_machine_path1.PushBack({ 1.3f, 0.05f }, 100);
+	flying_machine_path1.PushBack({ 0.8f, 0.05f }, 10);
+	flying_machine_path1.PushBack({ 0.4f, 0.0f }, 10);
+	flying_machine_path1.PushBack({ 0.0f, 0.0f }, 70);
+	flying_machine_path1.PushBack({ 2.0f, 0.05f }, 110);
+	flying_machine_path1.PushBack({ 0.0f, 1.0f }, 70);
+	flying_machine_path1.PushBack({ -1.5f, 0.05f }, 120);
+	flying_machine_path1.PushBack({ 0.0f, 0.0f }, 70);
+	flying_machine_path1.PushBack({ -1.5f, 0.05f }, 120);
+	flying_machine_path1.loop = false;
 }
 
 // Destructor
@@ -399,7 +413,21 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			case ENEMY_MOVEMENT::TRUMP_RED_MECHA_PATH:
 				enemies[i]->movement = trump_red_mecha_path;
 				break;
-
+			default:
+				break;
+			}
+			break;
+		case ENEMY_TYPES::FLYING_MACHINE:
+			enemies[i] = new Enemy_Flying_Machine(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::FLYING_MACHINE;
+			switch (info.typeMovement)
+			{
+			case ENEMY_MOVEMENT::FLYING_MACHINE_PATH_1:
+				enemies[i]->movement = flying_machine_path1;
+				break;
+			case ENEMY_MOVEMENT::FLYING_MACHINE_PATH_2:
+				enemies[i]->movement = flying_machine_path2;
+				break;
 			default:
 				break;
 			}

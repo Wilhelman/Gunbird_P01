@@ -132,6 +132,9 @@
     <ClCompile Include="Enemy_Trump_Red_Mecha.cpp">
       <Filter>Modules\Enemies\SceneForest</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_Flying_Machine.cpp">
+      <Filter>Modules\Enemies\SceneForest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals.h">
@@ -243,6 +246,9 @@
       <Filter>Modules\Enemies\SceneForest</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Red_Turret.h">
+      <Filter>Modules\Enemies\SceneForest</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Flying_Machine.h">
       <Filter>Modules\Enemies\SceneForest</Filter>
     </ClInclude>
   </ItemGroup>
