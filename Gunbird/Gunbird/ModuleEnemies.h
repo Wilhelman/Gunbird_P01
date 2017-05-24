@@ -20,7 +20,6 @@ enum ENEMY_TYPES
 	RED_TURRET,
 	BIG_RED_TURRET,
 	TRUMP_RED_MECHA,
-	FLYING_MACHINE,
 	
 	COIN,
 	POWER_UP
@@ -38,6 +37,7 @@ enum ENEMY_MOVEMENT
 	TORPEDO_DIAGONAL_R_FINAL2,
 	TORPEDO_DIAGONAL_L_FINAL2,
 	BALLOON_PATH_CASTLE,
+	BALLOON_PATH_FOREST,
 	TURRET_1_PATH,
 	TURRET1_L_PATH,
 	TURRET_2_PATH,
@@ -48,9 +48,6 @@ enum ENEMY_MOVEMENT
 	BEE_CORNER_RIGHT_PATH,
 	BEE_CORNER_RIGHT_PATH2,
 	TRUMP_RED_MECHA_PATH,
-	BALLOON_PATH_FOREST,
-	FLYING_MACHINE_PATH_1,
-	FLYING_MACHINE_PATH_2,
 
 	POWER_UP_MOVEMENT
 };
@@ -117,10 +114,6 @@ private:
 
 	//path trump red mecha
 	Path trump_red_mecha_path;
-
-	//Path flying Machine (forest)
-	Path flying_machine_path1;
-	Path flying_machine_path2;
 
 	//path power_up
 	Path powerUpPath;

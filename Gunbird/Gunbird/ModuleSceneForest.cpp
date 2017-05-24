@@ -200,21 +200,13 @@ update_status ModuleSceneForest::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_FOREST);
 		}
 
-		
-
-		if ((int)background_y == -2500 && spawned == 1) {
-			spawned = 2;
-			App->enemies->AddEnemy(ENEMY_TYPES::FLYING_MACHINE, -80, 20, ENEMY_MOVEMENT::FLYING_MACHINE_PATH_1);
-
-		}
-
-		/*if ((int)background_y == -1600 && spawned == 1) {
+		if ((int)background_y == -1600 && spawned == 1) {
 			spawned = 2;
 			App->enemies->AddEnemy(ENEMY_TYPES::TRUMP_RED_MECHA, 20, 20, ENEMY_MOVEMENT::TRUMP_RED_MECHA_PATH);
 			
 		}
 
-		if ((int)background_y == -1600 && spawned == 0) {
+		/*if ((int)background_y == -1600 && spawned == 0) {
 			spawned = 1;
 			App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -10, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
 			App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH, -20, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
