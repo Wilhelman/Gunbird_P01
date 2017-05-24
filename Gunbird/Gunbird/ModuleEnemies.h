@@ -118,6 +118,7 @@ private:
 	//path trump red mecha
 	Path trump_red_mecha_path;
 
+	
 	//Path flying Machine (forest)
 	Path flying_machine_path1;
 	Path flying_machine_path2;

@@ -53,7 +53,7 @@ update_status ModuleScoreRanking::Update()
 
 	//TODO change the position of the player to private to be more pro
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] && App->fade->FadeIsOver())
+	if (App->input->keyboard[SDL_SCANCODE_RETURN] && App->fade->FadeIsOver())
 		App->fade->FadeToBlack(this, App->welcomeScreen);
 
 	return status;

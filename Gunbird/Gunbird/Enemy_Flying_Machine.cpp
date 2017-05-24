@@ -57,65 +57,65 @@ void Enemy_Flying_Machine::Move() {
 void Enemy_Flying_Machine::Shoot()
 {
 	/*if (!dead) {
-		left = false;
-		double deltaX;
-		double deltaY;
-		if (App->player->IsEnabled()) {
-			deltaX = ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
-			deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
-		}
-		else if (App->player2->IsEnabled()) {
-			deltaX = ((App->player2->position.x + (App->player2->playerCollider->rect.w / 2))) - (position.x + 15);
-			deltaY = ((App->player2->position.y + (App->player2->playerCollider->rect.h / 2))) - (position.y + 21);
-		}
+	left = false;
+	double deltaX;
+	double deltaY;
+	if (App->player->IsEnabled()) {
+	deltaX = ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
+	deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
+	}
+	else if (App->player2->IsEnabled()) {
+	deltaX = ((App->player2->position.x + (App->player2->playerCollider->rect.w / 2))) - (position.x + 15);
+	deltaY = ((App->player2->position.y + (App->player2->playerCollider->rect.h / 2))) - (position.y + 21);
+	}
 
-		float angle;
+	float angle;
 
-		angle = atan2(deltaX, deltaY);
+	angle = atan2(deltaX, deltaY);
 
-		angle *= RAD_TO_DEGREES;
+	angle *= RAD_TO_DEGREES;
 
-		currentTime = SDL_GetTicks();
+	currentTime = SDL_GetTicks();
 
-		if (angle < 0) {
-			angle = angle * -1;
-			left = true;
-		}
+	if (angle < 0) {
+	angle = angle * -1;
+	left = true;
+	}
 
-		//LOG("Angle %.2f", angle);
-		if (currentTime >(lastShot + DELAY_SHOT_ENEMY)) {
+	//LOG("Angle %.2f", angle);
+	if (currentTime >(lastShot + DELAY_SHOT_ENEMY)) {
 
-			if (!left) {
-				if ((angle < 90) && (angle >= 0)) {
-					lastParticle.speed.x = SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
-					lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
-				}
-				else {
-					lastParticle.speed.x = SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
-					lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
-				}
-			}
-			else {
-				if ((angle < 90) && (angle >= 0)) {
-					lastParticle.speed.x = -SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
-					lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
-				}
-				else {
-					lastParticle.speed.x = -SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
-					lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
-				}
-			}
+	if (!left) {
+	if ((angle < 90) && (angle >= 0)) {
+	lastParticle.speed.x = SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
+	lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
+	}
+	else {
+	lastParticle.speed.x = SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
+	lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
+	}
+	}
+	else {
+	if ((angle < 90) && (angle >= 0)) {
+	lastParticle.speed.x = -SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
+	lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
+	}
+	else {
+	lastParticle.speed.x = -SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
+	lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
+	}
+	}
 
 
-			if (currentTime >(lastShot + DELAY_SHOT_ENEMY))
-			{
-				App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 11, position.y + 7, COLLIDER_TYPE::COLLIDER_NONE);
-				App->particles->AddParticle(lastParticle, position.x + 12, position.y + 8, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+	if (currentTime >(lastShot + DELAY_SHOT_ENEMY))
+	{
+	App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 11, position.y + 7, COLLIDER_TYPE::COLLIDER_NONE);
+	App->particles->AddParticle(lastParticle, position.x + 12, position.y + 8, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
 
-				lastShot = currentTime;
-			}
+	lastShot = currentTime;
+	}
 
-		}
+	}
 	}*/
 }
 

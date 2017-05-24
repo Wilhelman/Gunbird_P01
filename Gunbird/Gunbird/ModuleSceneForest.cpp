@@ -200,8 +200,6 @@ update_status ModuleSceneForest::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_FOREST);
 		}
 
-		
-
 		if ((int)background_y == -2500 && spawned == 1) {
 			spawned = 2;
 			App->enemies->AddEnemy(ENEMY_TYPES::FLYING_MACHINE, -80, 20, ENEMY_MOVEMENT::FLYING_MACHINE_PATH_1);

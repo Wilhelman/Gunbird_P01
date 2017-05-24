@@ -9,7 +9,7 @@ class Enemy_Flying_Machine : public Enemy
 {
 private:
 
-	
+
 	Animation fly;
 
 	iPoint original_pos;
