@@ -46,38 +46,8 @@ bool ModuleInput::Init()
 // Called every draw update
 update_status ModuleInput::PreUpdate()
 {
-	SDL_PumpEvents();
-
-	const Uint8* keys = SDL_GetKeyboardState(NULL);
-
-	for (int i = 0; i < MAX_KEYS; ++i)
-	{
-		if (keys[i] == 1)
-		{
-			if (keyboard[i] == KEY_IDLE)
-				keyboard[i] = KEY_DOWN;
-			else
-				keyboard[i] = KEY_REPEAT;
-		}
-		else
-		{
-			if (keyboard[i] == KEY_REPEAT || keyboard[i] == KEY_DOWN)
-				keyboard[i] = KEY_UP;
-			else
-				keyboard[i] = KEY_IDLE;
-		}
-	}
-
-	if (keyboard[SDL_SCANCODE_ESCAPE])
-		return update_status::UPDATE_STOP;
-
-	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) == 1) {
-		if (gamepad.A == PAD_BUTTON_IDLE)
-			gamepad.A = PAD_BUTTON_DOWN;
-		else
-			gamepad.A = PAD_BUTTON_REPEAT;
-	}
-
+	
+	
 	//Normalized direction
 	/*int xDir = 0;
 	int yDir = 0;
@@ -135,6 +105,37 @@ update_status ModuleInput::PreUpdate()
 				}
 		}
 	}*/
+
+	const Uint8* keys = SDL_GetKeyboardState(NULL);
+
+	for (int i = 0; i < MAX_KEYS; ++i)
+	{
+		if (keys[i] == 1)
+		{
+			if (keyboard[i] == KEY_IDLE)
+				keyboard[i] = KEY_DOWN;
+			else
+				keyboard[i] = KEY_REPEAT;
+		}
+		else
+		{
+			if (keyboard[i] == KEY_REPEAT || keyboard[i] == KEY_DOWN)
+				keyboard[i] = KEY_UP;
+			else
+				keyboard[i] = KEY_IDLE;
+		}
+	}
+
+	if (keyboard[SDL_SCANCODE_ESCAPE])
+		return update_status::UPDATE_STOP;
+
+	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) == 1) {
+		if (gamepad.A == PAD_BUTTON_IDLE)
+			gamepad.A = PAD_BUTTON_DOWN;
+		else
+			gamepad.A = PAD_BUTTON_REPEAT;
+	}
+	
 
 	return update_status::UPDATE_CONTINUE;
 }
