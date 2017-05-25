@@ -539,7 +539,10 @@ bool ModulePlayer::CleanUp()
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 	if (c2->type == COLLIDER_POWER_UP)
 	{
-		shotPower = 1;
+		if (shotPower < 4)
+			shotPower++;
+		else
+			shotPower = 4;
 		App->audio->PlayFx(valnus_PowerUp);
 	}
 	if (!inmortal && spawnTime == 0) {
@@ -568,7 +571,10 @@ void ModulePlayer::removePowerUp() {
 		hittedTime = SDL_GetTicks();
 		hitted = true;
 		if (shotPower > 0) {
-			shotPower = 0;
+			if (shotPower == 1)
+				shotPower = 0;
+			else
+				shotPower--;
 			App->enemies->AddEnemy(ENEMY_TYPES::POWER_UP, position.x, position.y - 50, ENEMY_MOVEMENT::NO_MOVEMENT);
 		}
 	}

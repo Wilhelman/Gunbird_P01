@@ -19,23 +19,32 @@
 Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 {
 	shot_done = false;
-	lives = 3;
+	lives = 6;
 
-	//fly.PushBack({ 749,943,77,66 });
-	//fly.PushBack({ 836,941,77,66 });
+	fly.PushBack({ 749,943,77,66 });
+	fly.PushBack({ 836,941,77,66 });
 	fly.PushBack({ 928,947,77,66 });
-	//fly.PushBack({ 1020,950,77,66 });
-	//fly.PushBack({ 750,1044,77,66 });
+	fly.PushBack({ 1020,950,77,66 });
+	fly.PushBack({ 750,1044,77,66 });
 	fly.loop = true;
 	fly.speed = 0.05f;
 
-	shot_phase_anim.PushBack({ 843,1046,77,66 });
-	shot_phase_anim.PushBack({ 926,1046,77,66 });
-	shot_phase_anim.PushBack({ 1020,1049,77,66 });
-	shot_phase_anim.PushBack({ 749,1141,77,66 });
-	shot_phase_anim.PushBack({ 847,1140,77,66 });
-	shot_phase_anim.loop = false;
-	shot_phase_anim.speed = 0.05;
+	shot_phase_anim_open.PushBack({ 843,1046,77,66 });
+	shot_phase_anim_open.PushBack({ 926,1046,77,66 });
+	shot_phase_anim_open.PushBack({ 1020,1049,77,66 });
+	shot_phase_anim_open.PushBack({ 749,1141,77,66 });
+	shot_phase_anim_open.PushBack({ 847,1140,77,66 });
+	shot_phase_anim_open.loop = false;
+	shot_phase_anim_open.speed = 0.05;
+
+	shot_phase_anim_close.PushBack({ 843,1225,77,66 });
+	shot_phase_anim_close.PushBack({ 926,1225,77,66 });
+	shot_phase_anim_close.PushBack({ 1020,1228,77,66 });
+	shot_phase_anim_close.PushBack({ 749,1298,77,66 });
+	shot_phase_anim_close.PushBack({ 847,1297,77,66 });
+	shot_phase_anim_close.loop = false;
+	shot_phase_anim_close.speed = 0.05;
+	
 
 	animation = &fly;
 	dead = false;
@@ -54,28 +63,27 @@ void Enemy_Flying_Machine::Move() {
 	position = original_pos + movement.GetCurrentPosition(&animation);
 
 	if (position.x == 50)
-		animation = &shot_phase_anim;
+		animation = &shot_phase_anim_open;
 
-	if (shot_done == true && position.x == SCREEN_WIDTH - 100) {
+	if (shot_done == true && position.x == SCREEN_WIDTH - 100) 
+	{
 		shot_done = false;
-		animation = &shot_phase_anim;
-		shot_phase_anim.Reset();
+		animation = &shot_phase_anim_open;
+		shot_phase_anim_open.Reset();
 	}
-}
+} 
 
 
 void Enemy_Flying_Machine::Shoot()
 {
-	if (!dead) {
-
-		currentTime = SDL_GetTicks();
-
-		if (animation == &shot_phase_anim && shot_phase_anim.Finished() && shot_done == false)
+	if (!dead) 
+	{
+		if (animation == &shot_phase_anim_open && shot_phase_anim_open.Finished() && shot_done == false)
 		{
 			int i = 1;
 			
 			shot_done = true;
-			animation = &fly;
+			animation = &shot_phase_anim_close;
 			
 
 			App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 14, position.y + 22, COLLIDER_TYPE::COLLIDER_NONE);
@@ -193,6 +201,8 @@ void Enemy_Flying_Machine::Shoot()
 			App->particles->AddParticle(lastParticle, position.x + 54, position.y + 22, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
 
 		}
+		if (shot_phase_anim_close.Finished())
+			animation = &fly;
 	}
 }
 	

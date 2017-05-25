@@ -52,13 +52,28 @@ private:
 
 public:
 
-	//player shots
+	//Valnus shots
 	Particle laser0;
 	Particle laser1;
 	Particle laser2;
+
 	Particle laser0_1;
 	Particle laser1_1;
 	Particle laser2_1;
+
+	Particle laser0_2;
+	Particle laser1_2;
+	Particle laser2_2;
+
+	Particle laser0_3;
+	Particle laser1_3;
+	Particle laser2_3;
+
+
+
+
+
+	
 
 	//TETSU shots
 	Particle laser_Tetsu0_0;

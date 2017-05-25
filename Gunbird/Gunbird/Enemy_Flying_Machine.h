@@ -11,7 +11,8 @@ private:
 
 
 	Animation fly;
-	Animation shot_phase_anim;
+	Animation shot_phase_anim_open;
+	Animation shot_phase_anim_close;
 
 	iPoint original_pos;
 
