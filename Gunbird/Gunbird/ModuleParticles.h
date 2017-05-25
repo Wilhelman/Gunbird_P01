@@ -69,12 +69,6 @@ public:
 	Particle laser1_3;
 	Particle laser2_3;
 
-
-
-
-
-	
-
 	//TETSU shots
 	Particle laser_Tetsu0_0;
 	Particle laser_Tetsu1_0;

@@ -73,28 +73,75 @@ ModuleParticles::ModuleParticles()
 		laser0.anim.speed = 0.1f;
 		laser0.speed.y = -5;
 		laser0.life = 3000;
+
 		laser0_1.anim.loop = false;
 		laser0_1.anim.speed = 0.1f;
 		laser0_1.speed.y = -5;
 		laser0_1.life = 3000;
 
+
 		laser1.anim.loop = false;
 		laser1.anim.speed = 0.1f;
 		laser1.speed.y = -5;
 		laser1.life = 2000;
+
 		laser1_1.anim.loop = false;
 		laser1_1.anim.speed = 0.1f;
 		laser1_1.speed.y = -5;
 		laser1_1.life = 2000;
 
+
 		laser2.anim.loop = false;
 		laser2.anim.speed = 0.1f;
 		laser2.speed.y = -5;
 		laser2.life = 2000;
+
 		laser2_1.anim.loop = false;
 		laser2_1.anim.speed = 0.1f;
 		laser2_1.speed.y = -5;
 		laser2_1.life = 2000;
+
+
+		////////////////////////////////////////////////////
+		laser0_2.anim.PushBack({ 614, 839, 31, 32 });
+		laser1_2.anim.PushBack({ 652, 839, 31, 32 });
+		laser2_2.anim.PushBack({ 690, 839, 29, 32 });
+
+		laser0_3.anim.PushBack({ 614, 877, 45, 42 });
+		laser1_3.anim.PushBack({ 664, 877, 43, 42 });
+		laser2_3.anim.PushBack({ 712, 877, 41, 42 });
+
+		laser0_2.anim.loop = false;
+		laser0_2.anim.speed = 0.1f;
+		laser0_2.speed.y = -5;
+		laser0_2.life = 3000;
+
+		laser1_2.anim.loop = false;
+		laser1_2.anim.speed = 0.1f;
+		laser1_2.speed.y = -5;
+		laser1_2.life = 3000;
+
+		laser2_2.anim.loop = false;
+		laser2_2.anim.speed = 0.1f;
+		laser2_2.speed.y = -5;
+		laser2_2.life = 3000;
+
+
+		laser0_3.anim.loop = false;
+		laser0_3.anim.speed = 0.1f;
+		laser0_3.speed.y = -5;
+		laser0_3.life = 3000;
+
+		laser1_3.anim.loop = false;
+		laser1_3.anim.speed = 0.1f;
+		laser1_3.speed.y = -5;
+		laser1_3.life = 3000;
+
+		laser2_3.anim.loop = false;
+		laser2_3.anim.speed = 0.1f;
+		laser2_3.speed.y = -5;
+		laser2_3.life = 3000;
+
 	}
 
 	//laser particle TETSU
@@ -149,34 +196,10 @@ ModuleParticles::ModuleParticles()
 		laser_Tetsu3_1.anim.speed = 0.1f;
 		laser_Tetsu3_1.speed.y = -5;
 		laser_Tetsu3_1.life = 3000;
-
-		////
-
-		laser_Tetsu0_1.anim.PushBack({ 1585,1055,31,41 });
-		laser_Tetsu1_1.anim.PushBack({ 1585,995,31,41 });
-		laser_Tetsu2_1.anim.PushBack({ 1585,935,31,41 });
-		laser_Tetsu3_1.anim.PushBack({ 1585,875,31,41 });
-
-		laser_Tetsu0_1.anim.loop = false;
-		laser_Tetsu0_1.anim.speed = 0.1f;
-		laser_Tetsu0_1.speed.y = -5;
-		laser_Tetsu0_1.life = 3000;
-
-		laser_Tetsu1_1.anim.loop = false;
-		laser_Tetsu1_1.anim.speed = 0.1f;
-		laser_Tetsu1_1.speed.y = -5;
-		laser_Tetsu1_1.life = 3000;
-
-		laser_Tetsu2_1.anim.loop = false;
-		laser_Tetsu2_1.anim.speed = 0.1f;
-		laser_Tetsu2_1.speed.y = -5;
-		laser_Tetsu2_1.life = 3000;
-
-		laser_Tetsu3_1.anim.loop = false;
-		laser_Tetsu3_1.anim.speed = 0.1f;
-		laser_Tetsu3_1.speed.y = -5;
-		laser_Tetsu3_1.life = 3000;
+	
 	}
+
+
 	//balloon death explosion
 	{
 		balloonDeathExplosion.anim.PushBack({ 54, 504, 92, 86 });

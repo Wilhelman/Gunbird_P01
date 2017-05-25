@@ -289,6 +289,54 @@ update_status ModulePlayer::Update()
 						if (!shotControl)
 							counter++;
 					}
+					else if (shotPower == 2) {
+						if (counter == 0)
+						{
+							App->particles->AddParticle(App->particles->laser0_2, position.x + 1, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							shotControl = false;
+						}
+						else if (counter == 7)
+						{
+							App->particles->AddParticle(App->particles->laser1_2, position.x + 1, position.y - 38, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 14)
+						{
+							App->particles->AddParticle(App->particles->laser2_2, position.x + 1, position.y - 38, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 21)
+						{
+							App->particles->AddParticle(App->particles->laser0_2, position.x + 1, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							counter = 0;
+							shotControl = true;
+						}
+
+						if (!shotControl)
+							counter++;
+					}
+					else if (shotPower == 3) {
+						if (counter == 0)
+						{
+							App->particles->AddParticle(App->particles->laser0_3, position.x - 5, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							shotControl = false;
+						}
+						else if (counter == 7)
+						{
+							App->particles->AddParticle(App->particles->laser1_3, position.x - 5, position.y - 38, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 14)
+						{
+							App->particles->AddParticle(App->particles->laser2_3, position.x - 5, position.y - 38, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 21)
+						{
+							App->particles->AddParticle(App->particles->laser0_3, position.x - 5, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							counter = 0;
+							shotControl = true;
+						}
+
+						if (!shotControl)
+							counter++;
+					}
 
 				} //end shot space
 
@@ -415,8 +463,56 @@ update_status ModulePlayer::Update()
 						if (!shotControl)
 							counter++;
 					}
+					else if (shotPower == 2) {
+						if (counter == 0)
+						{
+							App->particles->AddParticle(App->particles->laser0_2, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							shotControl = false;
+						}
+						else if (counter == 7)
+						{
+							App->particles->AddParticle(App->particles->laser1_2, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 14)
+						{
+							App->particles->AddParticle(App->particles->laser2_2, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 21)
+						{
+							App->particles->AddParticle(App->particles->laser0_2, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							counter = 0;
+							shotControl = true;
+						}
 
+						if (!shotControl)
+							counter++;
+					}
+					else if (shotPower == 3) {
+						if (counter == 0)
+						{
+							App->particles->AddParticle(App->particles->laser0_3, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							shotControl = false;
+						}
+						else if (counter == 7)
+						{
+							App->particles->AddParticle(App->particles->laser1_3, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 14)
+						{
+							App->particles->AddParticle(App->particles->laser2_3, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+						}
+						else if (counter == 21)
+						{
+							App->particles->AddParticle(App->particles->laser0_3, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							counter = 0;
+							shotControl = true;
+						}
+
+						if (!shotControl)
+							counter++;
+					}
 				} //end shot space
+
 				if (App->input->keyboard[SDL_SCANCODE_KP_7] == KEY_STATE::KEY_DOWN && (App->sceneCastle->IsEnabled() || App->sceneForest->IsEnabled()))
 				{
 					godModeControl = !godModeControl;
@@ -539,10 +635,10 @@ bool ModulePlayer::CleanUp()
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 	if (c2->type == COLLIDER_POWER_UP)
 	{
-		if (shotPower < 4)
+		if (shotPower < 3)
 			shotPower++;
 		else
-			shotPower = 4;
+			shotPower = 3;
 		App->audio->PlayFx(valnus_PowerUp);
 	}
 	if (!inmortal && spawnTime == 0) {
