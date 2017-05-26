@@ -241,6 +241,7 @@ update_status ModulePlayer::Update()
 					laserType++;
 					if (laserType > 2)
 						laserType = 0;*/
+
 					if (shotPower == 0) {
 						if (counter == 0)
 						{
@@ -258,6 +259,20 @@ update_status ModulePlayer::Update()
 						else if (counter == 21)
 						{
 							App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+
+							App->particles->AddParticle(App->particles->greenThunder_1, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->greenThunder_2, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
+							//App->particles->AddParticle(App->particles->greenThunder_3, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
+							//App->particles->AddParticle(App->particles->greenThunder_4, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
+							//App->particles->AddParticle(App->particles->greenThunder_5, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
+							//App->particles->AddParticle(App->particles->greenThunder_6, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
+							//App->particles->AddParticle(App->particles->greenThunder_7, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
+							//App->particles->AddParticle(App->particles->greenThunder_8, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
+							//App->particles->AddParticle(App->particles->greenThunder_9, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
+							//App->particles->AddParticle(App->particles->greenThunder_10, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
+							//App->particles->AddParticle(App->particles->greenThunder_11, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
+							//App->particles->AddParticle(App->particles->greenThunder_12, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
+
 							counter = 0;
 							shotControl = true;
 						}

@@ -69,6 +69,20 @@ public:
 	Particle laser1_3;
 	Particle laser2_3;
 
+	//Valnus special green thunder shots
+	Particle greenThunder_1;
+	Particle greenThunder_2;
+	Particle greenThunder_3;
+	Particle greenThunder_4;
+	Particle greenThunder_5;
+	Particle greenThunder_6;
+	Particle greenThunder_7;
+	Particle greenThunder_8;
+	Particle greenThunder_9;
+	Particle greenThunder_10;
+	Particle greenThunder_11;
+	Particle greenThunder_12;
+
 	//TETSU shots
 	Particle laser_Tetsu0_0;
 	Particle laser_Tetsu1_0;
@@ -80,7 +94,6 @@ public:
 	Particle laser_Tetsu2_1;
 	Particle laser_Tetsu3_1;
 
-	
 	//player death explosion
 	Particle deathPlayerExplosion;
 
