@@ -13,6 +13,12 @@ class ModuleSceneForest : public Module
 private:
 	int spawned = 0;
 
+	Animation miner_down;
+	Animation miner_up;
+	Animation miner_rigth;
+	Animation miner_drigth;
+	Animation miner_dleft;
+
 public:
 	ModuleSceneForest();
 	~ModuleSceneForest();

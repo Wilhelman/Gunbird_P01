@@ -27,16 +27,42 @@ ModuleSceneForest::ModuleSceneForest()
 	m_trees.w = SCREEN_WIDTH;
 	m_trees.h = 2800;
 
+	miner_down.PushBack({ 17, 13, 15, 23 });
+	miner_down.PushBack({ 215, 13, 15, 23 });
+	miner_down.PushBack({ 238, 13, 15, 23 });
+	miner_down.PushBack({ 259, 13, 15, 23 });
+	miner_down.speed = 0.05f;
+	miner_down.loop = true;
 
+	miner_up.PushBack({ 18, 125, 15, 23 });
+	miner_up.PushBack({ 39, 125, 15, 23 });
+	miner_up.PushBack({ 63, 125, 15, 23 });
+	miner_up.PushBack({ 84, 125, 15, 23 });
+	miner_up.speed = 0.05f;
+	miner_up.loop = true;
 
-	/*soldier_left_wall.loop = true;
-	soldier_left_wall.PushBack({ 533, 373, 13, 26 });
-	soldier_left_wall.PushBack({ 550, 373, 13, 26 });
-	soldier_left_wall.PushBack({ 566, 373, 13, 26 });
-	soldier_left_wall.PushBack({ 582, 373, 13, 26 });
-	soldier_left_wall.speed = 0.06f;
-	soldier_left_wall_y = -145;
-	soldier_left_wall_x = 50;*/
+	miner_rigth.PushBack({ 68, 50, 11, 22 });
+	miner_rigth.PushBack({ 93, 50, 11, 23 });
+	miner_rigth.PushBack({ 117, 50, 12, 22 });
+	miner_rigth.PushBack({ 19, 88, 11, 23 });
+	miner_rigth.speed = 0.05f;
+	miner_rigth.loop = true;
+
+	miner_drigth.PushBack({ 176, 12, 15, 23 });
+	miner_drigth.PushBack({ 176, 43, 15, 23 });
+	miner_drigth.PushBack({ 176, 76, 15, 23 });
+	miner_drigth.PushBack({ 176, 112, 15, 23 });
+	miner_drigth.PushBack({ 176, 146, 15, 23 });
+	miner_drigth.speed = 0.05f;
+	miner_drigth.loop = true;
+
+	miner_dleft.PushBack({ 154, 12, 15, 23 });
+	miner_dleft.PushBack({ 154, 43, 15, 23 });
+	miner_dleft.PushBack({ 154, 76, 15, 23 });
+	miner_dleft.PushBack({ 154, 112, 15, 23 });
+	miner_dleft.PushBack({ 154, 146, 15, 23 });
+	miner_dleft.speed = 0.05f;
+	miner_dleft.loop = true;
 
 }
 
