@@ -259,23 +259,17 @@ update_status ModulePlayer::Update()
 						else if (counter == 21)
 						{
 							App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
-
-							App->particles->AddParticle(App->particles->greenThunder_1, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->greenThunder_2, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
-							//App->particles->AddParticle(App->particles->greenThunder_3, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
-							//App->particles->AddParticle(App->particles->greenThunder_4, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
-							//App->particles->AddParticle(App->particles->greenThunder_5, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
-							//App->particles->AddParticle(App->particles->greenThunder_6, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
-							//App->particles->AddParticle(App->particles->greenThunder_7, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
-							//App->particles->AddParticle(App->particles->greenThunder_8, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
-							//App->particles->AddParticle(App->particles->greenThunder_9, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
-							//App->particles->AddParticle(App->particles->greenThunder_10, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
-							//App->particles->AddParticle(App->particles->greenThunder_11, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
-							//App->particles->AddParticle(App->particles->greenThunder_12, position.x + 8, position.y - 100, COLLIDER_PLAYER_SHOT);
-
 							counter = 0;
 							shotControl = true;
 						}
+
+						if (shotControl)
+						{
+							App->particles->AddParticle(App->particles->greenThunder1_1, position.x - 35, position.y - 305, COLLIDER_NONE);
+							App->particles->AddParticle(App->particles->greenThunder1_2, position.x - 35, position.y - 305, COLLIDER_PLAYER);
+							App->particles->AddParticle(App->particles->greenThunder1_3, position.x - 35, position.y - 305, COLLIDER_PLAYER);
+						}
+							
 
 						if (!shotControl)
 							counter++;

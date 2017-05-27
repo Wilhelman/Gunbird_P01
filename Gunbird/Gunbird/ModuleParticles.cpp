@@ -146,78 +146,30 @@ ModuleParticles::ModuleParticles()
 
 	// Valnus green thunder shots
 	{
-		greenThunder_1.anim.PushBack({ 225,2474,44,13 });
-		greenThunder_2.anim.PushBack({ 274,2458,64,29 });
-		greenThunder_3.anim.PushBack({ 343,2449,70,38 });
-		greenThunder_4.anim.PushBack({ 418,2383,82,104 });
-		greenThunder_5.anim.PushBack({ 505,2255,98,232 });
-		greenThunder_6.anim.PushBack({ 608,2207,104,280 });
-		greenThunder_7.anim.PushBack({ 717,2207,104,280 });
-		greenThunder_8.anim.PushBack({ 824,2207,104,280 });
-		greenThunder_9.anim.PushBack({ 931,2207,104,280 });
-		greenThunder_10.anim.PushBack({ 1038,2207,101,266 });
-		greenThunder_11.anim.PushBack({ 1145,2208,102,247 });
-		greenThunder_12.anim.PushBack({ 1024,2808,102,222 });
+		greenThunder1_1.anim.PushBack({ 6,2201,104,280 });
+		greenThunder1_1.anim.PushBack({ 115,2200,104,280 });
+		greenThunder1_1.anim.PushBack({ 222,2199,104,280 });
+		greenThunder1_1.anim.PushBack({ 342,2205,104,280 });
+		greenThunder1_1.anim.loop = false;
+		greenThunder1_1.anim.speed = 0.2f;
+		greenThunder1_1.life = 200;
 
-		greenThunder_1.anim.loop = false;
-		greenThunder_1.anim.speed = 0.1f;
-		//greenThunder_1.speed.y = -5;
-		greenThunder_1.life = 1500;
+		greenThunder1_2.anim.PushBack({ 459,2202,104,280 });
+		greenThunder1_2.anim.PushBack({ 608,2207,104,280 });
+		greenThunder1_2.anim.PushBack({ 934,2207,104,280 });
+		greenThunder1_2.anim.PushBack({ 788,2207,104,280 });
+		greenThunder1_2.anim.PushBack({ 1097,2207,104,280 });
+		greenThunder1_2.anim.loop = false;
+		greenThunder1_2.anim.speed = 0.2f;
+		greenThunder1_2.life = 200;
 
-		greenThunder_2.anim.loop = false;
-		greenThunder_2.anim.speed = 0.1f;
-		//greenThunder_2.speed.y = -5;
-		greenThunder_2.life = 1500;
-
-		greenThunder_3.anim.loop = false;
-		greenThunder_3.anim.speed = 0.1f;
-		//greenThunder_3.speed.y = -5;
-		greenThunder_3.life = 1500;
-
-		greenThunder_4.anim.loop = false;
-		greenThunder_4.anim.speed = 0.1f;
-		//greenThunder_4.speed.y = -5;
-		greenThunder_4.life = 1500;
-
-		greenThunder_5.anim.loop = false;
-		greenThunder_5.anim.speed = 0.1f;
-		//greenThunder_5.speed.y = -5;
-		greenThunder_5.life = 1500;
-
-		greenThunder_6.anim.loop = false;
-		greenThunder_6.anim.speed = 0.1f;
-		//greenThunder_6.speed.y = -5;
-		greenThunder_6.life = 1500;
-
-		greenThunder_7.anim.loop = false;
-		greenThunder_7.anim.speed = 0.1f;
-		//greenThunder_7.speed.y = -5;
-		greenThunder_7.life = 1500;
-
-		greenThunder_8.anim.loop = false;
-		greenThunder_8.anim.speed = 0.1f;
-		//greenThunder_8.speed.y = -5;
-		greenThunder_8.life = 1500;
-
-		greenThunder_9.anim.loop = false;
-		greenThunder_9.anim.speed = 0.1f;
-		//greenThunder_9.speed.y = -5;
-		greenThunder_9.life = 1500;
-
-		greenThunder_10.anim.loop = false;
-		greenThunder_10.anim.speed = 0.1f;
-		//greenThunder_10.speed.y = -5;
-		greenThunder_10.life = 1500;
-
-		greenThunder_11.anim.loop = false;
-		greenThunder_11.anim.speed = 0.1f;
-		//greenThunder_11.speed.y = -5;
-		greenThunder_11.life = 1500;
-
-		greenThunder_12.anim.loop = false;
-		greenThunder_12.anim.speed = 0.1f;
-		//greenThunder_12.speed.y = -5;
-		greenThunder_12.life = 1500;
+		greenThunder1_3.anim.PushBack({ 59,2570,104,280 });
+		greenThunder1_3.anim.PushBack({ 226,2570,104,280 });
+		greenThunder1_3.anim.PushBack({ 395,2560,104,280 });
+		greenThunder1_3.anim.loop = false;
+		greenThunder1_3.anim.speed = 0.2f;
+		greenThunder1_3.life = 200;
+		
 
 	}
 

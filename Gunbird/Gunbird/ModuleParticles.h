@@ -70,8 +70,10 @@ public:
 	Particle laser2_3;
 
 	//Valnus special green thunder shots
-	Particle greenThunder_1;
-	Particle greenThunder_2;
+	Particle greenThunder1_1;
+	Particle greenThunder1_2;
+	Particle greenThunder1_3;
+	/*Particle greenThunder_2;
 	Particle greenThunder_3;
 	Particle greenThunder_4;
 	Particle greenThunder_5;
@@ -81,7 +83,7 @@ public:
 	Particle greenThunder_9;
 	Particle greenThunder_10;
 	Particle greenThunder_11;
-	Particle greenThunder_12;
+	Particle greenThunder_12;*/
 
 	//TETSU shots
 	Particle laser_Tetsu0_0;
