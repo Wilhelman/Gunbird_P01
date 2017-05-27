@@ -169,9 +169,50 @@ ModuleParticles::ModuleParticles()
 		greenThunder1_3.anim.loop = false;
 		greenThunder1_3.anim.speed = 0.2f;
 		greenThunder1_3.life = 200;
-		
 
+		////////////////////
+		greenThunder2_1.anim.PushBack({798, 3414, 134, 288});
+		greenThunder2_1.anim.PushBack({ 79, 3096, 134, 288 });
+		greenThunder2_1.anim.PushBack({ 229, 3096, 134, 288 });
+		greenThunder2_1.anim.PushBack({ 372, 3096, 134, 288 });
+		greenThunder2_1.anim.loop = false;
+		greenThunder2_1.anim.speed = 0.2f;
+		greenThunder2_1.life = 200;
+
+		greenThunder2_2.anim.PushBack({ 522, 3101, 134, 288 });
+		greenThunder2_2.anim.PushBack({ 659, 3101, 134, 288 });
+		greenThunder2_2.anim.PushBack({ 859, 3098, 134, 288 });
+		greenThunder2_2.anim.PushBack({ 1015, 3100, 134, 288 });
+		greenThunder2_2.anim.PushBack({ 75, 3455, 134, 288 });
+		greenThunder2_2.anim.loop = false;
+		greenThunder2_2.anim.speed = 0.2f;
+		greenThunder2_2.life = 200;
+
+		greenThunder2_3.anim.PushBack({ 272, 3472, 134, 288 });
+		greenThunder2_3.anim.PushBack({ 475, 3472, 134, 288 });
+		greenThunder2_3.anim.PushBack({ 1007, 3472, 134, 288 });
+		greenThunder2_3.anim.loop = false;
+		greenThunder2_3.anim.speed = 0.2f;
+		greenThunder2_3.life = 200;
 	}
+
+	// Valnus bomb
+	{
+		valnusBomb.anim.PushBack({2473, 854, 576, 576});
+		valnusBomb.anim.PushBack({ 3073, 862, 576, 576 });
+		valnusBomb.anim.PushBack({ 2459, 167, 576, 576 });
+		valnusBomb.anim.PushBack({ 2573, 1806, 576, 576 });
+		valnusBomb.anim.PushBack({ 3118, 1806, 576, 576 });
+		valnusBomb.anim.PushBack({ 2168, 2714, 576, 576 });
+		valnusBomb.anim.PushBack({ 2749, 2714, 576, 576 });
+		valnusBomb.anim.PushBack({ 3329, 2713, 576, 576 });
+		valnusBomb.anim.PushBack({ 2167, 3297, 576, 576 });
+		valnusBomb.anim.PushBack({ 2701, 3297, 576, 576 });
+		valnusBomb.anim.loop = false;
+		valnusBomb.anim.speed = 0.2f;
+		valnusBomb.life = 200;
+	}
+
 
 	//laser particle TETSU
 	{

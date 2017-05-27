@@ -130,6 +130,16 @@ ModulePlayer::ModulePlayer()
 		playerCollision_Anim.speed = 0.5f;
 		playerCollision_Anim.loop = true;
 	}
+
+	// Shiny Valnus bomb animation
+	{
+		shinyValnus_bomb.PushBack({ 523,39,41,37 });
+		shinyValnus_bomb.PushBack({ 569,39,41,39 });
+		shinyValnus_bomb.PushBack({ 615,39,43,39 });
+		shinyValnus_bomb.PushBack({ 663,39,43,39 });
+		shinyValnus_bomb.speed = 0.5f;
+		shinyValnus_bomb.loop = true;
+	}
 }
 
 ModulePlayer::~ModulePlayer()
@@ -179,7 +189,6 @@ update_status ModulePlayer::Update()
 	if (!deadPlayer && !hitted && !spawining) {
 		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT || App->sceneForest->background_y == -SCREEN_HEIGHT) && (App->sceneCastle->IsEnabled() ||App->sceneForest->IsEnabled()))
 		{
-			
 			speed = 5;
 			position.y -= speed;
 		}
@@ -187,6 +196,13 @@ update_status ModulePlayer::Update()
 
 			if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::VALNUS_SELECTED)
 			{
+				/*if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
+				{
+					current_animation = &shinyValnus_bomb;
+					App->particles->AddParticle(App->particles->valnusBomb, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+
+				}*/
+
 
 				if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 				{
@@ -262,15 +278,6 @@ update_status ModulePlayer::Update()
 							counter = 0;
 							shotControl = true;
 						}
-
-						if (shotControl)
-						{
-							App->particles->AddParticle(App->particles->greenThunder1_1, position.x - 35, position.y - 305, COLLIDER_NONE);
-							App->particles->AddParticle(App->particles->greenThunder1_2, position.x - 35, position.y - 305, COLLIDER_PLAYER);
-							App->particles->AddParticle(App->particles->greenThunder1_3, position.x - 35, position.y - 305, COLLIDER_PLAYER);
-						}
-							
-
 						if (!shotControl)
 							counter++;
 					}
@@ -318,7 +325,12 @@ update_status ModulePlayer::Update()
 							counter = 0;
 							shotControl = true;
 						}
-
+						if (shotControl)
+						{
+							App->particles->AddParticle(App->particles->greenThunder1_1, position.x - 35, position.y - 305, COLLIDER_NONE);
+							App->particles->AddParticle(App->particles->greenThunder1_2, position.x - 35, position.y - 305, COLLIDER_PLAYER);
+							App->particles->AddParticle(App->particles->greenThunder1_3, position.x - 35, position.y - 305, COLLIDER_PLAYER);
+						}
 						if (!shotControl)
 							counter++;
 					}
@@ -342,11 +354,15 @@ update_status ModulePlayer::Update()
 							counter = 0;
 							shotControl = true;
 						}
-
+						if (shotControl)
+						{
+							App->particles->AddParticle(App->particles->greenThunder2_1, position.x - 50, position.y - 305, COLLIDER_NONE);
+							App->particles->AddParticle(App->particles->greenThunder2_2, position.x - 50, position.y - 305, COLLIDER_PLAYER);
+							App->particles->AddParticle(App->particles->greenThunder2_3, position.x - 50, position.y - 305, COLLIDER_PLAYER);
+						}
 						if (!shotControl)
 							counter++;
 					}
-
 				} //end shot space
 
 				if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN && (App->sceneCastle->IsEnabled() || App->sceneForest->IsEnabled()))

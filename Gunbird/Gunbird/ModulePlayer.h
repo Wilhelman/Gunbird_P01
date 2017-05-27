@@ -60,8 +60,10 @@ public:
 	Animation dead_animation_explosion;
 	Animation playerCollision_Anim;
 	Animation* current_animation;
+	Animation shinyValnus_bomb;
 	iPoint position;
 	Collider* playerCollider;
+
 
 	bool inmortal;
 	int playerLives;

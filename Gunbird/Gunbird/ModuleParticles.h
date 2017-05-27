@@ -73,17 +73,13 @@ public:
 	Particle greenThunder1_1;
 	Particle greenThunder1_2;
 	Particle greenThunder1_3;
-	/*Particle greenThunder_2;
-	Particle greenThunder_3;
-	Particle greenThunder_4;
-	Particle greenThunder_5;
-	Particle greenThunder_6;
-	Particle greenThunder_7;
-	Particle greenThunder_8;
-	Particle greenThunder_9;
-	Particle greenThunder_10;
-	Particle greenThunder_11;
-	Particle greenThunder_12;*/
+
+	Particle greenThunder2_1;
+	Particle greenThunder2_2;
+	Particle greenThunder2_3;
+
+	//Valnus bomb
+	Particle valnusBomb;
 
 	//TETSU shots
 	Particle laser_Tetsu0_0;
