@@ -45,13 +45,9 @@ bool ModuleWelcomeScreen::Start()
 update_status ModuleWelcomeScreen::Update()
 {
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] && App->fade->FadeIsOver()) {
+	if ((App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->gamepad.START == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fade->FadeIsOver()) {
 		App->audio->PlayFx(start_audio);
 		App->fade->FadeToBlack(this, App->characterSelection);
-	}
-
-	if (App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-		LOG("HOLAAA");
 	}
 
 	update_status status = UPDATE_CONTINUE;

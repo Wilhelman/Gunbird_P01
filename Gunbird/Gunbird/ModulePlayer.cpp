@@ -194,7 +194,7 @@ update_status ModulePlayer::Update()
 		}
 		else {
 
-			if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::VALNUS_SELECTED)
+			if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::VALNUS_SELECTED) //P1 CONTROLS
 			{
 				/*if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
 				{
@@ -204,7 +204,7 @@ update_status ModulePlayer::Update()
 				}*/
 
 
-				if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+				if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_REPEAT || App->input->gamepad.joystickRight)
 				{
 					if (position.x < SCREEN_WIDTH - 34) // TODO: correct limits so they are all equal
 						position.x += speed;
@@ -215,7 +215,7 @@ update_status ModulePlayer::Update()
 					}
 				}
 
-				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) {
+				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || App->input->gamepad.CROSS_LEFT == GAMEPAD_STATE::PAD_BUTTON_REPEAT || App->input->gamepad.joystickLeft) {
 					if (position.x > 3)
 						position.x -= speed;
 					if (current_animation != &left_animation)
@@ -225,19 +225,19 @@ update_status ModulePlayer::Update()
 					}
 				}
 
-				if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+				if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_REPEAT || App->input->gamepad.joystickUp)
 				{
 					if (position.y > 34)
 						position.y -= speed;
 				}
 
-				if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+				if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_REPEAT || App->input->gamepad.joystickDown)
 				{
 					if (position.y < SCREEN_HEIGHT - 3)
 						position.y += speed;
 				}
 
-				if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || (0 < counter))
+				if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || (0 < counter) || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 				{
 					//Old switch. Keep it it here for now
 					/*switch (laserType)
@@ -380,11 +380,11 @@ update_status ModulePlayer::Update()
 					playerExpControl = true;
 				}
 
-				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+				if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE) || (App->input->gamepad.joystickLeft == GAMEPAD_STATE::PAD_BUTTON_IDLE && App->input->gamepad.joystickRight == GAMEPAD_STATE::PAD_BUTTON_IDLE))
 					current_animation = &idle;
 			}
 
-			else if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::VALNUS_SELECTED)
+			else if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::VALNUS_SELECTED) // P2 CONTROLS
 			{
 				if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 				{

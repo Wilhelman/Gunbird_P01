@@ -36,9 +36,13 @@ bool ModuleInput::Init()
 	{
 		if (SDL_IsGameController(i)) {
 			controller = SDL_GameControllerOpen(i);
-			break;
+			if (controller) {
+				break;
+			}
 		}
 	}
+
+	controllerCharacterSelection = 0;
 
 	return ret;
 }
@@ -68,81 +72,202 @@ update_status ModuleInput::PreUpdate()
 		}
 	}
 
-	if (keyboard[SDL_SCANCODE_ESCAPE])
+	if (keyboard[SDL_SCANCODE_ESCAPE] || gamepad.BACK == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 		return update_status::UPDATE_STOP;
 
-	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) == 1) {
-		if (gamepad.A == PAD_BUTTON_IDLE)
-			gamepad.A = PAD_BUTTON_DOWN;
+	buttonForGamepad();
+
+	gamepad.movementJoystick.x = ((float)SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTX) / 32767.0f);
+	gamepad.movementJoystick.y = ((float)SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTY) / 32767.0f);
+
+	//JOYSTICK
+	if (gamepad.movementJoystick.x > 0.25)
+	{
+		gamepad.joystickRight = true;
+		if (controllerCharacterSelection == 8) {
+			gamepad.joystickRightCharacterSelection = true;
+			controllerCharacterSelection = 0;
+		}
 		else
-			gamepad.A = PAD_BUTTON_REPEAT;
+			gamepad.joystickRightCharacterSelection = false;
+
+		controllerCharacterSelection++;
+	}
+	else {
+		gamepad.joystickRight = false;
+		gamepad.joystickRightCharacterSelection = false;
 	}
 
-	//Normalized direction
-	/*int xDir = 0;
-	int yDir = 0;
-
-	while (SDL_PollEvent(&ev) != 0) {
-		if (ev.type == SDL_CONTROLLERBUTTONDOWN) {
-			LOG("HOLA SOY EL MANDO");
-			if (ev.cbutton.button == SDL_CONTROLLER_BUTTON_A) {
-				//TODO: implement the stuff
-			}
-			if (ev.cbutton.button == SDL_CONTROLLER_BUTTON_B) {
-
-			}
-			
+	if (gamepad.movementJoystick.x < -0.25)
+	{
+		gamepad.joystickLeft = true;
+		if (controllerCharacterSelection == 8) {
+			gamepad.joystickLeftCharacterSelection = true;
+			controllerCharacterSelection = 0;
 		}
-		if (ev.type == SDL_JOYAXISMOTION) {
-			//Motion on controller 0
-			if (ev.jaxis.which == 0)
-			{
-				//X axis motion
-				if (ev.jaxis.axis == 0)
-				{
-					//Left of dead zone
-					if (ev.jaxis.value < -JOYSTICK_DEAD_ZONE)
-					{
-						xDir = -1;
-					}
-					//Right of dead zone
-					else if (ev.jaxis.value > JOYSTICK_DEAD_ZONE)
-					{
-						xDir = 1;
-					}
-					else
-					{
-						xDir = 0;
-					}
-				}
-				//Y axis motion
-				else if (ev.jaxis.axis == 1)
-				{
-					//Below of dead zone
-					if (ev.jaxis.value < -JOYSTICK_DEAD_ZONE)
-					{
-						yDir = -1;
-					}
-					//Above of dead zone
-					else if (ev.jaxis.value > JOYSTICK_DEAD_ZONE)
-					{
-						yDir = 1;
-					}
-					else
-					{
-						yDir = 0;
-					}
-				}
-		}
-	}*/
+		else
+			gamepad.joystickLeftCharacterSelection = false;
 
-	return update_status::UPDATE_CONTINUE;
+		controllerCharacterSelection++;
+	}
+	else {
+		gamepad.joystickLeft = false;
+		gamepad.joystickLeftCharacterSelection = false;
+	}
+
+	gamepad.joystickDown = 0;
+	gamepad.joystickUp = 0;
+
+	if (gamepad.movementJoystick.y > 0.25)
+	{
+		gamepad.joystickDown = true;
+	}
+	else
+		gamepad.joystickDown = false;
+	if (gamepad.movementJoystick.y < -0.25)
+	{
+		gamepad.joystickUp = true;
+	}
+	else
+		gamepad.joystickUp = false;
+
+	return update_status::UPDATE_CONTINUE;	//WE SHOULD CARE ABOUT STATUS RETURNED HERE..
 }
 
 // Called before quitting
 bool ModuleInput::CleanUp()
 {
+	for (int i = 0; i < SDL_NumJoysticks(); ++i) {
+		if (SDL_IsGameController(i)) {
+			SDL_GameController *controller = SDL_GameControllerOpen(i);
+			if (controller) {
+				SDL_GameControllerClose(controller);
+			}
+		}
+	}
 	LOG("Quitting SDL input event subsystem");
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
 	return true;
+}
+
+void ModuleInput::buttonForGamepad() {
+	//BUTTON A
+	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A) == 1) {
+		if (gamepad.A == PAD_BUTTON_IDLE)
+			gamepad.A = PAD_BUTTON_DOWN;
+		else
+			gamepad.A= PAD_BUTTON_REPEAT;
+	}
+	else
+	{
+		if (gamepad.A == PAD_BUTTON_REPEAT || (gamepad.A == PAD_BUTTON_DOWN))
+			gamepad.A = PAD_BUTTON_KEY_UP;
+		else
+			gamepad.A = PAD_BUTTON_IDLE;
+	}
+
+	//BUTTON B
+	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B) == 1) {
+		if (gamepad.B == PAD_BUTTON_IDLE)
+			gamepad.B = PAD_BUTTON_DOWN;
+		else
+			gamepad.B = PAD_BUTTON_REPEAT;
+	}
+	else
+	{
+		if (gamepad.B == PAD_BUTTON_REPEAT || (gamepad.B == PAD_BUTTON_DOWN))
+			gamepad.B = PAD_BUTTON_KEY_UP;
+		else
+			gamepad.B = PAD_BUTTON_IDLE;
+	}
+
+	//BUTTON START
+	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) == 1) {
+		if (gamepad.START == PAD_BUTTON_IDLE)
+			gamepad.START = PAD_BUTTON_DOWN;
+		else
+			gamepad.START = PAD_BUTTON_REPEAT;
+	}
+	else
+	{
+		if (gamepad.START == PAD_BUTTON_REPEAT || (gamepad.START == PAD_BUTTON_DOWN))
+			gamepad.START = PAD_BUTTON_KEY_UP;
+		else
+			gamepad.START = PAD_BUTTON_IDLE;
+	}
+
+	//BUTTON BACK
+	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK) == 1) {
+		if (gamepad.BACK == PAD_BUTTON_IDLE)
+			gamepad.BACK = PAD_BUTTON_DOWN;
+		else
+			gamepad.BACK = PAD_BUTTON_REPEAT;
+	}
+	else
+	{
+		if (gamepad.BACK == PAD_BUTTON_REPEAT || (gamepad.BACK == PAD_BUTTON_DOWN))
+			gamepad.BACK = PAD_BUTTON_KEY_UP;
+		else
+			gamepad.BACK = PAD_BUTTON_IDLE;
+	}
+
+	//BUTTON DPAD UP
+	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) == 1) {
+		if (gamepad.CROSS_UP == PAD_BUTTON_IDLE)
+			gamepad.CROSS_UP = PAD_BUTTON_DOWN;
+		else
+			gamepad.CROSS_UP = PAD_BUTTON_REPEAT;
+	}
+	else
+	{
+		if (gamepad.CROSS_UP == PAD_BUTTON_REPEAT || (gamepad.CROSS_UP == PAD_BUTTON_DOWN))
+			gamepad.CROSS_UP = PAD_BUTTON_KEY_UP;
+		else
+			gamepad.CROSS_UP = PAD_BUTTON_IDLE;
+	}
+
+	//BUTTON DPAD DOWN
+	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) == 1) {
+		if (gamepad.CROSS_DOWN == PAD_BUTTON_IDLE)
+			gamepad.CROSS_DOWN = PAD_BUTTON_DOWN;
+		else
+			gamepad.CROSS_DOWN = PAD_BUTTON_REPEAT;
+	}
+	else
+	{
+		if (gamepad.CROSS_DOWN == PAD_BUTTON_REPEAT || (gamepad.CROSS_DOWN == PAD_BUTTON_DOWN))
+			gamepad.CROSS_DOWN = PAD_BUTTON_KEY_UP;
+		else
+			gamepad.CROSS_DOWN = PAD_BUTTON_IDLE;
+	}
+
+	//BUTTON DPAD LEFT
+	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) == 1) {
+		if (gamepad.CROSS_LEFT == PAD_BUTTON_IDLE)
+			gamepad.CROSS_LEFT = PAD_BUTTON_DOWN;
+		else
+			gamepad.CROSS_LEFT = PAD_BUTTON_REPEAT;
+	}
+	else
+	{
+		if (gamepad.CROSS_LEFT == PAD_BUTTON_REPEAT || (gamepad.CROSS_LEFT == PAD_BUTTON_DOWN))
+			gamepad.CROSS_LEFT = PAD_BUTTON_KEY_UP;
+		else
+			gamepad.CROSS_LEFT = PAD_BUTTON_IDLE;
+	}
+
+	//BUTTON DPAD UP
+	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) == 1) {
+		if (gamepad.CROSS_RIGHT == PAD_BUTTON_IDLE)
+			gamepad.CROSS_RIGHT = PAD_BUTTON_DOWN;
+		else
+			gamepad.CROSS_RIGHT = PAD_BUTTON_REPEAT;
+	}
+	else
+	{
+		if (gamepad.CROSS_RIGHT == PAD_BUTTON_REPEAT || (gamepad.CROSS_RIGHT == PAD_BUTTON_DOWN))
+			gamepad.CROSS_RIGHT = PAD_BUTTON_KEY_UP;
+		else
+			gamepad.CROSS_RIGHT = PAD_BUTTON_IDLE;
+	}
 }

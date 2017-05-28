@@ -2,6 +2,7 @@
 #include "Enemy_MetallicBalloon.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "SDL\include\SDL_timer.h"
 
 #define PI 3.14159265
@@ -165,8 +166,17 @@ uint Enemy_MetallicBalloon::getLives() {
 void Enemy_MetallicBalloon::Shoot()
 {
 	left = false;
-	double deltaX = ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
-	double deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
+	double deltaX;
+	double deltaY;
+	if (App->player->IsEnabled()) {
+		deltaX = ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
+		deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
+	}
+	else if (App->player2->IsEnabled()) {
+		deltaX = ((App->player2->position.x + (App->player2->playerCollider->rect.w / 2))) - (position.x + 15);
+		deltaY = ((App->player2->position.y + (App->player2->playerCollider->rect.h / 2))) - (position.y + 21);
+	}
+	
 	float angle;
 
 	angle = atan2(deltaX, deltaY);

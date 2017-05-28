@@ -5,6 +5,7 @@
 #include "Globals.h"
 #include "SDL\include\SDL_scancode.h"
 #include "SDL/include/SDL.h"
+#include "p2Point.h"
 
 #define MAX_KEYS 300
 
@@ -24,20 +25,27 @@ enum GAMEPAD_STATE
 	PAD_BUTTON_IDLE = 0,
 	PAD_BUTTON_DOWN,
 	PAD_BUTTON_REPEAT,
-	PAD_BUTTON_KEY_UP,
-	PAD_X_AXIS_RIGHT,
-	PAD_X_AXIS_LEFT,
-	PAD_X_AXIS_IDLE,
-	PAD_Y_AXIS_UP,
-	PAD_Y_AXIS_DOWN,
-	PAD_Y_AXIS_IDLE
+	PAD_BUTTON_KEY_UP
 };
 
 struct Gamepad {
-	GAMEPAD_STATE A;
+	GAMEPAD_STATE A = PAD_BUTTON_IDLE;
 	GAMEPAD_STATE B;
 	GAMEPAD_STATE Y;
 	GAMEPAD_STATE X;
+	GAMEPAD_STATE START;
+	GAMEPAD_STATE BACK;
+	GAMEPAD_STATE CROSS_UP;
+	GAMEPAD_STATE CROSS_DOWN;
+	GAMEPAD_STATE CROSS_LEFT;
+	GAMEPAD_STATE CROSS_RIGHT;
+	p2Point<float> movementJoystick;
+	bool joystickUp;
+	bool joystickDown;
+	bool joystickLeft;
+	bool joystickRight;
+	bool joystickLeftCharacterSelection;
+	bool joystickRightCharacterSelection;
 };
 
 class ModuleInput : public Module
@@ -54,8 +62,10 @@ public:
 public:
 	KEY_STATE keyboard[MAX_KEYS];
 	Gamepad gamepad;
+	void buttonForGamepad();
 
 private:
+	int controllerCharacterSelection;
 	SDL_Event ev;
 	SDL_GameController *controller;
 };

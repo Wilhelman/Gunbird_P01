@@ -466,7 +466,7 @@ update_status ModuleCharacterSelection::Update()
 
 	if (selected_P1_done == false)
 	{
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN)
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->gamepad.joystickRightCharacterSelection)
 		{
 			App->audio->PlayFx(selector_mov);
 			for (int i = 0; i < 5; ++i)
@@ -504,7 +504,7 @@ update_status ModuleCharacterSelection::Update()
 			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN)
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN || App->input->gamepad.CROSS_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN ||App->input->gamepad.joystickLeftCharacterSelection)
 		{
 			App->audio->PlayFx(selector_mov);
 			for (int i = 0; i < 5; ++i)
@@ -790,7 +790,7 @@ update_status ModuleCharacterSelection::Update()
 			selection_control_P2 = false;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 	{
 		selected_P1_done = true;
 
