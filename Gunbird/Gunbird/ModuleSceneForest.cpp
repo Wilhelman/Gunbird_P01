@@ -34,11 +34,11 @@ ModuleSceneForest::ModuleSceneForest()
 	miner_down.speed = 0.05f;
 	miner_down.loop = true;
 
-	miner_up.PushBack({ 18, 125, 15, 23 });
+	miner_up.PushBack({ 17, 125, 15, 23 });
 	miner_up.PushBack({ 39, 125, 15, 23 });
 	miner_up.PushBack({ 63, 125, 15, 23 });
-	miner_up.PushBack({ 84, 125, 15, 23 });
-	miner_up.speed = 0.05f;
+	miner_up.PushBack({ 86, 125, 15, 23 });
+	miner_up.speed = 0.02f;
 	miner_up.loop = true;
 
 	miner_rigth.PushBack({ 68, 50, 11, 22 });
@@ -82,6 +82,8 @@ bool ModuleSceneForest::Start()
 	soldier_left_wall_x = 50;
 	soldier_left_wall.Reset();*/
 
+	miner_up_y = 0;
+
 	LOG("Loading SceneForest assets");
 	bool ret = true;
 
@@ -122,6 +124,7 @@ bool ModuleSceneForest::Start()
 
 	graphics = App->textures->Load("Assets/maps/forest/map_forest_background_.png");
 	motionless_trees = App->textures->Load("Assets/maps/forest/Motionless_Trees.png");
+	graphic_miner = App->textures->Load("Assets/maps/forest/Forest_stuff.png");
 
 	if (graphics == nullptr ||motionless_trees == nullptr) {
 		LOG("Cannot load the texture in SceneForest");
@@ -183,6 +186,34 @@ update_status ModuleSceneForest::Update()
 			}
 			soldier_left_x -= 0.4f;
 		}*/
+
+		if (background_y >= -2350.0 && graphic_miner != nullptr) {
+			if (!App->render->Blit(graphic_miner, (int)190, (int)160 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+			if (!App->render->Blit(graphic_miner, (int)150, (int)160 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+			if (!App->render->Blit(graphic_miner, (int)170, (int)140 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+			if (!App->render->Blit(graphic_miner, (int)120, (int)140 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+			if (!App->render->Blit(graphic_miner, (int)140, (int)120 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+			if (background_y >= -2130.0) {
+				miner_up_y -= -0.4f;
+			}
+		}
+
+
 		
 	}
 

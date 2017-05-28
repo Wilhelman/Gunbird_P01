@@ -236,7 +236,7 @@ ModulePlayer2::ModulePlayer2()
 
 	//Colision Animation
 	{
-		player2Collision_Anim.PushBack({ 477, 513, 31, 39 });
+		player2Collision_Anim.PushBack({ 474, 513, 31, 39 });
 		player2Collision_Anim.PushBack({ 511, 513, 31, 39 });
 		player2Collision_Anim.PushBack({ 549, 513, 31, 39 });
 		player2Collision_Anim.PushBack({ 583, 513, 31, 39 });

@@ -15,6 +15,7 @@ private:
 
 	Animation miner_down;
 	Animation miner_up;
+	float miner_up_y;
 	Animation miner_rigth;
 	Animation miner_drigth;
 	Animation miner_dleft;
@@ -29,6 +30,7 @@ public:
 
 public:
 	SDL_Texture* graphics = nullptr;
+	SDL_Texture* graphic_miner = nullptr;
 	SDL_Texture* motionless_trees = nullptr;
 	SDL_Rect background;
 	SDL_Rect m_trees;
