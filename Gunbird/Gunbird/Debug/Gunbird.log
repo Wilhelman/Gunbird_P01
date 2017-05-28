@@ -1,5 +1,10 @@
-﻿  ModulePlayer2.cpp
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
-  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
-  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
+﻿  ModuleSceneForest.cpp
+c:\users\ariadna\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\ariadna\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
+c:\users\ariadna\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(171): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\ariadna\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(175): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\ariadna\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(179): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\ariadna\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(183): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\ariadna\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(187): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  Gunbird.vcxproj -> C:\Users\Ariadna\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
+  Gunbird.vcxproj -> C:\Users\Ariadna\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)

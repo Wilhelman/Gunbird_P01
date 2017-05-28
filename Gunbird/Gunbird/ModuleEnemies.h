@@ -51,6 +51,7 @@ enum ENEMY_MOVEMENT
 	BALLOON_PATH_FOREST,
 	FLYING_MACHINE_PATH_1,
 	FLYING_MACHINE_PATH_2,
+	RED_TURRET_LEFT_RIGTH,
 
 	POWER_UP_MOVEMENT
 };
@@ -125,6 +126,9 @@ private:
 
 	//path power_up
 	Path powerUpPath;
+
+	//red turret
+	Path red_turret_left_rigth;
 
 
 	EnemyInfo queue[MAX_ENEMIES];

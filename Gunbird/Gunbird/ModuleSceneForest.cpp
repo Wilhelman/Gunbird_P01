@@ -167,6 +167,33 @@ update_status ModuleSceneForest::Update()
 		status = UPDATE_ERROR;
 	}
 
+	if (background_y >= -2350.0 && graphic_miner != nullptr) {
+		if (!App->render->Blit(graphic_miner, (int)190, (int)160 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+		if (!App->render->Blit(graphic_miner, (int)150, (int)160 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+		if (!App->render->Blit(graphic_miner, (int)170, (int)140 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+		if (!App->render->Blit(graphic_miner, (int)120, (int)140 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+		if (!App->render->Blit(graphic_miner, (int)140, (int)120 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+		if (background_y >= -2130.0) {
+			miner_up_y -= -0.4f;
+		}
+	}
+
+
 	if (!App->render->Blit(motionless_trees, (int)background_x, (int)background_y + SCREEN_HEIGHT, &m_trees, 0.75f)) {
 		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
@@ -187,31 +214,7 @@ update_status ModuleSceneForest::Update()
 			soldier_left_x -= 0.4f;
 		}*/
 
-		if (background_y >= -2350.0 && graphic_miner != nullptr) {
-			if (!App->render->Blit(graphic_miner, (int)190, (int)160 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
-				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-			if (!App->render->Blit(graphic_miner, (int)150, (int)160 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
-				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-			if (!App->render->Blit(graphic_miner, (int)170, (int)140 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
-				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-			if (!App->render->Blit(graphic_miner, (int)120, (int)140 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
-				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-			if (!App->render->Blit(graphic_miner, (int)140, (int)120 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
-				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-			if (background_y >= -2130.0) {
-				miner_up_y -= -0.4f;
-			}
-		}
+		
 
 
 		
@@ -251,18 +254,38 @@ update_status ModuleSceneForest::Update()
 	//ENEMY SPAWN PHASE 
 
 	{
-		if ((int)background_y == -2720 && spawned == 0) 
+		if ((int)background_y == -2760 && spawned == 0)
 		{
 			spawned = 1;
+			App->enemies->AddEnemy(ENEMY_TYPES::BIG_RED_TURRET, 25, -70, ENEMY_MOVEMENT::STAY);
+			App->enemies->AddEnemy(ENEMY_TYPES::BIG_RED_TURRET, 153, -85, ENEMY_MOVEMENT::STAY);
+			
+		}
+
+		if ((int)background_y == -2720 && spawned == 1) 
+		{
+			spawned = 2;
 			App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_FOREST);
 		}
 
-		if ((int)background_y == -2500 && spawned == 1) {
+		/*if ((int)background_y == -2500 && spawned == 1) {
 			spawned = 2;
 			App->enemies->AddEnemy(ENEMY_TYPES::FLYING_MACHINE, -80, 20, ENEMY_MOVEMENT::FLYING_MACHINE_PATH_1);
 
+		}*/
+
+		if ((int)background_y == -2400 && spawned == 2)
+		{
+			spawned = 3      ;
+			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 190, -50, ENEMY_MOVEMENT::STAY);
+			//App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 200, -90, ENEMY_MOVEMENT::STAY);
 		}
-			
+		
+		if ((int)background_y == -2500 && spawned == 3)
+		{
+			spawned = 4;
+			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 0, -50, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
+		}
 
 		/*if ((int)background_y == -1600 && spawned == 1) {
 			spawned = 2;
@@ -277,14 +300,6 @@ update_status ModuleSceneForest::Update()
 
 			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 50, -30, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
 			App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH /2 + 30, -29, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
-		}
-
-		if ((int)background_y == -1500 && spawned == 1)
-		{
-			spawned = 2;
-			App->enemies->AddEnemy(ENEMY_TYPES::BIG_RED_TURRET, 40, -52, ENEMY_MOVEMENT::STAY);
-
-			
 		}
 
 		if ((int)background_y == -1450 && spawned == 2)

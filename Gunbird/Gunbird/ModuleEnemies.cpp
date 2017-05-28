@@ -159,6 +159,11 @@ ModuleEnemies::ModuleEnemies()
 	flying_machine_path1.PushBack({ 0.0f, 0.0f }, 70);
 	flying_machine_path1.PushBack({ -1.5f, 0.05f }, 120);
 	flying_machine_path1.loop = false;
+
+	//red turret
+	red_turret_left_rigth.PushBack({ 0.5f, 0.0f }, 40);
+	red_turret_left_rigth.loop = false;
+
 }
 
 // Destructor
@@ -386,6 +391,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			{
 			case ENEMY_MOVEMENT::STAY:
 				enemies[i]->movement = stayPath;
+				break;
+
+			case ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH:
+				enemies[i]->movement = red_turret_left_rigth;
 				break;
 
 			default:

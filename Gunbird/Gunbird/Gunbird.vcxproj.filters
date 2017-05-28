@@ -25,11 +25,11 @@
     <Filter Include="Modules\Enemies\SceneCastle">
       <UniqueIdentifier>{0b2d63f7-9c76-4e49-8388-fd02dc4ea65e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\Enemies\Common">
-      <UniqueIdentifier>{64293970-1ced-4cc4-8d4a-a8de9492c341}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Modules\Enemies\SceneForest">
       <UniqueIdentifier>{4b0e2cb0-9b5f-4570-abac-9654444ef519}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Enemies\Buildings &amp; Stuff\Common">
+      <UniqueIdentifier>{64293970-1ced-4cc4-8d4a-a8de9492c341}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -118,7 +118,7 @@
       <Filter>Modules\Enemies\SceneCastle</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_MetallicBalloon.cpp">
-      <Filter>Modules\Enemies\Common</Filter>
+      <Filter>Modules\Enemies\Buildings &amp; Stuff\Common</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Bee.cpp">
       <Filter>Modules\Enemies\SceneForest</Filter>
@@ -234,7 +234,7 @@
       <Filter>Modules\Enemies\SceneCastle</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_MetallicBalloon.h">
-      <Filter>Modules\Enemies\Common</Filter>
+      <Filter>Modules\Enemies\Buildings &amp; Stuff\Common</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Trump_Red_Mecha.h">
       <Filter>Modules\Enemies\SceneForest</Filter>
