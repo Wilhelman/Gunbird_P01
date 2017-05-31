@@ -47,6 +47,7 @@ enum ENEMY_MOVEMENT
 	BEE_CORNER_LEFT_PATH2,
 	BEE_CORNER_RIGHT_PATH,
 	BEE_CORNER_RIGHT_PATH2,
+	BEE_CORNER_STRAIGHT,
 	TRUMP_RED_MECHA_PATH,
 	BALLOON_PATH_FOREST,
 	FLYING_MACHINE_PATH_1,
@@ -116,6 +117,7 @@ private:
 	Path bee_corner_right_path;
 	Path bee_corner_left_path2;
 	Path bee_corner_right_path2;
+	Path bee_corner_straight;
 
 	//path trump red mecha
 	Path trump_red_mecha_path;

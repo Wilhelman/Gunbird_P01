@@ -127,24 +127,29 @@ ModuleEnemies::ModuleEnemies()
 	bee_corner_right_path2.PushBack({ -0.8f,2.5f }, 3000);
 	bee_corner_right_path2.loop = false;
 
+	bee_corner_straight.PushBack({ 0.0f , 0.5f }, 60);
+	bee_corner_straight.PushBack({ 0.0f , 2.5f }, 30);
+	bee_corner_straight.PushBack({ 0.0f , 2.5f }, 3000);
+	bee_corner_right_path2.loop = false;
+
 	//Trump red Mecha path
 	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 300);
 	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 40);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 30);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 40);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 40);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 30);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 40);
 	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
 	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
 	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f, 0.5f }, 100);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.5f }, 40);
 	trump_red_mecha_path.PushBack({ -2.0f, 0.0f }, 200);
 	trump_red_mecha_path.loop = false;
 
@@ -385,6 +390,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				break;
 			case ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2:
 				enemies[i]->movement = bee_corner_right_path2;
+				break;  
+			case ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT:
+				enemies[i]->movement = bee_corner_straight;
 				break;
 			default:
 				break;
