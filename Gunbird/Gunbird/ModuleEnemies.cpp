@@ -144,7 +144,8 @@ ModuleEnemies::ModuleEnemies()
 	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
 	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
 	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f,0.5f }, 20);
+	trump_red_mecha_path.PushBack({ 0.0f, 0.5f }, 100);
+	trump_red_mecha_path.PushBack({ -2.0f, 0.0f }, 200);
 	trump_red_mecha_path.loop = false;
 
 
@@ -161,8 +162,13 @@ ModuleEnemies::ModuleEnemies()
 	flying_machine_path1.loop = false;
 
 	//red turret
-	red_turret_left_rigth.PushBack({ 0.5f, 0.0f }, 40);
+	red_turret_left_rigth.PushBack({ 0.5f, 0.5f }, 180);
+	red_turret_left_rigth.PushBack({ 0.0f, 0.5f }, 3500);
 	red_turret_left_rigth.loop = false;
+	
+	red_turret_rigth_left.PushBack({ -0.5f, 0.5f }, 180);
+	red_turret_rigth_left.PushBack({ 0.0f, 0.5f }, 3500);
+	red_turret_rigth_left.loop = false;
 
 }
 
@@ -395,6 +401,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 			case ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH:
 				enemies[i]->movement = red_turret_left_rigth;
+				break;
+			
+			case ENEMY_MOVEMENT::RED_TURRET_RIGHT_LEFT:
+				enemies[i]->movement = red_turret_rigth_left;
 				break;
 
 			default:

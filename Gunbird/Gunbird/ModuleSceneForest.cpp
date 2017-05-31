@@ -254,47 +254,9 @@ update_status ModuleSceneForest::Update()
 	//ENEMY SPAWN PHASE 
 
 	{
-		if ((int)background_y == -2760 && spawned == 0)
-		{
-			spawned = 1;
-			App->enemies->AddEnemy(ENEMY_TYPES::BIG_RED_TURRET, 25, -70, ENEMY_MOVEMENT::STAY);
-			App->enemies->AddEnemy(ENEMY_TYPES::BIG_RED_TURRET, 153, -85, ENEMY_MOVEMENT::STAY);
-			
-		}
-
-		if ((int)background_y == -2720 && spawned == 1) 
-		{
-			spawned = 2;
-			App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_FOREST);
-		}
-
-		/*if ((int)background_y == -2500 && spawned == 1) {
-			spawned = 2;
-			App->enemies->AddEnemy(ENEMY_TYPES::FLYING_MACHINE, -80, 20, ENEMY_MOVEMENT::FLYING_MACHINE_PATH_1);
-
-		}*/
-
-		if ((int)background_y == -2400 && spawned == 2)
-		{
-			spawned = 3      ;
-			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 190, -50, ENEMY_MOVEMENT::STAY);
-			//App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 200, -90, ENEMY_MOVEMENT::STAY);
-		}
+		//bee
+		if ((int)background_y == -2780 && spawned == 0) {
 		
-		if ((int)background_y == -2500 && spawned == 3)
-		{
-			spawned = 4;
-			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 0, -50, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
-		}
-
-		/*if ((int)background_y == -1600 && spawned == 1) {
-			spawned = 2;
-			App->enemies->AddEnemy(ENEMY_TYPES::TRUMP_RED_MECHA, 20, 20, ENEMY_MOVEMENT::TRUMP_RED_MECHA_PATH);
-			
-		}
-
-		if ((int)background_y == -1600 && spawned == 0) {
-			spawned = 1;
 			App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -10, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
 			App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH, -20, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
 
@@ -302,20 +264,68 @@ update_status ModuleSceneForest::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH /2 + 30, -29, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
 		}
 
-		if ((int)background_y == -1450 && spawned == 2)
+		//big red turret + bee
+		if ((int)background_y == -2760 && spawned == 0)
 		{
-			spawned = 3;
-			App->enemies->AddEnemy(ENEMY_TYPES::BIG_RED_TURRET, 130, -52, ENEMY_MOVEMENT::STAY);
+			spawned = 1;
+			App->enemies->AddEnemy(ENEMY_TYPES::BIG_RED_TURRET, 25, -70, ENEMY_MOVEMENT::STAY);
+			App->enemies->AddEnemy(ENEMY_TYPES::BIG_RED_TURRET, 153, -85, ENEMY_MOVEMENT::STAY);
+
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 50, 30, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 60, 40, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 100, 60, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
+
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 210, -30, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
+
+			
 		}
 
-		if ((int)background_y == -1350 && spawned == 3)
+		//metalic balloon
+		if ((int)background_y == -2720 && spawned == 1) 
+		{
+			spawned = 2;
+			App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_FOREST);
+		}
+
+		//flying machine
+		if ((int)background_y == -2500 && spawned == 2) {
+			spawned = 3;
+			App->enemies->AddEnemy(ENEMY_TYPES::FLYING_MACHINE, -80, 20, ENEMY_MOVEMENT::FLYING_MACHINE_PATH_1);
+
+		}
+
+		//red turret
+		if ((int)background_y == -2400 && spawned == 3)
 		{
 			spawned = 4;
-			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 70, -30, ENEMY_MOVEMENT::STAY);
-			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 150, -50, ENEMY_MOVEMENT::STAY);
-			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 200, -90, ENEMY_MOVEMENT::STAY);
-		}*/
+			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 190, -50, ENEMY_MOVEMENT::STAY);
 
+		}
+		
+		if ((int)background_y == -2200 && spawned == 4)
+		{
+			spawned = 5;
+			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -80, 55, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
+			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -80, -20, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
+
+		}
+
+		if ((int)background_y == -2150 && spawned == 5)
+		{
+			spawned = 6;
+			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -20, -20, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
+			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -20, -100, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
+
+		}
+
+		//red turret + red mecha
+		if ((int)background_y == -2000 && spawned == 6)
+		{
+			spawned = 7;
+			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 234, -50, ENEMY_MOVEMENT::RED_TURRET_RIGHT_LEFT);
+			App->enemies->AddEnemy(ENEMY_TYPES::TRUMP_RED_MECHA, 50, -50, ENEMY_MOVEMENT::TRUMP_RED_MECHA_PATH);
+
+		}
 		
 	}
 	
