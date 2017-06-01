@@ -141,6 +141,59 @@ ModulePlayer::ModulePlayer()
 		shinyValnus_bomb.speed = 0.5f;
 		shinyValnus_bomb.loop = true;
 	}
+
+	//Valnus bomb
+	{
+		valnus_bomb_animation.PushBack({ 1,1,580,576 });
+		valnus_bomb_animation.PushBack({ 1,1,580,576 });
+		valnus_bomb_animation.PushBack({ 582,1,580,576 });
+		valnus_bomb_animation.PushBack({ 582,1,580,576 });
+		valnus_bomb_animation.PushBack({ 1163,1,580,576 });
+		valnus_bomb_animation.PushBack({ 1163,1,580,576 });
+		valnus_bomb_animation.PushBack({ 1744,1,580,576 });
+		valnus_bomb_animation.PushBack({ 1744,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2325,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2325,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2906,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2906,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2325,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2325,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2906,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2906,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2325,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2325,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2906,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2906,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2325,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2325,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2906,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2906,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2325,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2325,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2906,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2906,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2325,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2325,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2906,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2906,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2906,1,580,576 });
+		valnus_bomb_animation.PushBack({ 2906,1,580,576 });
+		valnus_bomb_animation.PushBack({ 1,578,580,576 });
+		valnus_bomb_animation.PushBack({ 1,578,580,576 });
+		valnus_bomb_animation.PushBack({ 582,578,580,576 });
+		valnus_bomb_animation.PushBack({ 582,578,580,576 });
+		valnus_bomb_animation.PushBack({ 1163,578,580,576 });
+		valnus_bomb_animation.PushBack({ 1163,578,580,576 });
+		valnus_bomb_animation.PushBack({ 1744,578,580,576 });
+		valnus_bomb_animation.PushBack({ 1744,578,580,576 });
+		valnus_bomb_animation.speed = 0.4;
+
+		valnus_bomb.PushBack({ 2331,638,43,39 });
+		valnus_bomb.PushBack({ 2376,638,43,39 });
+		valnus_bomb.PushBack({ 2421,638,43,39 });
+		valnus_bomb.PushBack({ 2464,638,43,39 });
+		valnus_bomb.speed = 0.1f;
+	}
 }
 
 ModulePlayer::~ModulePlayer()
@@ -163,9 +216,15 @@ bool ModulePlayer::Start()
 	
 	LOG("Loading player textures");
 	bool ret = true;
+
 	graphics = App->textures->Load("Assets/characters/valnus_spritesheet.png");
 	if (graphics == nullptr)
 		ret = false;
+
+	valnusBombGraphics = App->textures->Load("Assets/characters/valnus_bomb.png");
+	if (valnusBombGraphics == nullptr)
+		ret = false;
+
 
 	LOG("Loading player audios");
 	valnus_Hitted = App->audio->LoadFx("Assets/audio/effects/Valnus_hit_enemy.wav");

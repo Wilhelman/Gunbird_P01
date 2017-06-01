@@ -49,6 +49,7 @@ public:
 public:
 	uint shotPower;
 	SDL_Texture* graphics = nullptr;
+	SDL_Texture* valnusBombGraphics;
 	Animation godMode;
 	Animation idle;
 	Animation blink;
@@ -61,6 +62,8 @@ public:
 	Animation playerCollision_Anim;
 	Animation* current_animation;
 	Animation shinyValnus_bomb;
+	Animation valnus_bomb_animation;
+	Animation valnus_bomb;
 	iPoint position;
 	Collider* playerCollider;
 
