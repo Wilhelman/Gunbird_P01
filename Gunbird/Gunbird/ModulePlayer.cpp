@@ -246,6 +246,9 @@ update_status ModulePlayer::Update()
 
 	int speed = 3;
 
+	if (canThrowBomb)
+		speed = 1.5f;
+
 	if (!deadPlayer && !hitted && !spawining) {
 		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT || App->sceneForest->background_y == -SCREEN_HEIGHT) && (App->sceneCastle->IsEnabled() ||App->sceneForest->IsEnabled()))
 		{
@@ -255,11 +258,19 @@ update_status ModulePlayer::Update()
 		else {
 			if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::VALNUS_SELECTED) //P1 CONTROLS
 			{
-				if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
+				bombPos.y = position.y;
+				if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN || App->input->gamepad.B == KEY_STATE::KEY_DOWN)
 				{
-					current_animation = &shinyValnus_bomb;
-					App->particles->AddParticle(App->particles->valnusBomb,0, 0, COLLIDER_PLAYER_SHOT);
+					if (canThrowBomb == false && this->playerBombs > 0) {
+						
+							canThrowBomb = true;
+							bombPos.x = position.x;
+							App->player->playerBombs--;
+						
+					}
 
+					
+					
 				}
 
 
@@ -636,6 +647,34 @@ update_status ModulePlayer::Update()
 		status = UPDATE_ERROR;
 	}
 
+	bombPos = this->position;
+	bombPos.x = bombPos.x - 124;
+	bombPos.y = bombPos.y - 124;
+
+	if (canThrowBomb == true) {
+		if (timeToBomb < 20) 
+			App->render->Blit(valnusBombGraphics, bombPos.x - 155, bombPos.y - 170, &(valnus_bomb_animation.GetCurrentFrame()));
+		
+		if (timeToBomb == 30)
+			bombCollider = App->collision->AddCollider({ bombPos.x, bombPos.y, 254, 300 }, COLLIDER_PLAYER_SHOT, this);
+		
+		if (timeToBomb >= 75)
+			App->render->Blit(valnusBombGraphics, bombPos.x - 155, bombPos.y - 170, &(valnus_bomb_animation.GetCurrentFrame()));
+			
+
+		if (timeToBomb == 130) {
+			canThrowBomb = false;
+			timeToBomb = 0;
+			App->collision->EraseCollider(bombCollider);
+		}
+
+		if (timeToBomb < 200)
+			timeToBomb++;
+		if(bombCollider!= nullptr)
+			bombCollider->SetPos(position.x - 100, position.y - 160);
+
+	}
+
 	if (this->deadPlayer) {
 		
 		if (!inmortal) {
@@ -707,6 +746,7 @@ bool ModulePlayer::CleanUp()
 		playerCollider = nullptr;
 	}
 	App->textures->Unload(graphics);
+	App->textures->Unload(valnusBombGraphics);
 
 	LOG("Unloading player sound fx");
 	App->audio->UnLoadFx(valnus_Hitted);

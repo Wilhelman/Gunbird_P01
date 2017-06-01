@@ -24,6 +24,7 @@ private:
 	uint spawnTime;
 
 	bool hitted;
+	float timeToBomb = 0;
 	uint hittedTime;
 
 	//playerSoundEffects
@@ -65,9 +66,11 @@ public:
 	Animation valnus_bomb_animation;
 	Animation valnus_bomb;
 	iPoint position;
+	iPoint bombPos;
 	Collider* playerCollider;
+	Collider* bombCollider;
 
-
+	bool canThrowBomb;
 	bool inmortal;
 	int playerLives;
 	int playerBombs;
