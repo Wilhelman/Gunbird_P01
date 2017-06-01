@@ -32,8 +32,6 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 
-	bool livesCount[3];
-
 	SDL_Rect liveIcon;
 	SDL_Rect p1_Icon;
 	SDL_Rect bombIcon;

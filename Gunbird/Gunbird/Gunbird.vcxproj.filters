@@ -135,6 +135,9 @@
     <ClCompile Include="Enemy_Flying_Machine.cpp">
       <Filter>Modules\Enemies\SceneForest</Filter>
     </ClCompile>
+    <ClCompile Include="Bomb.cpp">
+      <Filter>Modules\Enemies\Items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals.h">
@@ -250,6 +253,9 @@
     </ClInclude>
     <ClInclude Include="Enemy_Flying_Machine.h">
       <Filter>Modules\Enemies\SceneForest</Filter>
+    </ClInclude>
+    <ClInclude Include="Bomb.h">
+      <Filter>Modules\Enemies\Items</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

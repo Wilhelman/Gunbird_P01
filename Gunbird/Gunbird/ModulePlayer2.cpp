@@ -304,6 +304,7 @@ ModulePlayer2::ModulePlayer2()
 	}
 
 	playerLives = 2;
+	playerBombs = 2;
 }
 
 ModulePlayer2::~ModulePlayer2()
@@ -713,6 +714,14 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 	{
 		shotPower = 1;
 		App->audio->PlayFx(tetsu_PowerUp);
+	}
+	if (c2->type == COLLIDER_BOMB)
+	{
+		if (playerBombs < 3)
+			playerBombs++;
+
+		App->audio->PlayFx(tetsu_PowerUp);
+	
 	}
 	if (!inmortal && spawnTime == 0) {
 

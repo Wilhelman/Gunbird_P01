@@ -210,7 +210,7 @@ ModuleParticles::ModuleParticles()
 		valnusBomb.anim.PushBack({ 2701, 3297, 576, 576 });
 		valnusBomb.anim.loop = false;
 		valnusBomb.anim.speed = 0.2f;
-		valnusBomb.life = 200;
+		valnusBomb.life = 3000;
 	}
 
 
@@ -486,7 +486,7 @@ update_status ModuleParticles::Update()
 		if (p == nullptr)
 			continue;
 
-		if (p->position.y < -10 || p->position.y > SCREEN_HEIGHT) {
+		if (p->position.y < -10 || p->position.y > SCREEN_HEIGHT && p != &valnusBomb) {
 			delete p;
 			active[i] = nullptr;
 		}
@@ -582,6 +582,6 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 
-	if(c1-> type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT && (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY || c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING))
+	if((c1-> type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c1->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) && (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY || c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING))
 		App->audio->PlayFx(enemy_hitted);
 }

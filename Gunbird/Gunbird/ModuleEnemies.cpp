@@ -21,6 +21,7 @@
 
 #include "Coin.h"
 #include "Power_Up.h"
+#include "Bomb.h"
 
 #define SPAWN_MARGIN 500
 
@@ -483,6 +484,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Power_Up(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::POWER_UP;
 			break;
+		case ENEMY_TYPES::BOMB:
+			enemies[i] = new Bomb(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::BOMB;
+			break;
 		}
 	}
 }
@@ -570,6 +575,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
 					if (enemies[i]->getLives() == 0) {
 						App->ui->score += 500;
+						
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->terrestialTurretExplosion, (c1->rect.x - ((58 - (c1->rect.w)) / 2)), (c1->rect.y - ((66 - (c1->rect.h)) / 2)));
 						delete enemies[i];
@@ -610,6 +616,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::BEE) {
 				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+					this->AddEnemy(ENEMY_TYPES::BOMB, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
 					App->ui->score += 200;
 					App->audio->PlayFx(medium_explosion);
 					App->particles->AddParticle(App->particles->torpedoExplosion, (c1->rect.x - ((49 - (c1->rect.w)) / 2)), (c1->rect.y - ((35 - (c1->rect.h)) / 2)));
@@ -618,6 +625,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					break;
 				}
 				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+					this->AddEnemy(ENEMY_TYPES::BOMB, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
 					App->ui->scoreP2 += 200;
 					App->audio->PlayFx(medium_explosion);
 					App->particles->AddParticle(App->particles->torpedoExplosion, (c1->rect.x - ((49 - (c1->rect.w)) / 2)), (c1->rect.y - ((35 - (c1->rect.h)) / 2)));
@@ -739,6 +747,18 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				break;
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::POWER_UP && c2->type == COLLIDER_TYPE::COLLIDER_PLAYER) {
+				App->ui->score += 2000;
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
+			}
+			else if (enemies[i]->type == ENEMY_TYPES::BOMB && c2->type == COLLIDER_TYPE::COLLIDER_PLAYER) {
+				App->ui->score += 2000;
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
+			}
+			else if (enemies[i]->type == ENEMY_TYPES::BOMB && c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2) {
 				App->ui->score += 2000;
 				delete enemies[i];
 				enemies[i] = nullptr;

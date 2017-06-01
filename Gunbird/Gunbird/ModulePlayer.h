@@ -67,6 +67,7 @@ public:
 
 	bool inmortal;
 	int playerLives;
+	int playerBombs;
 	bool deadPlayer;
 	int counter = 0;
 	bool shotControl = false;

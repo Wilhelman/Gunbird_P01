@@ -19,6 +19,7 @@
 
 bool ModulePlayer::Init() {
 	playerLives = 3;
+	playerBombs = 2;
 	return true;
 }
 
@@ -193,15 +194,14 @@ update_status ModulePlayer::Update()
 			position.y -= speed;
 		}
 		else {
-
 			if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::VALNUS_SELECTED) //P1 CONTROLS
 			{
-				/*if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
+				if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
 				{
 					current_animation = &shinyValnus_bomb;
-					App->particles->AddParticle(App->particles->valnusBomb, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->valnusBomb,0, 0, COLLIDER_PLAYER_SHOT);
 
-				}*/
+				}
 
 
 				if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_REPEAT || App->input->gamepad.joystickRight)
@@ -665,6 +665,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 		else
 			shotPower = 3;
 		App->audio->PlayFx(valnus_PowerUp);
+	}
+	if (c2->type == COLLIDER_BOMB)
+	{
+		if (playerBombs < 3) 
+			playerBombs++;
+
+		App->audio->PlayFx(valnus_PowerUp);
+		
 	}
 	if (!inmortal && spawnTime == 0) {
 
