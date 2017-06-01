@@ -15,10 +15,22 @@ private:
 
 	Animation miner_down;
 	Animation miner_up;
+	Animation miner_dright_down;
 	float miner_up_y;
+	float beam_y;
+	float beamShadow_y;
+	float miner_brokenMecha_y;
+	float miner_down_y;
+	float miner_right_x;
+	float miner_dright_x;
+	float miner_dright_y;
+	Animation beamRight;
+	Animation beamLeft;
+	Animation shadowBeam;
 	Animation miner_rigth;
 	Animation miner_drigth;
 	Animation miner_dleft;
+	Animation brokenMecha;
 
 public:
 	ModuleSceneForest();

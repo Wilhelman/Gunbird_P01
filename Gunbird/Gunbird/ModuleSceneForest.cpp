@@ -48,6 +48,12 @@ ModuleSceneForest::ModuleSceneForest()
 	miner_rigth.speed = 0.05f;
 	miner_rigth.loop = true;
 
+	miner_dright_down.PushBack({ 15, 164, 16, 23 });
+	miner_dright_down.PushBack({ 41, 164, 16, 23 });
+	miner_dright_down.PushBack({ 67, 164, 16, 23 });
+	miner_dright_down.speed = 0.05f;
+	miner_dright_down.loop = true;
+
 	miner_drigth.PushBack({ 176, 12, 15, 23 });
 	miner_drigth.PushBack({ 176, 43, 15, 23 });
 	miner_drigth.PushBack({ 176, 76, 15, 23 });
@@ -64,6 +70,21 @@ ModuleSceneForest::ModuleSceneForest()
 	miner_dleft.speed = 0.05f;
 	miner_dleft.loop = true;
 
+	brokenMecha.PushBack({23, 216, 71, 77});
+	brokenMecha.speed = 0.05f;
+	brokenMecha.loop = true;
+
+	beamRight.PushBack({ 16, 333, 174, 23 });
+	beamRight.speed = 0.05f;
+	beamRight.loop = true;
+
+	beamLeft.PushBack({ 16, 361, 174, 23 });
+	beamLeft.speed = 0.05f;
+	beamLeft.loop = true;
+
+	shadowBeam.PushBack({ 16, 399, 174, 23 });
+	shadowBeam.speed = 0.05f;
+	shadowBeam.loop = true;
 }
 
 ModuleSceneForest::~ModuleSceneForest()
@@ -82,7 +103,11 @@ bool ModuleSceneForest::Start()
 	soldier_left_wall_x = 50;
 	soldier_left_wall.Reset();*/
 
-	miner_up_y = 0;
+	miner_up_y = 0.0f;
+	beam_y = 0.0f;
+	miner_brokenMecha_y = 0.0f;
+	miner_down_y = 0.0f;
+	miner_right_x = 0.0f;
 
 	LOG("Loading SceneForest assets");
 	bool ret = true;
@@ -167,6 +192,46 @@ update_status ModuleSceneForest::Update()
 		status = UPDATE_ERROR;
 	}
 
+
+	if (background_y >= -2400.0f && graphic_miner != nullptr)
+	{
+		if (!App->render->Blit(graphic_miner, (int)115, -25 + beamShadow_y, &(shadowBeam.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+
+		if (!App->render->Blit(graphic_miner, (int)-47, -111 + beamShadow_y, &(shadowBeam.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+
+		if (!App->render->Blit(graphic_miner, (int)-47, -186 + beamShadow_y, &(shadowBeam.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+
+		if (!App->render->Blit(graphic_miner, (int)-47, -246 + beamShadow_y, &(shadowBeam.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+
+		if (!App->render->Blit(graphic_miner, (int)-47, -346 + beamShadow_y, &(shadowBeam.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+
+		if (!App->render->Blit(graphic_miner, (int)97, -416 + beamShadow_y, &(shadowBeam.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
+	}
+
+	if (background_y >= -2400.0f) {
+		beamShadow_y -= -0.5f;
+	}
+
+
+
 	if (background_y >= -2350.0 && graphic_miner != nullptr) {
 		if (!App->render->Blit(graphic_miner, (int)190, (int)160 + miner_up_y, &(miner_up.GetCurrentFrame()), 0.75f)) {
 			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
@@ -189,219 +254,339 @@ update_status ModuleSceneForest::Update()
 			status = UPDATE_ERROR;
 		}
 		if (background_y >= -2130.0) {
-			miner_up_y -= -0.4f;
+			miner_up_y -= -0.5f;
 		}
 	}
 
-
-	if (!App->render->Blit(motionless_trees, (int)background_x, (int)background_y + SCREEN_HEIGHT, &m_trees, 0.75f)) {
-		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
-		status = UPDATE_ERROR;
-	}
-
-	//BACKGROUND ANIMATIONS
+	if (background_y >= -2200.0f && graphic_miner != nullptr)
 	{
-		//soldier animations EXAMPLE
-		/*if (background_y <= -1800.0f && soldier_left_x >= -12 && graphicsSoldier != nullptr) {
-			if (!App->render->Blit(graphicsSoldier, (int)soldier_left_x, (int)soldier_left_y + SCREEN_HEIGHT, &(soldier_left.GetCurrentFrame()), 0.75f)) {
-				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-			if (!App->render->Blit(graphicsSoldier, (int)soldier_left_x - 6, (int)soldier_left_y + SCREEN_HEIGHT + 20, &(soldier_left.GetCurrentFrame()), 0.75f)) {
-				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-			soldier_left_x -= 0.4f;
-		}*/
-
 		
-
-
-		
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && App->sceneForest->IsEnabled())
-	{
-		//DO UNLOAD OF ALL THE TEXTURES ABOUT ANIM IN BACKGROUND LIKE SOLDIERS ETC
-		//EXAMPLE:
-		/*if (!App->textures->Unload(graphicsSoldier)) {
-			LOG("Error unloading graphics in SceneCastle");
+		if (!App->render->Blit(graphic_miner, (int)50, (int)-95 + miner_up_y, &(brokenMecha.GetCurrentFrame()), 0.75f))
+		{
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}
-		graphicsSoldier = nullptr;
-		*/
-		App->enemies->Disable();
-		App->particles->Disable();
-		background_y = -SCREEN_HEIGHT;
+
+		if (background_y < -2050.0f && graphic_miner != nullptr)
+		{
+			if (!App->render->Blit(graphic_miner, (int)72, (int)-110 + miner_brokenMecha_y, &(miner_up.GetCurrentFrame()), 0.75f))
+			{
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+
+			if (!App->render->Blit(graphic_miner, (int)55, (int)-120 + miner_brokenMecha_y, &(miner_dleft.GetCurrentFrame()), 0.75f))
+			{
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+
+			if (!App->render->Blit(graphic_miner, (int)87, (int)-110 + miner_brokenMecha_y, &(miner_drigth.GetCurrentFrame()), 0.75f))
+			{
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+
+			if (!App->render->Blit(graphic_miner, (int)103, (int)-120 + miner_brokenMecha_y, &(miner_drigth.GetCurrentFrame()), 0.75f))
+			{
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+		}
+		else
+		{
+			if (!App->render->Blit(graphic_miner, (int)72, (int)-110 + miner_brokenMecha_y + miner_down_y, &(miner_down.GetCurrentFrame()), 0.75f))
+			{
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+
+			if (!App->render->Blit(graphic_miner, (int)55, (int)-120 + miner_brokenMecha_y + miner_down_y, &(miner_down.GetCurrentFrame()), 0.75f))
+			{
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+			////
+			if (!App->render->Blit(graphic_miner, (int)87 + miner_dright_x, (int)-110 + miner_brokenMecha_y + miner_dright_y, &(miner_dright_down.GetCurrentFrame()), 0.75f))
+			{
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+			////
+			if (!App->render->Blit(graphic_miner, (int)103 + miner_right_x, (int)-120 + miner_brokenMecha_y, &(miner_rigth.GetCurrentFrame()), 0.75f))
+			{
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+
+			if (background_y >= -2050.0f) 
+				miner_down_y -= -0.65f;
+
+			if (background_y >= -2050.0f)
+				miner_right_x += 0.65f;
+
+			if (background_y >= -2050.0f)
+				miner_dright_x += 0.45;
+
+			if (background_y >= -2050.0f)
+				miner_dright_y += 0.45;
+
+		}
+
+		if (background_y >= -2200.0f) {
+			miner_brokenMecha_y -= -0.5f;
+		}
 	}
 
 
-	//TODO change the position of the player to private to be more pro
-	if ((App->player2->position.y < 0 || App->player->position.y < 0) && App->fade->FadeIsOver() /*delete this in big releases*/ ||(App->input->keyboard[SDL_SCANCODE_RETURN] == KEY_STATE::KEY_DOWN))
-		App->fade->FadeToBlack(this, this, 1.0f);
 
-	if (App->player->playerLost) {
-		LOG("Player LOST");
-		App->fade->FadeToBlack(this, App->scoreRanking);
-	}
-
-	if (App->player2->playerLost) {
-		LOG("Player2 LOST");
-		App->ui->p2 = false;
-		App->player2->Disable();
-	}
-
-	//ENEMY SPAWN PHASE 
-
+	if (background_y >= -2360.0f && graphic_miner != nullptr)
 	{
-		//bee
-		if ((int)background_y == -2780 && spawned == 0) {
-		
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -10, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH, -20, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
-
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 50, -30, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH /2 + 30, -29, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
+		//BEAMS
+		if (!App->render->Blit(graphic_miner, (int)100, -19 + beam_y, &(beamRight.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
 		}
 
-		//big red turret + bee
-		if ((int)background_y == -2760 && spawned == 0)
-		{
-			spawned = 1;
-			App->enemies->AddEnemy(ENEMY_TYPES::BIG_RED_TURRET, 25, -70, ENEMY_MOVEMENT::STAY);
-			App->enemies->AddEnemy(ENEMY_TYPES::BIG_RED_TURRET, 153, -85, ENEMY_MOVEMENT::STAY);
-			
+		if (!App->render->Blit(graphic_miner, (int)-62, -105 + beam_y, &(beamRight.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
 		}
 
-		//metalic balloon
-		if ((int)background_y == -2720 && spawned == 1) 
-		{
-			spawned = 2;
-			App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_FOREST);
-
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 20, -30, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 40, -40, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 80, -60, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
-
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 180, -80, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
-
+		if (!App->render->Blit(graphic_miner, (int)-62, -180 + beam_y, &(beamLeft.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
 		}
 
-		if ((int)background_y == -2600 && spawned == 2)
-		{
-			spawned = 3;
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 30, -20, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 130, -70 , ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 160, -40, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
-
+		if (!App->render->Blit(graphic_miner, (int)-62, -240 + beam_y, &(beamLeft.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
 		}
 
-
-		//flying machine + bee
-		if ((int)background_y == -2500 && spawned == 3) {
-			spawned = 4;
-			App->enemies->AddEnemy(ENEMY_TYPES::FLYING_MACHINE, -80, 20, ENEMY_MOVEMENT::FLYING_MACHINE_PATH_1);
-
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 50, -40, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 130, -70, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 20, -40, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 80, -100, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
-
+		if (!App->render->Blit(graphic_miner, (int)-62, -340 + beam_y, &(beamLeft.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
 		}
 
-		//red turret
-		if ((int)background_y == -2400 && spawned == 4)
-		{
-			spawned = 5;
-			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 190, -50, ENEMY_MOVEMENT::STAY);
-
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 160, -40, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, -40, -40, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 80, -100, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -100, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
-
+		if (!App->render->Blit(graphic_miner, (int)112, -410 + beam_y, &(beamLeft.GetCurrentFrame()), 0.75f)) {
+			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
 		}
-		
-		if ((int)background_y == -2200 && spawned == 5)
-		{
-			spawned = 6;
-			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -80, 55, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
-			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -80, -20, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
-
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 20, -40, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 160, -40, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 50, -100, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -100, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
-
-
-		}
-
-		if ((int)background_y == -2150 && spawned == 6)
-		{
-			spawned = 7;
-			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -20, -20, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
-			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -20, -100, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
-
-		}
-
-		//red turret + red mecha
-		if ((int)background_y == -2000 && spawned == 7)
-		{
-			spawned = 8;
-			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 234, -50, ENEMY_MOVEMENT::RED_TURRET_RIGHT_LEFT);
-			App->enemies->AddEnemy(ENEMY_TYPES::TRUMP_RED_MECHA, 50, -50, ENEMY_MOVEMENT::TRUMP_RED_MECHA_PATH);
-
-		}
-		
-
-		if ((int)background_y == -1600 && spawned == 8)
-		{
-			spawned = 9;
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -20, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 160, -50, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 20, -80, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
-			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 80, -50, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
-			
-		}
-
 	}
 	
-
-	if (App->input->keyboard[SDL_SCANCODE_KP_1] && !App->player2->IsEnabled()) 
-	{
-		App->ui->p2 = true;
-		App->player2->playerLives = 3;
-		App->player2->Enable();
-		App->characterSelection->player2_joined = true;
-
-		if(App->characterSelection->characterSelected_P1 = CHARACTER_SELECTED::VALNUS_SELECTED)
-			App->characterSelection->characterSelected_P2 = CHARACTER_SELECTED::TETSU_SELECTED;
-
-		App->audio->PlayFx(player2joined);
+	if (background_y >= -2360.0f) {
+		beam_y -= -0.5f;
 	}
 
+		if (!App->render->Blit(motionless_trees, (int)background_x, (int)background_y + SCREEN_HEIGHT, &m_trees, 0.75f)) {
+			LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
 
-	if (App->input->keyboard[SDL_SCANCODE_KP_1] && !App->player->IsEnabled())
-	{
-		App->ui->p2 = true;
-		App->player->playerLives = 3;
-		App->player->Enable();
-		App->characterSelection->player2_joined = true;
+		//BACKGROUND ANIMATIONS
+		{
+			//soldier animations EXAMPLE
+			/*if (background_y <= -1800.0f && soldier_left_x >= -12 && graphicsSoldier != nullptr) {
+				if (!App->render->Blit(graphicsSoldier, (int)soldier_left_x, (int)soldier_left_y + SCREEN_HEIGHT, &(soldier_left.GetCurrentFrame()), 0.75f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+				if (!App->render->Blit(graphicsSoldier, (int)soldier_left_x - 6, (int)soldier_left_y + SCREEN_HEIGHT + 20, &(soldier_left.GetCurrentFrame()), 0.75f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+				soldier_left_x -= 0.4f;
+			}*/
 
-		if (App->characterSelection->characterSelected_P2 = CHARACTER_SELECTED::VALNUS_SELECTED)
-			App->characterSelection->characterSelected_P1 = CHARACTER_SELECTED::TETSU_SELECTED;
 
-		App->audio->PlayFx(player2joined);
+
+
+
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && App->sceneForest->IsEnabled())
+		{
+			//DO UNLOAD OF ALL THE TEXTURES ABOUT ANIM IN BACKGROUND LIKE SOLDIERS ETC
+			//EXAMPLE:
+			/*if (!App->textures->Unload(graphicsSoldier)) {
+				LOG("Error unloading graphics in SceneCastle");
+				status = UPDATE_ERROR;
+			}
+			graphicsSoldier = nullptr;
+			*/
+			App->enemies->Disable();
+			App->particles->Disable();
+			background_y = -SCREEN_HEIGHT;
+		}
+
+
+		//TODO change the position of the player to private to be more pro
+		if ((App->player2->position.y < 0 || App->player->position.y < 0) && App->fade->FadeIsOver() /*delete this in big releases*/ || (App->input->keyboard[SDL_SCANCODE_RETURN] == KEY_STATE::KEY_DOWN))
+			App->fade->FadeToBlack(this, this, 1.0f);
+
+		if (App->player->playerLost) {
+			LOG("Player LOST");
+			App->fade->FadeToBlack(this, App->scoreRanking);
+		}
+
+		if (App->player2->playerLost) {
+			LOG("Player2 LOST");
+			App->ui->p2 = false;
+			App->player2->Disable();
+		}
+
+		//ENEMY SPAWN PHASE 
+
+		{
+			//bee
+			if ((int)background_y == -2780 && spawned == 0) {
+
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -10, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH, -20, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
+
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 50, -30, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH / 2 + 30, -29, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
+			}
+
+			//big red turret + bee
+			if ((int)background_y == -2760 && spawned == 0)
+			{
+				spawned = 1;
+				App->enemies->AddEnemy(ENEMY_TYPES::BIG_RED_TURRET, 25, -70, ENEMY_MOVEMENT::STAY);
+				App->enemies->AddEnemy(ENEMY_TYPES::BIG_RED_TURRET, 153, -85, ENEMY_MOVEMENT::STAY);
+
+			}
+
+			//metalic balloon
+			if ((int)background_y == -2720 && spawned == 1)
+			{
+				spawned = 2;
+				App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_FOREST);
+
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 20, -30, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 40, -40, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 80, -60, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
+
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 180, -80, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
+
+			}
+
+			if ((int)background_y == -2600 && spawned == 2)
+			{
+				spawned = 3;
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 30, -20, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 130, -70, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 160, -40, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
+
+			}
+
+
+			//flying machine + bee
+			if ((int)background_y == -2500 && spawned == 3) {
+				spawned = 4;
+				App->enemies->AddEnemy(ENEMY_TYPES::FLYING_MACHINE, -80, 20, ENEMY_MOVEMENT::FLYING_MACHINE_PATH_1);
+
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 50, -40, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 130, -70, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 20, -40, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 80, -100, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
+
+			}
+
+			//red turret
+			if ((int)background_y == -2400 && spawned == 4)
+			{
+				spawned = 5;
+				App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 190, -60, ENEMY_MOVEMENT::STAY);
+
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 160, -40, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, -40, -40, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 80, -100, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -100, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
+
+			}
+
+			if ((int)background_y == -2200 && spawned == 5)
+			{
+				spawned = 6;
+				App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -80, 55, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
+				App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -80, -20, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
+
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 20, -40, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 160, -40, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 50, -100, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -100, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
+
+
+			}
+
+			if ((int)background_y == -2080 && spawned == 6)
+			{
+				spawned = 7;
+				App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -20, 40, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
+				App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -20, -60, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
+
+			}
+
+			//red turret + red mecha
+			if ((int)background_y == -2000 && spawned == 7)
+			{
+				spawned = 8;
+				App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 234, -50, ENEMY_MOVEMENT::RED_TURRET_RIGHT_LEFT);
+				App->enemies->AddEnemy(ENEMY_TYPES::TRUMP_RED_MECHA, 50, -50, ENEMY_MOVEMENT::TRUMP_RED_MECHA_PATH);
+
+			}
+
+
+			if ((int)background_y == -1600 && spawned == 8)
+			{
+				spawned = 9;
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -20, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 160, -50, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 20, -80, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
+				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 80, -50, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
+
+			}
+
+		}
+
+
+		if (App->input->keyboard[SDL_SCANCODE_KP_1] && !App->player2->IsEnabled())
+		{
+			App->ui->p2 = true;
+			App->player2->playerLives = 3;
+			App->player2->Enable();
+			App->characterSelection->player2_joined = true;
+
+			if (App->characterSelection->characterSelected_P1 = CHARACTER_SELECTED::VALNUS_SELECTED)
+				App->characterSelection->characterSelected_P2 = CHARACTER_SELECTED::TETSU_SELECTED;
+
+			App->audio->PlayFx(player2joined);
+		}
+
+
+		if (App->input->keyboard[SDL_SCANCODE_KP_1] && !App->player->IsEnabled())
+		{
+			App->ui->p2 = true;
+			App->player->playerLives = 3;
+			App->player->Enable();
+			App->characterSelection->player2_joined = true;
+
+			if (App->characterSelection->characterSelected_P2 = CHARACTER_SELECTED::VALNUS_SELECTED)
+				App->characterSelection->characterSelected_P1 = CHARACTER_SELECTED::TETSU_SELECTED;
+
+			App->audio->PlayFx(player2joined);
+		}
+
+
+		/*if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
+		{
+		App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, ENEMY_MOVEMENT::STAY);
+		}*/
+
+		return status;
 	}
-	
 
-	/*if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
-	{
-	App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, ENEMY_MOVEMENT::STAY);
-	}*/
-
-	return status;
-}
 
 
 bool ModuleSceneForest::CleanUp()
