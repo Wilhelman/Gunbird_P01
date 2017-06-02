@@ -27,6 +27,17 @@ ModuleSceneForest::ModuleSceneForest()
 	m_trees.w = SCREEN_WIDTH;
 	m_trees.h = 2800;
 
+	//motion trees
+	motion_trees_1.x = 23;
+	motion_trees_1.y = 42;
+	motion_trees_1.w = 129;
+	motion_trees_1.h = 174;
+
+	motion_trees_2.x = 219;
+	motion_trees_2.y = 38;
+	motion_trees_2.w = 88;
+	motion_trees_2.h = 175;
+
 	miner_down.PushBack({ 17, 13, 15, 23 });
 	miner_down.PushBack({ 215, 13, 15, 23 });
 	miner_down.PushBack({ 238, 13, 15, 23 });
@@ -109,6 +120,12 @@ bool ModuleSceneForest::Start()
 	miner_down_y = 0.0f;
 	miner_right_x = 0.0f;
 
+	motion_trees_1_x = 96;
+	motion_trees_1_y = -526.0f;
+
+	motion_trees_2_x = 0;
+	motion_trees_2_y = -550.0f;
+
 	LOG("Loading SceneForest assets");
 	bool ret = true;
 
@@ -150,6 +167,7 @@ bool ModuleSceneForest::Start()
 	graphics = App->textures->Load("Assets/maps/forest/map_forest_background_.png");
 	motionless_trees = App->textures->Load("Assets/maps/forest/Motionless_Trees.png");
 	graphic_miner = App->textures->Load("Assets/maps/forest/Forest_stuff.png");
+	motion_trees = App->textures->Load("Assets/maps/forest/Motion_trees.png");
 
 	if (graphics == nullptr ||motionless_trees == nullptr) {
 		LOG("Cannot load the texture in SceneForest");
@@ -375,7 +393,31 @@ update_status ModuleSceneForest::Update()
 	}
 	
 	if (background_y >= -2360.0f) {
-		beam_y -= -0.5f;
+		beam_y -= -0.5f; 
+	}
+
+	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_1_x, (int)0 + motion_trees_1_y, &motion_trees_1, 0.75f)) {
+		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	if (background_y >= -2800.0f) {
+		motion_trees_1_y -= -0.5f;
+	}
+	if (background_y >= -2360.0f && background_y <= 2300.0f) {
+		motion_trees_1_x += 0.5f;
+	}
+
+	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_2_x, (int)0 + motion_trees_2_y, &motion_trees_2, 0.75f)) {
+		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	if (background_y >= -2800.0f) {
+		motion_trees_2_y -= -0.5f;
+	}
+	if (background_y >= -2360.0f && background_y <= 2300.0f) {
+		motion_trees_2_x -= 0.5f;
 	}
 
 		if (!App->render->Blit(motionless_trees, (int)background_x, (int)background_y + SCREEN_HEIGHT, &m_trees, 0.75f)) {
@@ -383,26 +425,7 @@ update_status ModuleSceneForest::Update()
 			status = UPDATE_ERROR;
 		}
 
-		//BACKGROUND ANIMATIONS
-		{
-			//soldier animations EXAMPLE
-			/*if (background_y <= -1800.0f && soldier_left_x >= -12 && graphicsSoldier != nullptr) {
-				if (!App->render->Blit(graphicsSoldier, (int)soldier_left_x, (int)soldier_left_y + SCREEN_HEIGHT, &(soldier_left.GetCurrentFrame()), 0.75f)) {
-					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-					status = UPDATE_ERROR;
-				}
-				if (!App->render->Blit(graphicsSoldier, (int)soldier_left_x - 6, (int)soldier_left_y + SCREEN_HEIGHT + 20, &(soldier_left.GetCurrentFrame()), 0.75f)) {
-					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-					status = UPDATE_ERROR;
-				}
-				soldier_left_x -= 0.4f;
-			}*/
-
-
-
-
-
-		}
+		
 
 		if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && App->sceneForest->IsEnabled())
 		{
@@ -497,7 +520,7 @@ update_status ModuleSceneForest::Update()
 			if ((int)background_y == -2400 && spawned == 4)
 			{
 				spawned = 5;
-				App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 190, -60, ENEMY_MOVEMENT::STAY);
+				
 
 				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 160, -40, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
 				App->enemies->AddEnemy(ENEMY_TYPES::BEE, -40, -40, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
@@ -505,6 +528,9 @@ update_status ModuleSceneForest::Update()
 				App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -100, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
 
 			}
+
+			if ((int)background_y == -2290 && spawned == 5)
+			App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 274, 50, ENEMY_MOVEMENT::RED_TURRET_RIGHT_LEFT);
 
 			if ((int)background_y == -2200 && spawned == 5)
 			{
@@ -538,7 +564,7 @@ update_status ModuleSceneForest::Update()
 			}
 
 
-			if ((int)background_y == -1600 && spawned == 8)
+			if ((int)background_y == -1900 && spawned == 8)
 			{
 				spawned = 9;
 				App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -20, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
@@ -547,6 +573,8 @@ update_status ModuleSceneForest::Update()
 				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 80, -50, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
 
 			}
+
+			
 
 		}
 

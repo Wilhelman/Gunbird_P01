@@ -31,6 +31,12 @@ private:
 	Animation miner_drigth;
 	Animation miner_dleft;
 	Animation brokenMecha;
+	SDL_Rect motion_trees_1;
+	float motion_trees_1_x;
+	float motion_trees_1_y;
+	SDL_Rect motion_trees_2;
+	float motion_trees_2_x;
+	float motion_trees_2_y;
 
 public:
 	ModuleSceneForest();
@@ -44,6 +50,7 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* graphic_miner = nullptr;
 	SDL_Texture* motionless_trees = nullptr;
+	SDL_Texture* motion_trees = nullptr;
 	SDL_Rect background;
 	SDL_Rect m_trees;
 	float background_x;
