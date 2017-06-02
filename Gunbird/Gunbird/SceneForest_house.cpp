@@ -7,7 +7,7 @@
 
 SceneForest_house::SceneForest_house(int x, int y) : Enemy(x, y)
 {
-	lives = 2;
+	lives = 6;
 
 	Forest_house.PushBack({ 66,1128,129,100 });
 	Forest_house.speed = 0.8f;
@@ -20,7 +20,7 @@ SceneForest_house::SceneForest_house(int x, int y) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 
-	collider = App->collision->AddCollider({ 0, 22, 64, 80 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 22, 129, 100}, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
 

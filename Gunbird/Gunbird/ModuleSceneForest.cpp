@@ -639,11 +639,11 @@ update_status ModuleSceneForest::Update()
 			//bee
 			if ((int)background_y == -2799 && spawned == 0) {
 
-				App->enemies->AddEnemy(ENEMY_TYPES::FOREST_HOUSE, 120, -100, ENEMY_MOVEMENT::STAY);
+				App->enemies->AddEnemy(ENEMY_TYPES::FOREST_HOUSE, 100, 30, ENEMY_MOVEMENT::STAY);
 			}
 			
 			if ((int)background_y == -2780 && spawned == 0) {
-				App->enemies->AddEnemy(ENEMY_TYPES::FOREST_HOUSE, , 0, ENEMY_MOVEMENT::STAY);
+				App->enemies->AddEnemy(ENEMY_TYPES::FOREST_HOUSE, -40, -240, ENEMY_MOVEMENT::STAY);
 
 				App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -10, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
 				App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH, -20, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);

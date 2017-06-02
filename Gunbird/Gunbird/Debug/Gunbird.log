@@ -40,15 +40,6 @@ c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.c
 c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(569): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(581): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(593): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(760): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(788): error C2059: syntax error: 'if'
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(789): error C2143: syntax error: missing ';' before '{'
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(789): error C2447: '{': missing function header (old-style formal list?)
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(802): error C2059: syntax error: 'if'
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(803): error C2143: syntax error: missing ';' before '{'
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(803): error C2447: '{': missing function header (old-style formal list?)
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(821): error C2059: syntax error: 'return'
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(822): error C2059: syntax error: '}'
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(822): error C2143: syntax error: missing ';' before '}'
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(827): error C2143: syntax error: missing ';' before '{'
-c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(827): error C2447: '{': missing function header (old-style formal list?)
+c:\users\martí\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(761): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Gunbird.vcxproj -> C:\Users\Martí\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
+  Gunbird.vcxproj -> C:\Users\Martí\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
