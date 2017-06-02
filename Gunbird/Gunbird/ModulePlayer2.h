@@ -66,6 +66,7 @@ public:
 	iPoint bombPos;
 
 	Particle init_bomb;
+	Particle init_flames;
 
 	bool inmortal;
 	int playerLives;

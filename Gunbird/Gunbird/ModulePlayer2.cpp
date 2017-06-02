@@ -314,6 +314,7 @@ ModulePlayer2::~ModulePlayer2()
 bool ModulePlayer2::Start()
 {
 	init_bomb = App->particles->tetsu_iniBomb;
+	init_flames = App->particles->tetsu_flames;
 
 	hitted = false;
 	shotPower = 0;

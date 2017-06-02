@@ -453,7 +453,7 @@ ModuleParticles::ModuleParticles()
 		tetsu_iniBomb.anim.PushBack({ 1991,2093,28,15 });
 		tetsu_iniBomb.anim.PushBack({ 2024,2093,26,15 });
 
-		tetsu_iniBomb.life = 500;
+		tetsu_iniBomb.life = 3000;
 		tetsu_iniBomb.anim.loop = true;
 
 		//tree
@@ -462,6 +462,31 @@ ModuleParticles::ModuleParticles()
 		tree.anim.loop = true;
 
 
+	}
+
+	//tetsu flames
+	{
+		tetsu_flames.anim.PushBack({ 1730,2129,30,61 });
+		tetsu_flames.anim.PushBack({ 1781,2129,30,61 });
+		tetsu_flames.anim.PushBack({ 1830,2129,30,61 });
+		tetsu_flames.anim.PushBack({ 1732,2198,30,61 });
+		tetsu_flames.anim.PushBack({ 1781,2198,30,61 });
+		tetsu_flames.anim.PushBack({ 1829,2198,30,61 });
+		tetsu_flames.anim.PushBack({ 1731,2264,30,61 });
+		tetsu_flames.anim.PushBack({ 1779,2264,30,61 });
+		tetsu_flames.anim.PushBack({ 1831,2264,30,61 });
+		tetsu_flames.anim.PushBack({ 1729,2324,30,61 });
+		tetsu_flames.anim.PushBack({ 1783,2324,30,61 });
+		tetsu_flames.anim.PushBack({ 1834,2324,30,61 });
+		tetsu_flames.anim.PushBack({ 1729,2391,30,61 });
+		tetsu_flames.anim.PushBack({ 1782,2391,30,61 });
+		tetsu_flames.anim.PushBack({ 1833,2391,30,61 });
+		tetsu_flames.anim.PushBack({ 1728,2447,30,61 });
+		tetsu_flames.anim.PushBack({ 1780,2447,30,61 });
+		tetsu_flames.anim.PushBack({ 1830,2447,30,61 });
+
+		tetsu_flames.life = 3000;
+		tetsu_flames.anim.loop = true;
 	}
 }
 

@@ -112,6 +112,7 @@ public:
 
 	//tetsu bomb death explosion
 	Particle tetsu_iniBomb;
+	Particle tetsu_flames;
 
 	//Tree
 	Particle tree;
