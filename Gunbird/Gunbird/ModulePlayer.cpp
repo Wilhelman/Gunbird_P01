@@ -193,6 +193,16 @@ ModulePlayer::ModulePlayer()
 		valnus_bomb.PushBack({ 2421,638,43,39 });
 		valnus_bomb.PushBack({ 2464,638,43,39 });
 		valnus_bomb.speed = 0.1f;
+
+
+
+		valnusBombStart.PushBack({ 1868,428,10,14 });
+		valnusBombStart.PushBack({ 1881,428,10,13 });
+		valnusBombStart.PushBack({ 1894,428,10,11 });
+		valnusBombStart.PushBack({ 1907,428,10,10 });
+		valnusBombStart.PushBack({ 1920,428,10,7 });
+		valnusBombStart.PushBack({ 1933,428,10,5 });
+		valnusBombStart.speed = 0.08;
 	}
 }
 
@@ -258,19 +268,12 @@ update_status ModulePlayer::Update()
 		else {
 			if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::VALNUS_SELECTED) //P1 CONTROLS
 			{
-				bombPos.y = position.y;
 				if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN || App->input->gamepad.B == KEY_STATE::KEY_DOWN)
 				{
 					if (canThrowBomb == false && this->playerBombs > 0) {
-						
 							canThrowBomb = true;
-							bombPos.x = position.x;
 							App->player->playerBombs--;
-						
 					}
-
-					
-					
 				}
 
 
@@ -309,25 +312,6 @@ update_status ModulePlayer::Update()
 
 				if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || (0 < counter) || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 				{
-					//Old switch. Keep it it here for now
-					/*switch (laserType)
-					{
-					case 0:
-						App->particles->AddParticle(App->particles->laser0, position.x + 9, position.y - 40, COLLIDER_PLAYER_SHOT);
-						break;
-					case 1:
-						App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
-						break;
-					case 2:
-						App->particles->AddParticle(App->particles->laser2, position.x + 10, position.y - 40, COLLIDER_PLAYER_SHOT);
-						break;
-					default:
-						break;
-					}
-					laserType++;
-					if (laserType > 2)
-						laserType = 0;*/
-
 					if (shotPower == 0) {
 						if (counter == 0)
 						{
@@ -395,12 +379,6 @@ update_status ModulePlayer::Update()
 							counter = 0;
 							shotControl = true;
 						}
-						if (shotControl)
-						{
-							App->particles->AddParticle(App->particles->greenThunder1_1, position.x - 35, position.y - 305, COLLIDER_NONE);
-							App->particles->AddParticle(App->particles->greenThunder1_2, position.x - 35, position.y - 305, COLLIDER_PLAYER);
-							App->particles->AddParticle(App->particles->greenThunder1_3, position.x - 35, position.y - 305, COLLIDER_PLAYER);
-						}
 						if (!shotControl)
 							counter++;
 					}
@@ -423,12 +401,6 @@ update_status ModulePlayer::Update()
 							App->particles->AddParticle(App->particles->laser0_3, position.x - 5, position.y - 38, COLLIDER_PLAYER2_SHOT);
 							counter = 0;
 							shotControl = true;
-						}
-						if (shotControl)
-						{
-							App->particles->AddParticle(App->particles->greenThunder2_1, position.x - 50, position.y - 305, COLLIDER_NONE);
-							App->particles->AddParticle(App->particles->greenThunder2_2, position.x - 50, position.y - 305, COLLIDER_PLAYER);
-							App->particles->AddParticle(App->particles->greenThunder2_3, position.x - 50, position.y - 305, COLLIDER_PLAYER);
 						}
 						if (!shotControl)
 							counter++;
@@ -456,6 +428,14 @@ update_status ModulePlayer::Update()
 
 			else if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::VALNUS_SELECTED) // P2 CONTROLS
 			{
+				if (App->input->keyboard[SDL_SCANCODE_KP_2] == KEY_STATE::KEY_DOWN)
+				{
+					if (canThrowBomb == false && this->playerBombs > 0) {
+						canThrowBomb = true;
+						App->player->playerBombs--;
+					}
+				}
+
 				if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 				{
 					if (position.x < SCREEN_WIDTH - 34) // TODO: correct limits so they are all equal
@@ -652,26 +632,34 @@ update_status ModulePlayer::Update()
 	bombPos.y = bombPos.y - 124;
 
 	if (canThrowBomb == true) {
-		if (timeToBomb < 20) 
-			App->render->Blit(valnusBombGraphics, bombPos.x - 155, bombPos.y - 170, &(valnus_bomb_animation.GetCurrentFrame()));
-		
-		if (timeToBomb == 30)
-			bombCollider = App->collision->AddCollider({ bombPos.x, bombPos.y, 254, 300 }, COLLIDER_PLAYER_SHOT, this);
-		
-		if (timeToBomb >= 75)
-			App->render->Blit(valnusBombGraphics, bombPos.x - 155, bombPos.y - 170, &(valnus_bomb_animation.GetCurrentFrame()));
-			
-
-		if (timeToBomb == 130) {
-			canThrowBomb = false;
-			timeToBomb = 0;
-			App->collision->EraseCollider(bombCollider);
+		if (timeToBomb == 0) {
+			App->render->Blit(valnusBombGraphics, bombPos.x - 149, bombPos.y - 180, &(valnusBombStart.GetCurrentFrame()));
+			bombCollider_H = App->collision->AddCollider({ 0, position.y - 100, 400, 150 }, COLLIDER_PLAYER_SHOT, this);
+			bombCollider_V = App->collision->AddCollider({ position.x - 30, 0, 150, 400 }, COLLIDER_PLAYER_SHOT, this);
 		}
 
-		if (timeToBomb < 200)
+		if (timeToBomb < 100) {
+			if (bombCollider_H != nullptr)
+				bombCollider_H->SetPos(0, position.y - 90);
+			if (bombCollider_V != nullptr)
+				bombCollider_V->SetPos(position.x - 57,0);
+			App->render->Blit(valnusBombGraphics, bombPos.x - 149, bombPos.y - 180, &(valnus_bomb_animation.GetCurrentFrame()));
+			App->render->Blit(valnusBombGraphics, bombPos.x - 149, bombPos.y - 180, &(valnus_bomb.GetCurrentFrame()));
+		}
+
+		if (timeToBomb < 100)
 			timeToBomb++;
-		if(bombCollider!= nullptr)
-			bombCollider->SetPos(position.x - 100, position.y - 160);
+
+		if (timeToBomb == 100) {
+			
+			canThrowBomb = false;
+			timeToBomb = 0;
+			
+			if (bombCollider_H != nullptr)
+				App->collision->EraseCollider(bombCollider_H);
+			if (bombCollider_V != nullptr)
+				App->collision->EraseCollider(bombCollider_V);
+		}
 
 	}
 
@@ -708,6 +696,9 @@ update_status ModulePlayer::Update()
 		current_animation = &playerCollision_Anim;
 		hitted = false;
 	}
+
+	if (canThrowBomb)
+		current_animation = &shinyValnus_bomb;
 
 	//inmortal control time
 	if (currentTime > (lastTime + INMORTAL_TIME) && inmortal && (godModeControl == false) && spawnTime == 0) {
@@ -773,7 +764,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 		App->audio->PlayFx(valnus_PowerUp);
 		
 	}
-	if (!inmortal && spawnTime == 0) {
+	if (!inmortal && spawnTime == 0 && !canThrowBomb) {
 
 		if ((c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING_AGGRESSIVE)&& !hitted) {
 			this->removePowerUp();

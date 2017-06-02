@@ -65,10 +65,12 @@ public:
 	Animation shinyValnus_bomb;
 	Animation valnus_bomb_animation;
 	Animation valnus_bomb;
+	Animation valnusBombStart;
 	iPoint position;
 	iPoint bombPos;
 	Collider* playerCollider;
-	Collider* bombCollider;
+	Collider* bombCollider_H;
+	Collider* bombCollider_V;
 
 	bool canThrowBomb;
 	bool inmortal;
