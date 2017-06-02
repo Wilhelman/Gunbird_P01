@@ -138,6 +138,9 @@
     <ClCompile Include="Bomb.cpp">
       <Filter>Modules\Enemies\Items</Filter>
     </ClCompile>
+    <ClCompile Include="SceneForest_house.cpp">
+      <Filter>Modules\Enemies\SceneForest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals.h">
@@ -256,6 +259,9 @@
     </ClInclude>
     <ClInclude Include="Bomb.h">
       <Filter>Modules\Enemies\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneForest_house.h">
+      <Filter>Modules\Enemies\SceneForest</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

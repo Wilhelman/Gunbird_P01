@@ -18,6 +18,7 @@
 #include "SceneCastle_houseFlag2.h"
 #include "SceneCastle_Vase.h"
 #include "ModuleAudio.h"
+#include "SceneForest_house.h"
 
 #include "Coin.h"
 #include "Power_Up.h"
@@ -460,6 +461,12 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				break;
 			}
 			break;
+		case ENEMY_TYPES::FOREST_HOUSE:
+			enemies[i] = new SceneForest_house(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::FOREST_HOUSE;
+			enemies[i]->movement = stayPath;
+			break;
+
 		case ENEMY_TYPES::CASTLE_HOUSEFLAG:
 			enemies[i] = new SceneCastle_houseFlag(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::CASTLE_HOUSEFLAG;
@@ -694,7 +701,26 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					}
 				}
 			}
-
+			else if (enemies[i]->type == ENEMY_TYPES::FOREST_HOUSE) {
+				if (enemies[i]->getLives() == 0) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+						App->ui->score += 3000;
+						App->audio->PlayFx(medium_explosion);
+						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((129 - (c1->rect.w)) / 2)), (c1->rect.y - ((100 - (c1->rect.h)) / 2)));
+						delete enemies[i];
+						enemies[i] = nullptr;
+						break;
+					}
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+						App->ui->scoreP2 += 3000;
+						App->audio->PlayFx(medium_explosion);
+						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((129 - (c1->rect.w)) / 2)), (c1->rect.y - ((100 - (c1->rect.h)) / 2)));
+						delete enemies[i];
+						enemies[i] = nullptr;
+						break;
+					}
+				}
+			}
 			else if (enemies[i]->type == ENEMY_TYPES::CASTLE_HOUSEFLAG_2) {
 				if (enemies[i]->getLives() == 0) {
 					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {

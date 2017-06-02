@@ -149,6 +149,7 @@
     <ClCompile Include="SceneCastle_houseFlag.cpp" />
     <ClCompile Include="SceneCastle_houseFlag2.cpp" />
     <ClCompile Include="SceneCastle_Vase.cpp" />
+    <ClCompile Include="SceneForest_house.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -190,6 +191,7 @@
     <ClInclude Include="SceneCastle_houseFlag.h" />
     <ClInclude Include="SceneCastle_houseFlag2.h" />
     <ClInclude Include="SceneCastle_Vase.h" />
+    <ClInclude Include="SceneForest_house.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
