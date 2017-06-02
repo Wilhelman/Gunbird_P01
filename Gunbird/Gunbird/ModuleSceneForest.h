@@ -24,6 +24,8 @@ private:
 	float miner_right_x;
 	float miner_dright_x;
 	float miner_dright_y;
+	float trump_y;
+	float trump_x;
 	Animation beamRight;
 	Animation beamLeft;
 	Animation shadowBeam;
@@ -31,6 +33,10 @@ private:
 	Animation miner_drigth;
 	Animation miner_dleft;
 	Animation brokenMecha;
+	Animation trump_spikyHair1;
+	Animation trump_spikyHair2;
+	Animation trumphat1;
+	Animation trumpHat2;
 	
 	SDL_Rect motion_trees_1;
 	float motion_trees_1_x;

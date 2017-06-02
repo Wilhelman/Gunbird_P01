@@ -27,6 +27,7 @@ ModuleSceneForest::ModuleSceneForest()
 	m_trees.w = SCREEN_WIDTH;
 	m_trees.h = 2800;
 
+
 	//motion trees
 	motion_trees_1.x = 23;
 	motion_trees_1.y = 42;
@@ -68,6 +69,40 @@ ModuleSceneForest::ModuleSceneForest()
 	motion_trees_8.w = 126;
 	motion_trees_8.h = 173;
 
+
+
+
+	//trump figures
+	{
+		trump_spikyHair1.PushBack({ 318, 325, 13, 24 });
+		trump_spikyHair1.PushBack({ 336, 325, 13, 23 });
+		trump_spikyHair1.loop = true;
+		trump_spikyHair1.speed = 0.05f;
+
+		//trump_spikyHair2.PushBack({ 354, 325, 12, 24 });
+		trump_spikyHair2.PushBack({ 318, 243, 15, 23 });
+		trump_spikyHair2.PushBack({ 338, 243, 14, 22 });
+		trump_spikyHair2.PushBack({ 357, 243, 15, 23 });
+		trump_spikyHair2.PushBack({ 377, 243, 14, 22 });
+		trump_spikyHair2.loop = true;
+		trump_spikyHair2.speed = 0.05f;
+
+		trumphat1.PushBack({ 233, 328, 16, 27 });
+		trumphat1.PushBack({ 253, 328, 16, 27 });
+		trumphat1.loop = true;
+		trumphat1.speed = 0.05f;
+
+		//trumpHat2.PushBack({ 269, 328, 16, 27 });
+		trumpHat2.PushBack({ 232, 242, 16, 27 });
+		trumpHat2.PushBack({ 252, 242, 16, 27 });
+		trumpHat2.PushBack({ 270, 243, 16, 27 });
+		trumpHat2.PushBack({ 291, 242, 16, 27 });
+		trumpHat2.loop = true;
+		trumpHat2.speed = 0.05f;
+	}
+
+
+	// miner
 	miner_down.PushBack({ 17, 13, 15, 23 });
 	miner_down.PushBack({ 215, 13, 15, 23 });
 	miner_down.PushBack({ 238, 13, 15, 23 });
@@ -149,6 +184,8 @@ bool ModuleSceneForest::Start()
 	miner_brokenMecha_y = 0.0f;
 	miner_down_y = 0.0f;
 	miner_right_x = 0.0f;
+	trump_y = 0.0f;
+	trump_x = 0.0f;
 
 	motion_trees_1_x = 96;
 	motion_trees_1_y = -526.0f;
@@ -291,11 +328,43 @@ update_status ModuleSceneForest::Update()
 			LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}
+
+
+		if (background_y < -1850.0f && graphic_miner != nullptr)
+		{
+
+			if (!App->render->Blit(graphic_miner, (int)115, -416 + beamShadow_y, &(trumphat1.GetCurrentFrame()), 0.75f)) {
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+			if (!App->render->Blit(graphic_miner, (int)100, -416 + beamShadow_y, &(trump_spikyHair1.GetCurrentFrame()), 0.75f)) {
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+		}
+		else
+		{
+			if (!App->render->Blit(graphic_miner, (int)115 + trump_x, -416 + beamShadow_y - trump_y, &(trumpHat2.GetCurrentFrame()), 0.75f)) {
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+			if (!App->render->Blit(graphic_miner, (int)100 + trump_x, -416 + beamShadow_y - trump_y, &(trump_spikyHair2.GetCurrentFrame()), 0.75f)) {
+				LOG("Cannot blit the texture in SceneForest %s\n", SDL_GetError());
+				status = UPDATE_ERROR;
+			}
+			trump_y -= -0.3f;
+		}
 	}
 
 	if (background_y >= -2400.0f) {
 		beamShadow_y -= -0.5f;
 	}
+
+	if (background_y >= -1550.0f)
+		trump_x += 270;
+
+
+	
 
 
 
@@ -665,7 +734,7 @@ update_status ModuleSceneForest::Update()
 			{
 				spawned = 8;
 				App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, 234, -50, ENEMY_MOVEMENT::RED_TURRET_RIGHT_LEFT);
-				App->enemies->AddEnemy(ENEMY_TYPES::TRUMP_RED_MECHA, 50, -50, ENEMY_MOVEMENT::TRUMP_RED_MECHA_PATH);
+				App->enemies->AddEnemy(ENEMY_TYPES::TRUMP_RED_MECHA, 35, -50, ENEMY_MOVEMENT::TRUMP_RED_MECHA_PATH);
 
 			}
 
