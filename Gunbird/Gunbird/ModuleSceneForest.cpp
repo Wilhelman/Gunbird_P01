@@ -58,6 +58,16 @@ ModuleSceneForest::ModuleSceneForest()
 	motion_trees_6.w = 126;
 	motion_trees_6.h = 173;
 
+	motion_trees_7.x = 870;
+	motion_trees_7.y = 623;
+	motion_trees_7.w = 144;
+	motion_trees_7.h = 335;
+
+	motion_trees_8.x = 401;
+	motion_trees_8.y = 784;
+	motion_trees_8.w = 126;
+	motion_trees_8.h = 173;
+
 	miner_down.PushBack({ 17, 13, 15, 23 });
 	miner_down.PushBack({ 215, 13, 15, 23 });
 	miner_down.PushBack({ 238, 13, 15, 23 });
@@ -157,6 +167,12 @@ bool ModuleSceneForest::Start()
 
 	motion_trees_6_x = 0;
 	motion_trees_6_y = -1125.0f;
+
+	motion_trees_7_x = 82;
+	motion_trees_7_y = -1285.0f;
+
+	motion_trees_8_x = 0;
+	motion_trees_8_y = -1298.0f;
 
 
 	LOG("Loading SceneForest assets");
@@ -481,6 +497,18 @@ update_status ModuleSceneForest::Update()
 		motion_trees_1_x += 0.5f;
 	}
 
+	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_8_x, (int)0 + motion_trees_8_y, &motion_trees_8, 0.75f)) {
+		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	if (background_y >= -2800.0f) {
+		motion_trees_8_y -= -0.5f;
+	}
+	if (background_y >= -1700.0f && background_y <= -1610.0f) {
+		motion_trees_8_x -= 0.5f;
+	}
+
 	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_6_x, (int)0 + motion_trees_6_y, &motion_trees_6, 0.75f)) {
 		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
@@ -493,6 +521,18 @@ update_status ModuleSceneForest::Update()
 		motion_trees_6_x -= 0.5f;
 	}
 
+	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_7_x, (int)0 + motion_trees_7_y, &motion_trees_7, 0.75f)) {
+		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	if (background_y >= -2800.0f) {
+		motion_trees_7_y -= -0.5f;
+	}
+	if (background_y >= -1700.0f && background_y <= -1610.0f) {
+		motion_trees_7_x += 0.5f;
+	}
+
 
 
 		if (!App->render->Blit(motionless_trees, (int)background_x, (int)background_y + SCREEN_HEIGHT, &m_trees, 0.75f)) {
@@ -503,14 +543,6 @@ update_status ModuleSceneForest::Update()
 		
 		if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && App->sceneForest->IsEnabled())
 		{
-			//DO UNLOAD OF ALL THE TEXTURES ABOUT ANIM IN BACKGROUND LIKE SOLDIERS ETC
-			//EXAMPLE:
-			/*if (!App->textures->Unload(graphicsSoldier)) {
-				LOG("Error unloading graphics in SceneCastle");
-				status = UPDATE_ERROR;
-			}
-			graphicsSoldier = nullptr;
-			*/
 			App->enemies->Disable();
 			App->particles->Disable();
 			background_y = -SCREEN_HEIGHT;
