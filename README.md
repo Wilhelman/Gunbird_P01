@@ -29,6 +29,7 @@ Player 1 controls:
 - DOWN: S key
 - BASIC SHOT: SPACE key
 - SELECT CHARACTER: SPACE key 
+- BOMB: B key
 
 Player 2 controls:
 - UP: UP_ARROW key
@@ -38,7 +39,8 @@ Player 2 controls:
 - BASIC SHOT: 1 key (NUMPAD)
 - JOIN THE GAME: 2 key (NUMPAD)
 - JOIN THE GAME (in-game): 1 key (NUMPAD)
-- SELECT CHARACTER: 1 key (NUMPAD) 
+- SELECT CHARACTER: 1 key (NUMPAD)
+- BOMB: 2 key (NUMPAD)
 
 General/developer controls:
 - SKIP SCREEN: SPACE key
