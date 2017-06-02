@@ -440,8 +440,23 @@ ModuleParticles::ModuleParticles()
 	{
 		
 		tetsu_iniBomb.anim.PushBack({ 1694,2094,20,15 });
+		tetsu_iniBomb.anim.PushBack({ 1717,2094,21,15 });
+		tetsu_iniBomb.anim.PushBack({ 1741,2095,22,13 });
+		tetsu_iniBomb.anim.PushBack({ 1765,2094,23,14 });
+		tetsu_iniBomb.anim.PushBack({ 1791,2094,24,14 });
+		tetsu_iniBomb.anim.PushBack({ 1818,2094,25,14 });
+		tetsu_iniBomb.anim.PushBack({ 1846,2094,26,15 });
+		tetsu_iniBomb.anim.PushBack({ 1875,2093,27,155 });
+		tetsu_iniBomb.anim.PushBack({ 1905,2095,26,11 });
+		tetsu_iniBomb.anim.PushBack({ 1934,2095,26,12 });
+		tetsu_iniBomb.anim.PushBack({ 1962,2094,26,13 });
+		tetsu_iniBomb.anim.PushBack({ 1991,2093,28,15 });
+		tetsu_iniBomb.anim.PushBack({ 2024,2093,26,15 });
+
 		tetsu_iniBomb.life = 500;
 		tetsu_iniBomb.anim.loop = true;
+
+
 	}
 }
 

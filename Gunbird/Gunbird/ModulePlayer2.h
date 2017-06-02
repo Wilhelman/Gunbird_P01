@@ -5,6 +5,7 @@
 #include "Animation.h"
 #include "Globals.h"
 #include "p2Point.h"
+#include "ModuleParticles.h"
 
 #define INMORTAL_TIME 2000
 #define HITTED_TIME 1500
@@ -63,6 +64,8 @@ public:
 	Collider* bombCollider_H;
 	Collider* bombCollider_V;
 	iPoint bombPos;
+
+	Particle init_bomb;
 
 	bool inmortal;
 	int playerLives;

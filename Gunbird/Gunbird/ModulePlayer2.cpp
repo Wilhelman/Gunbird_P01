@@ -313,7 +313,8 @@ ModulePlayer2::~ModulePlayer2()
 // Load assets
 bool ModulePlayer2::Start()
 {
-	//inibomba = App->particles->tetsu_inibomba;
+	init_bomb = App->particles->tetsu_iniBomb;
+
 	hitted = false;
 	shotPower = 0;
 	spawnTime = 0;
@@ -363,8 +364,18 @@ update_status ModulePlayer2::Update()
 
 			if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::TETSU_SELECTED)
 			{
-
-				//if le da a la bomba{
+				if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN || App->input->gamepad.B == KEY_STATE::KEY_DOWN)
+				{
+					init_bomb.speed.x = -0.5f;
+					App->particles->AddParticle(init_bomb, position.x, position.y, COLLIDER_TYPE::COLLIDER_NONE);
+					init_bomb.speed.x = -1.0f;
+					App->particles->AddParticle(init_bomb, position.x, position.y, COLLIDER_TYPE::COLLIDER_NONE);
+					init_bomb.speed.x = 0.5f;
+					App->particles->AddParticle(init_bomb, position.x, position.y, COLLIDER_TYPE::COLLIDER_NONE);
+					init_bomb.speed.x = 1.0f;
+					App->particles->AddParticle(init_bomb, position.x, position.y, COLLIDER_TYPE::COLLIDER_NONE);
+				}
+				
 				/*
 				inibomba.speed.x = -0.5f;
 				App->particles->AddParticle(inibomba, position.x , position.y, COLLIDER_TYPE::COLLIDER_NONE);
