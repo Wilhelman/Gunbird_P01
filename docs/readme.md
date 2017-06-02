@@ -3,6 +3,6 @@
 
 # FrozenSloth Studios members
 
-![](frozenSlothStudios_team.jpg)
+![](frozenSlothStudios_team.JPG)
 
 ### Tribute by FrozenSloth Studios
