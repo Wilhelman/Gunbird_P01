@@ -456,6 +456,11 @@ ModuleParticles::ModuleParticles()
 		tetsu_iniBomb.life = 500;
 		tetsu_iniBomb.anim.loop = true;
 
+		//tree
+		tree.anim.PushBack({ 263,254,178,184 });
+		tree.life = 9000;
+		tree.anim.loop = true;
+
 
 	}
 }
@@ -469,6 +474,7 @@ bool ModuleParticles::Start()
 
 	LOG("Loading particles");
 	graphics = App->textures->Load("Assets/particles/particles.png"); 
+	MotionTree = App->textures->Load("Assets/maps/forest/Motion_trees.png");
 
 	LOG("Loading fx sound to laser particle");
 	laser0.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");

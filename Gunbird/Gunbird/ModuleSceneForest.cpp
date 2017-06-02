@@ -53,10 +53,10 @@ ModuleSceneForest::ModuleSceneForest()
 	motion_trees_5.w = 178;
 	motion_trees_5.h = 184;
 
-	motion_trees_6.x = 263;
-	motion_trees_6.y = 254;
-	motion_trees_6.w = 178;
-	motion_trees_6.h = 184;
+	motion_trees_6.x = 401;
+	motion_trees_6.y = 784;
+	motion_trees_6.w = 126;
+	motion_trees_6.h = 173;
 
 	miner_down.PushBack({ 17, 13, 15, 23 });
 	miner_down.PushBack({ 215, 13, 15, 23 });
@@ -156,7 +156,7 @@ bool ModuleSceneForest::Start()
 	motion_trees_5_y = 0;
 
 	motion_trees_6_x = 0;
-	motion_trees_6_y = 0;
+	motion_trees_6_y = -1125.0f;
 
 
 	LOG("Loading SceneForest assets");
@@ -432,6 +432,7 @@ update_status ModuleSceneForest::Update()
 
 	//motion trees
 
+
 	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_4_x, (int)0 + motion_trees_4_y, &motion_trees_4, 0.75f)) {
 		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
@@ -480,6 +481,17 @@ update_status ModuleSceneForest::Update()
 		motion_trees_1_x += 0.5f;
 	}
 
+	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_6_x, (int)0 + motion_trees_6_y, &motion_trees_6, 0.75f)) {
+		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	if (background_y >= -2800.0f) {
+		motion_trees_6_y -= -0.5f;
+	}
+	if (background_y >= -1700.0f && background_y <= -1610.0f) {
+		motion_trees_6_x -= 0.5f;
+	}
 
 
 
@@ -635,7 +647,22 @@ update_status ModuleSceneForest::Update()
 				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 80, -50, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
 
 			}
-			if ((int)background_y >= -1901) {
+
+
+
+			if (background_y >= 1901) {
+				App->particles->AddParticle(App->particles->tree, motion_trees_5_x, motion_trees_5_y, COLLIDER_NONE);
+				
+				/*if (background_y >= -2800.0f) {
+					motion_trees_5_y -= -0.5f;
+				}
+				if (background_y >= -2100.0f && background_y <= -1990.0f) {
+					motion_trees_5_x -= 0.5f;
+				}*/
+			}
+
+
+			/*if ((int)background_y >= -1901) {
 				if (!App->render->Blit(motion_trees, (int)0 + motion_trees_5_x, (int)0 + motion_trees_5_y, &motion_trees_5, 0.75f)) {
 					LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
 					status = UPDATE_ERROR;
@@ -646,7 +673,7 @@ update_status ModuleSceneForest::Update()
 				if (background_y >= -2100.0f && background_y <= -1990.0f) {
 					motion_trees_5_x -= 0.5f;
 				}
-			}
+			}*/
 			
 
 		}

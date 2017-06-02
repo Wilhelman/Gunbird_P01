@@ -45,7 +45,7 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 
 private:
-
+	SDL_Texture* MotionTree = nullptr;
 	SDL_Texture* graphics = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
 	uint last_particle = 0;
@@ -112,6 +112,9 @@ public:
 
 	//tetsu bomb death explosion
 	Particle tetsu_iniBomb;
+
+	//Tree
+	Particle tree;
 
 	uint enemy_hitted;
 
