@@ -18,12 +18,49 @@ There are two loop with seven levels each. The four shards of the mirror are obt
 
 <iframe width="740" height="590" src="https://www.youtube.com/embed/0fKg7e37bQE" frameborder="0" allowfullscreen></iframe>
 
+## Controls
+~~~~~~~~~~~~~~~
+Player 1 controls:
+- UP: W key
+- LEFT / MOVE SELECTOR LEFT: A key
+- RIGHT / MOVE SELECTOR RIGHT:: D key
+- DOWN: S key
+- BASIC SHOT: SPACE key
+- SELECT CHARACTER: SPACE key 
+- BOMB: B key
+
+Player 2 controls:
+- UP: UP_ARROW key
+- LEFT / MOVE SELECTOR LEFT: LEFT_ARROW key
+- RIGHT / MOVE SELECTOR RIGHT:: RIGHT_ARROW key
+- DOWN: DOWN_ARROW key
+- BASIC SHOT: 1 key (NUMPAD)
+- JOIN THE GAME: 2 key (NUMPAD)
+- JOIN THE GAME (in-game): 1 key (NUMPAD)
+- SELECT CHARACTER: 1 key (NUMPAD)
+- BOMB: 2 key (NUMPAD)
+
+General/developer controls:
+- SKIP SCREEN: SPACE key
+- EXIT GAME: ESC key
+- SHOW COLLIDERS: F1
+- DIRECT WIN: F3
+
+General/developer controls for Player 1:
+- GOD MODE: F2
+- DIRECT LOSE: F4
+
+General/developer controls for Player 2:
+- GOD MODE: 7 key (NUMPAD)
+- DIRECT LOSE: 8 key (NUMPAD)
+~~~~~~~~~~~~~~~
+
 # FrozenSloth Studios - Our team
 
 ![](frozenSlothStudios_team.JPG)
 
 ## Team members
-~~~~~~~~~~~~~~~~~~
+
 _Altimira Bernat, Martí's responsability and Github account_
 
 * QA
@@ -43,7 +80,7 @@ _Termens Vázquez, Ariadna's responsability and Github account_
 
 * Art/Design
 * Github account: https://github.com/AriTeva
-~~~~~~~~~~~~~~~~~~
+
 
 ### For more information see our wiki page HERE.
 ### Download the last version of the game HERE.
