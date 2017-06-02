@@ -91,6 +91,7 @@ public:
 	Particle laser_Tetsu1_1;
 	Particle laser_Tetsu2_1;
 	Particle laser_Tetsu3_1;
+	Particle laser_Tetsu0_2;
 
 	//player death explosion
 	Particle deathPlayerExplosion;
@@ -107,6 +108,10 @@ public:
 
 	//Particles for player shot collision
 	Particle playerShotCollison;
+
+
+	//tetsu bomb death explosion
+	Particle tetsu_iniBomb;
 
 	uint enemy_hitted;
 

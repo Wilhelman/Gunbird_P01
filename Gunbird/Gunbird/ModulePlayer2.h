@@ -60,6 +60,9 @@ public:
 	Animation* current_animation;
 	iPoint position;
 	Collider* playerCollider;
+	Collider* bombCollider_H;
+	Collider* bombCollider_V;
+	iPoint bombPos;
 
 	bool inmortal;
 	int playerLives;
