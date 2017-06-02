@@ -37,6 +37,26 @@ ModuleSceneForest::ModuleSceneForest()
 	motion_trees_2.y = 38;
 	motion_trees_2.w = 88;
 	motion_trees_2.h = 175;
+	
+	motion_trees_3.x = 25;
+	motion_trees_3.y = 245;
+	motion_trees_3.w = 188;
+	motion_trees_3.h = 381;
+
+	motion_trees_4.x = 24;
+	motion_trees_4.y = 678;
+	motion_trees_4.w = 130;
+	motion_trees_4.h = 174;
+
+	motion_trees_5.x = 263;
+	motion_trees_5.y = 254;
+	motion_trees_5.w = 178;
+	motion_trees_5.h = 184;
+
+	motion_trees_6.x = 263;
+	motion_trees_6.y = 254;
+	motion_trees_6.w = 178;
+	motion_trees_6.h = 184;
 
 	miner_down.PushBack({ 17, 13, 15, 23 });
 	miner_down.PushBack({ 215, 13, 15, 23 });
@@ -124,7 +144,20 @@ bool ModuleSceneForest::Start()
 	motion_trees_1_y = -526.0f;
 
 	motion_trees_2_x = 0;
-	motion_trees_2_y = -550.0f;
+	motion_trees_2_y = -665.0f;
+
+	motion_trees_3_x = 39;
+	motion_trees_3_y = -850.0f;
+
+	motion_trees_4_x = 0;
+	motion_trees_4_y = -808.0f;
+
+	motion_trees_5_x = 0;
+	motion_trees_5_y = 0;
+
+	motion_trees_6_x = 0;
+	motion_trees_6_y = 0;
+
 
 	LOG("Loading SceneForest assets");
 	bool ret = true;
@@ -396,6 +429,45 @@ update_status ModuleSceneForest::Update()
 		beam_y -= -0.5f; 
 	}
 
+
+	//motion trees
+
+	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_4_x, (int)0 + motion_trees_4_y, &motion_trees_4, 0.75f)) {
+		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	if (background_y >= -2800.0f) {
+		motion_trees_4_y -= -0.5f;
+	}
+	if (background_y >= -2100.0f && background_y <= -1990.0f) {
+		motion_trees_4_x -= 0.5f;
+	}
+
+	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_2_x, (int)0 + motion_trees_2_y, &motion_trees_2, 0.75f)) {
+		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	if (background_y >= -2800.0f) {
+		motion_trees_2_y -= -0.5f;
+	}
+	if (background_y >= -2200.0f && background_y <= 2190.0f) {
+		motion_trees_2_x -= 0.5f;
+	}
+
+	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_3_x, (int)0 + motion_trees_3_y, &motion_trees_3, 0.75f)) {
+		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+		status = UPDATE_ERROR;
+	}
+
+	if (background_y >= -2800.0f) {
+		motion_trees_3_y -= -0.5f;
+	}
+	if (background_y >= -1990.0f && background_y <= -1910.0f) {
+		motion_trees_3_x += 0.5f;
+	}
+
 	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_1_x, (int)0 + motion_trees_1_y, &motion_trees_1, 0.75f)) {
 		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
@@ -408,17 +480,8 @@ update_status ModuleSceneForest::Update()
 		motion_trees_1_x += 0.5f;
 	}
 
-	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_2_x, (int)0 + motion_trees_2_y, &motion_trees_2, 0.75f)) {
-		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
-		status = UPDATE_ERROR;
-	}
 
-	if (background_y >= -2800.0f) {
-		motion_trees_2_y -= -0.5f;
-	}
-	if (background_y >= -2360.0f && background_y <= 2300.0f) {
-		motion_trees_2_x -= 0.5f;
-	}
+
 
 		if (!App->render->Blit(motionless_trees, (int)background_x, (int)background_y + SCREEN_HEIGHT, &m_trees, 0.75f)) {
 			LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
@@ -426,7 +489,6 @@ update_status ModuleSceneForest::Update()
 		}
 
 		
-
 		if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && App->sceneForest->IsEnabled())
 		{
 			//DO UNLOAD OF ALL THE TEXTURES ABOUT ANIM IN BACKGROUND LIKE SOLDIERS ETC
@@ -573,7 +635,18 @@ update_status ModuleSceneForest::Update()
 				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 80, -50, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
 
 			}
-
+			if ((int)background_y >= -1901) {
+				if (!App->render->Blit(motion_trees, (int)0 + motion_trees_5_x, (int)0 + motion_trees_5_y, &motion_trees_5, 0.75f)) {
+					LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+				if (background_y >= -2800.0f) {
+					motion_trees_5_y -= -0.5f;
+				}
+				if (background_y >= -2100.0f && background_y <= -1990.0f) {
+					motion_trees_5_x -= 0.5f;
+				}
+			}
 			
 
 		}

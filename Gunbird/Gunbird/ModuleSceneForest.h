@@ -37,6 +37,18 @@ private:
 	SDL_Rect motion_trees_2;
 	float motion_trees_2_x;
 	float motion_trees_2_y;
+	SDL_Rect motion_trees_3;
+	float motion_trees_3_x;
+	float motion_trees_3_y;
+	SDL_Rect motion_trees_4;
+	float motion_trees_4_x;
+	float motion_trees_4_y;
+	SDL_Rect motion_trees_5;
+	float motion_trees_5_x;
+	float motion_trees_5_y;
+	SDL_Rect motion_trees_6;
+	float motion_trees_6_x;
+	float motion_trees_6_y;
 
 public:
 	ModuleSceneForest();
