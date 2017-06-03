@@ -2,7 +2,7 @@
 We're going to replicate the 1994 Gunbird game arcade version developed and published by Psyko as a tribute to the game. This project has been done by four catalan students of CITM - UPC (Terrasa, Spain).  
 
 * Github wiki of the project: https://github.com/Wilhelman/Gunbird_P01/wiki
-* Project web: available soon
+* Project web: https://wilhelman.github.io/Gunbird_P01/
 
 ## About the game
 
