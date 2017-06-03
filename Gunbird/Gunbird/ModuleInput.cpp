@@ -75,6 +75,15 @@ update_status ModuleInput::PreUpdate()
 	if (keyboard[SDL_SCANCODE_ESCAPE] || gamepad.BACK == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 		return update_status::UPDATE_STOP;
 
+	SDL_Event event;
+	while (SDL_PollEvent(&event))
+	{
+		if (event.type == SDL_QUIT)
+		{
+			return update_status::UPDATE_STOP;
+		}
+	}
+
 	buttonForGamepad();
 
 	gamepad.movementJoystick.x = ((float)SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTX) / 32767.0f);
