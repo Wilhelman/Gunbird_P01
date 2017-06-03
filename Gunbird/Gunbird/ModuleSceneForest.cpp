@@ -735,14 +735,19 @@ update_status ModuleSceneForest::Update()
 				App->enemies->AddEnemy(ENEMY_TYPES::FOREST_HOUSE, 100, 30, ENEMY_MOVEMENT::STAY);
 			}
 			
-			if ((int)background_y == -2780 && spawned == 0) {
-				App->enemies->AddEnemy(ENEMY_TYPES::FOREST_HOUSE, -40, -240, ENEMY_MOVEMENT::STAY);
-
+				if ((int)background_y == -2710 && spawned == 0) {
+					
 				App->enemies->AddEnemy(ENEMY_TYPES::BEE, -10, -10, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH);
 				App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH, -20, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
 
 				App->enemies->AddEnemy(ENEMY_TYPES::BEE, 50, -30, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
 				App->enemies->AddEnemy(ENEMY_TYPES::BEE, SCREEN_WIDTH / 2 + 30, -29, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
+
+				}
+
+			if ((int)background_y == -2780 && spawned == 0) {
+				App->enemies->AddEnemy(ENEMY_TYPES::FOREST_HOUSE, -40, -240, ENEMY_MOVEMENT::STAY);
+
 			}
 
 			//big red turret + bee
