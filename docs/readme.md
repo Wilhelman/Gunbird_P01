@@ -18,6 +18,8 @@ There are two loop with seven levels each. The four shards of the mirror are obt
 
 ## Controls
 ~~~~~~~~~~~~~~~
+###Keyboard:
+
 Player 1 controls:
 - UP: W key
 - LEFT / MOVE SELECTOR LEFT: A key
@@ -51,6 +53,14 @@ General/developer controls for Player 1:
 General/developer controls for Player 2:
 - GOD MODE: 7 key (NUMPAD)
 - DIRECT LOSE: 8 key (NUMPAD)
+
+###Gamepad:
+
+Move: Joystic and directional bottons
+A: Shoot and select character
+B:Boomb
+START: Start game
+
 ~~~~~~~~~~~~~~~
 
 # FrozenSloth Studios - Our team
@@ -78,6 +88,7 @@ _Termens Vázquez, Ariadna's responsability and Github account_
 
 * Art/Design
 * [Github account](https://github.com/AriTeva)
+
 
 
 ### For more information see our wiki page [HERE](https://github.com/Wilhelman/Gunbird_P01/wiki).
