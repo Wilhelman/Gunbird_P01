@@ -64,7 +64,7 @@ General/developer controls for Player 2:
 _Altimira Bernat, Martí's responsability and Github account_
 
 * QA
-* Github account: https://github.com/martimab
+* [Github account](https://github.com/martimab)
 
 _García Subirana, Guillermo's responsability and Github account_
 
