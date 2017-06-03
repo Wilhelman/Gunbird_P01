@@ -632,6 +632,10 @@ Particle::~Particle() {
 
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 {
+	if ((c1->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c1->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c1->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB || c1->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) && (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY || c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING))
+		App->audio->PlayFx(enemy_hitted);
+	if (c1->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB || c1->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB)
+		return;
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		if (active[i] != nullptr && active[i]->collider == c1)
@@ -642,6 +646,5 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 
-	if((c1-> type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c1->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) && (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY || c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING))
-		App->audio->PlayFx(enemy_hitted);
+	
 }

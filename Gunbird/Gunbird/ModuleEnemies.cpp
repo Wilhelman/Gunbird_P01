@@ -508,7 +508,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			enemies[i]->OnCollision(c2);
 			if (enemies[i]->type == ENEMY_TYPES::METALLICBALLOON) {
 				if (enemies[i]->getLives() == 0) {
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
 						App->ui->score += 500;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
@@ -518,7 +518,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
 						break;
 					}
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB) {
 						App->ui->scoreP2 += 500;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
@@ -532,7 +532,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::BIG_RED_TURRET) {
 				if (enemies[i]->getLives() == 0) {
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
 						App->ui->score += 500;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
@@ -542,7 +542,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
 						break;
 					}
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB) {
 						App->ui->scoreP2 += 500;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
@@ -555,7 +555,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::TERRESTIALTURRET) {
-				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
 					if (enemies[i]->getLives() == 0) {
 						App->ui->score += 500;
 						App->audio->PlayFx(medium_explosion);
@@ -566,7 +566,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						break;
 					}
 				}
-				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB) {
 					if (enemies[i]->getLives() == 0) {
 						App->ui->scoreP2 += 500;
 						App->audio->PlayFx(medium_explosion);
@@ -579,7 +579,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::RED_TURRET) {
-				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
 					if (enemies[i]->getLives() == 0) {
 						App->ui->score += 500;
 						
@@ -591,7 +591,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						break;
 					}
 				}
-				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB) {
 					if (enemies[i]->getLives() == 0) {
 						App->ui->scoreP2 += 500;
 						App->audio->PlayFx(medium_explosion);
@@ -604,7 +604,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 			}
 			else if(enemies[i]->type == ENEMY_TYPES::TORPEDO){
-				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
 					App->ui->score += 200;
 					App->audio->PlayFx(medium_explosion);
 					App->particles->AddParticle(App->particles->torpedoExplosion, (c1->rect.x - ((49 - (c1->rect.w)) / 2)), (c1->rect.y - ((35 - (c1->rect.h)) / 2)));
@@ -612,7 +612,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					enemies[i] = nullptr;
 					break;
 				}
-				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB) {
 					App->ui->scoreP2 += 200;
 					App->audio->PlayFx(medium_explosion);
 					App->particles->AddParticle(App->particles->torpedoExplosion, (c1->rect.x - ((49 - (c1->rect.w)) / 2)), (c1->rect.y - ((35 - (c1->rect.h)) / 2)));
@@ -622,7 +622,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::BEE) {
-				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
 					this->AddEnemy(ENEMY_TYPES::BOMB, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
 					App->ui->score += 200;
 					App->audio->PlayFx(medium_explosion);
@@ -631,7 +631,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					enemies[i] = nullptr;
 					break;
 				}
-				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+				if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB) {
 					this->AddEnemy(ENEMY_TYPES::BOMB, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
 					App->ui->scoreP2 += 200;
 					App->audio->PlayFx(medium_explosion);
@@ -643,7 +643,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::TRUMP_RED_MECHA) {
 				if (enemies[i]->getLives() == 0) {
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
 						App->ui->score += 3000;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
@@ -651,7 +651,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						enemies[i] = nullptr;
 						break;
 					}
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB) {
 						App->ui->scoreP2 += 3000;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
@@ -663,7 +663,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::FLYING_MACHINE) {
 				if (enemies[i]->getLives() == 0) {
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
 						App->ui->score += 3000;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
@@ -671,7 +671,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						enemies[i] = nullptr;
 						break;
 					}
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB) {
 						App->ui->scoreP2 += 3000;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
@@ -683,7 +683,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::CASTLE_HOUSEFLAG) {
 				if (enemies[i]->getLives() == 0) {
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
 						App->ui->score += 3000;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
@@ -691,7 +691,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						enemies[i] = nullptr;
 						break;
 					}
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB) {
 						App->ui->scoreP2 += 3000;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
@@ -703,7 +703,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::FOREST_HOUSE) {
 				if (enemies[i]->getLives() == 0) {
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
 						App->ui->score += 3000;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((129 - (c1->rect.w)) / 2)), (c1->rect.y - ((100 - (c1->rect.h)) / 2)));
@@ -711,7 +711,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						enemies[i] = nullptr;
 						break;
 					}
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB) {
 						App->ui->scoreP2 += 3000;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((129 - (c1->rect.w)) / 2)), (c1->rect.y - ((100 - (c1->rect.h)) / 2)));
@@ -723,7 +723,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::CASTLE_HOUSEFLAG_2) {
 				if (enemies[i]->getLives() == 0) {
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
 						App->ui->score += 3000;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
@@ -731,7 +731,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						enemies[i] = nullptr;
 						break;
 					}
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB) {
 						App->ui->scoreP2 += 3000;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
@@ -744,7 +744,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 
 			else if (enemies[i]->type == ENEMY_TYPES::CASTLE_VASE) {
 				if (enemies[i]->getLives() == 0) {
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
 						App->ui->score += 500;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->vaseExplosion, (c1->rect.x - ((58 - (c1->rect.w)) / 2)), (c1->rect.y - ((66 - (c1->rect.h)) / 2)));
@@ -754,7 +754,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
 						break;
 					}
-					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB) {
 						App->ui->scoreP2 += 500;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->vaseExplosion, (c1->rect.x - ((58 - (c1->rect.w)) / 2)), (c1->rect.y - ((66 - (c1->rect.h)) / 2)));

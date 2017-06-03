@@ -24,6 +24,8 @@ private:
 	uint lastTime;
 	uint spawnTime;
 	uint bombTimer;
+	uint bombInTimer;
+	uint bombCombo;
 
 	bool hitted;
 	uint hittedTime;
@@ -70,7 +72,6 @@ public:
 	Particle init_bomb2;
 	Particle init_bomb3;
 	Particle init_bomb4;
-	Particle init_flames;
 
 	bool inmortal;
 	int playerLives;
