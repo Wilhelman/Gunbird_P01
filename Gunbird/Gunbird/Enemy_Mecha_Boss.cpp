@@ -19,10 +19,15 @@ Enemy_Mecha_Boss::Enemy_Mecha_Boss(int x, int y) : Enemy(x, y)
 
 	lastTime = 0;
 
-	idle.PushBack({ 1322,1564,116,100 }); 
-	idle.speed = 0.5f;
+	idle.PushBack({ 56,2038,188,126 }); 
+	idle.PushBack({ 285,2038,188,126 });
+	idle.PushBack({ 517,2038,188,126 });
+	idle.PushBack({ 745,2038,188,126 });
+	idle.PushBack({ 991,2038,188,126 });
+	idle.PushBack({ 1230,2038,188,126 });
+	idle.speed = 0.1f;
 
-	collider = App->collision->AddCollider({ 0, 0, 116, 100 }, COLLIDER_TYPE::COLLIDER_ENEMY_FLYING, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 116, 100 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	animation = &idle;
 
