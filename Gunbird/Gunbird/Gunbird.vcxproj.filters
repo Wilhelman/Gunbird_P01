@@ -144,6 +144,9 @@
     <ClCompile Include="Enemy_Mecha_Boss.cpp">
       <Filter>Modules\Enemies\SceneForest</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_BossMecha_Hand.cpp">
+      <Filter>Modules\Enemies\SceneForest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals.h">
@@ -267,6 +270,9 @@
       <Filter>Modules\Enemies\SceneForest</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Mecha_Boss.h">
+      <Filter>Modules\Enemies\SceneForest</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_BossMecha_Hand.h">
       <Filter>Modules\Enemies\SceneForest</Filter>
     </ClInclude>
   </ItemGroup>
