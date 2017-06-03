@@ -1,5 +1,3 @@
-# Gunbird
-
 ![Gunbird_logo](http://vignette1.wikia.nocookie.net/fictionalcrossover/images/7/73/Gunbird_logo.png/revision/latest?cb=20150407124404)
 
 ## Our project 
