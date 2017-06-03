@@ -452,8 +452,8 @@ ModuleParticles::ModuleParticles()
 		tetsu_iniBomb.anim.PushBack({ 1962,2094,26,13 });
 		tetsu_iniBomb.anim.PushBack({ 1991,2093,28,15 });
 		tetsu_iniBomb.anim.PushBack({ 2024,2093,26,15 });
-
-		tetsu_iniBomb.life = 3000;
+		tetsu_iniBomb.anim.speed = 0.2f;
+		tetsu_iniBomb.life = 500;
 		tetsu_iniBomb.anim.loop = true;
 
 		//tree
@@ -484,9 +484,8 @@ ModuleParticles::ModuleParticles()
 		tetsu_flames.anim.PushBack({ 1728,2447,30,61 });
 		tetsu_flames.anim.PushBack({ 1780,2447,30,61 });
 		tetsu_flames.anim.PushBack({ 1830,2447,30,61 });
-
-		tetsu_flames.life = 3000;
-		tetsu_flames.anim.loop = true;
+		tetsu_flames.anim.speed = 0.5f;
+		tetsu_flames.anim.loop = false;
 	}
 }
 

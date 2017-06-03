@@ -23,6 +23,7 @@ private:
 	uint currentTime;
 	uint lastTime;
 	uint spawnTime;
+	uint bombTimer;
 
 	bool hitted;
 	uint hittedTime;
@@ -65,7 +66,10 @@ public:
 	Collider* bombCollider_V;
 	iPoint bombPos;
 
-	Particle init_bomb;
+	Particle init_bomb1;
+	Particle init_bomb2;
+	Particle init_bomb3;
+	Particle init_bomb4;
 	Particle init_flames;
 
 	bool inmortal;
@@ -78,6 +82,7 @@ public:
 	bool playerLost;
 	bool godModeControl;
 	bool spawining;
+	bool canThrowBomb;
 
 };
 

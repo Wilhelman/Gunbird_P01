@@ -636,8 +636,14 @@ update_status ModulePlayer::Update()
 	if (canThrowBomb == true) {
 		if (timeToBomb == 0) {
 			App->render->Blit(valnusBombGraphics, bombPos.x - 149, bombPos.y - 180, &(valnusBombStart.GetCurrentFrame()));
-			bombCollider_H = App->collision->AddCollider({ 0, position.y - 100, 400, 150 }, COLLIDER_PLAYER_SHOT, this);
-			bombCollider_V = App->collision->AddCollider({ position.x - 30, 0, 150, 400 }, COLLIDER_PLAYER_SHOT, this);
+			if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::VALNUS_SELECTED) {
+				bombCollider_H = App->collision->AddCollider({ 0, position.y - 100, 400, 150 }, COLLIDER_PLAYER_SHOT, this);
+				bombCollider_V = App->collision->AddCollider({ position.x - 30, 0, 150, 400 }, COLLIDER_PLAYER_SHOT, this);
+			}
+			else if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::VALNUS_SELECTED) {
+				bombCollider_H = App->collision->AddCollider({ 0, position.y - 100, 400, 150 }, COLLIDER_PLAYER2_SHOT, this);
+				bombCollider_V = App->collision->AddCollider({ position.x - 30, 0, 150, 400 }, COLLIDER_PLAYER2_SHOT, this);
+			}
 		}
 
 		if (timeToBomb < 100) {

@@ -313,7 +313,10 @@ ModulePlayer2::~ModulePlayer2()
 // Load assets
 bool ModulePlayer2::Start()
 {
-	init_bomb = App->particles->tetsu_iniBomb;
+	init_bomb1 = App->particles->tetsu_iniBomb;
+	init_bomb2 = App->particles->tetsu_iniBomb;
+	init_bomb3 = App->particles->tetsu_iniBomb;
+	init_bomb4 = App->particles->tetsu_iniBomb;
 	init_flames = App->particles->tetsu_flames;
 
 	hitted = false;
@@ -367,33 +370,23 @@ update_status ModulePlayer2::Update()
 			{
 				if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN || App->input->gamepad.B == KEY_STATE::KEY_DOWN)
 				{
-					init_bomb.speed.x = -0.5f;
-					App->particles->AddParticle(init_bomb, position.x, position.y, COLLIDER_TYPE::COLLIDER_NONE);
-					init_bomb.speed.x = -1.0f;
-					App->particles->AddParticle(init_bomb, position.x, position.y, COLLIDER_TYPE::COLLIDER_NONE);
-					init_bomb.speed.x = 0.5f;
-					App->particles->AddParticle(init_bomb, position.x, position.y, COLLIDER_TYPE::COLLIDER_NONE);
-					init_bomb.speed.x = 1.0f;
-					App->particles->AddParticle(init_bomb, position.x, position.y, COLLIDER_TYPE::COLLIDER_NONE);
+					if (canThrowBomb == false && this->playerBombs > 0) {
+						canThrowBomb = true;
+						App->player2->playerBombs--;
+						init_bomb1.speed.x = -1.0f;
+						App->particles->AddParticle(init_bomb1, position.x + 15, position.y, COLLIDER_TYPE::COLLIDER_NONE);
+						init_bomb2.speed.x = -2.0f;
+						App->particles->AddParticle(init_bomb2, position.x + 15, position.y, COLLIDER_TYPE::COLLIDER_NONE);
+						init_bomb3.speed.x = 1.0f;
+						App->particles->AddParticle(init_bomb3, position.x + 15, position.y, COLLIDER_TYPE::COLLIDER_NONE);
+						init_bomb4.speed.x = -2.0f;
+						App->particles->AddParticle(init_bomb4, position.x + 15, position.y, COLLIDER_TYPE::COLLIDER_NONE);
+
+						bombPos = this->position;
+						bombTimer = currentTime;
+					}
 				}
 				
-				/*
-				inibomba.speed.x = -0.5f;
-				App->particles->AddParticle(inibomba, position.x , position.y, COLLIDER_TYPE::COLLIDER_NONE);
-
-				inibomba.speed.x = -1.0f;
-				App->particles->AddParticle(inibomba, position.x , position.y, COLLIDER_TYPE::COLLIDER_NONE);
-
-				inibomba.speed.x = 0.5f;
-				App->particles->AddParticle(inibomba, position.x , position.y, COLLIDER_TYPE::COLLIDER_NONE);
-
-				inibomba.speed.x = 1.0f;
-				App->particles->AddParticle(inibomba, position.x , position.y, COLLIDER_TYPE::COLLIDER_NONE);
-
-				App->particles->AddParticle(llama, position.x , position.y, COLLIDER_TYPE::COLLIDER_PLAYER1SHOT);
-
-				
-				*/
 				if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_REPEAT || App->input->gamepad.joystickRight)
 				{
 					if (position.x < SCREEN_WIDTH - 34) // TODO: correct limits so they are all equal
@@ -708,6 +701,47 @@ update_status ModulePlayer2::Update()
 	if (!App->render->Blit(graphics, position.x, position.y - r.h, &r)) {
 		LOG("Cannot blit the texture in ModulePlayer %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
+	}
+
+	if (canThrowBomb == true && currentTime > bombTimer + 800) {
+		
+		if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::TETSU_SELECTED) {
+			App->particles->AddParticle(init_flames, bombPos.x - 20, position.y + 10, COLLIDER_TYPE::COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(init_flames, bombPos.x - 20, position.y + 10, COLLIDER_TYPE::COLLIDER_PLAYER_SHOT);
+		}
+		else if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::TETSU_SELECTED) {
+			App->particles->AddParticle(init_flames, bombPos.x +30, position.y + 10, COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT);
+			App->particles->AddParticle(init_flames, bombPos.x + 20, position.y + 10, COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT);
+		}
+		
+
+			/*bombCollider_H = App->collision->AddCollider({ 0, position.y - 100, 400, 150 }, COLLIDER_PLAYER_SHOT, this);
+			bombCollider_V = App->collision->AddCollider({ position.x - 30, 0, 150, 400 }, COLLIDER_PLAYER_SHOT, this);*/
+		
+
+		/*if (timeToBomb < 100) {
+			if (bombCollider_H != nullptr)
+				bombCollider_H->SetPos(0, position.y - 90);
+			if (bombCollider_V != nullptr)
+				bombCollider_V->SetPos(position.x - 57, 0);
+			App->render->Blit(valnusBombGraphics, bombPos.x - 149, bombPos.y - 180, &(valnus_bomb_animation.GetCurrentFrame()));
+			App->render->Blit(valnusBombGraphics, bombPos.x - 149, bombPos.y - 180, &(valnus_bomb.GetCurrentFrame()));
+		}
+
+		if (timeToBomb < 100)
+			timeToBomb++;
+
+		if (timeToBomb == 100) {
+
+			canThrowBomb = false;
+			timeToBomb = 0;
+
+			if (bombCollider_H != nullptr)
+				App->collision->EraseCollider(bombCollider_H);
+			if (bombCollider_V != nullptr)
+				App->collision->EraseCollider(bombCollider_V);
+		}*/
+
 	}
 
 	if (this->deadPlayer) {
