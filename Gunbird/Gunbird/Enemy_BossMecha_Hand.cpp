@@ -2,6 +2,7 @@
 #include "Enemy_BossMecha_Hand.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
+#include "ModuleSceneForest.h"
 #include "ModulePlayer2.h"
 #include "SDL\include\SDL_timer.h"
 
@@ -19,21 +20,28 @@ Enemy_BossMecha_Hand::Enemy_BossMecha_Hand(int x, int y) : Enemy(x, y)
 	lastTime = 0;
 
 	//opening hand
-	idle.PushBack({ 1194,1430,46,62 }); // TODO_: get right coordinates
-	idle.PushBack({ 1245,1430,46,62 });
-	idle.PushBack({ 1296,1430,46,62 });
-	idle.PushBack({ 1348,1430,46,62 });
+	opening.PushBack({ 1194,1430,46,62 }); // TODO_: get right coordinates
+	opening.PushBack({ 1245,1430,46,62 });
+	opening.PushBack({ 1296,1430,46,62 });
+	opening.PushBack({ 1348,1430,46,62 });
+	opening.speed = 0.08f;
+	opening.loop = false;
 
 	//turret turning
-	idle.PushBack({ 1400,1430,46,62 });
-	idle.PushBack({ 1601, 1931, 45, 62 });
-	idle.PushBack({ 1121, 1931, 45, 62 });
-	idle.PushBack({ 1176, 1931, 45, 62 });
-	idle.PushBack({ 1238, 1931, 45, 62 });
-	idle.PushBack({ 1293, 1931, 45, 62 });
-	idle.PushBack({ 1348, 1931, 45, 62 });
-	idle.PushBack({ 1401, 1931, 45, 62 });
-	idle.speed = 0.1f;
+	rotation.PushBack({ 1400,1430,46,62 });
+	rotation.PushBack({ 1121, 1931, 45, 62 });
+	rotation.PushBack({ 1176, 1931, 45, 62 });
+	rotation.PushBack({ 1238, 1931, 45, 62 });
+	rotation.PushBack({ 1293, 1931, 45, 62 });
+	rotation.PushBack({ 1348, 1931, 45, 62 });
+	rotation.PushBack({ 1401, 1931, 45, 62 });
+	rotation.speed = 0.08f;
+
+	//closed
+	handClosed.PushBack({ 1194,1430,46,62 });
+	handClosed.speed = 0.08f;
+	handClosed.loop = true;
+
 
 	/*
 	//opening hand 
@@ -55,7 +63,8 @@ Enemy_BossMecha_Hand::Enemy_BossMecha_Hand(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ 0, 0, 42, 53 }, COLLIDER_TYPE::COLLIDER_ENEMY_FLYING, (Module*)App->enemies);
 
-	animation = &idle;
+	animation = &handClosed;
+
 
 	original_pos.x = x;
 	original_pos.y = y;
@@ -63,6 +72,12 @@ Enemy_BossMecha_Hand::Enemy_BossMecha_Hand(int x, int y) : Enemy(x, y)
 
 void Enemy_BossMecha_Hand::Move()
 {
+	if ((int)App->sceneForest->background_y == -1650)
+		animation = &opening;
+
+	if ((int)App->sceneForest->background_y == -1625)
+		animation = &rotation;
+
 	position = original_pos + movement.GetCurrentPosition(&animation);
 	lastParticle = App->particles->enemyBasicShot;
 }

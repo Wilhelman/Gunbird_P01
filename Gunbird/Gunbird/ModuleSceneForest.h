@@ -37,6 +37,7 @@ private:
 	Animation trump_spikyHair2;
 	Animation trumphat1;
 	Animation trumpHat2;
+	Animation goldMachine;
 	
 	SDL_Rect motion_trees_1;
 	float motion_trees_1_x;
@@ -69,6 +70,9 @@ private:
 	SDL_Rect motion_trees_8;
 	float motion_trees_8_x;
 	float motion_trees_8_y;
+
+	bool f5Pressed;
+
 public:
 	ModuleSceneForest();
 	~ModuleSceneForest();
@@ -82,6 +86,7 @@ public:
 	SDL_Texture* graphic_miner = nullptr;
 	SDL_Texture* motionless_trees = nullptr;
 	SDL_Texture* motion_trees = nullptr;
+	SDL_Texture* bossForest = nullptr;
 	SDL_Rect background;
 	SDL_Rect m_trees;
 	float background_x;

@@ -10,11 +10,13 @@ class Enemy_BossMecha_Hand : public Enemy
 private:
 	bool left;
 
-	Animation idle;
+	Animation opening;
+	Animation rotation;
 	Animation hitWhite;
 	Animation redNormal;
 	Animation redNormal_2;
 	Animation redNormal_3;
+	Animation handClosed;
 	iPoint original_pos;
 
 	uint lastShot;

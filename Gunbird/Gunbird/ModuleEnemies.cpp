@@ -19,6 +19,7 @@
 #include "Enemy_BossMecha_Hand.h"
 #include "SceneCastle_Vase.h"
 #include "ModuleAudio.h"
+#include "Enemy_Mecha_Boss.h"
 #include "SceneForest_house.h"
 
 #include "Coin.h"
@@ -142,18 +143,17 @@ ModuleEnemies::ModuleEnemies()
 	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
 	trump_red_mecha_path.PushBack({ 0.0f,0.4f }, 30);
 	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f,0.4f }, 40);
+	trump_red_mecha_path.PushBack({ -0.2f,0.4f }, 40);
 	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f,0.4f }, 40);
+	trump_red_mecha_path.PushBack({ -0.2f,0.4f }, 40);
 	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f,0.4f }, 30);
+	trump_red_mecha_path.PushBack({ -0.2f,0.4f }, 30);
 	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f,0.4f }, 40);
+	trump_red_mecha_path.PushBack({ -0.4f,0.4f }, 40);
 	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f,0.4f }, 20);
+	trump_red_mecha_path.PushBack({ -0.4f,0.4f }, 20);
 	trump_red_mecha_path.PushBack({ 0.0f, 0.0f }, 20);
-	trump_red_mecha_path.PushBack({ 0.0f, 0.4f }, 170);
-	trump_red_mecha_path.PushBack({ -2.0f, 0.0f }, 200);
+	trump_red_mecha_path.PushBack({ -0.4f, 0.4f }, 170);
 	trump_red_mecha_path.loop = false;
 
 
@@ -177,6 +177,11 @@ ModuleEnemies::ModuleEnemies()
 	red_turret_rigth_left.PushBack({ -0.5f, 0.5f }, 180);
 	red_turret_rigth_left.PushBack({ 0.0f, 0.5f }, 3500);
 	red_turret_rigth_left.loop = false;
+
+	//boss hand forest
+	bossForestHand.PushBack({0.0f, 0.5}, 430);
+	bossForestHand.PushBack({ 0.0f, 0.0 }, 4000);
+	bossForestHand.loop = false;
 
 }
 
@@ -501,15 +506,25 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i]->type = ENEMY_TYPES::FOREST_BOSS_HAND;
 			switch (info.typeMovement)
 			{
-			case ENEMY_MOVEMENT::STAY:
-				enemies[i]->movement = stayPath;
-				break;
-			case ENEMY_MOVEMENT::BOSS_FOREST_HAND_UP_DOWN:
-				enemies[i]->movement = upDown_hand;
+			case ENEMY_MOVEMENT::BOSS_FOREST_HAND:
+				enemies[i]->movement = bossForestHand;
 				break;
 			default:
 				break;
 			}
+			break;
+		case ENEMY_TYPES::BOSS_FOREST:
+			enemies[i] = new Enemy_Mecha_Boss(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::BOSS_FOREST;
+			switch (info.typeMovement)
+			{
+			case ENEMY_MOVEMENT::BOSS_FOREST_HAND:
+				enemies[i]->movement = bossForestHand;
+				break;
+			default:
+				break;
+			}
+			break;
 		}
 	}
 }
@@ -804,6 +819,30 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					}
 				}
 			}
+
+			else if (enemies[i]->type == ENEMY_TYPES::BOSS_FOREST) {
+				if (enemies[i]->getLives() == 0) {
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
+						App->ui->score += 8000;
+						App->audio->PlayFx(medium_explosion);
+						App->particles->AddParticle(App->particles->vaseExplosion, (c1->rect.x - ((58 - (c1->rect.w)) / 2)), (c1->rect.y - ((66 - (c1->rect.h)) / 2)));
+						delete enemies[i];
+						enemies[i] = nullptr;
+						LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
+						break;
+					}
+					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB) {
+						App->ui->scoreP2 += 8000;
+						App->audio->PlayFx(medium_explosion);
+						App->particles->AddParticle(App->particles->vaseExplosion, (c1->rect.x - ((58 - (c1->rect.w)) / 2)), (c1->rect.y - ((66 - (c1->rect.h)) / 2)));
+						delete enemies[i];
+						enemies[i] = nullptr;
+						LOG("Result is: %f", c1->rect.x - ((42 - (c1->rect.w)) / 2));
+						break;
+					}
+				}
+			}
+
 
 			else if (enemies[i]->type == ENEMY_TYPES::COIN && c2->type == COLLIDER_TYPE::COLLIDER_PLAYER) {
 				App->ui->score += 200;

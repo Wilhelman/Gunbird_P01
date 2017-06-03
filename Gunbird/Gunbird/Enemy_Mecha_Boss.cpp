@@ -15,96 +15,14 @@
 
 Enemy_Mecha_Boss::Enemy_Mecha_Boss(int x, int y) : Enemy(x, y)
 {
-	lives = 19;
+	lives = 100;
 
 	lastTime = 0;
 
-	idle.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	idle.PushBack({ 89, 522, 42, 53 });
-	idle.PushBack({ 141, 522, 42, 53 });
-	idle.PushBack({ 193, 522, 42, 53 });
-	idle.PushBack({ 244, 522, 42, 53 });
+	idle.PushBack({ 1322,1564,116,100 }); 
 	idle.speed = 0.5f;
 
-	redNormal.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal.PushBack({ 347, 522, 42, 53 });
-	redNormal.PushBack({ 89, 522, 42, 53 });
-	redNormal.PushBack({ 141, 522, 42, 53 });
-	redNormal.PushBack({ 193, 522, 42, 53 });
-	redNormal.PushBack({ 244, 522, 42, 53 });
-	redNormal.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal.PushBack({ 89, 522, 42, 53 });
-	redNormal.PushBack({ 141, 522, 42, 53 });
-	redNormal.PushBack({ 193, 522, 42, 53 });
-	redNormal.PushBack({ 244, 522, 42, 53 });
-	redNormal.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal.PushBack({ 89, 522, 42, 53 });
-	redNormal.PushBack({ 141, 522, 42, 53 });
-	redNormal.PushBack({ 193, 522, 42, 53 });
-	redNormal.PushBack({ 244, 522, 42, 53 });
-	redNormal.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal.PushBack({ 89, 522, 42, 53 });
-	redNormal.PushBack({ 141, 522, 42, 53 });
-	redNormal.PushBack({ 193, 522, 42, 53 });
-	redNormal.PushBack({ 244, 522, 42, 53 });
-	redNormal.speed = 0.5f;
-
-	redNormal_2.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_2.PushBack({ 347, 522, 42, 53 });
-	redNormal_2.PushBack({ 89, 522, 42, 53 });
-	redNormal_2.PushBack({ 141, 522, 42, 53 });
-	redNormal_2.PushBack({ 193, 522, 42, 53 });
-	redNormal_2.PushBack({ 244, 522, 42, 53 });
-	redNormal_2.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_2.PushBack({ 89, 522, 42, 53 });
-	redNormal_2.PushBack({ 141, 522, 42, 53 });
-	redNormal_2.PushBack({ 193, 522, 42, 53 });
-	redNormal_2.PushBack({ 244, 522, 42, 53 });
-	redNormal_2.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_2.PushBack({ 347, 522, 42, 53 });
-	redNormal_2.PushBack({ 89, 522, 42, 53 });
-	redNormal_2.PushBack({ 141, 522, 42, 53 });
-	redNormal_2.PushBack({ 193, 522, 42, 53 });
-	redNormal_2.PushBack({ 244, 522, 42, 53 });
-	redNormal_2.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_2.PushBack({ 89, 522, 42, 53 });
-	redNormal_2.PushBack({ 141, 522, 42, 53 });
-	redNormal_2.PushBack({ 193, 522, 42, 53 });
-	redNormal_2.PushBack({ 244, 522, 42, 53 });
-	redNormal_2.speed = 0.5f;
-
-	redNormal_3.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_3.PushBack({ 347, 522, 42, 53 });
-	redNormal_3.PushBack({ 89, 522, 42, 53 });
-	redNormal_3.PushBack({ 141, 522, 42, 53 });
-	redNormal_3.PushBack({ 193, 522, 42, 53 });
-	redNormal_3.PushBack({ 244, 522, 42, 53 });
-	redNormal_3.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_3.PushBack({ 347, 522, 42, 53 });
-	redNormal_3.PushBack({ 89, 522, 42, 53 });
-	redNormal_3.PushBack({ 141, 522, 42, 53 });
-	redNormal_3.PushBack({ 193, 522, 42, 53 });
-	redNormal_3.PushBack({ 244, 522, 42, 53 });
-	redNormal_3.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_3.PushBack({ 347, 522, 42, 53 });
-	redNormal_3.PushBack({ 89, 522, 42, 53 });
-	redNormal_3.PushBack({ 141, 522, 42, 53 });
-	redNormal_3.PushBack({ 193, 522, 42, 53 });
-	redNormal_3.PushBack({ 244, 522, 42, 53 });
-	redNormal_3.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_3.PushBack({ 347, 522, 42, 53 });
-	redNormal_3.PushBack({ 89, 522, 42, 53 });
-	redNormal_3.PushBack({ 141, 522, 42, 53 });
-	redNormal_3.PushBack({ 193, 522, 42, 53 });
-	redNormal_3.PushBack({ 244, 522, 42, 53 });
-	redNormal_3.speed = 0.5f;
-
-
-	hitWhite.PushBack({ 296, 522, 42, 53 });
-	hitWhite.speed = 0.5f;
-	hitWhite.loop = true;
-
-	collider = App->collision->AddCollider({ 0, 0, 42, 53 }, COLLIDER_TYPE::COLLIDER_ENEMY_FLYING, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 116, 100 }, COLLIDER_TYPE::COLLIDER_ENEMY_FLYING, (Module*)App->enemies);
 
 	animation = &idle;
 

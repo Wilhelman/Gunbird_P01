@@ -160,6 +160,21 @@ ModuleSceneForest::ModuleSceneForest()
 	shadowBeam.PushBack({ 16, 399, 174, 23 });
 	shadowBeam.speed = 0.05f;
 	shadowBeam.loop = true;
+
+	goldMachine.PushBack({ 29,1357,91,76 });
+	goldMachine.PushBack({ 131,1375,91,76 });
+	goldMachine.PushBack({ 226,1375,91,76 });
+	goldMachine.PushBack({ 322,1375,91,76 });
+	goldMachine.PushBack({ 420,1375,91,76 });
+	goldMachine.PushBack({ 512,1375,91,76 });
+	goldMachine.PushBack({ 612,1375,91,76 });
+	goldMachine.PushBack({ 38,1493,91,76 });
+	goldMachine.PushBack({ 146,1493,91,76 });
+	goldMachine.PushBack({ 263,1493,91,76 });
+	goldMachine.PushBack({ 370,1493,91,76 });
+	goldMachine.loop = true;
+	goldMachine.speed = 0.1f;
+
 }
 
 ModuleSceneForest::~ModuleSceneForest()
@@ -172,6 +187,7 @@ bool ModuleSceneForest::Start()
 	//setting bckground
 	background_x = 0;
 	background_y = -2800.0f;
+	f5Pressed = false;
 
 	//EXAMPLE
 	/*soldier_left_wall_y = -145;
@@ -253,6 +269,7 @@ bool ModuleSceneForest::Start()
 	motionless_trees = App->textures->Load("Assets/maps/forest/Motionless_Trees.png");
 	graphic_miner = App->textures->Load("Assets/maps/forest/Forest_stuff.png");
 	motion_trees = App->textures->Load("Assets/maps/forest/Motion_trees.png");
+	bossForest = App->textures->Load("Assets/enemies/enemies_definitive.png");
 
 	if (graphics == nullptr ||motionless_trees == nullptr) {
 		LOG("Cannot load the texture in SceneForest");
@@ -352,6 +369,7 @@ update_status ModuleSceneForest::Update()
 				status = UPDATE_ERROR;
 			}
 			trump_y -= -0.3f;
+			trump_x += 0.25f; 
 		}
 	}
 
@@ -516,11 +534,14 @@ update_status ModuleSceneForest::Update()
 
 	//motion trees
 
-
-	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_4_x, (int)0 + motion_trees_4_y, &motion_trees_4, 0.75f)) {
-		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
-		status = UPDATE_ERROR;
+	if (motion_trees != nullptr)
+	{
+		if (!App->render->Blit(motion_trees, (int)0 + motion_trees_4_x, (int)0 + motion_trees_4_y, &motion_trees_4, 0.75f)) {
+			LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
 	}
+	
 
 	if (background_y >= -2800.0f) {
 		motion_trees_4_y -= -0.5f;
@@ -529,11 +550,14 @@ update_status ModuleSceneForest::Update()
 		motion_trees_4_x -= 0.5f;
 	}
 
-	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_2_x, (int)0 + motion_trees_2_y, &motion_trees_2, 0.75f)) {
-		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
-		status = UPDATE_ERROR;
+	if (motion_trees != nullptr)
+	{
+		if (!App->render->Blit(motion_trees, (int)0 + motion_trees_2_x, (int)0 + motion_trees_2_y, &motion_trees_2, 0.75f)) {
+			LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
 	}
-
+	
 	if (background_y >= -2800.0f) {
 		motion_trees_2_y -= -0.5f;
 	}
@@ -541,10 +565,14 @@ update_status ModuleSceneForest::Update()
 		motion_trees_2_x -= 0.5f;
 	}
 
-	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_3_x, (int)0 + motion_trees_3_y, &motion_trees_3, 0.75f)) {
-		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
-		status = UPDATE_ERROR;
+	if (motion_trees != nullptr)
+	{
+		if (!App->render->Blit(motion_trees, (int)0 + motion_trees_3_x, (int)0 + motion_trees_3_y, &motion_trees_3, 0.75f)) {
+			LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
 	}
+	
 
 	if (background_y >= -2800.0f) {
 		motion_trees_3_y -= -0.5f;
@@ -553,9 +581,12 @@ update_status ModuleSceneForest::Update()
 		motion_trees_3_x += 0.5f;
 	}
 
-	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_1_x, (int)0 + motion_trees_1_y, &motion_trees_1, 0.75f)) {
-		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
-		status = UPDATE_ERROR;
+	if (motion_trees != nullptr)
+	{
+		if (!App->render->Blit(motion_trees, (int)0 + motion_trees_1_x, (int)0 + motion_trees_1_y, &motion_trees_1, 0.75f)) {
+			LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+			status = UPDATE_ERROR;
+		}
 	}
 
 	if (background_y >= -2800.0f) {
@@ -565,10 +596,10 @@ update_status ModuleSceneForest::Update()
 		motion_trees_1_x += 0.5f;
 	}
 
-	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_8_x, (int)0 + motion_trees_8_y, &motion_trees_8, 0.75f)) {
+	/*if (!App->render->Blit(motion_trees, (int)0 + motion_trees_8_x, (int)0 + motion_trees_8_y, &motion_trees_8, 0.75f)) {
 		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
-	}
+	}*/
 
 
 	/////////////BOSS????
@@ -578,32 +609,32 @@ update_status ModuleSceneForest::Update()
 		background_speed = 0.0f;
 	}
 
-	if (background_y >= -2800.0f) {
+	/*if (background_y >= -2800.0f) {
 		if (background_speed == 0.0f)
 			motion_trees_8_y = 0.0f;
 		else
 			motion_trees_8_y -= -0.5f;
 	}
-	if (background_speed == 0/*background_y >= -1525.0f && background_y <= -1435.0f*/) {
+	if (background_speed == 0/*background_y >= -1525.0f && background_y <= -1435.0f) {
 		motion_trees_8_x -= 0.5f;
-	}
+	}*/
 
-	if (background_y >= -2800.0f) {
+	/*if (background_y >= -2800.0f) {
 		if (background_speed == 0.0f)
 			motion_trees_6_y = 0.0f;
 		else
 			motion_trees_6_y -= -0.5f;
 	}
-	if (background_speed == 0/*background_y >= -1525.0f && background_y <= -1435.0f*/) {
+	if (background_speed == 0/*background_y >= -1525.0f && background_y <= -1435.0f) {
 		motion_trees_6_x -= 0.5f;
-	}
+	}*/
 
-	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_6_x, (int)0 + motion_trees_6_y, &motion_trees_6, 0.75f)) {
+	/*if (!App->render->Blit(motion_trees, (int)0 + motion_trees_6_x, (int)0 + motion_trees_6_y, &motion_trees_6, 0.75f)) {
 		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
-	}//6
+	}//6*/
 
-	if (!App->render->Blit(motion_trees, (int)0 + motion_trees_7_x, (int)0 + motion_trees_7_y, &motion_trees_7, 0.75f)) {
+	/*if (!App->render->Blit(motion_trees, (int)0 + motion_trees_7_x, (int)0 + motion_trees_7_y, &motion_trees_7, 0.75f)) {
 		LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
 		status = UPDATE_ERROR;
 	}
@@ -616,14 +647,18 @@ update_status ModuleSceneForest::Update()
 	}
 	
 
-	if (background_speed == 0/*background_y >= -1525.0f && background_y <= -1435.0f*/) {
+	if (background_speed == 0/*background_y >= -1525.0f && background_y <= -1435.0f) {
 		motion_trees_7_x += 0.5f;
-	}
+	}*/
 
+	if (motionless_trees != nullptr)
+	{
 		if (!App->render->Blit(motionless_trees, (int)background_x, (int)background_y + SCREEN_HEIGHT, &m_trees, 0.75f)) {
 			LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}
+	}
+		
 
 		
 		if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && App->sceneForest->IsEnabled())
@@ -631,6 +666,48 @@ update_status ModuleSceneForest::Update()
 			App->enemies->Disable();
 			App->particles->Disable();
 			background_y = -SCREEN_HEIGHT;
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN && App->sceneForest->IsEnabled() && !f5Pressed)
+		{
+			App->enemies->Disable();
+			App->particles->Disable();
+
+			if (graphic_miner != nullptr)
+			{
+				App->textures->Unload(graphic_miner);
+				graphic_miner = nullptr;
+			}
+
+			if (motion_trees != nullptr)
+			{
+				App->textures->Unload(motion_trees);
+				motion_trees = nullptr;
+			}
+
+			if (motionless_trees != nullptr)
+			{
+				App->textures->Unload(motionless_trees);
+				motionless_trees = nullptr;
+			}
+			f5Pressed = true;
+			background_y = -1740.0f;
+			App->enemies->Enable();
+			App->particles->Enable();
+			App->enemies->AddEnemy(ENEMY_TYPES::FOREST_BOSS_HAND, 121, -62, ENEMY_MOVEMENT::BOSS_FOREST_HAND);
+			App->enemies->AddEnemy(ENEMY_TYPES::FOREST_BOSS_HAND, 66, -62, ENEMY_MOVEMENT::BOSS_FOREST_HAND);
+			App->enemies->AddEnemy(ENEMY_TYPES::BOSS_FOREST, 52, -170, ENEMY_MOVEMENT::BOSS_FOREST_HAND);
+
+			if (bossForest != nullptr)
+			{
+				if (!App->render->Blit(bossForest, (int)121, 59, &(goldMachine.GetCurrentFrame()), 0.75f)) {
+					LOG("Cannot blit the texture in SceneJungle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+
+			
 		}
 
 
@@ -746,8 +823,8 @@ update_status ModuleSceneForest::Update()
 			if ((int)background_y == -2080 && spawned == 6)
 			{
 				spawned = 7;
-				App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -20, 40, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
-				App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -20, -60, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
+				App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -70, 40, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
+				App->enemies->AddEnemy(ENEMY_TYPES::RED_TURRET, -70, -60, ENEMY_MOVEMENT::RED_TURRET_LEFT_RIGTH);
 
 			}
 
@@ -771,10 +848,11 @@ update_status ModuleSceneForest::Update()
 
 			}
 
-			if ((int)background_y == -2800 && spawned == 9)
+			if (((int)background_y == -1740 && spawned == 9))
 			{
 				spawned = 10;
-				App->enemies->AddEnemy(ENEMY_TYPES::FOREST_BOSS_HAND, 125, 30, ENEMY_MOVEMENT::STAY);
+				App->enemies->AddEnemy(ENEMY_TYPES::FOREST_BOSS_HAND, 121, -62, ENEMY_MOVEMENT::BOSS_FOREST_HAND);
+				App->enemies->AddEnemy(ENEMY_TYPES::FOREST_BOSS_HAND, 66, -62, ENEMY_MOVEMENT::BOSS_FOREST_HAND);
 
 			}
 
