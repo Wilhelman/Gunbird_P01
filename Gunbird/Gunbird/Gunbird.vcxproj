@@ -121,6 +121,7 @@
     <ClCompile Include="Enemy_Bee.cpp" />
     <ClCompile Include="Enemy_Big_Red_Turret.cpp" />
     <ClCompile Include="Enemy_Flying_Machine.cpp" />
+    <ClCompile Include="Enemy_Mecha_Boss.cpp" />
     <ClCompile Include="Enemy_MetallicBalloon.cpp" />
     <ClCompile Include="Enemy_Red_Turret.cpp" />
     <ClCompile Include="Enemy_TerrestialTurret.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Enemy_Bee.h" />
     <ClInclude Include="Enemy_Big_Red_Turret.h" />
     <ClInclude Include="Enemy_Flying_Machine.h" />
+    <ClInclude Include="Enemy_Mecha_Boss.h" />
     <ClInclude Include="Enemy_MetallicBalloon.h" />
     <ClInclude Include="Enemy_Red_Turret.h" />
     <ClInclude Include="Enemy_TerrestialTurret.h" />
