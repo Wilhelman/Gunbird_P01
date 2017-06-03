@@ -22,6 +22,8 @@ _IMPORTANT: do not modify, change or add any folder or file as you might not be 
 
 ## Controls
 
+### Keyboard:
+
 Player 1 controls:
 - UP: W key
 - LEFT / MOVE SELECTOR LEFT: A key
@@ -55,6 +57,14 @@ General/developer controls for Player 1:
 General/developer controls for Player 2:
 - GOD MODE: 7 key (NUMPAD)
 - DIRECT LOSE: 8 key (NUMPAD)
+
+### Gamepad:
+
+- Move: Joystic and directional bottons
+- A: Shoot and select character
+- B:Boomb
+- START: Start game
+
 
 ## Changelist of all previous versions
 
