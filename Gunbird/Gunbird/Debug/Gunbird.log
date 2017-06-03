@@ -1,9 +1,45 @@
-﻿  ModulePlayer2.cpp
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-  c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\moduleplayer2.cpp(376): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\moduleplayer2.cpp(378): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\moduleplayer2.cpp(380): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\moduleplayer2.cpp(382): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
-  Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)
+﻿  ModuleSceneForest.cpp
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': type name first seen using 'class' now seen using 'struct'
+  c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: see declaration of 'Animation'
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(301): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(306): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(311): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(316): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(321): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(326): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(335): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(339): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(346): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(350): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(371): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(375): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(379): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(383): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(387): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(399): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(407): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(413): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(419): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(425): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(433): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(439): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(445): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(451): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(464): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(467): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(481): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(486): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(491): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(496): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(501): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(506): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(520): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(532): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(544): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(556): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(568): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(609): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(614): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\víctor masó\documents\github\gunbird_p01\gunbird\gunbird\modulesceneforest.cpp(792): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Gunbird.vcxproj -> C:\Users\Víctor Masó\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
+  Gunbird.vcxproj -> C:\Users\Víctor Masó\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)

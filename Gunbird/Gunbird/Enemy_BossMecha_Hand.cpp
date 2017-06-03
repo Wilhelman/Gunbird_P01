@@ -16,116 +16,42 @@
 Enemy_BossMecha_Hand::Enemy_BossMecha_Hand(int x, int y) : Enemy(x, y)
 {
 	lives = 19;
-
 	lastTime = 0;
 
-	idle.PushBack({ 29,1357,91,76 }); // TODO_: get right coordinates
-	idle.PushBack({ 131,1375,91,76 });
-	idle.PushBack({ 226,1375,91,76 });
-	idle.PushBack({ 322,1375,91,76 });
-	idle.PushBack({ 420,1375,91,76 });
-	idle.PushBack({ 512,1375,91,76 });
-	idle.PushBack({ 612,1375,91,76 });
-	idle.PushBack({ 38,1493,91,76 });
-	idle.PushBack({ 146,1493,91,76 });
-	idle.speed = 0.5f;
+	//opening hand
+	idle.PushBack({ 1194,1430,46,62 }); // TODO_: get right coordinates
+	idle.PushBack({ 1245,1430,46,62 });
+	idle.PushBack({ 1296,1430,46,62 });
+	idle.PushBack({ 1348,1430,46,62 });
 
-
+	//turret turning
+	idle.PushBack({ 1400,1430,46,62 });
+	idle.PushBack({ 1601, 1931, 45, 62 });
+	idle.PushBack({ 1121, 1931, 45, 62 });
+	idle.PushBack({ 1176, 1931, 45, 62 });
+	idle.PushBack({ 1238, 1931, 45, 62 });
+	idle.PushBack({ 1293, 1931, 45, 62 });
+	idle.PushBack({ 1348, 1931, 45, 62 });
+	idle.PushBack({ 1401, 1931, 45, 62 });
+	idle.speed = 0.1f;
 
 	/*
-	
-	29,1357,91,76
-	131,1375,91,76
-	226,1375,91,76
-	322,1375,91,76
-	420,1375,91,76
+	//opening hand 
+	1194,1430,46,62
+	1245,1430,46,62
+	1296,1430,46,62
+	1348,1430,46,62
 
-	512,1375,91,76
-	612,1375,91,76
-	38,1493,91,76
-	146,1493,91,76
-	263,1493,91,76
-	370,1493,91,76
-
+	//turret turn
+	1400,1430,46,62
+	1601, 1931, 45, 62
+	1121, 1931, 45, 62
+	1176, 1931, 45, 62
+	1238, 1931, 45, 62
+	1293, 1931, 45, 62
+	1348, 1931, 45, 62
+	1401, 1931, 45, 62
 	*/
-
-	redNormal.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal.PushBack({ 347, 522, 42, 53 });
-	redNormal.PushBack({ 89, 522, 42, 53 });
-	redNormal.PushBack({ 141, 522, 42, 53 });
-	redNormal.PushBack({ 193, 522, 42, 53 });
-	redNormal.PushBack({ 244, 522, 42, 53 });
-	redNormal.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal.PushBack({ 89, 522, 42, 53 });
-	redNormal.PushBack({ 141, 522, 42, 53 });
-	redNormal.PushBack({ 193, 522, 42, 53 });
-	redNormal.PushBack({ 244, 522, 42, 53 });
-	redNormal.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal.PushBack({ 89, 522, 42, 53 });
-	redNormal.PushBack({ 141, 522, 42, 53 });
-	redNormal.PushBack({ 193, 522, 42, 53 });
-	redNormal.PushBack({ 244, 522, 42, 53 });
-	redNormal.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal.PushBack({ 89, 522, 42, 53 });
-	redNormal.PushBack({ 141, 522, 42, 53 });
-	redNormal.PushBack({ 193, 522, 42, 53 });
-	redNormal.PushBack({ 244, 522, 42, 53 });
-	redNormal.speed = 0.5f;
-
-	redNormal_2.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_2.PushBack({ 347, 522, 42, 53 });
-	redNormal_2.PushBack({ 89, 522, 42, 53 });
-	redNormal_2.PushBack({ 141, 522, 42, 53 });
-	redNormal_2.PushBack({ 193, 522, 42, 53 });
-	redNormal_2.PushBack({ 244, 522, 42, 53 });
-	redNormal_2.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_2.PushBack({ 89, 522, 42, 53 });
-	redNormal_2.PushBack({ 141, 522, 42, 53 });
-	redNormal_2.PushBack({ 193, 522, 42, 53 });
-	redNormal_2.PushBack({ 244, 522, 42, 53 });
-	redNormal_2.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_2.PushBack({ 347, 522, 42, 53 });
-	redNormal_2.PushBack({ 89, 522, 42, 53 });
-	redNormal_2.PushBack({ 141, 522, 42, 53 });
-	redNormal_2.PushBack({ 193, 522, 42, 53 });
-	redNormal_2.PushBack({ 244, 522, 42, 53 });
-	redNormal_2.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_2.PushBack({ 89, 522, 42, 53 });
-	redNormal_2.PushBack({ 141, 522, 42, 53 });
-	redNormal_2.PushBack({ 193, 522, 42, 53 });
-	redNormal_2.PushBack({ 244, 522, 42, 53 });
-	redNormal_2.speed = 0.5f;
-
-	redNormal_3.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_3.PushBack({ 347, 522, 42, 53 });
-	redNormal_3.PushBack({ 89, 522, 42, 53 });
-	redNormal_3.PushBack({ 141, 522, 42, 53 });
-	redNormal_3.PushBack({ 193, 522, 42, 53 });
-	redNormal_3.PushBack({ 244, 522, 42, 53 });
-	redNormal_3.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_3.PushBack({ 347, 522, 42, 53 });
-	redNormal_3.PushBack({ 89, 522, 42, 53 });
-	redNormal_3.PushBack({ 141, 522, 42, 53 });
-	redNormal_3.PushBack({ 193, 522, 42, 53 });
-	redNormal_3.PushBack({ 244, 522, 42, 53 });
-	redNormal_3.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_3.PushBack({ 347, 522, 42, 53 });
-	redNormal_3.PushBack({ 89, 522, 42, 53 });
-	redNormal_3.PushBack({ 141, 522, 42, 53 });
-	redNormal_3.PushBack({ 193, 522, 42, 53 });
-	redNormal_3.PushBack({ 244, 522, 42, 53 });
-	redNormal_3.PushBack({ 36, 522, 42, 53 }); // TODO_: get right coordinates
-	redNormal_3.PushBack({ 347, 522, 42, 53 });
-	redNormal_3.PushBack({ 89, 522, 42, 53 });
-	redNormal_3.PushBack({ 141, 522, 42, 53 });
-	redNormal_3.PushBack({ 193, 522, 42, 53 });
-	redNormal_3.PushBack({ 244, 522, 42, 53 });
-	redNormal_3.speed = 0.5f;
-
-
-	hitWhite.PushBack({ 296, 522, 42, 53 });
-	hitWhite.speed = 0.5f;
-	hitWhite.loop = true;
 
 	collider = App->collision->AddCollider({ 0, 0, 42, 53 }, COLLIDER_TYPE::COLLIDER_ENEMY_FLYING, (Module*)App->enemies);
 
@@ -137,41 +63,12 @@ Enemy_BossMecha_Hand::Enemy_BossMecha_Hand(int x, int y) : Enemy(x, y)
 
 void Enemy_BossMecha_Hand::Move()
 {
-
 	position = original_pos + movement.GetCurrentPosition(&animation);
-
-	if (animation == &hitWhite && lastTime == 0) {
-		lastTime = SDL_GetTicks();
-	}
-
-	currentTime = SDL_GetTicks();
-
-	if (currentTime > (lastTime + 70)) {
-		animation = &idle;
-		lastTime = 0;
-	}
-
-	if (lives <= 12 && animation != &hitWhite)
-	{
-		animation = &redNormal;
-	}
-
-	if (lives < 6 && lives > 3 && animation != &hitWhite)
-	{
-		animation = &redNormal_2;
-	}
-
-	if (lives <= 3 && animation != &hitWhite)
-	{
-		animation = &redNormal_3;
-	}
-
-
 	lastParticle = App->particles->enemyBasicShot;
-
 }
 
-void Enemy_BossMecha_Hand::OnCollision(Collider* collider) {
+void Enemy_BossMecha_Hand::OnCollision(Collider* collider) 
+{
 	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || collider->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || collider->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB || collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
 		animation = &hitWhite;
 		App->particles->AddParticle(App->particles->playerShotCollison, (collider->rect.x + (((collider->rect.w)) / 2)), (collider->rect.y - (((collider->rect.h)))));
@@ -212,34 +109,8 @@ void Enemy_BossMecha_Hand::Shoot()
 		left = true;
 	}
 
-	//LOG("Angle %.2f", angle);
-	/*if (currentTime > (lastShot + ENEMYSHOOTDELAY)) {
-
-	if (!left) {
-	if ((angle < 90) && (angle >= 0)) {
-	lastParticle.speed.x = ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
-	lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
-	}
-	else {
-	lastParticle.speed.x = ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
-	lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
-	}
-	}
-	else {
-	if ((angle < 90) && (angle >= 0)) {
-	lastParticle.speed.x = -ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
-	lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
-	}
-	else {
-	lastParticle.speed.x = -ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
-	lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
-	}
-	}*/
-
-	if (currentTime > (lastShot + ENEMYSHOOTDELAY)) {
-
-
-
+	if (currentTime > (lastShot + ENEMYSHOOTDELAY)) 
+	{
 		App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 9, position.y + 47, COLLIDER_TYPE::COLLIDER_NONE);
 		App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 23, position.y + 47, COLLIDER_TYPE::COLLIDER_NONE);
 
@@ -256,5 +127,4 @@ void Enemy_BossMecha_Hand::Shoot()
 
 		lastShot = currentTime;
 	}
-
 }

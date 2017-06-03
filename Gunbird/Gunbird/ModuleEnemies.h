@@ -22,6 +22,7 @@ enum ENEMY_TYPES
 	TRUMP_RED_MECHA,
 	FLYING_MACHINE,
 	FOREST_HOUSE,
+	FOREST_BOSS_HAND,
 	
 	COIN,
 	POWER_UP,
@@ -56,6 +57,7 @@ enum ENEMY_MOVEMENT
 	FLYING_MACHINE_PATH_2,
 	RED_TURRET_LEFT_RIGTH,
 	RED_TURRET_RIGHT_LEFT,
+	BOSS_FOREST_HAND_UP_DOWN,
 
 	POWER_UP_MOVEMENT
 };
@@ -135,6 +137,9 @@ private:
 	//red turret
 	Path red_turret_left_rigth;
 	Path red_turret_rigth_left;
+
+	//Path boss hands forest
+	Path upDown_hand;
 
 
 	EnemyInfo queue[MAX_ENEMIES];
