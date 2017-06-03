@@ -26,6 +26,9 @@ bool ModuleWindow::Init()
 	}
 	else
 	{
+
+		iconExe = SDL_LoadBMP("Assets/UserInterface/icon.bmp");
+
 		//Create window
 		int width = SCREEN_WIDTH * SCREEN_SIZE;
 		int height = SCREEN_HEIGHT * SCREEN_SIZE;
@@ -46,6 +49,8 @@ bool ModuleWindow::Init()
 
 		window = SDL_CreateWindow(WIN_TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, flags);
 
+		SDL_SetWindowIcon(window, iconExe);
+
 		if (window == NULL)
 		{
 			LOG("Window could not be created! SDL_Error: %s\n", SDL_GetError());
@@ -58,6 +63,8 @@ bool ModuleWindow::Init()
 		}
 	}
 
+	
+
 	return ret;
 }
 
@@ -69,6 +76,9 @@ bool ModuleWindow::CleanUp()
 	//Destroy window
 	if (window != NULL)
 		SDL_DestroyWindow(window);
+
+	if (iconExe != NULL)
+		SDL_FreeSurface(iconExe);
 
 	//Quit SDL subsystems
 	SDL_Quit();

@@ -28,6 +28,8 @@ public:
 
 	//The surface contained by the window
 	SDL_Surface* screen_surface = nullptr;
+
+	SDL_Surface* iconExe;
 };
 
 #endif // __ModuleWindow_H__
