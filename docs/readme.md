@@ -69,23 +69,23 @@ _Altimira Bernat, Martí's responsability and Github account_
 _García Subirana, Guillermo's responsability and Github account_
 
 * Code
-* Github account: https://github.com/Wilhelman
+* [Github account](https://github.com/Wilhelman)
 
 _Masó Garcia, Víctor's responsability and Github account_
 
 * Management
-* Github account: https://github.com/nintervik
+* [Github account](https://github.com/nintervik)
 
 _Termens Vázquez, Ariadna's responsability and Github account_
 
 * Art/Design
-* Github account: https://github.com/AriTeva
+* [Github account](https://github.com/AriTeva)
 
 
-### For more information see our wiki page HERE.
+### For more information see our wiki page [HERE](https://github.com/Wilhelman/Gunbird_P01/wiki).
 ### Download the last version of the game HERE.
-### Check our Github repository HERE.
+### Check our Github repository [HERE](https://github.com/Wilhelman/Gunbird_P01).
 
 
 
-### Tribute by FrozenSloth Studios
+## _Tribute by FrozenSloth Studios_
