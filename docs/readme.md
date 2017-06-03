@@ -54,8 +54,6 @@ General/developer controls for Player 2:
 - GOD MODE: 7 key (NUMPAD)
 - DIRECT LOSE: 8 key (NUMPAD)
 
-
-
 Gamepad:
 
 - Move: Joystic and directional bottons
