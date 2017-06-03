@@ -60,10 +60,10 @@ General/developer controls for Player 2:
 
 ### Gamepad:
 
-- Move: Joystic and directional bottons
-- A: Shoot and select character
-- B:Boomb
-- START: Start game
+- JOYSTIC AND DIRECTIONAL BUTTONS: Move
+- SHOOT AND SELECT CHARACTER: A 
+- BOOMB: B
+- START GAME: START
 
 
 ## Changelist of all previous versions
