@@ -11,6 +11,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleScoreRanking.h"
 #include "ModuleUI.h"
+#include "ModuleSceneCastle.h"
 #include "ModuleCharacterSelection.h"
 #include "SDL\include\SDL_timer.h"
 
@@ -602,10 +603,11 @@ update_status ModuleSceneForest::Update()
 
 	/////////////BOSS????
 
-	if ((int)background_y == -1525)
+	if ((int)background_y == -1525 && !App->enemies->bossDestroyed)
 	{
 		background_speed = 0.0f;
 	}
+
 
 	/*if (background_y >= -2800.0f) {
 		if (background_speed == 0.0f)
@@ -711,7 +713,7 @@ update_status ModuleSceneForest::Update()
 
 		//TODO change the position of the player to private to be more pro
 		if ((App->player2->position.y < 0 || App->player->position.y < 0) && App->fade->FadeIsOver() /*delete this in big releases*/ || (App->input->keyboard[SDL_SCANCODE_RETURN] == KEY_STATE::KEY_DOWN))
-			App->fade->FadeToBlack(this, this, 1.0f);
+			App->fade->FadeToBlack(this, App->sceneCastle, 1.0f);
 
 		if (App->player->playerLost) {
 			LOG("Player LOST");

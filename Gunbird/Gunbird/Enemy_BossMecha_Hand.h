@@ -9,7 +9,7 @@ class Enemy_BossMecha_Hand : public Enemy
 {
 private:
 	bool left;
-
+	bool dead;
 	Animation opening;
 	Animation rotation;
 	Animation hitWhite;
@@ -18,9 +18,10 @@ private:
 	Animation redNormal_3;
 	Animation handClosed;
 	iPoint original_pos;
-
+	uint bombTimer;
+	bool bomb;
 	uint lastShot;
-
+	int randomTimer;
 	Particle lastParticle;
 
 public:

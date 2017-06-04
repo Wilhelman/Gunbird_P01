@@ -2,6 +2,7 @@
 #include "Enemy.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModuleEnemies.h"
 #include "ModuleRender.h"
 
 Enemy::Enemy(int x, int y) : position(x, y)
@@ -22,6 +23,9 @@ const Collider* Enemy::GetCollider() const
 
 void Enemy::Draw(SDL_Texture* sprites)
 {
+	if (App->enemies->bossDestroyed) {
+		return;
+	}
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
 

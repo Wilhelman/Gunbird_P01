@@ -262,7 +262,7 @@ update_status ModulePlayer::Update()
 		speed = 1.5f;
 
 	if (!deadPlayer && !hitted && !spawining) {
-		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT || App->sceneForest->background_y == -SCREEN_HEIGHT) && (App->sceneCastle->IsEnabled() ||App->sceneForest->IsEnabled()))
+		if (((App->sceneCastle->background_y == -SCREEN_HEIGHT || App->sceneForest->background_y == -SCREEN_HEIGHT) && (App->sceneCastle->IsEnabled() ||App->sceneForest->IsEnabled())) || (((App->sceneCastle->IsEnabled() || App->sceneForest->IsEnabled())) && App->enemies->bossDestroyed))
 		{
 			speed = 5;
 			position.y -= speed;
@@ -637,12 +637,12 @@ update_status ModulePlayer::Update()
 		if (timeToBomb == 0) {
 			App->render->Blit(valnusBombGraphics, bombPos.x - 149, bombPos.y - 180, &(valnusBombStart.GetCurrentFrame()));
 			if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::VALNUS_SELECTED) {
-				bombCollider_H = App->collision->AddCollider({ 0, position.y - 100, 400, 150 }, COLLIDER_PLAYER_SHOT, this);
-				bombCollider_V = App->collision->AddCollider({ position.x - 30, 0, 150, 400 }, COLLIDER_PLAYER_SHOT, this);
+				bombCollider_H = App->collision->AddCollider({ 0, position.y - 100, 400, 150 }, COLLIDER_PLAYER_BOMB, this);
+				bombCollider_V = App->collision->AddCollider({ position.x - 30, 0, 150, 400 }, COLLIDER_PLAYER_BOMB, this);
 			}
 			else if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::VALNUS_SELECTED) {
-				bombCollider_H = App->collision->AddCollider({ 0, position.y - 100, 400, 150 }, COLLIDER_PLAYER2_SHOT, this);
-				bombCollider_V = App->collision->AddCollider({ position.x - 30, 0, 150, 400 }, COLLIDER_PLAYER2_SHOT, this);
+				bombCollider_H = App->collision->AddCollider({ 0, position.y - 100, 400, 150 }, COLLIDER_PLAYER2_BOMB, this);
+				bombCollider_V = App->collision->AddCollider({ position.x - 30, 0, 150, 400 }, COLLIDER_PLAYER2_BOMB, this);
 			}
 		}
 
@@ -778,6 +778,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 			this->removePowerUp();
 			App->audio->PlayFx(valnus_Hitted);
 			this->deadPlayer = true;
+			this->shotPower = 0;
 		}
 
 		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING && !hitted) {

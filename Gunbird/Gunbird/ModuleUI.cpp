@@ -110,25 +110,65 @@ update_status ModuleUI::Update()
 					status = UPDATE_ERROR;
 				}
 			}
+			//BLITTING BOMBS
+			if (App->player->playerBombs >= 1) {
+				if (!App->render->Blit(graphics, 5, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+			if (App->player->playerBombs >= 2) {
+				if (!App->render->Blit(graphics, 20, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			if (App->player->playerBombs >= 3) {
+				if (!App->render->Blit(graphics, 35, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
 		}
 		else if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::TETSU_SELECTED)
 		{
-			if (App->player->playerLives >= 0) {
+			if (App->player2->playerLives >= 0) {
 				if (!App->render->Blit(graphics, 5, 18, &liveIcon_Tetsu, 1.0f)) {
 					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 					status = UPDATE_ERROR;
 				}
 			}
 
-			if (App->player->playerLives >= 1) {
+			if (App->player2->playerLives >= 1) {
 				if (!App->render->Blit(graphics, 22, 18, &liveIcon_Tetsu, 1.0f)) {
 					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 					status = UPDATE_ERROR;
 				}
 			}
 
-			if (App->player->playerLives >= 2) {
+			if (App->player2->playerLives >= 2) {
 				if (!App->render->Blit(graphics, 38, 18, &liveIcon_Tetsu, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+			//BLITTING BOMBS
+			if (App->player2->playerBombs >= 1) {
+				if (!App->render->Blit(graphics, 5, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+			if (App->player2->playerBombs >= 2) {
+				if (!App->render->Blit(graphics, 20, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			if (App->player2->playerBombs >= 3) {
+				if (!App->render->Blit(graphics, 35, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
 					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 					status = UPDATE_ERROR;
 				}
@@ -137,22 +177,43 @@ update_status ModuleUI::Update()
 
 		if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::VALNUS_SELECTED)
 		{
-			if (App->player2->playerLives >= 0) {
+			if (App->player->playerLives >= 0) {
 				if (!App->render->Blit(graphics, SCREEN_WIDTH - 87, 18, &liveIcon, 1.0f)) {
 					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 					status = UPDATE_ERROR;
 				}
 			}
 
-			if (App->player2->playerLives >= 1) {
+			if (App->player->playerLives >= 1) {
 				if (!App->render->Blit(graphics, SCREEN_WIDTH - 70, 18, &liveIcon, 1.0f)) {
 					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 					status = UPDATE_ERROR;
 				}
 			}
 
-			if (App->player2->playerLives >= 2) {
+			if (App->player->playerLives >= 2) {
 				if (!App->render->Blit(graphics, SCREEN_WIDTH - 53, 18, &liveIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+			//BLITTING BOMBS 2P
+			if (App->player->playerBombs >= 1) {
+				if (!App->render->Blit(graphics, SCREEN_WIDTH - 17, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			if (App->player->playerBombs >= 2) {
+				if (!App->render->Blit(graphics, SCREEN_WIDTH - 32, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			if (App->player->playerBombs >= 3) {
+				if (!App->render->Blit(graphics, SCREEN_WIDTH - 47, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
 					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 					status = UPDATE_ERROR;
 				}
@@ -180,28 +241,30 @@ update_status ModuleUI::Update()
 					status = UPDATE_ERROR;
 				}
 			}
+			//BLITTING BOMBS 2P
+			if (App->player2->playerBombs >= 1) {
+				if (!App->render->Blit(graphics, SCREEN_WIDTH - 17, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			if (App->player2->playerBombs >= 2) {
+				if (!App->render->Blit(graphics, SCREEN_WIDTH - 32, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			if (App->player2->playerBombs >= 3) {
+				if (!App->render->Blit(graphics, SCREEN_WIDTH - 47, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
 		}
 
-		//BLITTING BOMBS
-		if (App->player->playerBombs >= 1) {
-			if (!App->render->Blit(graphics, 5, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
-				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-		}
-		if (App->player->playerBombs >= 2) {
-			if (!App->render->Blit(graphics, 20, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
-				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-		}
-
-		if (App->player->playerBombs >= 3) {
-			if (!App->render->Blit(graphics, 35, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
-				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
-			}
-		}
+		
 
 		//BLITTING 1P
 		if (!App->render->Blit(graphics, 5, 4, &p1_Icon, 1.0f)) {
@@ -223,27 +286,7 @@ update_status ModuleUI::Update()
 				status = UPDATE_ERROR;
 			}
 
-			//BLITTING BOMBS 2P
-			if (App->player2->playerLives >= 1) {
-				if (!App->render->Blit(graphics, SCREEN_WIDTH - 17, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
-					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-					status = UPDATE_ERROR;
-				}
-			}
-
-			if (App->player2->playerLives >= 2) {
-				if (!App->render->Blit(graphics, SCREEN_WIDTH - 32, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
-					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-					status = UPDATE_ERROR;
-				}
-			}
-
-			if (App->player2->playerLives >= 3) {
-				if (!App->render->Blit(graphics, SCREEN_WIDTH - 47, SCREEN_HEIGHT - 24, &bombIcon, 1.0f)) {
-					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-					status = UPDATE_ERROR;
-				}
-			}
+			
 
 			/////player 2
 

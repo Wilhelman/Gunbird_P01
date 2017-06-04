@@ -359,7 +359,7 @@ update_status ModulePlayer2::Update()
 
 
 	if (!deadPlayer && !hitted && !spawining) {
-		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT || App->sceneForest->background_y == -SCREEN_HEIGHT) && (App->sceneCastle->IsEnabled() || App->sceneForest->IsEnabled()))
+		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT || App->sceneForest->background_y == -SCREEN_HEIGHT) && (App->sceneCastle->IsEnabled() || App->sceneForest->IsEnabled()) || (((App->sceneCastle->IsEnabled() || App->sceneForest->IsEnabled())) && App->enemies->bossDestroyed))
 		{
 			speed = 5;
 			position.y -= speed;
@@ -945,6 +945,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 			this->removePowerUp();
 			App->audio->PlayFx(tetsu_Hitted);
 			this->deadPlayer = true;
+			this->shotPower = 0;
 		}
 
 		if (c2->type == COLLIDER_TYPE::COLLIDER_ENEMY_FLYING && !hitted) {

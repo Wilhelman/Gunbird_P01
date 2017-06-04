@@ -80,6 +80,7 @@ ModuleSceneCastle::~ModuleSceneCastle()
 // Load assets
 bool ModuleSceneCastle::Start()
 {
+	App->enemies->bossDestroyed = false;
 	spawned = 0;
 	//setting bckground
 	background_x = 0;
@@ -250,7 +251,7 @@ update_status ModuleSceneCastle::Update()
 
 	//TODO change the position of the player to private to be more pro
 	if (App->player->position.y < 0 && App->fade->FadeIsOver())
-		App->fade->FadeToBlack(this, this,1.0f);
+		App->fade->FadeToBlack(this, App->scoreRanking ,1.0f);
 
 	if (App->player->playerLost) {
 		LOG("Player LOST");

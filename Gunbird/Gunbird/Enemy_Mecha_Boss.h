@@ -16,8 +16,11 @@ private:
 	Animation redNormal_2;
 	Animation redNormal_3;
 	iPoint original_pos;
-
+	uint bombTimer;
+	bool bomb;
 	uint lastShot;
+	uint burstTimer;
+	uint burstCombo;
 
 	Particle lastParticle;
 

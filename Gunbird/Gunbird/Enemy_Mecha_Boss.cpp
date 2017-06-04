@@ -3,19 +3,21 @@
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
+#include "ModuleEnemies.h"
 #include "SDL\include\SDL_timer.h"
 
-#define PI 3.14159265
-#define RAD_TO_DEGREES (180.0 / PI)
-#define ANGLE_CONVERT_REVERSE (PI / 180.0)
+#define PI 3.14159265 
+#define ANGLE_RANGE 12.0f
 
-#define ENEMYSHOOTSPEED 3
-#define ENEMYSHOOTDELAY 2000
-#define ENEMY_DELAY_DOUBLE_SHOT 100
+#define RAD_TO_DEGREES (180.0 / PI)
+#define DEGREES_TO_RAD (PI / 180.0)
+
+#define SHOT_ENEMY_VEC 3
+#define DELAY_SHOT_ENEMY 2000
 
 Enemy_Mecha_Boss::Enemy_Mecha_Boss(int x, int y) : Enemy(x, y)
 {
-	lives = 19;
+	lives = 50;
 
 	lastTime = 0;
 
@@ -120,6 +122,8 @@ Enemy_Mecha_Boss::Enemy_Mecha_Boss(int x, int y) : Enemy(x, y)
 
 	original_pos.x = x;
 	original_pos.y = y;
+	bomb = false;
+	bombTimer = 0;
 }
 
 void Enemy_Mecha_Boss::Move()
@@ -156,16 +160,34 @@ void Enemy_Mecha_Boss::Move()
 
 	lastParticle = App->particles->enemyBasicShot;
 
+
+	
 }
 
 void Enemy_Mecha_Boss::OnCollision(Collider* collider) {
-	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || collider->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || collider->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB || collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
+	if (currentTime > bombTimer + 300 && bomb)
+		bomb = false;
+	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || collider->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT ) {
+		
 		animation = &hitWhite;
 		App->particles->AddParticle(App->particles->playerShotCollison, (collider->rect.x + (((collider->rect.w)) / 2)), (collider->rect.y - (((collider->rect.h)))));
 		if (App->player->shotPower < 1)
 			lives--;
-		if (App->player->shotPower == 1)
+		if (App->player->shotPower == 1) {
+			if (lives < 2)
+				lives = 0;
+			else
+				lives = lives - 2;
+		}
+	}
+	if ((collider->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB || collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) && !bomb) {
+		bombTimer = currentTime;
+		bomb = true;
+		if (lives < 2)
+			lives = 0;
+		else
 			lives = lives - 2;
+		animation = &hitWhite;
 	}
 }
 
@@ -175,16 +197,76 @@ uint Enemy_Mecha_Boss::getLives() {
 
 void Enemy_Mecha_Boss::Shoot()
 {
+	if (App->enemies->handsDestroyed == 2) {
+		if (burstCombo == 0 &&  currentTime > burstTimer + 1000) {
+			lastParticle.speed.x = 1.0f;
+			lastParticle.speed.y = 2.0f;
+			App->particles->AddParticle(lastParticle, 110, 136, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			lastParticle.speed.x = 0.0f;
+			lastParticle.speed.y = 2.0f;
+			App->particles->AddParticle(lastParticle, 110, 136, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			lastParticle.speed.x = -1.0f;
+			lastParticle.speed.y = 2.0f;
+			App->particles->AddParticle(lastParticle, 110, 136, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			burstTimer = currentTime;
+			burstCombo = 1;
+		}
+
+
+		if (currentTime > burstTimer + 200 && burstCombo == 1) {
+
+			lastParticle.speed.x = 1.0f;
+			lastParticle.speed.y = 2.0f;
+			App->particles->AddParticle(lastParticle, 110, 136, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			lastParticle.speed.x = 0.0f;
+			lastParticle.speed.y = 2.0f;
+			App->particles->AddParticle(lastParticle, 110, 136, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			lastParticle.speed.x = -1.0f;
+			lastParticle.speed.y = 2.0f;
+			App->particles->AddParticle(lastParticle, 110, 136, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			burstTimer = currentTime;
+			burstCombo = 2;
+		}
+
+		if (currentTime > burstTimer + 200 && burstCombo == 2) {
+			lastParticle.speed.x = 1.0f;
+			lastParticle.speed.y = 2.0f;
+			App->particles->AddParticle(lastParticle, 110, 136, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			lastParticle.speed.x = 0.0f;
+			lastParticle.speed.y = 2.0f;
+			App->particles->AddParticle(lastParticle, 110, 136, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			lastParticle.speed.x = -1.0f;
+			lastParticle.speed.y = 2.0f;
+			App->particles->AddParticle(lastParticle, 110, 136, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			burstTimer = currentTime;
+			burstCombo = 3;
+		}
+
+		if (currentTime > burstTimer + 200 && burstCombo == 3) {
+			lastParticle.speed.x = 1.0f;
+			lastParticle.speed.y = 2.0f;
+			App->particles->AddParticle(lastParticle, 110, 136, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			lastParticle.speed.x = 0.0f;
+			lastParticle.speed.y = 2.0f;
+			App->particles->AddParticle(lastParticle, 110, 136, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			lastParticle.speed.x = -1.0f;
+			lastParticle.speed.y = 2.0f;
+			App->particles->AddParticle(lastParticle, 110, 136, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			burstTimer = currentTime;
+			burstCombo = 0;
+		}
+	}
+
 	left = false;
 	double deltaX;
 	double deltaY;
 	if (App->player->IsEnabled()) {
-		deltaX = ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
-		deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
+		deltaX = ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 96);
+		deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 66);
 	}
 	else if (App->player2->IsEnabled()) {
-		deltaX = ((App->player2->position.x + (App->player2->playerCollider->rect.w / 2))) - (position.x + 15);
-		deltaY = ((App->player2->position.y + (App->player2->playerCollider->rect.h / 2))) - (position.y + 21);
+		deltaX = ((App->player2->position.x + (App->player2->playerCollider->rect.w / 2))) - (position.x + 96);
+		deltaY = ((App->player2->position.y + (App->player2->playerCollider->rect.h / 2))) - (position.y + 66);
 	}
 
 	float angle;
@@ -193,6 +275,7 @@ void Enemy_Mecha_Boss::Shoot()
 
 	angle *= RAD_TO_DEGREES;
 
+	currentTime = SDL_GetTicks();
 
 	if (angle < 0) {
 		angle = angle * -1;
@@ -200,48 +283,50 @@ void Enemy_Mecha_Boss::Shoot()
 	}
 
 	//LOG("Angle %.2f", angle);
-	/*if (currentTime > (lastShot + ENEMYSHOOTDELAY)) {
+	if (currentTime > (lastShot + DELAY_SHOT_ENEMY)) {
 
-	if (!left) {
-	if ((angle < 90) && (angle >= 0)) {
-	lastParticle.speed.x = ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
-	lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
-	}
-	else {
-	lastParticle.speed.x = ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
-	lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
-	}
-	}
-	else {
-	if ((angle < 90) && (angle >= 0)) {
-	lastParticle.speed.x = -ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
-	lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
-	}
-	else {
-	lastParticle.speed.x = -ENEMYSHOOTSPEED * sin((angle + 10) * ANGLE_CONVERT_REVERSE);
-	lastParticle.speed.y = ENEMYSHOOTSPEED * cos((angle + 10) * ANGLE_CONVERT_REVERSE);
-	}
-	}*/
-
-	if (currentTime > (lastShot + ENEMYSHOOTDELAY)) {
+		if (!left) {
+			if ((angle < 90) && (angle >= 0)) {
+				lastParticle.speed.x = SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
+				lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
+			}
+			else {
+				lastParticle.speed.x = SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
+				lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
+			}
+		}
+		else {
+			if ((angle < 90) && (angle >= 0)) {
+				lastParticle.speed.x = -SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
+				lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
+			}
+			else {
+				lastParticle.speed.x = -SHOT_ENEMY_VEC * sin((angle + 10) * DEGREES_TO_RAD);
+				lastParticle.speed.y = SHOT_ENEMY_VEC * cos((angle + 10) * DEGREES_TO_RAD);
+			}
+		}
 
 
+		if (currentTime > (lastShot + DELAY_SHOT_ENEMY))
+		{
+			App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 92, position.y + 65, COLLIDER_TYPE::COLLIDER_NONE);
 
-		App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 9, position.y + 47, COLLIDER_TYPE::COLLIDER_NONE);
-		App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 23, position.y + 47, COLLIDER_TYPE::COLLIDER_NONE);
+			App->particles->AddParticle(lastParticle, position.x + 93, position.y + 66, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
 
-		lastParticle.speed.x = -1.0f;
-		lastParticle.speed.y = 2.0f;
-		App->particles->AddParticle(lastParticle, position.x + 25, position.y + 56, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			if (App->enemies->handsDestroyed == 2) {
+				App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 6, position.y + 54, COLLIDER_TYPE::COLLIDER_NONE);
 
-		lastParticle.speed.x = 1.0f;
-		lastParticle.speed.y = 2.0f;
-		App->particles->AddParticle(lastParticle, position.x + 15, position.y + 56, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(lastParticle, position.x + 6, position.y + 55, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
 
-		//App->particles->AddParticle(lastParticle, position.x + 10, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
-		//App->particles->AddParticle(lastParticle, position.x + 24, position.y + 51, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyBasicShot_start, position.x + 168, position.y + 54, COLLIDER_TYPE::COLLIDER_NONE);
 
-		lastShot = currentTime;
+				App->particles->AddParticle(lastParticle, position.x + 169, position.y + 55, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT);
+			}
+			
+			lastShot = currentTime;
+		}
+
+
 	}
 
 }
