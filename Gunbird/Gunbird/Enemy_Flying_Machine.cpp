@@ -19,7 +19,7 @@
 Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 {
 	shot_done = false;
-	lives = 6;
+	lives = 40;
 
 	fly.PushBack({ 749,943,77,66 });
 	fly.PushBack({ 836,941,77,66 });

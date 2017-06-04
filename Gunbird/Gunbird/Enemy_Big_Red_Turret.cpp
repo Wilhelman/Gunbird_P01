@@ -9,7 +9,7 @@
 
 Enemy_Big_Red_Turret::Enemy_Big_Red_Turret(int x, int y) : Enemy(x, y)
 {
-	lives = 14;
+	lives = 16;
 
 	lastTime = 0;
 

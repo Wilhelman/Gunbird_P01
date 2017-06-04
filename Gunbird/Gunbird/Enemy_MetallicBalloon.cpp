@@ -15,7 +15,7 @@
 
 Enemy_MetallicBalloon::Enemy_MetallicBalloon(int x, int y) : Enemy(x, y)
 {
-	lives = 19;
+	lives = 25;
 
 	lastTime = 0;
 

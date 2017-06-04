@@ -18,7 +18,7 @@
 Enemy_Red_Turret::Enemy_Red_Turret(int x, int y) : Enemy(x, y)
 {
 
-	lives = 1;
+	lives = 5;
 
 	// DOWN
 	redTurretIdle.PushBack({ 1042, 838, 25, 16 });

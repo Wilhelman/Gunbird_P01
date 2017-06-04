@@ -10,7 +10,7 @@
 
 Enemy_Trump_Red_Mecha::Enemy_Trump_Red_Mecha(int x, int y) : Enemy(x, y)
 {
-	lives = 14;
+	lives = 50;
 
 	lastTime = 0;
 
