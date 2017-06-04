@@ -883,7 +883,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				break;
 			}
 			else if (enemies[i]->type == ENEMY_TYPES::BOMB && c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2) {
-				App->ui->score += 2000;
+				App->ui->scoreP2 += 2000;
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;
