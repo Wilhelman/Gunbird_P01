@@ -856,7 +856,7 @@ update_status ModuleSceneForest::Update()
 				spawned = 10;
 				App->enemies->AddEnemy(ENEMY_TYPES::FOREST_BOSS_HAND, 121, -62, ENEMY_MOVEMENT::BOSS_FOREST_HAND);
 				App->enemies->AddEnemy(ENEMY_TYPES::FOREST_BOSS_HAND, 66, -62, ENEMY_MOVEMENT::BOSS_FOREST_HAND);
-
+				App->enemies->AddEnemy(ENEMY_TYPES::BOSS_FOREST, 19, -170, ENEMY_MOVEMENT::BOSS_FOREST_HAND);
 			}
 
 

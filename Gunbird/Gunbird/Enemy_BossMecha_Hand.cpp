@@ -16,7 +16,7 @@
 
 Enemy_BossMecha_Hand::Enemy_BossMecha_Hand(int x, int y) : Enemy(x, y)
 {
-	lives = 19;
+	lives = 10;
 	lastTime = 0;
 
 	//opening hand
@@ -41,6 +41,11 @@ Enemy_BossMecha_Hand::Enemy_BossMecha_Hand(int x, int y) : Enemy(x, y)
 	handClosed.PushBack({ 1194,1430,46,62 });
 	handClosed.speed = 0.08f;
 	handClosed.loop = true;
+
+	hitWhite.PushBack({ 1458, 1931, 45, 62 });
+	hitWhite.speed = 0.1f;
+	hitWhite.loop = false;
+
 
 
 	/*
@@ -79,6 +84,19 @@ void Enemy_BossMecha_Hand::Move()
 		animation = &rotation;
 
 	position = original_pos + movement.GetCurrentPosition(&animation);
+
+	if (animation == &hitWhite && lastTime == 0) {
+		lastTime = SDL_GetTicks();
+	}
+
+	currentTime = SDL_GetTicks();
+
+	if (currentTime > (lastTime + 70)) {
+		animation = &rotation;
+		lastTime = 0;
+	}
+
+
 	lastParticle = App->particles->enemyBasicShot;
 }
 
