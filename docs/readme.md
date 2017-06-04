@@ -83,9 +83,9 @@ _Termens Vázquez, Ariadna's responsability and Github account_
 
 
 
-### For more information see our wiki page [HERE](https://github.com/Wilhelman/Gunbird_P01/wiki).
-### Download the last version of the game HERE.
-### Check our Github repository [HERE](https://github.com/Wilhelman/Gunbird_P01).
+### For more information see our wiki page [HERE](https://github.com/Wilhelman/Gunbird_P01/wiki)
+### Download the last version of the game [HERE](https://github.com/Wilhelman/Gunbird_P01/wiki)
+### Check our Github repository [HERE](https://github.com/Wilhelman/Gunbird_P01)
 
 
 
