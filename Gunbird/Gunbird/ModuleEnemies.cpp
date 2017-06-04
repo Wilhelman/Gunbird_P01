@@ -718,6 +718,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			else if (enemies[i]->type == ENEMY_TYPES::CASTLE_HOUSEFLAG) {
 				if (enemies[i]->getLives() <= 0) {
 					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
+						this->AddEnemy(ENEMY_TYPES::POWER_UP, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
 						App->ui->score += 3000;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
@@ -726,6 +727,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						break;
 					}
 					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB) {
+						this->AddEnemy(ENEMY_TYPES::POWER_UP, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
 						App->ui->scoreP2 += 3000;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
@@ -764,6 +766,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			else if (enemies[i]->type == ENEMY_TYPES::CASTLE_HOUSEFLAG_2) {
 				if (enemies[i]->getLives() <= 0) {
 					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_BOMB) {
+						this->AddEnemy(ENEMY_TYPES::POWER_UP, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
 						App->ui->score += 3000;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));
@@ -772,6 +775,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						break;
 					}
 					if (c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT || c2->type == COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB) {
+						this->AddEnemy(ENEMY_TYPES::POWER_UP, c1->rect.x, c1->rect.y, ENEMY_MOVEMENT::NO_MOVEMENT);
 						App->ui->scoreP2 += 3000;
 						App->audio->PlayFx(medium_explosion);
 						App->particles->AddParticle(App->particles->balloonDeathExplosion, (c1->rect.x - ((101 - (c1->rect.w)) / 2)), (c1->rect.y - ((107 - (c1->rect.h)) / 2)));

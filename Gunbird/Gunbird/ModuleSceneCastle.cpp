@@ -179,6 +179,7 @@ bool ModuleSceneCastle::Start()
 // Update: draw background
 update_status ModuleSceneCastle::Update()
 {
+	App->characterSelection->selected_P2_done = false;
 
 	update_status status = UPDATE_CONTINUE;
 
@@ -315,6 +316,7 @@ update_status ModuleSceneCastle::Update()
 		{
 			spawned = 2;
 			App->enemies->AddEnemy(ENEMY_TYPES::METALLICBALLOON, 112, -70, ENEMY_MOVEMENT::BALLOON_PATH_CASTLE);
+
 		}
 
 		if ((int)background_y == -1840 && spawned == 2) {
@@ -322,9 +324,10 @@ update_status ModuleSceneCastle::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -50, ENEMY_MOVEMENT::TURRET_1_PATH);
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, -15, ENEMY_MOVEMENT::TURRET_2_PATH);
 			App->enemies->AddEnemy(ENEMY_TYPES::TERRESTIALTURRET, -25, 15, ENEMY_MOVEMENT::TURRET_3_PATH);
+
 		}
 		
-		
+
 		if ((int)background_y == -1800 && spawned == 3) {
 			spawned = 4;
 			App->enemies->AddEnemy(ENEMY_TYPES::CASTLE_HOUSEFLAG_2, 78, -340, ENEMY_MOVEMENT::STAY);
@@ -337,6 +340,10 @@ update_status ModuleSceneCastle::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -60, -64, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -90, -96, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, -120, -128, ENEMY_MOVEMENT::TORPEDO_DIAGONALL_R);
+
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 120, -250, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 100, -260, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 50, -300, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
 		}
 
 
@@ -417,6 +424,28 @@ update_status ModuleSceneCastle::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 70, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 120, -122, ENEMY_MOVEMENT::TORPEDO_STRAIGHT_ON);
 			App->enemies->AddEnemy(ENEMY_TYPES::TORPEDO, 112, -122, ENEMY_MOVEMENT::TORPEDO_DIAGONAL_L_FINAL2);
+		}
+
+		if ((int)background_y == -780 && spawned == 11) {
+			spawned = 12;
+
+			App->enemies->AddEnemy(ENEMY_TYPES::FLYING_MACHINE, -80, 20, ENEMY_MOVEMENT::FLYING_MACHINE_PATH_1);
+
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 120, -50, ENEMY_MOVEMENT::BEE_CORNER_LEFT_PATH2);
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 50, -80, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 100, -20, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 20, -60, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
+
+		}
+
+		if ((int)background_y == -580 && spawned == 12) {
+			spawned = 13;
+
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 120, -50, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 50, -20, ENEMY_MOVEMENT::BEE_CORNER_STRAIGHT);
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 100, -20, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH2);
+			App->enemies->AddEnemy(ENEMY_TYPES::BEE, 20, -60, ENEMY_MOVEMENT::BEE_CORNER_RIGHT_PATH);
+
 		}
 	}
 
