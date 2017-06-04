@@ -1,13 +1,5 @@
-﻿  ModulePlayer2.cpp
+﻿  ModuleSceneCastle.cpp
 c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\path.h(6): warning C4099: 'Animation': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
   c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\animation.h(8): note: vea la declaración de 'Animation'
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\moduleplayer2.cpp(376): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\moduleplayer2.cpp(378): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\moduleplayer2.cpp(380): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\moduleplayer2.cpp(382): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\moduleplayer2.cpp(545): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\moduleplayer2.cpp(547): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\moduleplayer2.cpp(549): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\guillermo\documents\github\gunbird_p01\gunbird\gunbird\moduleplayer2.cpp(551): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.exe
   Gunbird.vcxproj -> C:\Users\Guillermo\Documents\GitHub\Gunbird_P01\Gunbird\Debug\Gunbird.pdb (Partial PDB)

@@ -12,6 +12,7 @@
 #include "ModuleScoreRanking.h"
 #include "ModuleUI.h"
 #include "SDL\include\SDL_timer.h"
+#include "ModuleCharacterSelection.h"
 
 //TODO: remove this if not necesary
 #include "ModuleInput.h"
@@ -108,12 +109,42 @@ bool ModuleSceneCastle::Start()
 	bool ret = true;
 	background_y = -2036;
 
-	App->player->Enable();
 	App->ui->Enable();
 	
 	if(App->player2->playerLives > 0 && App->ui->p2 == true)
 		App->player2->Enable();
 	
+	if (App->characterSelection->characterSelected_P1 != CHARACTER_SELECTED::NONE_SELECTED && App->characterSelection->characterSelected_P2 != CHARACTER_SELECTED::NONE_SELECTED)
+		App->ui->p2 = true;
+
+
+	// ENABLING SELECTED CHARACTER
+
+	if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::VALNUS_SELECTED)
+	{
+		App->player->Enable();
+		App->ui->Enable();
+	}
+	else if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::TETSU_SELECTED)
+	{
+		App->player2->Enable();
+		App->ui->Enable();
+	}
+
+	if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::VALNUS_SELECTED)
+	{
+		App->player->Enable();
+		App->ui->Enable();
+	}
+	else if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::TETSU_SELECTED)
+	{
+		App->player2->Enable();
+		App->ui->Enable();
+	}
+
+	if (App->player2->playerLives > 0 && App->ui->p2 == true)
+		App->player2->Enable();
+
 	App->collision->Enable();
 	App->enemies->Enable();
 	App->particles->Enable();
