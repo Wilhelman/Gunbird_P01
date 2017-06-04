@@ -15,7 +15,7 @@
 
 Enemy_Mecha_Boss::Enemy_Mecha_Boss(int x, int y) : Enemy(x, y)
 {
-	lives = 100;
+	lives = 19;
 
 	lastTime = 0;
 
@@ -27,7 +27,94 @@ Enemy_Mecha_Boss::Enemy_Mecha_Boss(int x, int y) : Enemy(x, y)
 	idle.PushBack({ 1230,2038,188,126 });
 	idle.speed = 0.1f;
 
-	collider = App->collision->AddCollider({ 0, 0, 116, 100 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	redNormal.PushBack({ 56,2038,188,126 });
+	redNormal.PushBack({ 56, 2185, 188, 126 }); //
+	redNormal.PushBack({ 285,2038,188,126 });
+	redNormal.PushBack({ 517,2038,188,126 });
+	redNormal.PushBack({ 745,2038,188,126 });
+	redNormal.PushBack({ 991,2038,188,126 });
+	redNormal.PushBack({ 1230,2038,188,126 });
+	redNormal.PushBack({ 56,2038,188,126 });
+	redNormal.PushBack({ 285,2038,188,126 });
+	redNormal.PushBack({ 517,2038,188,126 });
+	redNormal.PushBack({ 745,2038,188,126 });
+	redNormal.PushBack({ 991,2038,188,126 });
+	redNormal.PushBack({ 1230,2038,188,126 });
+	redNormal.PushBack({ 56,2038,188,126 });
+	redNormal.PushBack({ 285,2038,188,126 });
+	redNormal.PushBack({ 517,2038,188,126 });
+	redNormal.PushBack({ 745,2038,188,126 });
+	redNormal.PushBack({ 991,2038,188,126 });
+	redNormal.PushBack({ 1230,2038,188,126 });
+	redNormal.speed = 0.1f;
+
+
+	redNormal_2.PushBack({ 56,2038,188,126 });
+	redNormal_2.PushBack({ 56, 2185, 188, 126 }); // 
+	redNormal_2.PushBack({ 285,2038,188,126 });
+	redNormal_2.PushBack({ 517,2038,188,126 });
+	redNormal_2.PushBack({ 745,2038,188,126 });
+	redNormal_2.PushBack({ 991,2038,188,126 });
+	redNormal_2.PushBack({ 1230,2038,188,126 });
+	redNormal_2.PushBack({ 56,2038,188,126 });
+	redNormal_2.PushBack({ 285,2038,188,126 });
+	redNormal_2.PushBack({ 517,2038,188,126 });
+	redNormal_2.PushBack({ 745,2038,188,126 });
+	redNormal_2.PushBack({ 991,2038,188,126 });
+	redNormal_2.PushBack({ 1230,2038,188,126 });
+	redNormal_2.PushBack({ 56, 2038, 188, 126 });
+	redNormal_2.PushBack({ 56, 2185, 188, 126 }); //
+	redNormal_2.PushBack({ 285,2038,188,126 });
+	redNormal_2.PushBack({ 517,2038,188,126 });
+	redNormal_2.PushBack({ 745,2038,188,126 });
+	redNormal_2.PushBack({ 991,2038,188,126 });
+	redNormal_2.PushBack({ 1230,2038,188,126 });
+	redNormal_2.PushBack({ 56,2038,188,126 });
+	redNormal_2.PushBack({ 285,2038,188,126 });
+	redNormal_2.PushBack({ 517,2038,188,126 });
+	redNormal_2.PushBack({ 745,2038,188,126 });
+	redNormal_2.PushBack({ 991,2038,188,126 });
+	redNormal_2.PushBack({ 1230,2038,188,126 });
+	redNormal_2.speed = 0.1f;
+
+	redNormal_3.PushBack({ 56,2038,188,126 });
+	redNormal_3.PushBack({ 56, 2185, 188, 126 }); // 
+	redNormal_3.PushBack({ 285,2038,188,126 });
+	redNormal_3.PushBack({ 517,2038,188,126 });
+	redNormal_3.PushBack({ 745,2038,188,126 });
+	redNormal_3.PushBack({ 991,2038,188,126 });
+	redNormal_3.PushBack({ 56, 2185, 188, 126 }); //
+	redNormal_3.PushBack({ 1230,2038,188,126 });
+	redNormal_3.PushBack({ 56,2038,188,126 });
+	redNormal_3.PushBack({ 285,2038,188,126 });
+	redNormal_3.PushBack({ 517,2038,188,126 });
+	redNormal_3.PushBack({ 745,2038,188,126 });
+	redNormal_3.PushBack({ 56, 2185, 188, 126 }); //
+	redNormal_3.PushBack({ 991,2038,188,126 });
+	redNormal_3.PushBack({ 1230,2038,188,126 });
+	redNormal_3.PushBack({ 56, 2038, 188, 126 });
+	redNormal_3.PushBack({ 56, 2185, 188, 126 }); //
+	redNormal_3.PushBack({ 285,2038,188,126 });
+	redNormal_3.PushBack({ 517,2038,188,126 });
+	redNormal_3.PushBack({ 745,2038,188,126 });
+	redNormal_3.PushBack({ 991,2038,188,126 });
+	redNormal_3.PushBack({ 1230,2038,188,126 });
+	redNormal_3.PushBack({ 56, 2185, 188, 126 }); //
+	redNormal_3.PushBack({ 56,2038,188,126 });
+	redNormal_3.PushBack({ 285,2038,188,126 });
+	redNormal_3.PushBack({ 517,2038,188,126 });
+	redNormal_3.PushBack({ 745,2038,188,126 });
+	redNormal_3.PushBack({ 991,2038,188,126 });
+	redNormal_3.PushBack({ 56, 2185, 188, 126 }); //
+	redNormal_3.PushBack({ 1230,2038,188,126 });
+	redNormal_3.speed = 0.1f;
+
+
+	hitWhite.PushBack({285, 2185, 186, 126});
+	hitWhite.speed = 0.1f;
+	hitWhite.loop = true;
+
+	collider = App->collision->AddCollider({ 0, 0, 188, 126 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	animation = &idle;
 

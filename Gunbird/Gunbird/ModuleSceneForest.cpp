@@ -69,8 +69,6 @@ ModuleSceneForest::ModuleSceneForest()
 	motion_trees_8.h = 173;
 
 
-
-
 	//trump figures
 	{
 		trump_spikyHair1.PushBack({ 318, 325, 13, 24 });
@@ -696,7 +694,7 @@ update_status ModuleSceneForest::Update()
 			App->particles->Enable();
 			App->enemies->AddEnemy(ENEMY_TYPES::FOREST_BOSS_HAND, 121, -62, ENEMY_MOVEMENT::BOSS_FOREST_HAND);
 			App->enemies->AddEnemy(ENEMY_TYPES::FOREST_BOSS_HAND, 66, -62, ENEMY_MOVEMENT::BOSS_FOREST_HAND);
-			App->enemies->AddEnemy(ENEMY_TYPES::BOSS_FOREST, 52, -170, ENEMY_MOVEMENT::BOSS_FOREST_HAND);
+			App->enemies->AddEnemy(ENEMY_TYPES::BOSS_FOREST, 19, -170, ENEMY_MOVEMENT::BOSS_FOREST_HAND);
 
 			if (bossForest != nullptr)
 			{
