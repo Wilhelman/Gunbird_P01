@@ -62,6 +62,7 @@ Gamepad:
 - SKIP SCREEN: A
 - BOMB: B
 - START GAME: START
+- EXIT GAME: BACK
 
 
 ~~~~~~~~~~~~~~~
