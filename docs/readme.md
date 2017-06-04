@@ -45,6 +45,7 @@ General/developer controls:
 - EXIT GAME: ESC key
 - SHOW COLLIDERS: F1
 - DIRECT WIN: F3
+- DIRECT TO BOSS: F5
 
 General/developer controls for Player 1:
 - GOD MODE: F2
