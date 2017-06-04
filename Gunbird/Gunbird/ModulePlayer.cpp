@@ -262,7 +262,7 @@ update_status ModulePlayer::Update()
 		speed = 1.5f;
 
 	if (!deadPlayer && !hitted && !spawining) {
-		if ((App->sceneCastle->background_y == -SCREEN_HEIGHT || App->sceneForest->background_y == -SCREEN_HEIGHT) && (App->sceneCastle->IsEnabled() || App->sceneForest->IsEnabled()) ||
+		if (((App->sceneCastle->background_y == -SCREEN_HEIGHT) && (App->sceneCastle->IsEnabled() )) || ((App->sceneForest->background_y == -SCREEN_HEIGHT) && (App->sceneForest->IsEnabled()))||
 			( App->sceneForest->IsEnabled() && App->enemies->bossDestroyed)) {
 			speed = 5;
 			position.y -= speed;
