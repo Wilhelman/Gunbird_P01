@@ -18,9 +18,8 @@ There are two loop with seven levels each. The four shards of the mirror are obt
 
 ## Controls
 ~~~~~~~~~~~~~~~
-Keyboard:
 
-Player 1 controls:
+Keyboard Player 1 controls:
 - UP: W key
 - LEFT / MOVE SELECTOR LEFT: A key
 - RIGHT / MOVE SELECTOR RIGHT:: D key
@@ -29,7 +28,7 @@ Player 1 controls:
 - SELECT CHARACTER: SPACE key 
 - BOMB: B key
 
-Player 2 controls:
+Keyboard Player 2 controls:
 - UP: UP_ARROW key
 - LEFT / MOVE SELECTOR LEFT: LEFT_ARROW key
 - RIGHT / MOVE SELECTOR RIGHT:: RIGHT_ARROW key
@@ -40,20 +39,9 @@ Player 2 controls:
 - SELECT CHARACTER: 1 key (NUMPAD)
 - BOMB: 2 key (NUMPAD)
 
-General/developer controls:
+General controls:
 - SKIP SCREEN: SPACE key
 - EXIT GAME: ESC key
-- SHOW COLLIDERS: F1
-- DIRECT WIN: F3
-- DIRECT TO BOSS: F5
-
-General/developer controls for Player 1:
-- GOD MODE: F2
-- DIRECT LOSE: F4
-
-General/developer controls for Player 2:
-- GOD MODE: 7 key (NUMPAD)
-- DIRECT LOSE: 8 key (NUMPAD)
 
 Gamepad:
 
