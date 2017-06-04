@@ -18,7 +18,7 @@ Enemy_Bee::Enemy_Bee(int x, int y) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 
-	collider = App->collision->AddCollider({ 0, 0, 30, 29 }, COLLIDER_TYPE::COLLIDER_ENEMY_FLYING_AGGRESSIVE, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 30, 29 }, COLLIDER_TYPE::COLLIDER_ENEMY_FLYING, (Module*)App->enemies);
 }
 
 void Enemy_Bee::Move()
