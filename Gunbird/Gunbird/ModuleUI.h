@@ -34,6 +34,7 @@ public:
 
 	SDL_Rect liveIcon;
 	SDL_Rect p1_Icon;
+	SDL_Rect liveIcon_Tetsu;
 	SDL_Rect bombIcon;
 
 	Animation p2_insertCoin;

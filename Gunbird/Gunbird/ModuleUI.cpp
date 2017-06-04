@@ -7,6 +7,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleSceneCastle.h"
 #include "ModuleSceneForest.h"
+#include "ModuleCharacterSelection.h"
 
 #include <string.h>
 #include<stdio.h>
@@ -19,6 +20,11 @@ ModuleUI::ModuleUI()
 	liveIcon.y = 152;
 	liveIcon.w = 15;
 	liveIcon.h = 12;
+
+	liveIcon_Tetsu.x = 255;
+	liveIcon_Tetsu.y = 176;
+	liveIcon_Tetsu.w = 13;
+	liveIcon_Tetsu.h = 9;
 
 	p1_Icon.x = 77;
 	p1_Icon.y = 69;
@@ -82,24 +88,97 @@ update_status ModuleUI::Update()
 			x_correction -= fonts[font_score].char_w;
 		this->BlitText(x_correction, 4, font_score, str);
 
-		if (App->player->playerLives >= 0) {
-			if (!App->render->Blit(graphics, 5, 18, &liveIcon, 1.0f)) {
-				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
+		if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::VALNUS_SELECTED)
+		{
+			if (App->player->playerLives >= 0) {
+				if (!App->render->Blit(graphics, 5, 18, &liveIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			if (App->player->playerLives >= 1) {
+				if (!App->render->Blit(graphics, 22, 18, &liveIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			if (App->player->playerLives >= 2) {
+				if (!App->render->Blit(graphics, 38, 18, &liveIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+		}
+		else if (App->characterSelection->characterSelected_P1 == CHARACTER_SELECTED::TETSU_SELECTED)
+		{
+			if (App->player->playerLives >= 0) {
+				if (!App->render->Blit(graphics, 5, 18, &liveIcon_Tetsu, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			if (App->player->playerLives >= 1) {
+				if (!App->render->Blit(graphics, 22, 18, &liveIcon_Tetsu, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			if (App->player->playerLives >= 2) {
+				if (!App->render->Blit(graphics, 38, 18, &liveIcon_Tetsu, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
 			}
 		}
 
-		if (App->player->playerLives >= 1) {
-			if (!App->render->Blit(graphics, 22, 18, &liveIcon, 1.0f)) {
-				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
+		if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::VALNUS_SELECTED)
+		{
+			if (App->player2->playerLives >= 0) {
+				if (!App->render->Blit(graphics, SCREEN_WIDTH - 87, 18, &liveIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			if (App->player2->playerLives >= 1) {
+				if (!App->render->Blit(graphics, SCREEN_WIDTH - 70, 18, &liveIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			if (App->player2->playerLives >= 2) {
+				if (!App->render->Blit(graphics, SCREEN_WIDTH - 53, 18, &liveIcon, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
 			}
 		}
+		else if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::TETSU_SELECTED)
+		{
+			if (App->player2->playerLives >= 0) {
+				if (!App->render->Blit(graphics, SCREEN_WIDTH - 87, 18, &liveIcon_Tetsu, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
 
-		if (App->player->playerLives >= 2) {
-			if (!App->render->Blit(graphics, 38, 18, &liveIcon, 1.0f)) {
-				LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-				status = UPDATE_ERROR;
+			if (App->player2->playerLives >= 1) {
+				if (!App->render->Blit(graphics, SCREEN_WIDTH - 70, 18, &liveIcon_Tetsu, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
+			}
+
+			if (App->player2->playerLives >= 2) {
+				if (!App->render->Blit(graphics, SCREEN_WIDTH - 53, 18, &liveIcon_Tetsu, 1.0f)) {
+					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
+					status = UPDATE_ERROR;
+				}
 			}
 		}
 
@@ -166,26 +245,9 @@ update_status ModuleUI::Update()
 				}
 			}
 
-			if (App->player2->playerLives >= 0) {
-				if (!App->render->Blit(graphics, SCREEN_WIDTH - 87, 18, &liveIcon, 1.0f)) {
-					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-					status = UPDATE_ERROR;
-				}
-			}
+			/////player 2
 
-			if (App->player2->playerLives >= 1) {
-				if (!App->render->Blit(graphics, SCREEN_WIDTH - 70, 18, &liveIcon, 1.0f)) {
-					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-					status = UPDATE_ERROR;
-				}
-			}
-
-			if (App->player2->playerLives >= 2) {
-				if (!App->render->Blit(graphics, SCREEN_WIDTH - 53, 18, &liveIcon, 1.0f)) {
-					LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
-					status = UPDATE_ERROR;
-				}
-			}
+			
 
 			char str[10];
 			sprintf_s(str, "%i", scoreP2);
