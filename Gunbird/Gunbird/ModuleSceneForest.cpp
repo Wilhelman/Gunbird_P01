@@ -666,6 +666,7 @@ update_status ModuleSceneForest::Update()
 			App->enemies->Disable();
 			App->particles->Disable();
 			background_y = -SCREEN_HEIGHT;
+			App->enemies->bossDestroyed = true;
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN && App->sceneForest->IsEnabled() && !f5Pressed)
@@ -712,8 +713,10 @@ update_status ModuleSceneForest::Update()
 
 
 		//TODO change the position of the player to private to be more pro
-		if ((App->player2->position.y < 0 || App->player->position.y < 0) && App->fade->FadeIsOver() /*delete this in big releases*/ || (App->input->keyboard[SDL_SCANCODE_RETURN] == KEY_STATE::KEY_DOWN))
+		if ((App->player2->position.y < 0 || App->player->position.y < 0) && App->fade->FadeIsOver() && App->enemies->bossDestroyed) {
 			App->fade->FadeToBlack(this, App->sceneCastle, 1.0f);
+			
+		}
 
 		if (App->player->playerLost) {
 			LOG("Player LOST");

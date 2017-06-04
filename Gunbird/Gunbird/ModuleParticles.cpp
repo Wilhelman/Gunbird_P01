@@ -509,6 +509,15 @@ bool ModuleParticles::Start()
 	laser1_1.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
 	laser2_1.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
 
+	laser_Tetsu0_0.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
+	laser_Tetsu0_1.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
+	laser_Tetsu0_2.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
+
+	laser_Tetsu1_0.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
+	laser_Tetsu1_1.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
+	laser_Tetsu2_0.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
+	laser_Tetsu2_1.fx = App->audio->LoadFx("Assets/audio/effects/valnus_shot_1_2.wav");
+
 	LOG("Loading audio fx for enemy hitted by player shot");
 	enemy_hitted = App->audio->LoadFx("Assets/audio/effects/enemy_hitted.wav");
 	

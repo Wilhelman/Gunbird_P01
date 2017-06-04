@@ -320,10 +320,10 @@ update_status ModuleUI::Update()
 			this->BlitText( x_correction, 44, font_score, str3);
 		}
 
-		if (!App->render->Blit(graphics, 40, 60, &liveIcon, 1.0f)) {
+		/*if (!App->render->Blit(graphics, 40, 60, &liveIcon, 1.0f)) {
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
-		}
+		}*/
 		
 		if (!App->render->Blit(graphics, 60, 60, &p1_Icon, 1.0f)) {
 			LOG("Cannot blit the texture in ScoreRanking %s\n", SDL_GetError());
@@ -334,10 +334,10 @@ update_status ModuleUI::Update()
 		this->BlitText(140, 60, font_score, str);
 
 
-		if (!App->render->Blit(graphics, 40, 80, &liveIcon, 1.0f)) {
+		/*if (!App->render->Blit(graphics, 40, 80, &liveIcon, 1.0f)) {
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
-		}
+		}*/
 		if (!App->render->Blit(graphics, 60, 80, &p2_Icon, 1.0f)) {
 			LOG("Cannot blit the texture in ScoreRanking %s\n", SDL_GetError());
 			status = UPDATE_ERROR;

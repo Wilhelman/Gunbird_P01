@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModuleSceneCastle.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "SDL\include\SDL_timer.h"
 
 #define PI 3.14159265 
@@ -343,9 +344,16 @@ void Enemy_TerrestialTurret::Move() {
 	if (!dead) {
 
 		position = original_pos + movement.GetCurrentPosition(&animation);
-
-		float deltaX = (App->player->position.x - (position.x + 15));
-		float deltaY = (App->player->position.y - (position.y + 21));
+		double deltaX;
+		double deltaY;
+		if (App->player->IsEnabled()) {
+			deltaX = ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
+			deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
+		}
+		else if (App->player2->IsEnabled()) {
+			deltaX = ((App->player2->position.x + (App->player2->playerCollider->rect.w / 2))) - (position.x + 15);
+			deltaY = ((App->player2->position.y + (App->player2->playerCollider->rect.h / 2))) - (position.y + 21);
+		}
 		float angle;
 
 		if (deltaY != 0)
@@ -450,8 +458,16 @@ void Enemy_TerrestialTurret::Shoot()
 {
 	if (!dead) {
 		left = false;
-		double deltaX = ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
-		double deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
+		double deltaX;
+		double deltaY;
+		if (App->player->IsEnabled()) {
+			deltaX = ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
+			deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);
+		}
+		else if (App->player2->IsEnabled()) {
+			deltaX = ((App->player2->position.x + (App->player2->playerCollider->rect.w / 2))) - (position.x + 15);
+			deltaY = ((App->player2->position.y + (App->player2->playerCollider->rect.h / 2))) - (position.y + 21);
+		}
 		float angle;
 
 		angle = atan2(deltaX, deltaY);

@@ -281,8 +281,16 @@ update_status ModuleSceneCastle::Update()
 
 
 	//TODO change the position of the player to private to be more pro
-	if (App->player->position.y < 0 && App->fade->FadeIsOver())
-		App->fade->FadeToBlack(this, App->scoreRanking ,1.0f);
+
+	if (App->player->IsEnabled()) {
+		if (App->player->position.y < 0 && App->fade->FadeIsOver())
+			App->fade->FadeToBlack(this, App->scoreRanking, 1.0f);
+	}
+	else if (App->player2->IsEnabled()) {
+		if (App->player2->position.y < 0 && App->fade->FadeIsOver())
+			App->fade->FadeToBlack(this, App->scoreRanking, 1.0f);
+	}
+	
 
 	if (App->player->playerLost) {
 		LOG("Player LOST");

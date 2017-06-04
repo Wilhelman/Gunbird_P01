@@ -29,6 +29,6 @@ typedef unsigned int uint;
 #define WIN_BORDERLESS 0
 #define WIN_RESIZABLE 0
 #define REN_VSYNC 1
-#define WIN_TITLE "GUNBIRD v0.56"
+#define WIN_TITLE "GUNBIRD v1.0"
 
 #endif // __GLOBALS_H__
