@@ -66,6 +66,7 @@ General/developer controls for Player 2:
 - SKIP SCREEN: A
 - BOMB: B
 - START GAME: START
+- EXIT GAME: BACK
 
 
 ## Changelist of all previous versions
@@ -194,6 +195,33 @@ _0.56 version:_
 * Added motionless trees over main background
 * Added jungle level music
 * Fixed minor bugs and polished details
+
+_1.00 version:_
+
+* Gamepad functionality
+* Icon game in exe
+* Added Trump's Green Mecha
+* Added Baloon (path, correct positions and shot included)
+* Implemenedt Valnus attacks
+* Added flying machine (path, correct positions and shot included)
+* Implemented Tetsu attacks
+* Added Miner workers 
+* Implemented Bee enemy
+* Implemented Bigg Red Turret enemy
+* Implemented Red Turret enemy
+* Implemented Motion trees
+* Implemented Trump
+* Implemented Trump Red Meca 
+* Implemented Beam
+* Implemented House (sprites, modul, background position)
+* Boss spritesheets
+* QUIT Cross
+* Make github web page
+* Record gameplay and put it in web page
+* Implemented the bonus Scene when forest finish
+* Bugs solved in forest
+* Implemented Final Boss
+
 
 ## Team members
 
