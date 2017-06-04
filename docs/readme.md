@@ -14,7 +14,7 @@ There are two loop with seven levels each. The four shards of the mirror are obt
 
 ## Gameplay
 
-<iframe width="740" height="590" src="https://www.youtube.com/embed/0fKg7e37bQE" frameborder="0" allowfullscreen></iframe>
+<iframe width="740" height="590" src="<iframe width="1280" height="720" src="https://www.youtube.com/embed/yBFzOEv0snY" frameborder="0" allowfullscreen></iframe>" frameborder="0" allowfullscreen></iframe>
 
 ## Controls
 ~~~~~~~~~~~~~~~
