@@ -449,10 +449,30 @@ update_status ModuleSceneCastle::Update()
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_KP_1] && !App->player2->IsEnabled()) {
+	if (App->input->keyboard[SDL_SCANCODE_KP_1] && !App->player2->IsEnabled())
+	{
 		App->ui->p2 = true;
 		App->player2->playerLives = 3;
 		App->player2->Enable();
+		App->characterSelection->player2_joined = true;
+
+		if (App->characterSelection->characterSelected_P1 = CHARACTER_SELECTED::VALNUS_SELECTED)
+			App->characterSelection->characterSelected_P2 = CHARACTER_SELECTED::TETSU_SELECTED;
+
+		App->audio->PlayFx(player2joined);
+	}
+
+
+	if (App->input->keyboard[SDL_SCANCODE_KP_1] && !App->player->IsEnabled())
+	{
+		App->ui->p2 = true;
+		App->player->playerLives = 3;
+		App->player->Enable();
+		App->characterSelection->player2_joined = true;
+
+		if (App->characterSelection->characterSelected_P2 = CHARACTER_SELECTED::VALNUS_SELECTED)
+			App->characterSelection->characterSelected_P1 = CHARACTER_SELECTED::TETSU_SELECTED;
+
 		App->audio->PlayFx(player2joined);
 	}
 

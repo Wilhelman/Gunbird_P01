@@ -325,7 +325,7 @@ update_status ModuleUI::Update()
 			status = UPDATE_ERROR;
 		}*/
 		
-		if (!App->render->Blit(graphics, 60, 60, &p1_Icon, 1.0f)) {
+		if (!App->render->Blit(graphics, 60, 60, &liveIcon, 1.0f)) {
 			LOG("Cannot blit the texture in ScoreRanking %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}
@@ -338,7 +338,7 @@ update_status ModuleUI::Update()
 			LOG("Cannot blit the texture in SceneCastle %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}*/
-		if (!App->render->Blit(graphics, 60, 80, &p2_Icon, 1.0f)) {
+		if (!App->render->Blit(graphics, 60, 80, &liveIcon_Tetsu, 1.0f)) {
 			LOG("Cannot blit the texture in ScoreRanking %s\n", SDL_GetError());
 			status = UPDATE_ERROR;
 		}
