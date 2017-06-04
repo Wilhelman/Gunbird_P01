@@ -705,9 +705,6 @@ update_status ModuleSceneForest::Update()
 					status = UPDATE_ERROR;
 				}
 			}
-
-
-			
 		}
 
 
@@ -719,7 +716,8 @@ update_status ModuleSceneForest::Update()
 
 		if (App->player->playerLost) {
 			LOG("Player LOST");
-			App->fade->FadeToBlack(this, App->scoreRanking);
+			if(!App->player2->IsEnabled())
+				App->fade->FadeToBlack(this, App->scoreRanking);
 		}
 
 		if (App->player2->playerLost) {

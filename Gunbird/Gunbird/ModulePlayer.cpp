@@ -364,20 +364,20 @@ update_status ModulePlayer::Update()
 					else if (shotPower == 2) {
 						if (counter == 0)
 						{
-							App->particles->AddParticle(App->particles->laser0_2, position.x + 1, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser0_2, position.x + 1, position.y - 38, COLLIDER_PLAYER_SHOT);
 							shotControl = false;
 						}
 						else if (counter == 7)
 						{
-							App->particles->AddParticle(App->particles->laser1_2, position.x + 1, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser1_2, position.x + 1, position.y - 38, COLLIDER_PLAYER_SHOT);
 						}
 						else if (counter == 14)
 						{
-							App->particles->AddParticle(App->particles->laser2_2, position.x + 1, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser2_2, position.x + 1, position.y - 38, COLLIDER_PLAYER_SHOT);
 						}
 						else if (counter == 21)
 						{
-							App->particles->AddParticle(App->particles->laser0_2, position.x + 1, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser0_2, position.x + 1, position.y - 38, COLLIDER_PLAYER_SHOT);
 							counter = 0;
 							shotControl = true;
 						}
@@ -387,20 +387,20 @@ update_status ModulePlayer::Update()
 					else if (shotPower == 3) {
 						if (counter == 0)
 						{
-							App->particles->AddParticle(App->particles->laser0_3, position.x - 5, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser0_3, position.x - 5, position.y - 38, COLLIDER_PLAYER_SHOT);
 							shotControl = false;
 						}
 						else if (counter == 7)
 						{
-							App->particles->AddParticle(App->particles->laser1_3, position.x - 5, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser1_3, position.x - 5, position.y - 38, COLLIDER_PLAYER_SHOT);
 						}
 						else if (counter == 14)
 						{
-							App->particles->AddParticle(App->particles->laser2_3, position.x - 5, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser2_3, position.x - 5, position.y - 38, COLLIDER_PLAYER_SHOT);
 						}
 						else if (counter == 21)
 						{
-							App->particles->AddParticle(App->particles->laser0_3, position.x - 5, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser0_3, position.x - 5, position.y - 38, COLLIDER_PLAYER_SHOT);
 							counter = 0;
 							shotControl = true;
 						}
@@ -495,20 +495,20 @@ update_status ModulePlayer::Update()
 					if (shotPower == 0) {
 						if (counter == 0)
 						{
-							App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
 							shotControl = false;
 						}
 						else if (counter == 7)
 						{
-							App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser1, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
 						}
 						else if (counter == 14)
 						{
-							App->particles->AddParticle(App->particles->laser2, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser2, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
 						}
 						else if (counter == 21)
 						{
-							App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser0, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
 							counter = 0;
 							shotControl = true;
 						}
@@ -519,20 +519,20 @@ update_status ModulePlayer::Update()
 					else if (shotPower == 1) {
 						if (counter == 0)
 						{
-							App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
 							shotControl = false;
 						}
 						else if (counter == 7)
 						{
-							App->particles->AddParticle(App->particles->laser1_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser1_1, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
 						}
 						else if (counter == 14)
 						{
-							App->particles->AddParticle(App->particles->laser2_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser2_1, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
 						}
 						else if (counter == 21)
 						{
-							App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser0_1, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
 							counter = 0;
 							shotControl = true;
 						}
@@ -543,20 +543,20 @@ update_status ModulePlayer::Update()
 					else if (shotPower == 2) {
 						if (counter == 0)
 						{
-							App->particles->AddParticle(App->particles->laser0_2, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser0_2, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
 							shotControl = false;
 						}
 						else if (counter == 7)
 						{
-							App->particles->AddParticle(App->particles->laser1_2, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser1_2, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
 						}
 						else if (counter == 14)
 						{
-							App->particles->AddParticle(App->particles->laser2_2, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser2_2, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
 						}
 						else if (counter == 21)
 						{
-							App->particles->AddParticle(App->particles->laser0_2, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser0_2, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
 							counter = 0;
 							shotControl = true;
 						}
@@ -567,20 +567,20 @@ update_status ModulePlayer::Update()
 					else if (shotPower == 3) {
 						if (counter == 0)
 						{
-							App->particles->AddParticle(App->particles->laser0_3, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser0_3, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
 							shotControl = false;
 						}
 						else if (counter == 7)
 						{
-							App->particles->AddParticle(App->particles->laser1_3, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser1_3, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
 						}
 						else if (counter == 14)
 						{
-							App->particles->AddParticle(App->particles->laser2_3, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser2_3, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
 						}
 						else if (counter == 21)
 						{
-							App->particles->AddParticle(App->particles->laser0_3, position.x + 3, position.y - 38, COLLIDER_PLAYER2_SHOT);
+							App->particles->AddParticle(App->particles->laser0_3, position.x + 3, position.y - 38, COLLIDER_PLAYER_SHOT);
 							counter = 0;
 							shotControl = true;
 						}
@@ -641,8 +641,8 @@ update_status ModulePlayer::Update()
 				bombCollider_V = App->collision->AddCollider({ position.x - 30, 0, 150, 400 }, COLLIDER_PLAYER_BOMB, this);
 			}
 			else if (App->characterSelection->characterSelected_P2 == CHARACTER_SELECTED::VALNUS_SELECTED) {
-				bombCollider_H = App->collision->AddCollider({ 0, position.y - 100, 400, 150 }, COLLIDER_PLAYER2_BOMB, this);
-				bombCollider_V = App->collision->AddCollider({ position.x - 30, 0, 150, 400 }, COLLIDER_PLAYER2_BOMB, this);
+				bombCollider_H = App->collision->AddCollider({ 0, position.y - 100, 400, 150 }, COLLIDER_PLAYER_BOMB, this);
+				bombCollider_V = App->collision->AddCollider({ position.x - 30, 0, 150, 400 }, COLLIDER_PLAYER_BOMB, this);
 			}
 		}
 

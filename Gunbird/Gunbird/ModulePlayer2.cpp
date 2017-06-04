@@ -445,20 +445,20 @@ update_status ModulePlayer2::Update()
 					if (shotPower == 0) {
 						if (counter == 0)
 						{
-							App->particles->AddParticle(App->particles->laser_Tetsu0_0, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu0_0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
 							shotControl = false;
 						}
 						else if (counter == 7)
 						{
-							App->particles->AddParticle(App->particles->laser_Tetsu1_0, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu1_0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
 						}
 						else if (counter == 14)
 						{
-							App->particles->AddParticle(App->particles->laser_Tetsu2_0, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu2_0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
 						}
 						else if (counter == 21)
 						{
-							App->particles->AddParticle(App->particles->laser_Tetsu3_0, position.x + 8, position.y - 40, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu3_0, position.x + 8, position.y - 40, COLLIDER_PLAYER2_SHOT);
 							counter = 0;
 							shotControl = true;
 						}
@@ -469,20 +469,20 @@ update_status ModulePlayer2::Update()
 					else if (shotPower == 1) {
 						if (counter == 0)
 						{
-							App->particles->AddParticle(App->particles->laser_Tetsu0_1, position.x , position.y - 38, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu0_1, position.x , position.y - 38, COLLIDER_PLAYER2_SHOT);
 							shotControl = false;
 						}
 						else if (counter == 7)
 						{
-							App->particles->AddParticle(App->particles->laser_Tetsu1_1, position.x , position.y - 38, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu1_1, position.x , position.y - 38, COLLIDER_PLAYER2_SHOT);
 						}
 						else if (counter == 14)
 						{
-							App->particles->AddParticle(App->particles->laser_Tetsu2_1, position.x , position.y - 38, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu2_1, position.x , position.y - 38, COLLIDER_PLAYER2_SHOT);
 						}
 						else if (counter == 21)
 						{
-							App->particles->AddParticle(App->particles->laser_Tetsu3_1, position.x , position.y - 38, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu3_1, position.x , position.y - 38, COLLIDER_PLAYER2_SHOT);
 							counter = 0;
 							shotControl = true;
 						}
@@ -493,20 +493,20 @@ update_status ModulePlayer2::Update()
 					else if (shotPower == 2) {
 						if (counter == 0)
 						{
-							App->particles->AddParticle(App->particles->laser_Tetsu0_2, position.x -8, position.y - 38, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu0_2, position.x -8, position.y - 38, COLLIDER_PLAYER2_SHOT);
 							shotControl = false;
 						}
 						else if (counter == 7)
 						{
-							App->particles->AddParticle(App->particles->laser_Tetsu0_2, position.x -8, position.y - 38, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu0_2, position.x -8, position.y - 38, COLLIDER_PLAYER2_SHOT);
 						}
 						else if (counter == 14)
 						{
-							App->particles->AddParticle(App->particles->laser_Tetsu0_2, position.x -8, position.y - 38, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu0_2, position.x -8, position.y - 38, COLLIDER_PLAYER2_SHOT);
 						}
 						else if (counter == 21)
 						{
-							App->particles->AddParticle(App->particles->laser_Tetsu0_2, position.x -8, position.y - 38, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->laser_Tetsu0_2, position.x -8, position.y - 38, COLLIDER_PLAYER2_SHOT);
 							counter = 0;
 							shotControl = true;
 						}
@@ -730,15 +730,15 @@ update_status ModulePlayer2::Update()
 			
 			if (bombCombo == 0) {
 				
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 30, bombPos.y - 30, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 80, bombPos.y - 30, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 35, bombPos.y - 50, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 85, bombPos.y - 50, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 30, bombPos.y - 30, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 80, bombPos.y - 30, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 35, bombPos.y - 50, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 85, bombPos.y - 50, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
 
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 30, bombPos.y - 30, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 80, bombPos.y - 30, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 35, bombPos.y - 50, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 85, bombPos.y - 50, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 30, bombPos.y - 30, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 80, bombPos.y - 30, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 35, bombPos.y - 50, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 85, bombPos.y - 50, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
 				bombInTimer = currentTime;
 				bombCombo = 1;
 			}
@@ -746,39 +746,39 @@ update_status ModulePlayer2::Update()
 
 			if (currentTime > bombInTimer + 200 && bombCombo == 1) {
 
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 25, bombPos.y - 70, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 80, bombPos.y - 70, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 30, bombPos.y - 90, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 75, bombPos.y - 90, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 25, bombPos.y - 70, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 80, bombPos.y - 70, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 30, bombPos.y - 90, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 75, bombPos.y - 90, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
 
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 25, bombPos.y - 70, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 80, bombPos.y - 70, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 30, bombPos.y - 90, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 75, bombPos.y - 90, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 25, bombPos.y - 70, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 80, bombPos.y - 70, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 30, bombPos.y - 90, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 75, bombPos.y - 90, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
 				bombInTimer = currentTime;
 				bombCombo = 2;
 			}
 			
 			if (currentTime > bombInTimer + 200 && bombCombo == 2) {
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 30, bombPos.y - 120, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 80, bombPos.y - 120, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 35, bombPos.y - 140, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 80, bombPos.y - 140, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 30, bombPos.y - 120, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 80, bombPos.y - 120, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 35, bombPos.y - 140, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 80, bombPos.y - 140, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
 
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 30, bombPos.y - 120, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 80, bombPos.y - 120, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 35, bombPos.y - 140, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 80, bombPos.y - 140, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 30, bombPos.y - 120, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 80, bombPos.y - 120, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 35, bombPos.y - 140, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 80, bombPos.y - 140, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
 				bombInTimer = currentTime;
 				bombCombo = 3;
 			}
 			
 			if (currentTime > bombInTimer + 200 && bombCombo == 3) {
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 25, bombPos.y - 160, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 30, bombPos.y - 180, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 25, bombPos.y - 160, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x - 30, bombPos.y - 180, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
 
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 25, bombPos.y - 160, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
-				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 30, bombPos.y - 180, COLLIDER_TYPE::COLLIDER_PLAYER_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 25, bombPos.y - 160, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
+				App->particles->AddParticle(App->particles->tetsu_flames, bombPos.x + 30, bombPos.y - 180, COLLIDER_TYPE::COLLIDER_PLAYER2_BOMB);
 				bombInTimer = currentTime;
 				bombCombo = 0;
 				canThrowBomb = false;
