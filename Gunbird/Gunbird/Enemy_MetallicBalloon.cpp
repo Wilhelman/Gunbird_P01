@@ -166,8 +166,8 @@ uint Enemy_MetallicBalloon::getLives() {
 void Enemy_MetallicBalloon::Shoot()
 {
 	left = false;
-	double deltaX;
-	double deltaY;
+	double deltaX = 0;
+	double deltaY = 0;
 	if (App->player->IsEnabled()) {
 		deltaX = ((App->player->position.x + (App->player->playerCollider->rect.w / 2))) - (position.x + 15);
 		deltaY = ((App->player->position.y + (App->player->playerCollider->rect.h / 2))) - (position.y + 21);

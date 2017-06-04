@@ -182,6 +182,7 @@ ModuleSceneForest::~ModuleSceneForest()
 // Load assets
 bool ModuleSceneForest::Start()
 {
+	background_speed = 0.5f;
 	spawned = 0;
 	//setting bckground
 	background_x = 0;
@@ -301,8 +302,6 @@ update_status ModuleSceneForest::Update()
 
 	if (background_y < -SCREEN_HEIGHT) {
 		background_y += background_speed;
-		//EXAMPLE:
-		//soldier_left_y += background_speed;
 	}
 
 	// Draw everything --------------------------------------
